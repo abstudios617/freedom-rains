@@ -95,8 +95,8 @@ export const SaveForLaterButton = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   margin-left: 21px;
+  cursor: pointer;
 `;
 
 export const ProductList = styled.div`
@@ -219,4 +219,37 @@ export const Price = styled.span`
   color: #3C4044;
   float: right;
   margin-left: auto;
+`;
+
+export const Platform = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
+  width: 60px;
+  height: 15px;
+  border: 4px solid #49A429;
+  border-radius: 0px 18px 18px 18px;
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 11px;
+  line-height: 13px;
+  color: #49A429;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  background-color: #F9F9F9;
+  margin-top: -98px;
+  margin-left: -142px;
+  &.black {
+    border: 4px solid #3C4044;
+    color: #3C4044;
+  }
 `;

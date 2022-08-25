@@ -20,6 +20,7 @@ import {
   Checkout,
   CheckoutButton,
   Price,
+  Platform,
 } from './cart.styles';
 import { Container } from '../../styles/global.style';
 import image from '../../assets/about-us/LinkerdInIcon.png'
@@ -49,6 +50,7 @@ const Cart = () => {
                 </ButtonRow>
               </ProductColumn>
               <ProductDetails>
+                <Platform>Local</Platform>
                 <ProductName>Linked In</ProductName>
                 <Delete src={deleteIcon} alt="delete" />
                 <ExtraDetails>
