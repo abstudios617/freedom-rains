@@ -1,0 +1,19 @@
+{
+  "extends": ["stylelint-config-recommended"],
+  "plugins": ["stylelint-prettier"],
+  "overrides": [
+    {
+      "files": ["**/*.style.{js,ts}", "**/**/*.style.{js,ts}"],
+      "customSyntax": "@stylelint/postcss-css-in-js",
+      "rules": {
+        "at-rule-no-unknown": null
+      }
+    }
+  ],
+  "ignoreFiles": ["**/*.js"],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "prettier/prettier": true,
+    "indentation": 2
+  }
+}

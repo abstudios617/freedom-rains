@@ -1,0 +1,137 @@
+import { getUserInfo } from '../requests/api-request';
+import { setUserAccount } from './account-utils';
+import useSSR from 'use-ssr';
+
+const { isBrowser } = useSSR();
+
+export const isChrome = () => {
+  if (!isBrowser) {
+    return false;
+  }
+  
+  return navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+};
+
+export const isFirefox = () => {
+  if (!isBrowser) {
+    return false;
+  }
+  
+  return navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+};
+
+export const isMobile = () => {
+  if (!isBrowser) {
+    return false;
+  }
+  
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+};
+
+export const getItem = (name) => {
+  if (!isBrowser) {
+    return false;
+  }
+
+  return window.localStorage.getItem(`freedom.${name}`);
+};
+
+export const setItem = (name, val) => {
+  if (!isBrowser) {
+    return false;
+  }
+
+  window.localStorage.setItem(`freedom.${name}`, val);
+};
+
+export const removeItem = (name) => {
+  if (!isBrowser) {
+    return false;
+  }
+  
+  window.localStorage.removeItem(`freedom.${name}`);
+};
+
+export const resetCache = () => {
+  removeItem('loggedIn');
+  removeItem('categories');
+  removeItem('tokens');
+  removeItem('unlockedItems');
+  removeItem('tasks');
+  removeItem('accountInfo');
+  removeItem('favorites');
+  removeItem('specificProd');
+};
+
+export const setUserData = async (loggedInData) => {
+  setItem('loggedIn', JSON.stringify(loggedInData));
+  const userData = await getUserInfo(loggedInData.token);
+
+  setUserAccount(userData);
+
+  setItem('categories', userData.categories || JSON.stringify([]));
+
+  setItem('favorites', userData.favorites || JSON.stringify([]));
+
+  setItem('tokens', userData.tokens);
+
+  setItem('unlockedItems', userData.locked);
+
+  setItem('tasks', userData.tasks);
+};
+
+export const targetPage = (page) => {
+  if (!isBrowser) {
+    return false;
+  }
+  
+  window.location.href = `/${page}`;
+};
+
+const getUrlParam = () => {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  return urlParams;
+};
+
+export const getUrlParamProduct = () => {
+  const urlParams = getUrlParam();
+  const prodId = urlParams.get('prod');
+
+  return prodId;
+};
+
+export const getUrlParamSearch = () => {
+  const urlParams = getUrlParam();
+  const itemType = urlParams.get('type');
+  const itemValue = urlParams.get('val');
+
+  return {
+    type: itemType,
+    val: decodeURIComponent(itemValue),
+  };
+};
+
+export const shuffleArray = (array) => {
+  let currentIndex = array.length;
+  let randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+};
+
+export const formatPrice = (price) => {
+  return (price * .01).toFixed(2);
+};

@@ -1,0 +1,70 @@
+.loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.split {
+    font-size: 16px;
+    line-height: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 15px;
+}
+
+.submit {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.star {
+    color: red;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.loginInputLabel {
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.customerLogin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.loginBox{
+    width: 42%;
+    height: 380px;
+    background: #aee2ff;
+    padding: 3%;
+}
+
+.loginHeader{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.loginBenefits{
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.buttomImg{
+    width: 22px;
+    height: 22px;
+    margin-bottom: 2px;
+    margin-right: 2px;
+    vertical-align: middle;
+    box-sizing: border-box;
+}

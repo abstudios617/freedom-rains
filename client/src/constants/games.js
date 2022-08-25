@@ -1,0 +1,156 @@
+export const gamesConstant = [
+  {
+    name: 'Fast Driver',
+    urlName: 'Fast_Driver',
+    link: '/games/Fast_Driver/index.html',
+    image: '/games/Fast_Driver/icons/icon-114.png',
+    priority: '5',
+    recommendedOrder: '7',
+    order: '1',
+    rules:
+      'Use your mouse or the arrow keys to move the car right or left. Avoid the obstacles including the moving cars and roadblocks. You Have 3 lives to drive as far as you can to get the highest score!',
+  },
+  {
+    name: 'Gold Miner',
+    urlName: 'Gold_Miner',
+    link: '/games/Gold_Miner/index.html',
+    image: '/games/Gold_Miner/icons/icon-114.png',
+    priority: '4',
+    recommendedOrder: '4',
+    order: '2',
+    rules:
+      'Use your mouse to click the area you want to send "the grabber". Grab the gold & jewels from the animals below. Watch out for the moles with scissors, don\'t let them cut your rope. Collect the jewels as fast as you can so the health bar doesn\'t run out! Enjoy!',
+  },
+  {
+    name: 'Bubble Shooter Legends',
+    urlName: 'Bubble_Shooter_Legends',
+    link: '/games/Bubble_Shooter/index.html',
+    image: '/games/Bubble_Shooter/favicon.ico',
+    priority: '2',
+    recommendedOrder: '1',
+    order: '3',
+    rules:
+      'Aim, shoot and complete the puzzle. Bounce the balls of the wall and angle shots to connect matching colors. 3 or more of the same color must be connected to remove from the puzzle. Your score and level are at the top of the game and the number of balls (attempts) left are at the bottom of the game. Perfect your aim and strategy to advance in the levels! Select "Maker" to create your own levels!',
+  },
+  {
+    name: 'Punch Box',
+    urlName: 'Punch_Box',
+    link: '/games/Punch_Box/index.html',
+    image: '/games/Punch_Box/icons/icon-114.png',
+    priority: '10',
+    recommendedOrder: '8',
+    order: '4',
+    rules:
+      'Use the arrow keys (left & right) to select the side of the box to punch. Avoid the spikes by switching sides. Punch as fast as you can to keep your health bar up. Have fun and punch as many boxes as you can!',
+  },
+  {
+    name: 'Quick Color Tap!',
+    urlName: 'Quick_Color_Tap!',
+    link: '/games/Quick_Color_Tap/index.html',
+    image: '/games/Quick_Color_Tap/icons/icon-114.png',
+    priority: '11',
+    recommendedOrder: '14',
+    order: '5',
+    rules:
+      'The background blinks with a color, choose a square with the same color! Use your mouse to click the correct square. The faster you go, the higher you can score!',
+  },
+  {
+    name: 'Save the Penguin',
+    urlName: 'Save_the_Penguin',
+    link: '/games/Save_The_Penguin/index.html',
+    image: '/games/Save_The_Penguin/icons/icon-114.png',
+    priority: '12',
+    recommendedOrder: '9',
+    order: '6',
+    rules:
+      'Help the penguin reach the floor. With your mouse, click the ice that you want to break to move the penguin. Watch out for the obstacles, including bombs, spikes and more. See how many levels you can beat!',
+  },
+  {
+    name: 'Sweet Heart Saga',
+    urlName: 'Sweet_Heart_Saga',
+    link: '/games/Sweet_Heart_Saga/index.html',
+    image: '/games/Sweet_Heart_Saga/favicon.ico',
+    priority: '3',
+    recommendedOrder: '3',
+    order: '7',
+    rules:
+      'Use your mouse to select hearts of the same color that are connected. There must be at least 3 hearts connected. The number of hearts (and their colors) needed for each level are in the top right corner. The amount of moves available are in the circle at the top of the game. Test your strategies and advance in the levels!',
+  },
+  {
+    name: 'Tetris',
+    urlName: 'Tetris',
+    link: '/games/Tetris/index.html',
+    image: '/games/Tetris/favicon.ico',
+    priority: '14',
+    recommendedOrder: '6',
+    order: '8',
+    rules:
+      'Use the arrow keys or click the arrow keys on the screen to guide the Tetris puzzle piece. Stack the pieces as efficiently as possible! The level, score and line amounts are calculated for you at the top of the screen. Enjoy!',
+  },
+  {
+    name: '2 Dots Challenge',
+    urlName: '2_Dots_Challenge',
+    link: '/games/2_Dots_Challenge/index.html',
+    image: '/games/2_Dots_Challenge/icons/icon-114.png',
+    priority: '1',
+    recommendedOrder: '2',
+    order: '9',
+    rules:
+      'Click the screen to shoot the ball at the moving center targets. Use your ball to Hit the target (ball) in the center that is the same color as your ball. Avoid the opposite color ball in the center target. Don\'t let the bar on the top of the screen run our or else time\'s up!',
+  },
+  {
+    name: 'Candy Robber',
+    urlName: 'Candy_Robber',
+    link: '/games/Candy_Robber/index.html',
+    image: '/games/Candy_Robber/favicon.ico',
+    priority: '7',
+    recommendedOrder: '10',
+    order: '10',
+    rules:
+      'Use your mouse to click and jump to the next donut(s). Click the mouse while in the air to keep "flying" to the next donut. Collect the munchkins for extra points. See how far you can get!',
+  },
+  {
+    name: 'Feeding The Monster',
+    urlName: 'Feeding_The_Monster',
+    link: '/games/Feeding_The_Monster/index.html',
+    image: '/games/Feeding_The_Monster/favicon.ico',
+    priority: '6',
+    recommendedOrder: '13',
+    order: '11',
+    rules:
+      'Use the mouse to click the vegetables and feed the monster. The vegetables needed to pass the round are listed on the top right hand side of the game and pop up during gameplay. When you collect the listed amount of a vegetable, you will get some time added to your clock which is located on the top left of the screen. Have fun Feeding the Monster!',
+  },
+  {
+    name: 'Pino',
+    urlName: 'Pino',
+    link: '/games/Pino/index.html',
+    image: '/games/Pino/icons/loading-logo.png',
+    priority: '9',
+    recommendedOrder: '12',
+    order: '12',
+    rules:
+      'Catch all the fish that are falling from the sky! Use the arrow keys or use the mouse to click the screen in the direction you want the penguin to go. You can only miss 3 fish and you must also avoid the bombs. The score is at the top of the screen, Good Luck!',
+  },
+  {
+    name: 'Bug Match',
+    urlName: 'Bug_Match',
+    link: '/games/Bug_Match/index.html',
+    image: '/games/Bug_Match/icons/icon-114.png',
+    priority: '13',
+    recommendedOrder: '11',
+    order: '13',
+    rules:
+      'Use your mouse to select the bug you would like to move. Connect 3 or more of the same bugs/colors to complete the puzzle and score points! The time and score at the top center of the screen. Connect as many as you can in a minute!',
+  },
+  {
+    name: 'Mahjong Grand Master',
+    urlName: 'Mahjong_Grand_Master',
+    link: '/games/Mahjong_Grand_Master/index.html',
+    image: '/games/Mahjong_Grand_Master/favicon.ico',
+    priority: '8',
+    recommendedOrder: '5',
+    order: '14',
+    rules:
+      'Choose the four-layer patterns available or create your own. Match the tiles that are "open or exposed" by clicking on them with your mouse. A tile is "open or exposed " if it can be moved either left or right without disturbing other tiles. The goal is to match open pairs of identical tiles and remove them from the board, exposing the tiles under them for play. Tiles that are below other tiles cannot be seen. But by repeated undos or hints, one gradually gets more and more information. The game is finished when all pairs of tiles have been removed from the board or when there are no exposed pairs remaining. Put your matching skills and strategic know-how to the test in this classic Chinese tile game!',
+  },
+];
