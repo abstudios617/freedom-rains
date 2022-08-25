@@ -4,8 +4,27 @@ import {
   CartPageContainer,
   Header,
   CartOptions,
+  ProductColumn,
+  ProductImg,
+  ButtonRow,
+  CouponButton,
+  SaveForLaterButton,
+  ProductList,
+  Product,
+  ProductName,
+  ProductDetails,
+  ExtraDetails,
+  Delete,
+  SubtotalDiv,
+  Total,
+  Checkout,
+  CheckoutButton,
+  Price,
 } from './cart.styles';
 import { Container } from '../../styles/global.style';
+import image from '../../assets/about-us/LinkerdInIcon.png'
+import Quantity from '../../components/quantity-field';
+import deleteIcon from '../../assets/icons/delete.svg';
 
 const Cart = () => {
 
@@ -19,7 +38,35 @@ const Cart = () => {
             <span>Save all for later</span>
             <span>Go to save for later list &gt;</span>
           </CartOptions>
+          <ProductList>
+            <Product>
+              <ProductColumn>
+                <ProductImg src={image} alt="product" />
+                <ButtonRow>
+                  <Quantity cta='cartPage' />
+                  <CouponButton>COUPON</CouponButton>
+                  <SaveForLaterButton>SAVE FOR LATER</SaveForLaterButton>
+                </ButtonRow>
+              </ProductColumn>
+              <ProductDetails>
+                <ProductName>Linked In</ProductName>
+                <Delete src={deleteIcon} alt="delete" />
+                <ExtraDetails>
+                  <li>Peach Black</li>
+                  <li>3 ounce (pack of 1)</li>
+                </ExtraDetails>
+                <Price>$120.00</Price>
+              </ProductDetails>
+            </Product>
+          </ProductList>
         </CartContainer>
+        <Checkout>
+          <SubtotalDiv>
+            <span>Subtotal: (not including tax or shipping)</span>
+            <Total>$51000</Total>
+            <CheckoutButton>GO TO CHECKOUT</CheckoutButton>
+          </SubtotalDiv>
+        </Checkout>
       </CartPageContainer>
     </Container>
   );
