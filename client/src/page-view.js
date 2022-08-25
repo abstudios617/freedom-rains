@@ -35,6 +35,7 @@ import Merch from './pages/merch';
 import CustomerService from './pages/customer-service';
 import ShopSearch from './pages/shop-search';
 import Game from './pages/game';
+import Cart from './pages/cart';
 
 const PageView = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -148,6 +149,9 @@ const PageView = () => {
         </Route>
         <Route exact path="/faqs">
           <CustomerService />
+        </Route>
+        <Route exact path="/cart">
+          <Cart />
         </Route>
         <Route path="*">
           <Redirect to="/404" />
