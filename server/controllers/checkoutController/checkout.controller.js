@@ -9,13 +9,16 @@ module.exports.createCheckoutSession = async (req, res) => {
         {"id": "price_1LSOw6FiSX0kathOSA1GkzVF", "quantity": 1}
              ]
           */
-
   //retrieve each product and info needed for line items
-  //has to be done here to prevent people from changing the price of items they purhcase etc
+  //has to be done here to prevent people from changing the price of items they purchase etc
   let storeItems = [];
   for (let i = 0; i < req.body.items.length; i++){
     let priceObject = await stripeConnect.prices.retrieve(req.body.items[i].id);
     let productObject = await stripeConnect.products.retrieve(priceObject.product);
+
+    if(!priceObject.active || !productObject.active)
+      return res.status(500).json({error: 'Item is unavailable!'});
+
     storeItems.push({ id: priceObject.id, priceInCents: priceObject.unit_amount, name: productObject.name });
   }
 
@@ -23,7 +26,7 @@ module.exports.createCheckoutSession = async (req, res) => {
   try {
     const session = await stripeConnect.checkout.sessions.create({
       payment_method_types: ['card'],
-      mode: 'payment', //will need sep method for subscription
+      mode: 'payment',
       line_items: req.body.items.map(item => {
         const currItem = storeItems.find(({ id }) => id === item.id);
         return {
@@ -46,15 +49,8 @@ module.exports.createCheckoutSession = async (req, res) => {
   }
 };
 
-//TODO:
-//clean up fxns that werent needed and remove them
-//clean up code in general
-//FOR CHECKOUT ONE TIME, CHECK THAT ITEMS ARE AVAILABLE
-//test all working
-//document how to test webhooks locally
 module.exports.createSubscriptionPayment = async (req, res) => {
   // example req = {"id": "price_1LALCoFiSX0kathOMZQDJ7Rl"} this is the test subscription price obj id
-
   try {
     const session = await stripeConnect.checkout.sessions.create({
       billing_address_collection: 'auto',
@@ -74,15 +70,18 @@ module.exports.createSubscriptionPayment = async (req, res) => {
   }
 };
 
-module.exports.getInvoice = (req, res) => {
-  res.json({url : 'success'});
-};
-
-module.exports.createPaymentIntent = (req, res) => {
-  res.json({url : 'success'});
-};
-
 module.exports.webhook = async (req, res) => {
+  //using and testing webhooks
+  //for live mode, webhook must be setup through stripe dashboard online 
+  //and pointed to /webhook of the live server
+  //for testing:
+  //use stripe CLI
+  //from terminal in same directory as stripe.exe
+  //run stripe login --interactive
+  //then input the api key
+  //then run stripe listen --forward-to localhost:3000/webhook
+  //then you can make test requests like using the checkout 
+  //and stripe will redirect the request to localhost webhook
   var event = req.body;
   //use webhook secret to verify events came from stripe
   //event MUST BE RAW HERE FOR STRIPE TO VERIFY, hence changes to index.js to get raw here
@@ -144,7 +143,6 @@ module.exports.webhook = async (req, res) => {
         expand: ['line_items']
       });
 
-
     //extract the items from stripe response and build string
     let stringedLineItems = '';
     for(let i = 0; i < items.line_items.data.length; i++){
@@ -172,7 +170,7 @@ module.exports.webhook = async (req, res) => {
   }
 
   case 'charge.succeeded': { //this event means the charge was successful and is over
-    //has nice receipt pre built... ex: https://pay.stripe.com/receipts/payment/CAcaFwoVYWNjdF8xSkZnZXVGaVNYMGthdGhPKLORmZgGMgbMEHUPTZ86LBZIL3CaFMi1fex7HWE5dH8s9P9HsJfW08Eb_HJD1XtIMl0iPZssSP-xDFwU
+    //has nice receipt pre built...
     //but missing other details like amount discounted, etc
     const chargeSucceeded = event.data.object;
     console.log('Charge succeeded!');

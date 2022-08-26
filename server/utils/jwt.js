@@ -22,12 +22,12 @@ module.exports.middleware = () => {
       /^\/scrap\/coupon\/.*/, // gets coupons for specific site.
       '/users/create', // creates one user.
       '/users/login', // login user and generate token
-      '/checkout/createSession', //guests can purchase items
-      '/checkout/subscribe', //create subscription checkout session
-      '/webhook', //hit webhook for stripe, will verify from stripe route
+      '/checkout/createSession', // guests can purchase items
+      '/checkout/subscribe', // create subscription checkout session
+      '/webhook', // hit webhook for stripe, will verify from stripe route
       '/users/forgotPassword', // sends an email with temporary password
-      '/users/contactUs', //sends contact message to SWF team
-      '/users/login', //login user and generate token
+      '/users/contactUs', // sends contact message to SWF team
+      '/users/login', // login user and generate token
       '/products', // gets all products
       /^\/products\/extra\/.*/, // gets extra products by last product id
       /^\/products\/.*/, // gets single product by id
