@@ -100,40 +100,10 @@ module.exports.webhook = async (req, res) => {
   event = JSON.parse(event);
   switch (event.type) {
 
-  case 'payment_intent.succeeded': { //this event has the payment intent and status if we need it
-    const paymentIntentSuccess = event.data.object;
-    console.log('PaymentIntent was successful!');
-    console.log(paymentIntentSuccess);
-    break;
-  }
-
-  case 'payment_method.attached': { //this event has the payment method
-    const paymentMethod = event.data.object;
-    console.log('PaymentMethod was attached to a Customer!');
-    console.log(paymentMethod);
-    break;
-  }
-
-  case 'payment_intent.created': {
-    //this event happens when createCheckoutSession is called and the url for checkout is served
-    const paymentIntentCreated = event.data.object;
-    console.log('Payment intent created!');
-    console.log(paymentIntentCreated);
-    break;
-  }
-
-  case 'customer.created': { //this is a hook to create a db of customers if we want (or stripe also does this for us I believe)
-    const customerCreated = event.data.object;
-    console.log('Customer created!');
-    console.log(customerCreated);
-    break;
-  }
-
   case 'checkout.session.completed': { //this event means the entire checkout session is over and successful
     //this is the ideal event to handle the conclusion of checkout
     const checkoutSessionCompleted = event.data.object;
-    console.log('Checkout session completed!');
-    console.log(checkoutSessionCompleted);
+    console.log('Handling event checkout session completed');
 
     var subject = 'Thank you! Your order is confirmed!';
 
@@ -167,15 +137,6 @@ module.exports.webhook = async (req, res) => {
       return res.status(200).end();
     else
       return res.status(500).end();
-  }
-
-  case 'charge.succeeded': { //this event means the charge was successful and is over
-    //has nice receipt pre built...
-    //but missing other details like amount discounted, etc
-    const chargeSucceeded = event.data.object;
-    console.log('Charge succeeded!');
-    console.log(chargeSucceeded);
-    break;
   }
 
   //catches the rest (could be a lot, there's a lot of events stripe has)
