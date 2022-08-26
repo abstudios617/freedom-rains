@@ -27,7 +27,13 @@ app.use(express.static('./build'));
 app.use(express.static('./doc'));
 app.use(cors());
 app.use(logger('dev'));
-app.use(express.json());
+app.use((req, res, next) => {
+  if (req.originalUrl === '/webhook') {
+    next();
+  } else {
+    express.json()(req, res, next);
+  }
+});
 app.use(cookieParser());
 app.use(middleware());
 app.use(
