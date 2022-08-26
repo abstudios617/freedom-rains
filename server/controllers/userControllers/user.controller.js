@@ -104,16 +104,6 @@ module.exports.updateUser = (req, res) => {
     .catch((err) => res.status(500).json(err));
 };
 
-//Delete a user
-module.exports.deleteUser = (req, res) => {
-  //This has an authenticate token method before, which adds user to req. 
-  knex('users')
-    .where({ email: req.user.email })
-    .del()
-    .then((user) => res.status(200).json(user))
-    .catch((err) => res.status(500).json(err));
-};
-
 //Send temporary password to given email
 module.exports.forgotPassword = async (req, res) => {
   //check that email is valid
@@ -178,4 +168,14 @@ module.exports.contactUs = async (req, res) => {
     return res.status(200).end();
   else
     return res.status(500).end();
+};
+
+// Delete a user's account
+module.exports.deleteAccount = (req, res) => {
+  //This has an authenticate token method before, which adds user to req. 
+  knex('users')
+    .where({ email: req.user.email })
+    .del()
+    .then((user) => res.status(200).json(user))
+    .catch((err) => res.status(500).json(err));
 };
