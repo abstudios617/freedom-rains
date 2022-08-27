@@ -26,31 +26,8 @@ import { Container } from '../../styles/global.style';
 import image from '../../assets/about-us/LinkerdInIcon.png'
 import Quantity from '../../components/quantity-field';
 import deleteIcon from '../../assets/icons/delete.svg';
-import data from './data';
 
 const Cart = () => {
-
-  /*
-  const mappedProducts = data.map(product => {
-    return (
-      <Product key={product.id}>
-        <ProductImg src={product.image} />
-        <ProductDetails>
-          <ProductName>{product.name}</ProductName>
-          <ExtraDetails>
-            {product.extras.map(extra => {
-              return <li>{extra}</li>;
-            }
-            )}
-          </ExtraDetails>
-          <Platform>{product.platform}</Platform>
-          <Price>{product.price}</Price>
-          <Delete src={deleteIcon} />
-        </ProductDetails>
-      </Product>
-    );
-  })
-  */
 
   return (
     <Container>
@@ -91,6 +68,26 @@ const Cart = () => {
             <span className="colorBlack">Go to your cart &gt;</span>
           </CartOptions>
           <ProductList>
+            <Product>
+              <ProductColumn>
+                <ProductImg src={image} alt="product" />
+                <ButtonRow>
+                  <Quantity cta='cartPage' />
+                  <CouponButton>COUPON</CouponButton>
+                  <SaveForLaterButton>SAVE FOR LATER</SaveForLaterButton>
+                </ButtonRow>
+              </ProductColumn>
+              <ProductDetails>
+                <Platform>Local</Platform>
+                <ProductName>Linked In</ProductName>
+                <Delete src={deleteIcon} alt="delete" />
+                <ExtraDetails>
+                  <li>Peach Black</li>
+                  <li>3 ounce (pack of 1)</li>
+                </ExtraDetails>
+                <Price>$120.00</Price>
+              </ProductDetails>
+            </Product>
           </ProductList>
         </CartContainer>
         <Checkout>
