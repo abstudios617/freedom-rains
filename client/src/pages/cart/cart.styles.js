@@ -41,6 +41,15 @@ export const CartOptions = styled.div`
     &.first {
       margin-left: 0px;
     }
+
+    &.blackFirst {
+      margin-left: 0px;
+      color: #3C4044;
+    }
+
+    &.colorBlack {
+      color: #3C4044;
+    }
   }
 `;
 

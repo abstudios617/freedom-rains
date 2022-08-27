@@ -26,8 +26,31 @@ import { Container } from '../../styles/global.style';
 import image from '../../assets/about-us/LinkerdInIcon.png'
 import Quantity from '../../components/quantity-field';
 import deleteIcon from '../../assets/icons/delete.svg';
+import data from './data';
 
 const Cart = () => {
+
+  /*
+  const mappedProducts = data.map(product => {
+    return (
+      <Product key={product.id}>
+        <ProductImg src={product.image} />
+        <ProductDetails>
+          <ProductName>{product.name}</ProductName>
+          <ExtraDetails>
+            {product.extras.map(extra => {
+              return <li>{extra}</li>;
+            }
+            )}
+          </ExtraDetails>
+          <Platform>{product.platform}</Platform>
+          <Price>{product.price}</Price>
+          <Delete src={deleteIcon} />
+        </ProductDetails>
+      </Product>
+    );
+  })
+  */
 
   return (
     <Container>
@@ -60,6 +83,14 @@ const Cart = () => {
                 <Price>$120.00</Price>
               </ProductDetails>
             </Product>
+          </ProductList>
+          <Header>Save For Later</Header>
+          <CartOptions>
+            <span className="blackFirst">Remove all items</span>
+            <span className="colorBlack">Move all to cart</span>
+            <span className="colorBlack">Go to your cart &gt;</span>
+          </CartOptions>
+          <ProductList>
           </ProductList>
         </CartContainer>
         <Checkout>
