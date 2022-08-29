@@ -1,6 +1,69 @@
 import styled from 'styled-components';
 
-export const NavSection = styled.ul`
+
+export const NavContainer = styled.div`
+  z-index: 12;
+  width: 100%;
+  margin: 0 auto;
+  height: 127px;
+
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+
+export const NavTop = styled.ul`
+  display: flex;
+  
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  height: 60px;
+ 
+  > li {
+    width: auto;
+    list-style: none;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    color: #333333;
+    font-weight: 700;
+    > span {
+      cursor: pointer;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    display: none;
+  }
+
+  &.bottom {
+    font-size: 12px;
+    position: relative;
+    border-top: 2px solid rgba(255, 255, 255, 0.8);
+    padding: 0px;
+    align-items: center;
+    height: 35px;
+    background-color: #1988FF;
+    @media only screen and (max-width: 480px) {
+      width: 100%;
+      padding: 2% 0 4%;
+      margin-top: 4%;
+      
+      div {
+        margin-bottom: 3%;
+      }
+    }
+  }
+`;
+
+export const NavBottom = styled.ul`
   display: flex;
   
   align-items: center;

@@ -13,7 +13,9 @@ import sports_esports from '../../assets/header/sports_esports.png';
 import group from '../../assets/header/group.png';
 import vector from '../../assets/header/vector.png';
 import {
-  NavSection,
+  NavContainer,
+  NavTop,
+  NavBottom,
   ProfileImage,
   SubNav,
   Coupons,
@@ -24,7 +26,6 @@ import {
   Logo,
   Image,
 } from './nav.styles';
-import { NavContainer } from '../header/header.styles';
 
 const Nav = ({ isLoggedIn, goToMerchPage }) => {
   const userData = JSON.parse(getItem('accountInfo'));
@@ -44,7 +45,7 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
   //className added for readability as styled components are named awful disgust
   return (
     <NavContainer className="nav-container">
-      <NavSection className="nav-top">
+      <NavTop className="nav-top">
         <Coupons className="coups">
           <span onClick={() => targetPage('')}>
             <Logo src={logo} alt="Freedom logo" className="logo"/>
@@ -72,7 +73,9 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
               <img src={shopping_cart} />
             </ProfileImage>
           </>
+
         ) : (
+
           <>
             <ButtonField 
               className="Button-field"
@@ -91,8 +94,8 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
 
           </>
         )}
-      </NavSection>
-      <NavSection className={'bottom'}> {/* don't change name  or else will not work */}
+      </NavTop>
+      <NavBottom className={'bottom'}> {/* don't change name  or else will not work */}
         <Coupons className="shop">
           <Image src={local_mall} alt="Local_Mall" />
           <span className={currentPage === '/search' && 'active'} onClick={() => { targetPage('deals'); }}>SHOP</span>
@@ -126,7 +129,7 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
             <li onClick={() => targetPage('forbusiness#contact')}>Connect With Us</li>
           </SubNav>
         </Resources>
-      </NavSection>
+      </NavBottom>
     </NavContainer >
   );
 };
