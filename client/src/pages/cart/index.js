@@ -45,8 +45,8 @@ const Cart = () => {
                 <ProductImg src={image} alt="product" />
                 <ButtonRow>
                   <Quantity cta='cartPage' />
-                  <CouponButton>COUPON</CouponButton>
                   <SaveForLaterButton>SAVE FOR LATER</SaveForLaterButton>
+                  <CouponButton>COUPON</CouponButton>
                 </ButtonRow>
               </ProductColumn>
               <ProductDetails>
@@ -73,8 +73,8 @@ const Cart = () => {
                 <ProductImg src={image} alt="product" />
                 <ButtonRow>
                   <Quantity cta='cartPage' />
-                  <CouponButton>COUPON</CouponButton>
                   <SaveForLaterButton>SAVE FOR LATER</SaveForLaterButton>
+                  <CouponButton>COUPON</CouponButton>
                 </ButtonRow>
               </ProductColumn>
               <ProductDetails>

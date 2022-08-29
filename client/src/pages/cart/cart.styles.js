@@ -65,8 +65,8 @@ export const ProductImg = styled.img`
 `;
 
 export const ButtonRow = styled.div`
-  display: flex-;
-  flex-direction: row;
+  display: flex;
+  flex-direction: row-reverse;
   margin-top: 18px;
   margin-bottom: 28px;
 `;
