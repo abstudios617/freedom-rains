@@ -29,25 +29,28 @@ import { NavContainer } from '../header/header.styles';
 const Nav = ({ isLoggedIn, goToMerchPage }) => {
   const userData = JSON.parse(getItem('accountInfo'));
   const [currentPage, setCurrentPage] = useState('/');
+
+  //what the fuck this do? Why it named functionName
   const functionName = () => {
     const pathname = window.location.pathname;
     setCurrentPage(pathname);
   };
 
+  //is not being used correctly
   useEffect(() => {
     functionName();
   }, []);
 
+  //className added for readability as styled components are named awful disgust
   return (
-    <NavContainer>
-      <NavSection>
-        <Coupons>
+    <NavContainer className="nav-container">
+      <NavSection className="nav-top">
+        <Coupons className="coups">
           <span onClick={() => targetPage('')}>
-            <Logo src={logo} alt="Freedom logo" />
+            <Logo src={logo} alt="Freedom logo" className="logo"/>
           </span>
         </Coupons>
-        <SearchBar>
-        </SearchBar>
+        <SearchBar className="search" />
 
         {isLoggedIn ? (
           <>
@@ -56,7 +59,7 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
                 <img src={image} />
               </div>
             </ProfileImage>
-            <Box>
+            <Box className="box?"> {/* idk what this is, or why it's named box */}
               <div className="container">
                 <div className="item1">  {userData ? userData.first_name : 'Mary'} </div>
                 <div className="item2" color="primary">
@@ -65,19 +68,21 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
                 </div>
               </div>
             </Box>
-            <ProfileImage>
+            <ProfileImage className="profile-img">
               <img src={shopping_cart} />
             </ProfileImage>
           </>
         ) : (
           <>
-            <ButtonField
+            <ButtonField 
+              className="Button-field"
               color="allWhite"
               onClick={() => targetPage('login')}
             >
               LOG IN
             </ButtonField>
             <ButtonField
+              className="Button-field"
               color="primary"
               onClick={() => targetPage('create')}
             >
@@ -87,25 +92,25 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
           </>
         )}
       </NavSection>
-      <NavSection className={'bottom'}>
-        <Coupons>
+      <NavSection className={'bottom'}> {/* don't change name  or else will not work */}
+        <Coupons className="shop">
           <Image src={local_mall} alt="Local_Mall" />
           <span className={currentPage === '/search' && 'active'} onClick={() => { targetPage('deals'); }}>SHOP</span>
         </Coupons>
-        <Coupons>
+        <Coupons className="coups">
           <Image src={sell} alt="Sell" />
           <span className={currentPage === '/coupons' && 'active'} onClick={() => targetPage('coupons')}>COUPON</span>
         </Coupons>
-        <FreedomTV>
+        <FreedomTV className="freedomTv">
           <Image src={desktop_windows} alt="Desktop_Windows" />
           <span className={currentPage === '/freedomtv' && 'active'} onClick={() => targetPage('watch')}>TV+</span>
         </FreedomTV>
-        <Activities>
+        <Activities className="activities">
           <Image src={sports_esports} alt="Sports_Exports" />
           <span className={currentPage === '/games' && 'active'} onClick={() => targetPage('arcade')}>GAME</span>
         </Activities>
-        <Resources>
-          <Image src={group} alt="Group" />
+        <Resources className="about-us">
+          <Image src={group} alt="Group" className="Image"/>
           <span onClick={() => targetPage('team')}>ABOUT US</span>
           <SubNav className={'subResources'}>
             <li onClick={goToMerchPage}>Buy Freedom Merch</li>
