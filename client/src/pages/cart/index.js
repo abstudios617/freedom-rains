@@ -45,8 +45,7 @@ const Cart = () => {
                 <ProductImg src={image} alt="product" />
                 <ButtonRow>
                   <Quantity cta='cartPage' />
-                  <SaveForLaterButton>SAVE FOR LATER</SaveForLaterButton>
-                  <CouponButton>COUPON</CouponButton>
+                  <SaveForLaterButton className="noCoupon">SAVE FOR LATER</SaveForLaterButton>
                 </ButtonRow>
               </ProductColumn>
               <ProductDetails>
@@ -85,7 +84,7 @@ const Cart = () => {
                   <li>Peach Black</li>
                   <li>3 ounce (pack of 1)</li>
                 </ExtraDetails>
-                <Price>$120.00</Price>
+                <Price>$12000.00</Price>
               </ProductDetails>
             </Product>
           </ProductList>

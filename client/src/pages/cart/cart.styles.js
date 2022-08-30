@@ -106,6 +106,10 @@ export const SaveForLaterButton = styled.div`
   align-items: center;
   margin-left: 21px;
   cursor: pointer;
+
+  &.noCoupon {
+    width: 276px;
+  }
 `;
 
 export const ProductList = styled.div`
@@ -157,6 +161,10 @@ export const Delete = styled.img`
   height: 18px;
   margin-left: 400px;
   margin-top: -20px;
+
+  @media only screen and (max-width: 480px) {
+    margin-left: 280px;
+  }
 `;
 
 export const SubtotalDiv = styled.div`
