@@ -300,4 +300,34 @@ export const CheckoutMobile = styled.div`
     margin-left: -5px;
     margin-top: 500px;
     position: fixed;
-  }`;
+  }
+`;
+
+export const MoveToCart = styled.button`
+  width: 276px;
+  height: 32px;
+  border: 1px solid #1988FF;
+  border-radius: 6px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  color: #1988FF;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 21px;
+  cursor: pointer;
+  background-color: #FFFFFF;
+  margin-right: -120px;
+  &.noCoupon {
+    width: 276px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 160px;
+    margin-right: -2px;
+  }
+`;

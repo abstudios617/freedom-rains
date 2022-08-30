@@ -22,11 +22,13 @@ import {
   Price,
   Platform,
   CheckoutMobile,
+  MoveToCart
 } from './cart.styles';
 import { Container } from '../../styles/global.style';
 import image from '../../assets/about-us/LinkerdInIcon.png'
 import Quantity from '../../components/quantity-field';
 import deleteIcon from '../../assets/icons/delete.svg';
+import { targetPage } from '../../utils/index';
 
 const Cart = () => {
 
@@ -73,7 +75,7 @@ const Cart = () => {
                 <ProductImg src={image} alt="product" />
                 <ButtonRow>
                   <Quantity cta='cartPage' />
-                  <SaveForLaterButton>SAVE FOR LATER</SaveForLaterButton>
+                  <MoveToCart>MOVE TO CART</MoveToCart>
                   <CouponButton>COUPON</CouponButton>
                 </ButtonRow>
               </ProductColumn>
@@ -93,7 +95,7 @@ const Cart = () => {
             <SubtotalDiv>
               <span>Subtotal: (not including tax or shipping)</span>
               <Total>$51000</Total>
-              <CheckoutButton>GO TO CHECKOUT</CheckoutButton>
+              <CheckoutButton onClick={() => targetPage('checkout')}>GO TO CHECKOUT</CheckoutButton>
             </SubtotalDiv>
           </CheckoutMobile>
         </CartContainer>
@@ -101,7 +103,7 @@ const Cart = () => {
           <SubtotalDiv>
             <span>Subtotal: (not including tax or shipping)</span>
             <Total>$51000</Total>
-            <CheckoutButton>GO TO CHECKOUT</CheckoutButton>
+            <CheckoutButton onClick={() => targetPage('checkout')}>GO TO CHECKOUT</CheckoutButton>
           </SubtotalDiv>
         </Checkout>
       </CartPageContainer>
