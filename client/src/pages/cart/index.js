@@ -21,6 +21,7 @@ import {
   CheckoutButton,
   Price,
   Platform,
+  CheckoutMobile,
 } from './cart.styles';
 import { Container } from '../../styles/global.style';
 import image from '../../assets/about-us/LinkerdInIcon.png'
@@ -88,6 +89,13 @@ const Cart = () => {
               </ProductDetails>
             </Product>
           </ProductList>
+          <CheckoutMobile>
+            <SubtotalDiv>
+              <span>Subtotal: (not including tax or shipping)</span>
+              <Total>$51000</Total>
+              <CheckoutButton>GO TO CHECKOUT</CheckoutButton>
+            </SubtotalDiv>
+          </CheckoutMobile>
         </CartContainer>
         <Checkout>
           <SubtotalDiv>

@@ -186,6 +186,13 @@ export const SubtotalDiv = styled.div`
     margin-top: 5px;
     color: #FFFFFF;
   }
+
+  @media only screen and (max-width: 480px) {
+    display: block;
+    margin-left: 0px;
+    margin-top: 0px;
+    width: 470px;
+  }
 `;
 
 export const Total = styled.h3`
@@ -199,11 +206,19 @@ export const Total = styled.h3`
   margin-left: auto;
   margin-right: 19px;
   margin-top: 10px;
+
+  @media only screen and (max-width: 480px) {
+    margin-top: 20px;
+  }
 `;
 
 export const Checkout = styled.div`
   display: flex;
   flex-direction: column;
+
+  @media only screen and (max-width: 480px) {
+    display: none;
+  }
 `;
 
 export const CheckoutButton = styled.button`
@@ -225,6 +240,11 @@ export const CheckoutButton = styled.button`
   line-height: 24px;
   padding-top: 10px;
   padding-bottom: 10px;
+
+  @media only screen and (max-width: 480px) {
+    width: 470px;
+    height: 48px;
+  }
 `;
 
 export const Price = styled.span`
@@ -270,3 +290,14 @@ export const Platform = styled.div`
     color: #3C4044;
   }
 `;
+
+export const CheckoutMobile = styled.div`
+  display: none;
+  @media only screen and (max-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    margin-left: -5px;
+    margin-top: 500px;
+    position: fixed;
+  }`;
