@@ -16,21 +16,24 @@ import {
   NavContainer,
   NavTop,
   NavBottom,
-  ProfileImage,
+  UserIcons,
   SubNav,
   Coupons,
   FreedomTV,
   Activities,
   Resources,
-  Box,
+  UserContainer,
   Logo,
   Image,
-  BtnContainer
+  BtnContainer,
+  LogoContainer,
+  UserDataContainer
 } from './nav.styles';
 
 const Nav = ({ isLoggedIn, goToMerchPage }) => {
   const userData = JSON.parse(getItem('accountInfo'));
   const [currentPage, setCurrentPage] = useState('/');
+
 
   //what the fuck this do? Why it named functionName
   const functionName = () => {
@@ -38,37 +41,36 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
     setCurrentPage(pathname);
   };
 
-  //is not being used correctly
+  //is not being used correctly I think
   useEffect(() => {
     functionName();
   }, []);
 
-  //className added for readability in the brow
+  //className added for readability in the Dom view
   return (
     <NavContainer className="nav-container">
       <NavTop className="nav-top">
-        <Logo src={logo} alt="Freedom logo" className="logo" onClick={() => targetPage('')}/>
+        <LogoContainer>
+          <Logo src={logo} alt="Freedom logo" className="logo" onClick={() => targetPage('')}/>
+        </LogoContainer>
         <SearchBar className="searchBar" />
 
         {isLoggedIn ? (
           <>
-            <ProfileImage className="profileImage">
-              <div className="profile-pic-div">
-                <img src={image} />
-              </div>
-            </ProfileImage>
-            <Box className="box?"> {/* idk what this is, or why it's named box */}
-              <div className="container">
-                <div className="item1">  {userData ? userData.first_name : 'Mary'} </div>
-                <div className="item2" color="primary">
+            <UserDataContainer className="userDataContainer">
+              <UserContainer className="userContainer" onClick={() => targetPage('account')}> {/* idk what this is, or why it's named box */}
+                <UserIcons className="profileImage" src={image} />
+                <div className="container">
+                  <div className="item1">
+                    {userData ? userData.first_name : 'Mary'}
+                  </div>
+                  <div className="item2" color="primary">
                   Account & Menu
-                  <span className="click" onClick={() => targetPage('account')}> {'>'} </span>
+                  </div>
                 </div>
-              </div>
-            </Box>
-            <ProfileImage className="profile-img">
-              <img src={shopping_cart} />
-            </ProfileImage>
+              </UserContainer>
+              <UserIcons className="shopping-cart" src={shopping_cart} />
+            </UserDataContainer>
           </>
 
         ) : (

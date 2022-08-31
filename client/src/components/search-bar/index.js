@@ -32,7 +32,7 @@ const SearchBar = ({ showSearch }) => {
 
   return (
     <SearchContainer className={!showSearch && 'hideSearch'}> 
-      {/* Why is there a search bar container inside a search bar */}
+      {/* What is this used for ^ */}
       {(
         <SearchBarContainer className="searchBarContainer">
           <Attribute

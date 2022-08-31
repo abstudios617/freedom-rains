@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 // font-family: "Montserrat", sans-serif;
 export const Attribute = styled.input`
-  
   width: 100%;
   height: 25px;
-
   font-size: 14px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 20px;
   border: none;
   font-family: "Montserrat", sans-serif;
   
@@ -26,6 +24,7 @@ export const SearchBarContainer = styled.div`
   justify-content: center;
   border: 1px solid #ced4da;
   border-radius: 10px;
+  width: 100%;
   button {
     border-radius: 0 10px 10px 0;
     height: 38px;
@@ -42,6 +41,7 @@ export const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex: 2;
 
   .hideSearch {
     display: none;

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const NavContainer = styled.div`
   z-index: 12;
   width: 100%;
-  
+  font-family: "Montserrat", sans-serif;
   @media only screen and (max-width: 480px) { 
     
     width: 100%;
@@ -28,6 +28,24 @@ export const NavTop = styled.div`
 
 `;
 
+
+
+export const Coupons = styled.li`
+span {
+  color: white;
+}
+.active {
+  border-bottom: 5px solid white;
+}
+`;
+
+export const LogoContainer = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+//inside logo container
 export const Logo = styled.img`
   width: 115px;
   height: 40px;
@@ -35,21 +53,45 @@ export const Logo = styled.img`
     cursor: pointer;
   }
 `;
+//end of logo container
 
-export const Coupons = styled.li`
-  span {
-    color: white;
-  }
-  .active {
-    border-bottom: 5px solid white;
-  }
-`;
 
 export const BtnContainer = styled.div`
   display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
+//stuff inside button container comes from button styles
+
+
+export const UserDataContainer = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+//Inside UserDataContainer
+export const UserIcons = styled.img`
+  height: 30px;
 `;
 
-
+export const UserContainer = styled.div`
+display: flex;
+flex-direction: row;
+gap: 5px;
+.item1 {
+  font-weight: bold;
+}
+.item2 {
+  font-size: 12px;
+}
+&:hover{
+  cursor: pointer;
+}
+`;
+//End of UserDataContainer
 // End of nav top
 
 // Start of nav bottom
@@ -199,28 +241,7 @@ export const SignIn = styled.li`
   }
 `;
 
-export const Box = styled.div`
-.item1 {
-  width: 100%;
-  font-weight: bold;
-}
 
-.item2 {
-  width: 100px;
-  font-size: 10px;
-  display: inline;
-  span {
-    cursor: pointer;
-    font-size: 15px;
-  }
-}
-
-.container {
-  width: 100px;
-  display: flex;
-  flex-wrap: wrap;
-}
-`;
 
 
 export const WelcomeSection = styled.li`
@@ -249,28 +270,6 @@ export const Image = styled.img`
   left: -3px;
 `;
 
-export const ProfileImage = styled.div`
-  height: 80px;
-  width: 135px;
-  overflow: hidden;
-  position: relative;
-  top: 20px;
-  left: 40px;
-  img {
-    height: 35px;
-  }
-
-  label{
-    width: 100%;
-    bottom: 0;
-    position: absolute;
-    text-align: center;
-    font-size: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    color: white;
-  }
-`;
 
 
 export const Account = styled.span`
