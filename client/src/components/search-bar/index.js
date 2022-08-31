@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { targetPage } from '../../utils/index';
 import { addEvent } from '../../requests/analytics-request';
 import { useForm } from 'react-hook-form';
-import { Attribute, SearchBarContainer } from './searchbar.styles';
-import { SearchContainer } from '../header/header.styles';
+import { Attribute, SearchBarContainer, SearchContainer, SearchIcon } from './searchbar.styles';
 import searchIcon from '../../assets/icons/search.svg';
-import { SearchIcon } from '../nav/nav.styles';
+
 const SearchBar = ({ showSearch }) => {
   const [searchWord, setSearchWord] = useState(null);
   const { register } = useForm();
@@ -32,9 +31,10 @@ const SearchBar = ({ showSearch }) => {
   };
 
   return (
-    <SearchContainer className={!showSearch && 'hideSearch'}>
+    <SearchContainer className={!showSearch && 'hideSearch'}> 
+      {/* Why is there a search bar container inside a search bar */}
       {(
-        <SearchBarContainer>
+        <SearchBarContainer className="searchBarContainer">
           <Attribute
             type="text"
             name="search-bar"

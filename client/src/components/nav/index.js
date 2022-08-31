@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { getItem, targetPage } from '../../utils/index';
 import ButtonField from '../button-field';
-import logo from '../../assets/icons/freedom-left-color.png';
+import logo from '../../assets/icons/freedom-logo-small.png';
 import SearchBar from '../search-bar';
 import local_mall from '../../assets/header/local_mall.png';
 import shopping_cart from '../../assets/header/shopping_cart.png';
@@ -25,6 +25,7 @@ import {
   Box,
   Logo,
   Image,
+  BtnContainer
 } from './nav.styles';
 
 const Nav = ({ isLoggedIn, goToMerchPage }) => {
@@ -42,20 +43,16 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
     functionName();
   }, []);
 
-  //className added for readability as styled components are named awful disgust
+  //className added for readability in the brow
   return (
     <NavContainer className="nav-container">
       <NavTop className="nav-top">
-        <Coupons className="coups">
-          <span onClick={() => targetPage('')}>
-            <Logo src={logo} alt="Freedom logo" className="logo"/>
-          </span>
-        </Coupons>
-        <SearchBar className="search" />
+        <Logo src={logo} alt="Freedom logo" className="logo" onClick={() => targetPage('')}/>
+        <SearchBar className="searchBar" />
 
         {isLoggedIn ? (
           <>
-            <ProfileImage>
+            <ProfileImage className="profileImage">
               <div className="profile-pic-div">
                 <img src={image} />
               </div>
@@ -76,7 +73,7 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
 
         ) : (
 
-          <>
+          <BtnContainer>
             <ButtonField 
               className="Button-field"
               color="allWhite"
@@ -85,16 +82,18 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
               LOG IN
             </ButtonField>
             <ButtonField
-              className="Button-field"
+              className="Button-field small"
               color="primary"
               onClick={() => targetPage('create')}
             >
               SIGN UP
             </ButtonField>
 
-          </>
+          </BtnContainer>
         )}
       </NavTop>
+
+      {/* start of blue */}
       <NavBottom className={'bottom'}> {/* don't change name  or else will not work */}
         <Coupons className="shop">
           <Image src={local_mall} alt="Local_Mall" />
