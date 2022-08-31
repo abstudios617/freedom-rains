@@ -28,6 +28,25 @@ module.exports.middleware = () => {
       '/products', // gets all products
       /^\/products\/extra\/.*/, // gets extra products by last product id
       /^\/products\/.*/, // gets single product by id
+      '/tv/channel',
+      /^\/tv\/channel\/.*/,
+      /^\/tv\/channel\/subscriptions\/.*/,
+      /^\/tv\/channel\/playlists\/.*/,
+      /^\/tv\/video\/related\/.*/,
+      /^\/tv\/video\/comments\/.*/,
+      /^\/tv\/channel\/video\/.*/,
+      /^\/tv\/channel\/videos\/.*/,
+      '/tv/youtube/videos',
+      '/tv/freedomtv',
+      '/tv/freedomtv/youtube',
+      /^\/tv\/freedomtv\/youtube\/.*/,
+      /^\/tv\/freedomtv\/video\/comments\/.*/,
+      '/tv/freedomtv',
+      '/tv/freedomtv/videos',
+      '/tv/freedomtv/video',
+      /^\/tv\/freedomtv\/vimeo\/.*/,
+      '/tv/freedomtv/vimeo',
+      '/tv/freedomtv/videos/creator',
       '/auth/google', // main google login endpoint
       '/auth/google/callback', // google callback
       '/error', // google error

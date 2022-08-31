@@ -6,6 +6,10 @@ module.exports.knex = {
 };
 module.exports.secret = process.env.SECRET || process.env.REACT_APP_SECRET;
 module.exports.stripe = process.env.STRIPE || process.env.REACT_APP_STRIPE;
+module.exports.youtube = process.env.YOUTUBE || process.env.REACT_APP_YOUTUBE;
+module.exports.vimeo = process.env.VIMEO || process.env.REACT_APP_VIMEO;
+module.exports.vimeo_secret = process.env.VIMEO_SECRET || process.env.REACT_APP_VIMEO_SECRET;
+module.exports.vimeo_client= process.env.VIMEO_CLIENT || process.env.REACT_APP_VIMEO_CLIENT;
 module.exports.imgBucket = process.env.IMG_URL || process.env.REACT_APP_IMG_URL;
 module.exports.amplitude = {
   key: process.env.AMP_KEY || process.env.REACT_APP_AMP_KEY,
