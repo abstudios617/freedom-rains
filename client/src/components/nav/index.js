@@ -95,24 +95,29 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
         )}
       </NavTop>
 
-      {/* start of blue */}
-      <NavBottom className={'bottom'}> {/* don't change name  or else will not work */}
+      {/* start of Bottom */}
+      <NavBottom className={''}>
+
         <Coupons className="shop">
           <Image src={local_mall} alt="Local_Mall" />
           <span className={currentPage === '/search' && 'active'} onClick={() => { targetPage('deals'); }}>SHOP</span>
         </Coupons>
+
         <Coupons className="coups">
           <Image src={sell} alt="Sell" />
           <span className={currentPage === '/coupons' && 'active'} onClick={() => targetPage('coupons')}>COUPON</span>
         </Coupons>
+
         <FreedomTV className="freedomTv">
           <Image src={desktop_windows} alt="Desktop_Windows" />
           <span className={currentPage === '/freedomtv' && 'active'} onClick={() => targetPage('watch')}>TV+</span>
         </FreedomTV>
+
         <Activities className="activities">
           <Image src={sports_esports} alt="Sports_Exports" />
           <span className={currentPage === '/games' && 'active'} onClick={() => targetPage('arcade')}>GAME</span>
         </Activities>
+        
         <Resources className="about-us">
           <Image src={group} alt="Group" className="Image"/>
           <span onClick={() => targetPage('team')}>ABOUT US</span>
@@ -121,6 +126,7 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
             <li onClick={() => targetPage('contact')}>Contact Us</li>
           </SubNav>
         </Resources>
+
         <Resources className={'forbusiness'}>
           <Image src={vector} alt="vector" />
           <span onClick={() => targetPage('forbusiness')}>FOR BUSINESS</span>
@@ -130,6 +136,7 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
             <li onClick={() => targetPage('forbusiness#contact')}>Connect With Us</li>
           </SubNav>
         </Resources>
+        
       </NavBottom>
     </NavContainer >
   );

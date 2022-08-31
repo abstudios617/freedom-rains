@@ -103,7 +103,22 @@ export const NavBottom = styled.div`
   padding: 0;
   margin: 0;
   height: 60px;
- 
+  font-size: 12px;
+  position: relative;
+  border-top: 2px solid rgba(255, 255, 255, 0.8);
+  padding: 0px;
+  align-items: center;
+  height: 35px;
+  background-color: #1988FF;
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    padding: 2% 0 4%;
+    margin-top: 4%;
+    
+    div {
+      margin-bottom: 3%;
+    }
+  }
   > li {
     width: auto;
     list-style: none;
@@ -121,28 +136,7 @@ export const NavBottom = styled.div`
   @media only screen and (max-width: 480px) {
     display: none;
   }
-
-  &.bottom {
-    font-size: 12px;
-    position: relative;
-    border-top: 2px solid rgba(255, 255, 255, 0.8);
-    padding: 0px;
-    align-items: center;
-    height: 35px;
-    background-color: #1988FF;
-    @media only screen and (max-width: 480px) {
-      width: 100%;
-      padding: 2% 0 4%;
-      margin-top: 4%;
-      
-      div {
-        margin-bottom: 3%;
-      }
-    }
-  }
 `;
-
-//End of nav bottom
 
 export const SubNav = styled.ul`
   > li {
@@ -173,17 +167,6 @@ export const SubNav = styled.ul`
     display: block;
   }
 `;
-
-export const Exclusive = styled.li`
-  &:hover {
-    .subExclusive {
-      display: block;
-    }
-  }
-`;
-
-
-
 
 export const FreedomTV = styled.li`
   span {
@@ -233,59 +216,11 @@ export const Resources = styled.li`
 
 `;
 
-export const SignIn = styled.li`
-  &:hover {
-    .subSignIn {
-      display: block;
-    }
-  }
-`;
-
-
-
-
-export const WelcomeSection = styled.li`
-  padding: 10px !important;
-  cursor: default !important;
-`;
-
-export const WelcomeCopy = styled.div`
-  text-align: center;
-`;
-
-export const WelcomeBtn = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 10px;
-  button {
-    padding: 5px 10px 2px;
-    font-size: 12px;
-  }
-`;
-
-
 
 export const Image = styled.img`
   position: relative;
   left: -3px;
 `;
 
+//End of nav bottom
 
-
-export const Account = styled.span`
-  display: flex;
-  align-items: center;
-  img {
-    width: 20px;
-    margin-right: 5px;
-  }
-`;
-
-
-
-export const SearchX = styled.div`
-  font-size: 16px;
-  position: relative;
-  right: 10px;
-  cursor: pointer;
-`;
