@@ -19,13 +19,9 @@ export const NavTop = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-
-
   @media only screen and (max-width: 480px) {
     display: none;
   }
-
-
 `;
 
 
@@ -92,49 +88,27 @@ gap: 5px;
 }
 `;
 //End of UserDataContainer
+
 // End of nav top
 
 // Start of nav bottom
 export const NavBottom = styled.div`
   display: flex;
-  
   align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 0;
-  margin: 0;
-  height: 60px;
   font-size: 12px;
-  position: relative;
   border-top: 2px solid rgba(255, 255, 255, 0.8);
-  padding: 0px;
-  align-items: center;
-  height: 35px;
   background-color: #1988FF;
   @media only screen and (max-width: 480px) {
     width: 100%;
     padding: 2% 0 4%;
     margin-top: 4%;
-    
+    display: none;
     div {
       margin-bottom: 3%;
     }
   }
-  > li {
-    width: auto;
-    list-style: none;
-    padding: 10px;
-    font-size: 14px;
-    text-align: center;
-    text-decoration: none;
-    color: #333333;
-    font-weight: 700;
-    > span {
-      cursor: pointer;
-    }
-  }
-
-  @media only screen and (max-width: 480px) {
-    display: none;
   }
 `;
 
@@ -165,6 +139,45 @@ export const SubNav = styled.ul`
 
   .subSignIn {
     display: block;
+  }
+`;
+
+export const NavItemsContainer = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  margin-left: 180px;
+  > li {
+    width: auto;
+    list-style: none;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    color: #333333;
+    font-weight: 700;
+    > span {
+      cursor: pointer;
+  }
+`;
+
+export const BusinessContainer = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 150px;
+  > li {
+    width: auto;
+    list-style: none;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    color: #333333;
+    font-weight: 700;
+    > span {
+    cursor: pointer;
   }
 `;
 
@@ -209,10 +222,6 @@ export const Resources = styled.li`
       display: block;
     }
   }
-  &.forbusiness {
-    position: absolute;
-    right: 20px;
-  }
 
 `;
 
@@ -222,5 +231,5 @@ export const Image = styled.img`
   left: -3px;
 `;
 
-//End of nav bottom
 
+//End of nav bottom

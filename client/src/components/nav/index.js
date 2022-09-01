@@ -27,18 +27,27 @@ import {
   Image,
   BtnContainer,
   LogoContainer,
-  UserDataContainer
+  UserDataContainer,
+  NavItemsContainer,
+  BusinessContainer
 } from './nav.styles';
 
 const Nav = ({ isLoggedIn, goToMerchPage }) => {
   const userData = JSON.parse(getItem('accountInfo'));
   const [currentPage, setCurrentPage] = useState('/');
+  const [tabIndex, SetTab] = useState(0);
 
 
-  //what the fuck this do? Why it named functionName
+
   const functionName = () => {
     const pathname = window.location.pathname;
     setCurrentPage(pathname);
+  };
+
+  const handleClick = (e, num) =>{
+    console.log(num, e);
+    SetTab(num)
+      .then(targetPage(e.target.name));
   };
 
   //is not being used correctly I think
@@ -51,14 +60,18 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
     <NavContainer className="nav-container">
       <NavTop className="nav-top">
         <LogoContainer>
-          <Logo src={logo} alt="Freedom logo" className="logo" onClick={() => targetPage('')}/>
+
+          <Logo src={logo} alt="Freedom logo" className="logo" onClick={(e) => handleClick(e, 0)} name=""/>
+
         </LogoContainer>
         <SearchBar className="searchBar" />
 
         {isLoggedIn ? (
           <>
             <UserDataContainer className="userDataContainer">
-              <UserContainer className="userContainer" onClick={() => targetPage('account')}> {/* idk what this is, or why it's named box */}
+
+              <UserContainer className="userContainer" name="account" onClick={(e) => handleClick(e, 0)} >
+                
                 <UserIcons className="profileImage" src={image} />
                 <div className="container">
                   <div className="item1">
@@ -79,14 +92,16 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
             <ButtonField 
               className="Button-field"
               color="allWhite"
-              onClick={() => targetPage('login')}
+              name="login"
+              onClick={(e) => handleClick(e, 0)}
             >
               LOG IN
             </ButtonField>
             <ButtonField
               className="Button-field small"
               color="primary"
-              onClick={() => targetPage('create')}
+              name="create"
+              onClick={(e) => handleClick(e, 0)}
             >
               SIGN UP
             </ButtonField>
@@ -96,47 +111,77 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
       </NavTop>
 
       {/* start of Bottom */}
-      <NavBottom className={''}>
-
-        <Coupons className="shop">
-          <Image src={local_mall} alt="Local_Mall" />
-          <span className={currentPage === '/search' && 'active'} onClick={() => { targetPage('deals'); }}>SHOP</span>
-        </Coupons>
-
-        <Coupons className="coups">
-          <Image src={sell} alt="Sell" />
-          <span className={currentPage === '/coupons' && 'active'} onClick={() => targetPage('coupons')}>COUPON</span>
-        </Coupons>
-
-        <FreedomTV className="freedomTv">
-          <Image src={desktop_windows} alt="Desktop_Windows" />
-          <span className={currentPage === '/freedomtv' && 'active'} onClick={() => targetPage('watch')}>TV+</span>
-        </FreedomTV>
-
-        <Activities className="activities">
-          <Image src={sports_esports} alt="Sports_Exports" />
-          <span className={currentPage === '/games' && 'active'} onClick={() => targetPage('arcade')}>GAME</span>
-        </Activities>
+      <NavBottom className="Nav-bottom">
         
-        <Resources className="about-us">
-          <Image src={group} alt="Group" className="Image"/>
-          <span onClick={() => targetPage('team')}>ABOUT US</span>
-          <SubNav className={'subResources'}>
-            <li onClick={goToMerchPage}>Buy Freedom Merch</li>
-            <li onClick={() => targetPage('contact')}>Contact Us</li>
-          </SubNav>
-        </Resources>
+        {/* Start of left side container contents */}
+        <NavItemsContainer className="Nav-items">
+          <Coupons className="shop">
+            <Image src={local_mall} alt="Local_Mall" />
 
-        <Resources className={'forbusiness'}>
-          <Image src={vector} alt="vector" />
-          <span onClick={() => targetPage('forbusiness')}>FOR BUSINESS</span>
-          <SubNav className={'subResources'}>
-            <li onClick={() => targetPage('forbusiness#products')}>Past Work</li>
-            <li onClick={() => targetPage('pricing')}>Pricing</li>
-            <li onClick={() => targetPage('forbusiness#contact')}>Connect With Us</li>
-          </SubNav>
-        </Resources>
+            {/* 'deals' */}
+            <span className={tabIndex === '0' && 'active'} name="deals" onClick={(e) => handleClick(e, 0)}>SHOP</span>
+
+          </Coupons>
+          <Coupons className="coups">
+            <Image src={sell} alt="Sell" />
+
+            {/* 'coupons' */}
+            <span className={currentPage === '/coupons' && 'active'} name="coupons" onClick={(e) => handleClick(e, 1)}>COUPON</span> 
+
+          </Coupons>
+
+          <FreedomTV className="freedomTv">
+            <Image src={desktop_windows} alt="Desktop_Windows" />
+
+            {/* 'watch' */}
+            <span className={currentPage === '/freedomtv' && 'active'} name="watch" onClick={(e) => handleClick(e, 2)}>TV+</span>
+
+          </FreedomTV>
+
+          <Activities className="activities">
+            <Image src={sports_esports} alt="Sports_Exports" />
+
+            {/* 'arcade' */}
+            <span className={currentPage === '/games' && 'active'} name="arcade" onClick={(e) => handleClick(e, 3)}>GAME</span>
+
+          </Activities>
         
+          <Resources className="about-us">
+            <Image src={group} alt="Group" className="Image"/>
+
+            <span name="team" onClick={(e) => handleClick(e, 3)}>ABOUT US</span>
+
+            <SubNav className={'subResources'}>
+              <li onClick={goToMerchPage}>Buy Freedom Merch</li>
+
+              <li name="contact" onClick={(e) => handleClick(e, 4)}>Contact Us</li>
+
+            </SubNav>
+          </Resources>
+        </NavItemsContainer>
+        
+        {/* End of left side container contents */}
+
+        {/* Right side container contents */}
+        <BusinessContainer className="Business">
+          <Resources className={'forbusiness'}>
+            <Image src={vector} alt="vector" />
+
+            <span onClick={(e) => handleClick(e, 5)} name="forbusiness">FOR BUSINESS</span>
+
+            <SubNav className={'subResources'}>
+
+              <li name="forbusiness#products" onClick={(e) => handleClick(e, 4)}>Past Work</li>
+
+              <li name="pricing" onClick={(e) => handleClick(e, 4)}>Pricing</li>
+
+              <li name="forbusiness#contact" onClick={(e) => handleClick(e, 4)}>Connect With Us</li>
+            </SubNav>
+          </Resources>
+        </BusinessContainer>
+        
+        {/* End of right side container contents */}
+
       </NavBottom>
     </NavContainer >
   );
