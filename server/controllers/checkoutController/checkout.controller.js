@@ -18,13 +18,13 @@ module.exports.createCheckoutSession = async (req, res) => {
         return {
           price: item.id,
           quantity: item.quantity
-        }
+        };
       }),
       success_url: 'http://localhost/success.html', //CHANGE when success page created <------
       cancel_url: 'http://localhost/cancel.html' //CHANGE when cancel page created <----------
     });
     // return res.redirect(303, session.url);
-    return res.status(200).json({url: session.url})
+    return res.status(200).json({url: session.url});
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
