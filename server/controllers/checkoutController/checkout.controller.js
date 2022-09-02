@@ -9,41 +9,22 @@ module.exports.createCheckoutSession = async (req, res) => {
         {"id": "price_1LSOw6FiSX0kathOSA1GkzVF", "quantity": 1}
              ]
           */
-  //retrieve each product and info needed for line items
-  //has to be done here to prevent people from changing the price of items they purchase etc
-  let storeItems = [];
-  for (let i = 0; i < req.body.items.length; i++){
-    let priceObject = await stripeConnect.prices.retrieve(req.body.items[i].id);
-    let productObject = await stripeConnect.products.retrieve(priceObject.product);
-
-    if(!priceObject.active || !productObject.active)
-      return res.status(500).json({error: 'Item is unavailable!'});
-
-    storeItems.push({ id: priceObject.id, priceInCents: priceObject.unit_amount, name: productObject.name });
-  }
-
   //create the checkout session with this info
   try {
     const session = await stripeConnect.checkout.sessions.create({
       payment_method_types: ['card'],
       mode: 'payment',
       line_items: req.body.items.map(item => {
-        const currItem = storeItems.find(({ id }) => id === item.id);
         return {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: currItem.name
-            },
-            unit_amount: currItem.priceInCents
-          },
+          price: item.id,
           quantity: item.quantity
-        };
+        }
       }),
       success_url: 'http://localhost/success.html', //CHANGE when success page created <------
       cancel_url: 'http://localhost/cancel.html' //CHANGE when cancel page created <----------
     });
-    res.json({url : session.url});
+    // return res.redirect(303, session.url);
+    return res.status(200).json({url: session.url})
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
@@ -64,7 +45,7 @@ module.exports.createSubscriptionPayment = async (req, res) => {
       success_url: 'http://localhost/success.html', //CHANGE when success page created <------
       cancel_url: 'http://localhost/cancel.html' //CHANGE when cancel page created <----------
     });
-    res.json({url : session.url});
+    return res.redirect(303, session.url);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
@@ -146,5 +127,5 @@ module.exports.webhook = async (req, res) => {
   }
   
   //let stripe know we are receiving the event successfully
-  res.json({received: true});
+  res.status(200).json({received: true});
 };
