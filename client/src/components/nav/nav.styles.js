@@ -30,9 +30,6 @@ export const Coupons = styled.li`
 span {
   color: white;
 }
-.active {
-  border-bottom: 5px solid white;
-}
 `;
 
 export const LogoContainer = styled.div`
@@ -185,9 +182,7 @@ export const FreedomTV = styled.li`
   span {
     color: white;
   }
-  .active {
-    border-bottom: 5px solid white;
-  }
+  
   &:hover {
     .subFreedomtv {
       display: block;
@@ -198,9 +193,6 @@ export const FreedomTV = styled.li`
 export const Activities = styled.li`
   span {
     color: white;
-  }
-  .active {
-    border-bottom: 5px solid white;
   }
   &:hover {
     .subActivities {

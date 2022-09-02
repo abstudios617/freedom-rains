@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { getItem, targetPage } from '../../utils/index';
+import { useHistory  } from 'react-router-dom';
 import ButtonField from '../button-field';
 import logo from '../../assets/icons/freedom-logo-small.png';
 import SearchBar from '../search-bar';
@@ -32,45 +32,33 @@ import {
   BusinessContainer
 } from './nav.styles';
 
+import './nav.css';
+
 const Nav = ({ isLoggedIn, goToMerchPage }) => {
   const userData = JSON.parse(getItem('accountInfo'));
-  const [currentPage, setCurrentPage] = useState('/');
   const [tabIndex, SetTab] = useState(0);
-
-
-
-  const functionName = () => {
-    const pathname = window.location.pathname;
-    setCurrentPage(pathname);
-  };
+  const history = useHistory();
 
   const handleClick = (e, num) =>{
-    console.log(num, e);
-    SetTab(num)
-      .then(targetPage(e.target.name));
+    e.preventDefault();
+    SetTab(num);
+    history.push(`/${e.target.title}`);
   };
 
-  //is not being used correctly I think
-  useEffect(() => {
-    functionName();
-  }, []);
 
   //className added for readability in the Dom view
   return (
     <NavContainer className="nav-container">
       <NavTop className="nav-top">
         <LogoContainer>
-
-          <Logo src={logo} alt="Freedom logo" className="logo" onClick={(e) => handleClick(e, 0)} name=""/>
-
+          <Logo src={logo} alt="Freedom logo" className="logo" onClick={(e) => handleClick(e, 0)} title=""/>
         </LogoContainer>
         <SearchBar className="searchBar" />
-
         {isLoggedIn ? (
           <>
             <UserDataContainer className="userDataContainer">
 
-              <UserContainer className="userContainer" name="account" onClick={(e) => handleClick(e, 0)} >
+              <UserContainer className="userContainer" title="account" onClick={(e) => handleClick(e, 0)} >
                 
                 <UserIcons className="profileImage" src={image} />
                 <div className="container">
@@ -92,16 +80,16 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
             <ButtonField 
               className="Button-field"
               color="allWhite"
-              name="login"
-              onClick={(e) => handleClick(e, 0)}
+              title="login"
+              onClick={() => targetPage('login')}
             >
               LOG IN
             </ButtonField>
             <ButtonField
               className="Button-field small"
               color="primary"
-              name="create"
-              onClick={(e) => handleClick(e, 0)}
+              title="create"
+              onClick={() => targetPage('create')}
             >
               SIGN UP
             </ButtonField>
@@ -115,46 +103,46 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
         
         {/* Start of left side container contents */}
         <NavItemsContainer className="Nav-items">
-          <Coupons className="shop">
+          <Coupons className={tabIndex === 0 && 'active'} >
             <Image src={local_mall} alt="Local_Mall" />
 
             {/* 'deals' */}
-            <span className={tabIndex === '0' && 'active'} name="deals" onClick={(e) => handleClick(e, 0)}>SHOP</span>
+            <span title="deals" onClick={(e) => handleClick(e, 0)}>SHOP</span>
 
           </Coupons>
-          <Coupons className="coups">
+          <Coupons className={tabIndex === 1 && 'active'} >
             <Image src={sell} alt="Sell" />
 
             {/* 'coupons' */}
-            <span className={currentPage === '/coupons' && 'active'} name="coupons" onClick={(e) => handleClick(e, 1)}>COUPON</span> 
+            <span title="coupons" onClick={(e) => handleClick(e, 1)}>COUPON</span> 
 
           </Coupons>
 
-          <FreedomTV className="freedomTv">
+          <FreedomTV className={tabIndex === 2 && 'active'} >
             <Image src={desktop_windows} alt="Desktop_Windows" />
 
             {/* 'watch' */}
-            <span className={currentPage === '/freedomtv' && 'active'} name="watch" onClick={(e) => handleClick(e, 2)}>TV+</span>
+            <span  title="watch" onClick={(e) => handleClick(e, 2)}>TV+</span>
 
           </FreedomTV>
 
-          <Activities className="activities">
+          <Activities className={tabIndex === 3 && 'active'}>
             <Image src={sports_esports} alt="Sports_Exports" />
 
             {/* 'arcade' */}
-            <span className={currentPage === '/games' && 'active'} name="arcade" onClick={(e) => handleClick(e, 3)}>GAME</span>
+            <span title="arcade" onClick={(e) => handleClick(e, 3)}>GAME</span>
 
           </Activities>
         
-          <Resources className="about-us">
+          <Resources className={tabIndex === 4 && 'active'} >
             <Image src={group} alt="Group" className="Image"/>
 
-            <span name="team" onClick={(e) => handleClick(e, 3)}>ABOUT US</span>
+            <span title="team" onClick={(e) => handleClick(e, 4)}>ABOUT US</span>
 
             <SubNav className={'subResources'}>
               <li onClick={goToMerchPage}>Buy Freedom Merch</li>
 
-              <li name="contact" onClick={(e) => handleClick(e, 4)}>Contact Us</li>
+              <li title="contact" onClick={(e) => handleClick(e, 4)}>Contact Us</li>
 
             </SubNav>
           </Resources>
@@ -164,18 +152,18 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
 
         {/* Right side container contents */}
         <BusinessContainer className="Business">
-          <Resources className={'forbusiness'}>
+          <Resources className={tabIndex === 5 && 'active'}>
             <Image src={vector} alt="vector" />
 
-            <span onClick={(e) => handleClick(e, 5)} name="forbusiness">FOR BUSINESS</span>
+            <span onClick={(e) => handleClick(e, 5)} title="forbusiness">FOR BUSINESS</span>
 
             <SubNav className={'subResources'}>
 
-              <li name="forbusiness#products" onClick={(e) => handleClick(e, 4)}>Past Work</li>
+              <li title="forbusiness#products" onClick={(e) => handleClick(e, 4)}>Past Work</li>
 
-              <li name="pricing" onClick={(e) => handleClick(e, 4)}>Pricing</li>
+              <li title="pricing" onClick={(e) => handleClick(e, 4)}>Pricing</li>
 
-              <li name="forbusiness#contact" onClick={(e) => handleClick(e, 4)}>Connect With Us</li>
+              <li title="forbusiness#contact" onClick={(e) => handleClick(e, 4)}>Connect With Us</li>
             </SubNav>
           </Resources>
         </BusinessContainer>

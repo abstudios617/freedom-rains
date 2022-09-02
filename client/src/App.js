@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom';
-import LoginTest from './components/login/LoginTest';
+// import LoginTest from './components/login/LoginTest';
 import Footer from './components/footer';
 import Promo from './pages/promo';
 import Header from './components/header';
@@ -62,9 +62,9 @@ const PageView = () => {
     <Router>
       <Header setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
       <Switch>
-        <Route exact path="/testing">
+        {/* <Route exact path="/testing">
           <LoginTest />
-        </Route>
+        </Route> */}
         <Route exact path="/">
           <Homepage isLoggedIn={isLoggedIn} />
         </Route>

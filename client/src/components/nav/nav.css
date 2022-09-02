@@ -1,0 +1,8 @@
+/* couldn't figure out a way to get active involved without regular css. */
+
+
+.active{
+    border-bottom: solid 3px white;
+    transition-delay: 1s;
+    transition: 0.1s;
+}
