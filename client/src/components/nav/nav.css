@@ -2,7 +2,7 @@
 
 
 .active{
-    border-bottom: solid 3px white;
-    transition-delay: 1s;
-    transition: 0.1s;
+    border-bottom: solid 3px white !important;
+    transition-delay: 1s !important;
+    transition: 0.1s !important;
 }

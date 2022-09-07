@@ -27,6 +27,12 @@ export const NavTop = styled.div`
 
 
 export const Coupons = styled.li`
+  border-bottom: solid 3px #1988FF;
+  transition-delay: 1s;
+  transition: 0.1s;
+  :hover{
+    cursor:pointer 
+  }
 span {
   color: white;
 }
