@@ -134,34 +134,6 @@
 */
 
 /**
- * @api         {delete} /users/delete/:id Delete a User
- * @apiVersion  2.0.0
- * @apiName     Delete User
- * @apiGroup    User
- *
- * @apiParam    {int} id    User ID
- * 
- * @apiSuccess {Object}     User                 Deleted User
- * @apiSuccess {int}        User.user_id         ID number
- * @apiSuccess {varchar}    User.username        username
- * @apiSuccess {varchar}    User.password        password
- * @apiSuccess {varchar}    User.email           email
- * @apiSuccess {varchar}    User.password        password
- * @apiSuccess {varchar}    User.first_name      first name
- * @apiSuccess {varchar}    User.last_name       Last name
- * @apiSuccess {varchar}    User.age             age
- * @apiSuccess {varchar}    User.race            race
- * @apiSuccess {varchar}    User.gender          gender
- * @apiSuccess {varchar}    User.zip             zipcode
- * @apiSuccess {varchar}    User.categories      Categories
- * @apiSuccess {varchar}    User.favorites       Favorites
- * @apiSuccess {timestamp}  User.created_on      When user joined into ABS
- * @apiSuccess {varchar}    User.token           token
- * 
- * @apiError   (Error 5xx)  500  Internal Server Error
-*/
-
-/**
  * @api         {get} /users/login Login a User
  * @apiVersion  2.0.0
  * @apiName     Login
@@ -200,6 +172,34 @@
  * 
  * @apiError (Error 4xx) 4xx Invalid Email
  * @apiError (Error 5xx) 5xx Server Error
+*/
+
+/**
+ * @api         {delete} /account/delete/:id Delete a User
+ * @apiVersion  2.0.0
+ * @apiName     Delete User
+ * @apiGroup    User
+ *
+ * @apiParam    {int} id    User ID
+ * 
+ * @apiSuccess {Object}     User                 Deleted User
+ * @apiSuccess {int}        User.user_id         ID number
+ * @apiSuccess {varchar}    User.username        username
+ * @apiSuccess {varchar}    User.password        password
+ * @apiSuccess {varchar}    User.email           email
+ * @apiSuccess {varchar}    User.password        password
+ * @apiSuccess {varchar}    User.first_name      first name
+ * @apiSuccess {varchar}    User.last_name       Last name
+ * @apiSuccess {varchar}    User.age             age
+ * @apiSuccess {varchar}    User.race            race
+ * @apiSuccess {varchar}    User.gender          gender
+ * @apiSuccess {varchar}    User.zip             zipcode
+ * @apiSuccess {varchar}    User.categories      Categories
+ * @apiSuccess {varchar}    User.favorites       Favorites
+ * @apiSuccess {timestamp}  User.created_on      When user joined into ABS
+ * @apiSuccess {varchar}    User.token           token
+ * 
+ * @apiError   (Error 5xx)  500  Internal Server Error
 */
 
 /**
