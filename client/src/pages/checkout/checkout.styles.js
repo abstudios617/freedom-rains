@@ -17,7 +17,7 @@ export const UserInfo = styled.div`
   height: 2742px;
 `;
 
-export const InfoSection = styled.div`
+export const InfoSection = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -84,7 +84,7 @@ export const NotificationCheckBox = styled.div`
     height: 58px;
 `;
 
-export const SaveButton = styled.button`
+export const SaveButton = styled.input`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -126,7 +126,7 @@ export const ContactBar = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 611px;
+  width: 631px;
   height: 55px;
   background: #FFFFFF;
   box-shadow: 2px 2px 7px rgba(159, 159, 159, 0.25);
@@ -143,12 +143,6 @@ export const ContactBar = styled.div`
     color: #3C4044;
     margin-left: 12px;
   }
-`;
-
-export const Edit = styled.img`
-  width: 12px;
-  height: 12px;
-  margin-bottom: 20px;
 `;
 
 export const EditButton = styled.div`
@@ -171,5 +165,71 @@ export const EditButton = styled.div`
     &:hover {
       text-decoration-line: underline;
     }
+  }
+`;
+
+export const InputRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 12px;
+
+  &.topRow {
+    margin-top: 18px;
+  }
+`;
+
+export const FirstInput = styled.input`
+  border: 1px solid #A6A6A6;
+  border-radius: 4px;
+  height: 35px;
+  width: 286px;
+  margin-right: 15px;
+
+  ::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #B4B4B4;
+  }
+`;
+
+export const LastInput = styled.input`
+  border: 1px solid #A6A6A6;
+  border-radius: 4px;
+  height: 35px;
+  width: 286px;
+
+  ::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #B4B4B4;
+  }
+`;
+
+export const AddressLine = styled.input`
+  border: 1px solid #A6A6A6;
+  border-radius: 4px;
+  height: 35px;
+  width: 601px;
+  margin-bottom: 12px;
+
+  ::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #B4B4B4;
   }
 `;
