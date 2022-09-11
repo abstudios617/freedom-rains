@@ -3,9 +3,7 @@ import styled from "styled-components";
 export const Main = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: flex-start;
-  gap: 80px;
 `;
 
 export const UserInfo = styled.div`
@@ -13,8 +11,6 @@ export const UserInfo = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
-  width: 811px;
-  height: 2742px;
 `;
 
 export const InfoSection = styled.form`
@@ -232,4 +228,123 @@ export const AddressLine = styled.input`
     align-items: center;
     color: #B4B4B4;
   }
+`;
+
+export const ShippingDiv = styled.div`
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 9px 0px;
+  gap: 10px;
+  width: 613px;
+  height: auto;
+  border: 1px solid #DEE1E5;
+  border-radius: 6px;
+  margin-top: 12px;
+`;
+
+export const ShippingContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #DEE1E5;
+  width: 609px;
+  height: 50px;
+  align-items: center;
+
+  span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    color: #3C4044;
+    margin-bottom: 5px;
+    margin-left: 18px;
+
+    &.shippingDays {
+      font-size: 12px;
+      margin-left: 2px;
+      margin-bottom: 4px;
+    }
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;
+
+export const ShippingCheckbox = styled.input`
+  width: 20px;
+  height: 20px;
+  background: #FFFFFF;
+  border: 1px solid #DEE1E5;
+  margin-bottom: 8px;
+  margin-left: 17px;
+`;
+
+export const ShippingPrice = styled.div`
+  float: right;
+  margin-left: auto;
+  margin-right: 10px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3C4044;
+  margin-bottom: 5px;
+`;
+
+export const OrderSummary = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 80px;
+  width: 250px;
+`;
+
+export const OrderInfo = styled.div`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 13px;
+  margin-bottom: 10px;
+
+  span {
+    float: right;
+    margin-left: auto;
+  }
+`;
+
+export const OrderTotal = styled.div`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 13px;
+  margin-top: 30px;
+
+  span {
+    float: right;
+    margin-left: auto;
+    font-size: 38px;
+    line-height: 46px;
+  }
+`;
+
+export const PurchaseButton = styled.button`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  color: #FFFFFF;
+  background: #1988FF;
+  border-radius: 6px;
+  height: 44px;
+  margin-top: 30px;
+  width: 250px;
+  border: none;
+  cursor: pointer;
 `;
