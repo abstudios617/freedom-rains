@@ -6,11 +6,8 @@ export const NavContainer = styled.div`
   width: 100%;
   font-family: "Montserrat", sans-serif;
   @media only screen and (max-width: 480px) { 
-    
-    width: 100%;
     height: auto;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
   }
 `;
 
@@ -20,7 +17,7 @@ export const NavTop = styled.div`
   justify-content: space-around;
   align-items: center;
   @media only screen and (max-width: 480px) {
-    display: none;
+    display:none;
   }
 `;
 
@@ -104,14 +101,7 @@ export const NavBottom = styled.div`
   border-top: 2px solid rgba(255, 255, 255, 0.8);
   background-color: #1988FF;
   @media only screen and (max-width: 480px) {
-    width: 100%;
-    padding: 2% 0 4%;
-    margin-top: 4%;
     display: none;
-    div {
-      margin-bottom: 3%;
-    }
-  }
   }
 `;
 

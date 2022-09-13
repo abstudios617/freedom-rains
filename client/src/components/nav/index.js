@@ -40,7 +40,7 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
   const history = useHistory();
 
   const handleClick = (e, num) =>{
-    e.preventDefault();
+    e.preventDefault(); //This makes it so it doesn't refresh on each tab click
     SetTab(num);
     history.push(`/${e.target.title}`);
   };
