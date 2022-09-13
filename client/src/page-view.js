@@ -37,6 +37,7 @@ import ShopSearch from './pages/shop-search';
 import Game from './pages/game';
 import Cart from './pages/cart';
 import Checkout from './pages/checkout';
+import Confirmation from './pages/checkout/confirmation';
 
 const PageView = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -156,6 +157,9 @@ const PageView = () => {
         </Route>
         <Route exact path="/checkout">
           <Checkout />
+        </Route>
+        <Route exact path="/checkout/confirmation">
+          <Confirmation />
         </Route>
         <Route path="*">
           <Redirect to="/404" />

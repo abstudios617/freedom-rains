@@ -348,3 +348,7 @@ export const PurchaseButton = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+export const PaymentDiv = styled(ShippingDiv)`
+  border: 1px solid #A6A6A6;
+`;

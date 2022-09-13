@@ -24,6 +24,7 @@ import {
   OrderInfo,
   OrderTotal,
   PurchaseButton,
+  PaymentDiv,
 } from "./checkout.styles";
 import { targetPage } from '../../utils/index';
 import mail from "../../assets/icons/mail.svg";
@@ -31,6 +32,8 @@ import edit from "../../assets/icons/edit.svg";
 import addressImg from "../../assets/icons/address.svg";
 import shipping from "../../assets/icons/shipping.svg";
 import payment from "../../assets/icons/payment.svg";
+import cart from "../../assets/icons/checkoutCart.svg";
+import plus from "../../assets/icons/circlePlus.svg";
 
 // contact information section should only appear
 // if user is not logged in
@@ -42,7 +45,8 @@ const Checkout = () => {
   const [paymentIsHidden, setPaymentIsHidden] = useState(true);
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
-  const [addresses, setAddresses] = useState([address]);
+  const [addresses, setAddresses] = useState([]);
+  const [creditCards, setCreditCards] = useState([]);
 
   const ContactSection = () => {
     return (
@@ -176,9 +180,16 @@ const Checkout = () => {
                 <Icon src={payment} alt="payment" />
                 <span>Payment</span>
               </InfoHeader>
+              <PaymentDiv>
+                
+              </PaymentDiv>
               <SaveButton type="submit" value="CONFIRM" onClick={() => setPaymentIsHidden(true)}/>
             </InfoSection>
           }
+          <ContactBar>
+            <Icon src={cart} alt="cart" className="dropDown" />
+            <span>Item Review & Coupons</span>
+          </ContactBar>
         </UserInfo>
         <OrderSummary>
           <OrderInfo>Order ID # 2252252255</OrderInfo>
