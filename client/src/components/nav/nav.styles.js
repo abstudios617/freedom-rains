@@ -1,49 +1,107 @@
 import styled from 'styled-components';
 
-export const NavSection = styled.ul`
-  display: flex;
-  
-  align-items: center;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  height: 60px;
- 
-  > li {
-    width: auto;
-    list-style: none;
-    padding: 10px;
-    font-size: 14px;
-    text-align: center;
-    text-decoration: none;
-    color: #333333;
-    font-weight: 700;
-    > span {
-      cursor: pointer;
-    }
-  }
 
+export const NavContainer = styled.div`
+  z-index: 12;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  @media only screen and (max-width: 480px) { 
+    height: auto;
+    width: 100%;
+  }
+`;
+
+// Start of nav top
+export const NavTop = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  @media only screen and (max-width: 480px) {
+    display:none;
+  }
+`;
+
+
+
+export const Coupons = styled.li`
+  border-bottom: solid 3px #1988FF;
+  transition-delay: 1s;
+  transition: 0.1s;
+  :hover{
+    cursor:pointer 
+  }
+span {
+  color: white;
+}
+`;
+
+export const LogoContainer = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+//inside logo container
+export const Logo = styled.img`
+  width: 115px;
+  height: 40px;
+  :hover{
+    cursor: pointer;
+  }
+`;
+//end of logo container
+
+
+export const BtnContainer = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+`;
+//stuff inside button container comes from button styles
+
+
+export const UserDataContainer = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+//Inside UserDataContainer
+export const UserIcons = styled.img`
+  height: 30px;
+`;
+
+export const UserContainer = styled.div`
+display: flex;
+flex-direction: row;
+gap: 5px;
+.item1 {
+  font-weight: bold;
+}
+.item2 {
+  font-size: 12px;
+}
+&:hover{
+  cursor: pointer;
+}
+`;
+//End of UserDataContainer
+
+// End of nav top
+
+// Start of nav bottom
+export const NavBottom = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 12px;
+  border-top: 2px solid rgba(255, 255, 255, 0.8);
+  background-color: #1988FF;
   @media only screen and (max-width: 480px) {
     display: none;
-  }
-
-  &.bottom {
-    font-size: 12px;
-    position: relative;
-    border-top: 2px solid rgba(255, 255, 255, 0.8);
-    padding: 0px;
-    align-items: center;
-    height: 35px;
-    background-color: #1988FF;
-    @media only screen and (max-width: 480px) {
-      width: 100%;
-      padding: 2% 0 4%;
-      margin-top: 4%;
-      
-      div {
-        margin-bottom: 3%;
-      }
-    }
   }
 `;
 
@@ -77,21 +135,42 @@ export const SubNav = styled.ul`
   }
 `;
 
-export const Exclusive = styled.li`
-  &:hover {
-    .subExclusive {
-      display: block;
-    }
+export const NavItemsContainer = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  margin-left: 180px;
+  > li {
+    width: auto;
+    list-style: none;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    color: #333333;
+    font-weight: 700;
+    > span {
+      cursor: pointer;
   }
 `;
 
-
-export const Coupons = styled.li`
-  span {
-    color: white;
-  }
-  .active {
-    border-bottom: 5px solid white;
+export const BusinessContainer = styled.div`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 150px;
+  > li {
+    width: auto;
+    list-style: none;
+    padding: 10px;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none;
+    color: #333333;
+    font-weight: 700;
+    > span {
+    cursor: pointer;
   }
 `;
 
@@ -99,9 +178,7 @@ export const FreedomTV = styled.li`
   span {
     color: white;
   }
-  .active {
-    border-bottom: 5px solid white;
-  }
+  
   &:hover {
     .subFreedomtv {
       display: block;
@@ -112,9 +189,6 @@ export const FreedomTV = styled.li`
 export const Activities = styled.li`
   span {
     color: white;
-  }
-  .active {
-    border-bottom: 5px solid white;
   }
   &:hover {
     .subActivities {
@@ -136,117 +210,14 @@ export const Resources = styled.li`
       display: block;
     }
   }
-  &.forbusiness {
-    position: absolute;
-    right: 20px;
-  }
 
 `;
 
-export const SignIn = styled.li`
-  &:hover {
-    .subSignIn {
-      display: block;
-    }
-  }
-`;
-
-export const Box = styled.div`
-.item1 {
-  width: 100%;
-  font-weight: bold;
-}
-
-.item2 {
-  width: 100px;
-  font-size: 10px;
-  display: inline;
-  span {
-    cursor: pointer;
-    font-size: 15px;
-  }
-}
-
-.container {
-  width: 100px;
-  display: flex;
-  flex-wrap: wrap;
-}
-`;
-
-
-export const WelcomeSection = styled.li`
-  padding: 10px !important;
-  cursor: default !important;
-`;
-
-export const WelcomeCopy = styled.div`
-  text-align: center;
-`;
-
-export const WelcomeBtn = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 10px;
-  button {
-    padding: 5px 10px 2px;
-    font-size: 12px;
-  }
-`;
-
-export const Logo = styled.img`
-  width: 150px;
-  margin-left: -30px;
-`;
 
 export const Image = styled.img`
   position: relative;
   left: -3px;
 `;
 
-export const ProfileImage = styled.div`
-  height: 80px;
-  width: 135px;
-  overflow: hidden;
-  position: relative;
-  top: 20px;
-  left: 40px;
-  img {
-    height: 35px;
-  }
 
-  label{
-    width: 100%;
-    bottom: 0;
-    position: absolute;
-    text-align: center;
-    font-size: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    color: white;
-  }
-`;
-
-
-export const Account = styled.span`
-  display: flex;
-  align-items: center;
-  img {
-    width: 20px;
-    margin-right: 5px;
-  }
-`;
-
-export const SearchIcon = styled.img`
-  width: 25px;
-  cursor: pointer;
-  position: relative;
-  left: -25px;
-`;
-
-export const SearchX = styled.div`
-  font-size: 16px;
-  position: relative;
-  right: 10px;
-  cursor: pointer;
-`;
+//End of nav bottom
