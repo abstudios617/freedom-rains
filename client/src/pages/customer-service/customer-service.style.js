@@ -6,8 +6,12 @@ export const CustomerServiceContainer = styled.div`
   flex-direction: column;
   width: 70%;
   margin: auto;
-  min-height: 200vh;
+  min-height: 180vh;
   max-height: 350vh;
+
+  @media only screen and (max-width: 480px) {
+    min-height: 100vh;
+  }
 `;
 
 export const GoodMorningContainer = styled.div`

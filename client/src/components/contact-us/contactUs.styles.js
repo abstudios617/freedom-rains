@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import ContactInfoBg from '../../assets/contact/contactInfoBg.png';
 
 export const Cta = styled.div`
-  text-align: center;
+  text-align: left;
 `;
 
 export const Section = styled.div`
-  display: flex;
+  display: flex-start;
   justify-content: space-evenly;
-  margin: 40px 0;
+  margin: 10px 0;
 
   @media only screen and (max-width: 480px) {
     flex-direction: column-reverse;
@@ -89,6 +89,27 @@ export const ContactLogo = styled.img`
   width: 300px;
 `;
 
+export const Logo = styled.div`
+  width: 50%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  font-weight: 1000;
+  img {
+    width: auto;
+    height: 45px;
+  }
+
+  @media only screen and (max-width: 480px) {
+    display: flex;
+    width: 100%;
+    img {
+      width: 20%;
+      height: auto;
+    }
+  }
+`;
+
 export const ContactThanks = styled.div`
   color: #fff;
   font-size: 30px;
@@ -112,3 +133,35 @@ export const ContactMsgLeft = styled.div`
     margin-bottom: 30px;
   }
 `;
+
+export const ContactHeader = styled.div`
+  font-weight: 700;
+`;
+
+export const MessageTip = styled.div`
+  font-weight: 300;
+  margin-bottom: 10px;
+`;
+
+export const SendButton = styled.button`
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  gap: 10px;
+  margin: 10px 0;
+  border-color: #1988FF;
+  border: 1px solid;
+  width: 100%;
+  height: 35px;
+  background: #1988FF;
+  border-radius: 7px;
+  color: white;
+
+  &.primary {
+    background: #1988ff;
+    color: #fff;
+
+    &:hover {
+      box-shadow: 0 3px 2px #777777;
+    }
+  }`;
