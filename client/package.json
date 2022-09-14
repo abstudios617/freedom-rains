@@ -11,7 +11,7 @@
     "stylelint": "stylelint src/**/*.js src/**/**/*.js",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "unit-test": "jest"
+    "unit-test": ""
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",

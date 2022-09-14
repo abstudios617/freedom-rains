@@ -6,7 +6,7 @@ import { api, printfulUrl, printfulStoreId, printfulKey } from '../config';
 ************************/
 
 export const getUserInfo = async (token) => {
-  const url = `${api}/login`;
+  const url = `${api}/user`;
   const userInfo = await client(url, null, token);
 
   return userInfo;
@@ -58,25 +58,25 @@ export const signIn = async (val) => {
 };
 
 export const updateAccountCategory = async (val, token) => {
-  const url = `${api}/login/category`;
+  const url = `${api}/users/update`;
 
   return await client(url, val, token);
 };
 
 export const updateTokens = async (val, token) => {
-  const url = `${api}/login/token`;
+  const url = `${api}/gaming/update`;
 
   return await client(url, val, token);
 };
 
 export const updateAccount = async (val, token) => {
-  const url = `${api}/login/update`;
+  const url = `${api}/users/update`;
 
   return await client(url, val, token);
 };
 
 export const updateLockedItems = async (val, token) => {
-  const url = `${api}/login/unlock`;
+  const url = `${api}/gaming/update`; /* Community_Tokens has access to it, will change it later... */
 
   return await client(url, val, token);
 };
@@ -88,7 +88,7 @@ export const getAllProducts = async () => {
 };
 
 export const updateFavorites = async (val, token) => {
-  const url = `${api}/login/favs`;
+  const url = `${api}/users/update`;
 
   return await client(url, val, token);
 };
