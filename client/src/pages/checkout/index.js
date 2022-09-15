@@ -25,6 +25,10 @@ import {
   OrderTotal,
   PurchaseButton,
   PaymentDiv,
+  PaymentCheckbox,
+  PaymentContainer,
+  PaymentInfo,
+  CardInfo,
 } from "./checkout.styles";
 import { targetPage } from '../../utils/index';
 import mail from "../../assets/icons/mail.svg";
@@ -33,20 +37,22 @@ import addressImg from "../../assets/icons/address.svg";
 import shipping from "../../assets/icons/shipping.svg";
 import payment from "../../assets/icons/payment.svg";
 import cart from "../../assets/icons/checkoutCart.svg";
+import creditCard from "../../assets/icons/creditCard.svg";
+import payPal from "../../assets/icons/payPal.svg";
 import plus from "../../assets/icons/circlePlus.svg";
 
 // contact information section should only appear
 // if user is not logged in
 
 const Checkout = () => {
-  const [contactIsHidden, setContactIsHidden] = useState(true);
+  const [contactIsHidden, setContactIsHidden] = useState(false);
   const [adressIsHidden, setAddressIsHidden] = useState(true);
   const [shippingIsHidden, setShippingIsHidden] = useState(true);
   const [paymentIsHidden, setPaymentIsHidden] = useState(true);
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
+  const [creditCardNumber, setCreditCardNumber] = useState("");
   const [addresses, setAddresses] = useState([]);
-  const [creditCards, setCreditCards] = useState([]);
 
   const ContactSection = () => {
     return (
@@ -91,7 +97,7 @@ const Checkout = () => {
     return (
       <ContactBar>
         <Icon src={payment} alt="payment" className="dropDown" />
-        <span>Payment</span>
+        <span>{creditCardNumber === "" ? "Payment" : "**** **** **** " + creditCardNumber.substring(creditCardNumber.length - 4, creditCardNumber.length)}</span>
         <EditButton onClick={() => setPaymentIsHidden(false)} >
           <Icon src={edit} alt="edit" />
           <span>Edit</span>
@@ -115,7 +121,12 @@ const Checkout = () => {
                 <input type="checkbox" />
                 <span>Yes, I would like to be notified of product updates, upgrades, and special offeringse.</span>
               </NotificationCheckBox>
-              <SaveButton type="submit" value="SAVE" onClick={() => setContactIsHidden(true)}/>
+              <SaveButton type="submit" value="SAVE" onClick={
+                () => {
+                  setContactIsHidden(true);
+                  setAddressIsHidden(false);
+                }
+              }/>
               <Login onClick={() => targetPage("login")}>Already ready have an account? login &gt;</Login>
             </InfoSection>
           }
@@ -144,7 +155,7 @@ const Checkout = () => {
                 () => {
                   setAddressIsHidden(true);
                   setAddresses([...addresses, address]);
-                  console.log(addresses);
+                  setShippingIsHidden(false);
                 }
               }/>
             </InfoSection>
@@ -171,7 +182,12 @@ const Checkout = () => {
                   </ShippingContainer>
                 })}
               </ShippingDiv>
-              <SaveButton type="submit" value="CONFIRM" onClick={() => setShippingIsHidden(true)}/>
+              <SaveButton type="submit" value="CONFIRM" onClick={
+                () => {
+                  setShippingIsHidden(true);
+                  setPaymentIsHidden(false);
+                }
+              }/>
             </InfoSection>
           }
           {paymentIsHidden ? <PaymentSection /> :
@@ -181,9 +197,27 @@ const Checkout = () => {
                 <span>Payment</span>
               </InfoHeader>
               <PaymentDiv>
-                
+                <PaymentContainer>
+                  <PaymentCheckbox type="radio" name="payment" value="Credit Card" />
+                  <Icon className="payment" src={creditCard} alt="credit card" />
+                  <span>Credit Card</span>
+                </PaymentContainer>
+                  <PaymentInfo>
+                    <CardInfo type="text" placeholder="Credit Card Holder Name:" required />
+                    <CardInfo type="password" placeholder="Credit Card Number:" required onChange={e => setCreditCardNumber(e.target.value)} />
+                    <InputRow>
+                      <CardInfo className="expiration" type="text" placeholder="MM/YY" required />
+                      <CardInfo className="cvv" type="password" placeholder="CVV" required />
+                    </InputRow>
+                  </PaymentInfo>
+                <PaymentContainer>
+                  <PaymentCheckbox type="radio" name="payment" value="Credit Card" />
+                  <Icon className="payment" src={payPal} alt="paypal logo" />
+                  <span>PayPal</span>
+                </PaymentContainer>
               </PaymentDiv>
-              <SaveButton type="submit" value="CONFIRM" onClick={() => setPaymentIsHidden(true)}/>
+              <SaveButton type="submit" value="CONFIRM" onClick={
+                () => setPaymentIsHidden(true)}/>
             </InfoSection>
           }
           <ContactBar>

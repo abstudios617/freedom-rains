@@ -33,6 +33,15 @@ export const Icon = styled.img`
   &.dropDown {
     margin-left: 12px;
   }
+
+  &.addNewCard {
+    margin-left: 220px;
+  }
+
+  &.payment {
+    margin-left: 12px;
+    margin-top: -4px;
+  }
 `;
 
 export const InfoHeader = styled.div`
@@ -351,4 +360,61 @@ export const PurchaseButton = styled.button`
 
 export const PaymentDiv = styled(ShippingDiv)`
   border: 1px solid #A6A6A6;
+`;
+
+export const PaymentCheckbox = styled(ShippingCheckbox)`
+  margin-top: 5px;
+`;
+
+export const PaymentContainer = styled(ShippingContainer)`
+`;
+
+export const PaymentInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 170px;
+  background: #DEE1E5;
+  margin-top: -10px;
+`;
+
+export const CardInfo = styled.input`
+  width: 400px;
+  height: 35px;
+  background: #FFFFFF;
+  border: 1px solid #A6A6A6;
+  border-radius: 4px;
+  margin-left: 100px;
+  margin-top: 12px;
+
+  &.expiration {
+    width: 200px;
+  }
+
+  &.cvv {
+    margin-left: 15px;
+    width: 180px;
+  }
+
+  ::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+  }
+`;
+
+export const PromoCode = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const PromoCodeInput = styled.input`
+  width: 540px;
+  height: 35px;
+  background: #FFFFFF;
+  border: 1px solid #828A94;
+  border-radius: 4px;
 `;
