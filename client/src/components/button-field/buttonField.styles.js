@@ -248,12 +248,18 @@ export const BtnField = styled.button`
     background-color: #49A429;
     color: white;
     border-radius: 27px;
-    width: 100.62px;
     font-family: 'Montserrat', sans-serif;                                           
-    font-style: Bold;
-    font-size:21.92px;
+    font-weight: bold;
+    font-size: large;
     line-height: 27px;
     vertical-align: Top;
+    height: 60px;
+    width: 120px;
+    position: relative;
+
+    &:hover {
+      box-shadow: 0 3px 2px #777;
+    }
   }
 
   &.create{

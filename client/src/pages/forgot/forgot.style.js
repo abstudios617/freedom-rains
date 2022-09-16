@@ -16,7 +16,7 @@ export const ForgotText = styled.div`
 
 export const Subtitle = styled.div`
   font-family: 'Montserrat', sans-serif;                                         
-  font-style: Bold;
+  font-weight: bold;
   font-size: 20px;
   line-height: 28px;
 `;
@@ -24,14 +24,17 @@ export const Subtitle = styled.div`
 export const Resend = styled.div`
   width: 203px;
   height: 27px;
+  margin-top: -10px;
   font-family: 'Montserrat', sans-serif;                
-  font-weight: normal;
+  font-weight: bold;
   font-size: 21px;
   line-height: 27px;
   color: #3c4044;
   text-decoration: underline;
   text-underline-offset: 4px;
+
   &:hover{
     cursor: pointer;
+    color: gray;
   }
 `;
