@@ -16,7 +16,8 @@ import {
   Links,
   ContactFields,
 } from '../../styles/global.style';
-import google from '../../assets/footer/new_google.png';
+import google from '../../assets/icons/new_google.png';
+import LogoIcon from '../logo-icons';
 
 const Login = ({ redirect, setIsLoggedIn }) => {
   const { register, handleSubmit, getValues, errors } = useForm();
@@ -74,9 +75,7 @@ const Login = ({ redirect, setIsLoggedIn }) => {
           <br></br>
           <ButtonField color="google" onClick={googleSignIn}>
             Sign in with Google
-            <img src={google} alt="Google" style={
-              { maxWidth: '25px', maxHeight: '25px', marginLeft: '10px', marginTop: '-1px' }
-            }/>
+            <LogoIcon src={google} alt="google" />
           </ButtonField>
           <br></br>
           <br></br>

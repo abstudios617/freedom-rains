@@ -16,7 +16,7 @@ export const InputFieldContainer = styled.div`
     
     &::placeholder {
       font-weight: 400;
-      color: lightgray;
+      color: gray;
 
     }
 

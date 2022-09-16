@@ -19,6 +19,7 @@ import {
 import {Container, Title, Alert} from '../../styles/global.style';
 import DropDown from '../../components/dropdown';
 import FreedomLogo from '../../assets/icons/FreedomLogo.png';
+import LogoIcon from '../../components/logo-icons';
 
 const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   const userData = JSON.parse(getItem('accountInfo'));
@@ -118,7 +119,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     return (
       <Container>
         <Title>
-          <img src={FreedomLogo} width="85px" height="75px"></img>
+          <LogoIcon src={FreedomLogo} alt="freedom" />
           <br></br>
           <SignIn>Sign in to your Freedom Account, the sequel</SignIn>
         </Title>

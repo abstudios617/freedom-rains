@@ -4,12 +4,18 @@ import { setUserData, targetPage } from '../../utils/index';
 import { useForm } from 'react-hook-form';
 import InputField from '../../components/input-field';
 import ButtonField from '../../components/button-field';
-import { Submit, Create, ButtonImg, Or } from './createAccount.style';
-import {Container, ContactFields, Alert, Title} from '../../styles/global.style';
+import { Submit, Create, Or } from './createAccount.style';
+import {
+  Container, 
+  ContactFields, 
+  Alert, 
+  Title
+} from '../../styles/global.style';
 import FreedomLogo from '../../assets/icons/FreedomLogo.png';
 import { goToSignIn } from '../../utils/account-utils';
-import google from '../../assets/footer/google.png';
+import google from '../../assets/icons/new_google.png';
 import StepOne from '../../assets/account/step_one.png';
+import LogoIcon from '../../components/logo-icons';
 
 
 const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -42,7 +48,7 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
     <Container>
       <Title>
         <img src={StepOne} width="65%"></img><br/><br/>
-        <img src={FreedomLogo} width="85px" height="75px"></img><br></br>
+        <LogoIcon src={FreedomLogo} alt="freedom" />
         <Create>Create New Account</Create>
       </Title>
       <ContactFields>
@@ -89,8 +95,8 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
         <Or>or</Or><br/>
         <Submit>
           <ButtonField color="google" onClick={googleSignIn}>
-            <ButtonImg alt="Google" src={google}/>
-                Sign In With Google
+            Sign In With Google
+            <LogoIcon src={google} alt="google"/>
           </ButtonField>
         </Submit><br/><br/>
       </ContactFields>

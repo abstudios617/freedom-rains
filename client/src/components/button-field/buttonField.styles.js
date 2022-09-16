@@ -264,20 +264,22 @@ export const BtnField = styled.button`
 
   &.create{
     background-color: #49A429;
-    border-radius: 27px;
     color: white;
-    height: 45px;
-    width: 100px;
-    font-family: 'Montserrat', sans-serif;         
-    font-style: Bold;
-    font-size: 18px;
+    border-radius: 27px;
+    font-family: 'Montserrat', sans-serif;                                           
+    font-weight: bold;
+    font-size: large;
     line-height: 27px;
-    line-height: 100%;
+    vertical-align: Top;
+    height: 60px;
+    width: 120px;
+    position: relative;
     margin: 3px;
     flex-wrap: wrap;
     white-space: pre;
+
     &:hover {
-      box-shadow: 0 3px 2px #333333;
+      box-shadow: 0 3px 2px #777;
     }
   }
 
