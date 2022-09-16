@@ -196,24 +196,28 @@ export const BtnField = styled.button`
     font-size: large;
 
     &:hover {
-      box-shadow: 0 3px 2px #777777;
+      box-shadow: 0 3px 2px #777;
     }
   }
 
   &.google{
     font-family: 'Montserrat', sans-serif;                                          
-    font-style: Bold;
+    font-weight: bold;
     font-size: 20px;
     line-height: 27px;
     line-height: 100%;
     vertical-align: top;
     background-color: #fff;
-    border-radius: 25px;
-    border: 2px solid #73AD21;
+    border-radius: 30px;
+    border: 3px solid #49a429;
     padding: 15px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
 
     &:hover {
-      box-shadow: 0 3px 2px #333333;
+      box-shadow: 0 3px 2px #777;
     }
 
     @media only screen and (max-width: 480px) {
@@ -223,14 +227,20 @@ export const BtnField = styled.button`
 
   &.createAcc{
     background-color: #fff;
-    color: #73AD21;
-    border-radius: 25px;
-    border: 2px solid #73AD21;
+    color: #49a429;
+    border-radius: 30px;
+    border: 3px solid #49a429;
     font-family: 'Montserrat', sans-serif;                                         
-    font-weight:bold;
+    font-weight: bold;
     font-style: bold;
+    font-size: 20px;
+    padding: 10px 15px;
+    height: fit-content;
+    width: fit-content;
+
     &:hover {
-      box-shadow: 0 3px 2px #333333;
+      background-color: #49a429;
+      color: #fff;
     }
   }
 

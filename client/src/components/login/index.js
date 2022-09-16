@@ -7,7 +7,6 @@ import ButtonField from '../button-field';
 import {
   LoginBox,
   LoginContainer,
-  ButtonImg,
   ForgetButton,
   Or,
   NoAccount
@@ -17,7 +16,7 @@ import {
   Links,
   ContactFields,
 } from '../../styles/global.style';
-import google from '../../assets/footer/google.png';
+import google from '../../assets/footer/new_google.png';
 
 const Login = ({ redirect, setIsLoggedIn }) => {
   const { register, handleSubmit, getValues, errors } = useForm();
@@ -74,8 +73,10 @@ const Login = ({ redirect, setIsLoggedIn }) => {
           <Or>or</Or>
           <br></br>
           <ButtonField color="google" onClick={googleSignIn}>
-            <ButtonImg alt="Google" src={google}/>
-            Sign In With Google
+            Sign in with Google
+            <img src={google} alt="Google" style={
+              { maxWidth: '25px', maxHeight: '25px', marginLeft: '10px', marginTop: '-1px' }
+            }/>
           </ButtonField>
           <br></br>
           <br></br>
@@ -83,7 +84,7 @@ const Login = ({ redirect, setIsLoggedIn }) => {
           <NoAccount>Don&apos;t have an account?</NoAccount>
           <br></br>
           <ButtonField color="createAcc" onClick={() => targetPage('create')}>
-            Create an Account
+            Create Account
           </ButtonField>
         </ContactFields>
       </LoginBox>
