@@ -8,9 +8,9 @@ const SignIn = ({ setIsLoggedIn }) => {
   return (
     <Container>
       <Title>
-        <img src={FreedomLogo} width="85px" height="75px"></img>
-        <br></br>
-        <Sign>Sign in to your freedom Account</Sign>
+        <img src={FreedomLogo} width="100px" height="95px"></img>
+        <br/>
+        <Sign>Sign in to your Freedom Account</Sign>
       </Title>
       <Login setIsLoggedIn={setIsLoggedIn} redirect="account" />
     </Container>

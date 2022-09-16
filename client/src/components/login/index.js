@@ -56,14 +56,14 @@ const Login = ({ redirect, setIsLoggedIn }) => {
                 /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
             })}
           />
-          {errors.email && <Alert>Email</Alert>}
+          {errors.email && <Alert>Email required</Alert>}
           <InputField
             name="password"
             placeHolder="Password"
             type="password"
             register={register({ required: true })}
           />
-          {errors.password && <Alert>Password</Alert>}
+          {errors.password && <Alert>Password required</Alert>}
           <br></br>
           <ButtonField color="sign-in" onClick={handleSubmit(sendContactInfo)}>
             Sign In

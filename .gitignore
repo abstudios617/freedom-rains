@@ -19,3 +19,5 @@ server/server-build/
 server/.env.local
 server/.env.staging
 server/.env.production
+
+PROD.txt

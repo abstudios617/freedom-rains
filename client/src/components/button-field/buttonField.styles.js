@@ -184,10 +184,17 @@ export const BtnField = styled.button`
     }
   }
 
-  &.sign-in{
+  &.sign-in {
     background: #49a429;
     color: #fff;
-    position:relative;
+    border-radius: 24px;
+    font-weight: bold;
+    position: relative;
+    width: 120px;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+
     &:hover {
       box-shadow: 0 3px 2px #777777;
     }

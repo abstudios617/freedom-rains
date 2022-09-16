@@ -120,7 +120,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         <Title>
           <img src={FreedomLogo} width="85px" height="75px"></img>
           <br></br>
-          <SignIn>Sign in to your freedom Account</SignIn>
+          <SignIn>Sign in to your Freedom Account, the sequel</SignIn>
         </Title>
         <Login setIsLoggedIn={setIsLoggedIn} redirect="account" />
       </Container>

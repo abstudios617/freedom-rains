@@ -4,18 +4,20 @@ export const InputFieldContainer = styled.div`
   input {
     width: 400px;
     height: 30px;
-    padding: 1%;
+    padding: 2%;
     font-size: 14px;
     font-weight: 700;
     line-height: 1.5;
     background-color: #fff;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+    border: 2px solid gray;
+    border-radius: 0px;
     margin: 10px 0;
     font-family: "Montserrat", sans-serif;
     
     &::placeholder {
       font-weight: 400;
+      color: lightgray;
+
     }
 
     @media only screen and (max-width: 480px) {

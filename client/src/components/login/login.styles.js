@@ -80,13 +80,13 @@ export const ForgetButton = styled.div`
   width: 203px;
   height: 27px;
   font-family: 'Montserrat', sans-serif;
-  font-weight: normal;
-  font-size: 21px;
-  line-height: 27px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 20px;
   color: #3c4044;
   text-decoration: underline;
   vertical-align: top;
-  text-underline-offset: 4px;
+  text-underline-offset: 6px;
 
   &:hover {
     cursor: pointer;
