@@ -29,6 +29,18 @@ import {
   PaymentContainer,
   PaymentInfo,
   CardInfo,
+  PromoCode,
+  PromoCodeInput,
+  Product,
+  ProductInfo,
+  ProductImage,
+  OrderDetails,
+  ProductName,
+  Platform,
+  Quantity,
+  Price,
+  CouponDiv,
+  Coupon,
 } from "./checkout.styles";
 import { targetPage } from '../../utils/index';
 import mail from "../../assets/icons/mail.svg";
@@ -40,6 +52,8 @@ import cart from "../../assets/icons/checkoutCart.svg";
 import creditCard from "../../assets/icons/creditCard.svg";
 import payPal from "../../assets/icons/payPal.svg";
 import plus from "../../assets/icons/circlePlus.svg";
+//sample image for frontend
+import image from '../../assets/about-us/LinkerdInIcon.png'
 
 // contact information section should only appear
 // if user is not logged in
@@ -49,6 +63,7 @@ const Checkout = () => {
   const [adressIsHidden, setAddressIsHidden] = useState(true);
   const [shippingIsHidden, setShippingIsHidden] = useState(true);
   const [paymentIsHidden, setPaymentIsHidden] = useState(true);
+  const [itemReviewIsHidden, setItemReviewIsHidden] = useState(true);
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [creditCardNumber, setCreditCardNumber] = useState("");
@@ -99,6 +114,19 @@ const Checkout = () => {
         <Icon src={payment} alt="payment" className="dropDown" />
         <span>{creditCardNumber === "" ? "Payment" : "**** **** **** " + creditCardNumber.substring(creditCardNumber.length - 4, creditCardNumber.length)}</span>
         <EditButton onClick={() => setPaymentIsHidden(false)} >
+          <Icon src={edit} alt="edit" />
+          <span>Edit</span>
+        </EditButton>
+      </ContactBar>
+    )
+  }
+
+  const ItemReviewSection = () => {
+    return (
+      <ContactBar>
+        <Icon src={cart} alt="cart" className="dropDown" />
+        <span>Item Review</span>
+        <EditButton onClick={() => setItemReviewIsHidden(false)} >
           <Icon src={edit} alt="edit" />
           <span>Edit</span>
         </EditButton>
@@ -217,13 +245,54 @@ const Checkout = () => {
                 </PaymentContainer>
               </PaymentDiv>
               <SaveButton type="submit" value="CONFIRM" onClick={
-                () => setPaymentIsHidden(true)}/>
+                () => {
+                  setPaymentIsHidden(true);
+                  setItemReviewIsHidden(false);
+                }
+              }/>
             </InfoSection>
           }
-          <ContactBar>
-            <Icon src={cart} alt="cart" className="dropDown" />
-            <span>Item Review & Coupons</span>
-          </ContactBar>
+          {itemReviewIsHidden ? <ItemReviewSection /> :
+            <InfoSection>
+              <InfoHeader>
+                <Icon src={cart} alt="cart" className="dropDown" />
+                <span>Item Review & Coupons</span>
+              </InfoHeader>
+              <PromoCode>
+                <PromoCodeInput type="text" placeholder="PROMO CODE" />
+                <Icon className="plus" src={plus} alt="plus" />
+              </PromoCode>
+              <Product>
+                <ProductInfo>
+                  <ProductImage src={image} alt="product" />
+                  <OrderDetails>
+                    <ProductName>Product Name</ProductName>
+                    <Platform>Local</Platform>
+                    <Quantity>Qty:1</Quantity>
+                    <Price>$50505</Price>
+                  </OrderDetails>
+                </ProductInfo>
+              </Product>
+              <CouponDiv>
+                  <Coupon>
+                    <span>COUPON NAME...</span>
+                    <span className="couponType">GIFT</span>
+                    <input type="checkbox" />
+                  </Coupon>
+                  <Coupon>
+                    <span>COUPON NAME...</span>
+                    <span className="couponType">GIFT</span>
+                    <input type="checkbox" />
+                  </Coupon>
+                  <Coupon>
+                    <span>COUPON NAME...</span>
+                    <span className="couponType">BUY  1 GET 1</span>
+                    <input type="checkbox" />
+                  </Coupon>
+                </CouponDiv>
+                <SaveButton type="submit" value="CONFIRM" />
+            </InfoSection>
+          }
         </UserInfo>
         <OrderSummary>
           <OrderInfo>Order ID # 2252252255</OrderInfo>

@@ -42,6 +42,11 @@ export const Icon = styled.img`
     margin-left: 12px;
     margin-top: -4px;
   }
+
+  &.plus {
+    margin-left: 20px;
+    margin-top: 7px;
+  }
 `;
 
 export const InfoHeader = styled.div`
@@ -148,6 +153,8 @@ export const ContactBar = styled.div`
     color: #3C4044;
     margin-left: 12px;
   }
+
+
 `;
 
 export const EditButton = styled.div`
@@ -409,6 +416,7 @@ export const CardInfo = styled.input`
 export const PromoCode = styled.div`
   display: flex;
   flex-direction: row;
+  margin-top: 12px;
 `;
 
 export const PromoCodeInput = styled.input`
@@ -417,4 +425,144 @@ export const PromoCodeInput = styled.input`
   background: #FFFFFF;
   border: 1px solid #828A94;
   border-radius: 4px;
+
+  ::placeholder {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+  }
+`;
+
+export const Product  = styled.div`
+  display: flex;
+  flex-direction: column
+  border-top: 1px solid #DEE1E5;
+  width: 609px;
+  margin-top: 22px;
+;`;
+
+export const ProductInfo = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const OrderDetails = styled.div`
+  display: flex; 
+  flex-direction: column;
+  margin-left: 12px;
+  margin-top: 40px;
+`;
+
+export const ProductImage = styled.img`
+  width: 141px;
+  height: 141px;
+  border: 1px solid #DEE1E5;
+  margin-top: 40px;
+`;
+
+export const ProductName = styled.span`
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #3C4044;
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+  height: 22px;
+`;
+
+export const Platform = styled.span`
+box-sizing: border-box;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 10px;
+gap: 10px;
+width: 75px;
+height: 15px;
+border: 4px solid #49A429;
+border-radius: 0px 18px 18px 18px;
+flex: none;
+order: 2;
+flex-grow: 0;
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 900;
+font-size: 14px;
+line-height: 13px;
+color: #49A429;
+text-transform: uppercase;
+margin-left: -154px;
+background: #FFFFFF;
+margin-top: -143px;
+&.black {
+  border: 4px solid #3C4044;
+  color: #3C4044;
+}
+`;
+
+export const Quantity = styled.span`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 21px;
+  color: #828A94;
+  margin-top: 10px;
+  margin-top: 40px;
+`;
+
+export const Price = styled.span`
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: #3C4044;
+  margin-top: 38px;
+`;
+
+export const CouponDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #DEE1E5;
+  border-radius: 4px;
+`;
+
+export const Coupon = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 600px;
+  height: 35px;
+  margin-left: 12px;
+
+  span {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    display: flex;
+    color: #3C4044;
+    width: 150px;
+    align-items: center;
+    
+    &.couponType {
+      margin-left: 100px;
+      margin-right: 28%;
+  }
+
+  input {
+    width: 18px;
+    height: 18px;
+    float: right;
+    margin-left: auto;
+
+  }
 `;
