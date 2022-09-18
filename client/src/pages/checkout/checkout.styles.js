@@ -4,6 +4,10 @@ export const Main = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
 export const UserInfo = styled.div`
@@ -24,6 +28,11 @@ export const InfoSection = styled.form`
   background: #FFFFFF;
   box-shadow: 2px 2px 7px rgba(159, 159, 159, 0.25);
   border-radius: 6px;
+
+  @media only screen and (max-width: 480px) {
+    width: 400px;
+    margin-left: 20px;
+  }
 `;
 
 export const Icon = styled.img`
@@ -81,6 +90,10 @@ export const Email = styled.input`
     align-items: center;
     color: #B4B4B4;
   }
+
+  @media only screen and (max-width: 480px) {
+    width: 390px;
+  }
 `;
 
 export const NotificationCheckBox = styled.div`
@@ -113,6 +126,10 @@ export const SaveButton = styled.input`
   font-size: 20px;
   line-height: 24px;
   cursor: pointer;
+
+  @media only screen and (max-width: 480px) {
+    width: 395px;
+  }
 `;
 
 export const Login = styled.span`
@@ -153,8 +170,11 @@ export const ContactBar = styled.div`
     color: #3C4044;
     margin-left: 12px;
   }
-
-
+  
+  @media only screen and (max-width: 480px) {
+    width: 420px;
+    margin-left: 20px;
+  }
 `;
 
 export const EditButton = styled.div`
@@ -207,6 +227,10 @@ export const FirstInput = styled.input`
     align-items: center;
     color: #B4B4B4;
   }
+
+  @media only screen and (max-width: 480px) {
+    width: 185px;
+  }
 `;
 
 export const LastInput = styled.input`
@@ -224,6 +248,10 @@ export const LastInput = styled.input`
     display: flex;
     align-items: center;
     color: #B4B4B4;
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 185px;
   }
 `;
 
@@ -244,6 +272,10 @@ export const AddressLine = styled.input`
     align-items: center;
     color: #B4B4B4;
   }
+
+  @media only screen and (max-width: 480px) {
+    width: 390px;
+  }
 `;
 
 export const ShippingDiv = styled.div`
@@ -258,6 +290,10 @@ export const ShippingDiv = styled.div`
   border: 1px solid #DEE1E5;
   border-radius: 6px;
   margin-top: 12px;
+
+  @media only screen and (max-width: 480px) {
+    width: 395px;
+  }
 `;
 
 export const ShippingContainer = styled.div`
@@ -288,6 +324,14 @@ export const ShippingContainer = styled.div`
   &:last-child {
     border-bottom: none;
   }
+
+  @media only screen and (max-width: 480px) {
+    width: 395px;
+
+    span {
+      margin-left: 10px;
+    }
+  }
 `;
 
 export const ShippingCheckbox = styled.input`
@@ -317,6 +361,11 @@ export const OrderSummary = styled.div`
   flex-direction: column;
   margin-left: 80px;
   width: 250px;
+
+  @media only screen and (max-width: 480px) {
+    width: 90%;
+    margin: 20px;
+  }
 `;
 
 export const OrderInfo = styled.div`
@@ -363,6 +412,10 @@ export const PurchaseButton = styled.button`
   width: 250px;
   border: none;
   cursor: pointer;
+
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 export const PaymentDiv = styled(ShippingDiv)`
@@ -411,6 +464,19 @@ export const CardInfo = styled.input`
     line-height: 22px;
     display: flex;
   }
+
+  @media only screen and (max-width: 480px) {
+    margin-left: 10px;
+    width: 365px;
+
+    &.expiration {
+      width: 230px;
+    }
+
+    &.cvv {
+      width: 113px;
+    }
+  }
 `;
 
 export const PromoCode = styled.div`
@@ -434,6 +500,10 @@ export const PromoCodeInput = styled.input`
     line-height: 22px;
     display: flex;
   }
+
+  @media only screen and (max-width: 480px) {
+    width: 335px;
+  }
 `;
 
 export const Product  = styled.div`
@@ -442,6 +512,10 @@ export const Product  = styled.div`
   border-top: 1px solid #DEE1E5;
   width: 609px;
   margin-top: 22px;
+
+  @media only screen and (max-width: 480px) {
+    width: 90%;
+  }
 ;`;
 
 export const ProductInfo = styled.div`
@@ -474,6 +548,10 @@ export const ProductName = styled.span`
   flex-direction: row;
   width: 400px;
   height: 22px;
+
+  @media only screen and (max-width: 480px) {
+    width: 150px;
+  }
 `;
 
 export const Platform = styled.span`
@@ -533,6 +611,10 @@ export const CouponDiv = styled.div`
   flex-direction: column;
   border: 1px solid #DEE1E5;
   border-radius: 4px;
+
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 export const Coupon = styled.div`
@@ -564,5 +646,16 @@ export const Coupon = styled.div`
     float: right;
     margin-left: auto;
 
+  }
+
+  @media only screen and (max-width: 480px) {
+    width: 45px;
+
+    span {
+
+      &.couponType {
+        margin-left: 0px;
+      }
+    }
   }
 `;
