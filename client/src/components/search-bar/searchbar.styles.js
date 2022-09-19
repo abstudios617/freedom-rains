@@ -5,7 +5,7 @@ export const Attribute = styled.input`
   height: 25px;
   font-size: 14px;
   background-color: #fff;
-  border-radius: 20px;
+  padding: 2.5px;
   border: none;
   font-family: "Montserrat", sans-serif;
   

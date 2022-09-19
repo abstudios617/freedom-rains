@@ -53,9 +53,15 @@ export const BtnField = styled.button`
   &.grey{
     background: #B8B8B8;
     color: white;
-    border-radius: 30px;
-    width: 85px;
-    height: 45px;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    position: relative;
 
     &:hover {
       box-shadow: 0 3px 2px #777777;
@@ -63,14 +69,19 @@ export const BtnField = styled.button`
   }
 
   &.preference{
-    background: #66b366;
+    background: #49a429;
     color: #fff;
-    border-radius: 30px;
-    width: 85px;
-    height: 45px;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
 
     &:hover {
-      box-shadow: 0 3px 2px #777777;
+      box-shadow: 0 3px 2px #777;
     }
   }
 
@@ -79,7 +90,7 @@ export const BtnField = styled.button`
     color: #fff;
 
     &:hover {
-      box-shadow: 0 3px 2px #777777;
+      box-shadow: 0 3px 2px #777;
     }
   }
 
@@ -102,11 +113,11 @@ export const BtnField = styled.button`
   }
 
   &.gray {
-    background-color: #BEC4CD;
+    background: #BEC4CD;
     color: #fff;
 
     &:hover {
-      box-shadow: 0 3px 2px #777777;
+      box-shadow: 0 3px 2px #777;
     }
   }
 
@@ -270,9 +281,10 @@ export const BtnField = styled.button`
     font-weight: bold;
     font-size: large;
     line-height: 27px;
-    vertical-align: Top;
+    vertical-align: top;
     height: 60px;
-    width: 120px;
+    width: fit-content;
+    padding: 0 1em;
     position: relative;
     margin: 3px;
     flex-wrap: wrap;

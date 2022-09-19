@@ -34,7 +34,7 @@ const Categories = () => {
         <Section>
           <p>Furniture</p> 
           <p>Household Supplies </p>
-          <p>Jewellery</p> 
+          <p>Jewelry</p> 
           <p>Office Products</p> 
           <p>Patio, Lawn & Garden </p>
           <p>Pet Supplies</p>

@@ -89,7 +89,7 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
         )}
         <Submit>
           <ButtonField color="create" onClick={handleSubmit(createUserAccount)}>
-            Create
+            Create Account
           </ButtonField>
         </Submit><br/><br/>
         <Or>or</Or><br/>
