@@ -84,8 +84,8 @@ export const AccountContain = styled.div`
 
 export const SignIn = styled.div`
   font-family: 'Montserrat', sans-serif;                                              
-  font-style: Bold;
-  font-size: 22.53px;
+  font-weight: bold;
+  font-size: 23px;
   line-height: 27px;
   line-height: 100%;
   vertical-align: top;

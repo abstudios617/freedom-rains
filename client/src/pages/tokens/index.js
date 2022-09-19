@@ -30,6 +30,8 @@ const Tokens = ({ isLoggedIn, updateTokens }) => {
   const [ showModal1, setShowModal1 ] = useState(true);
   const [ showModal2, setShowModal2 ] = useState(false);
   const [ showModal3, setShowModal3 ] = useState(false);
+
+  const userData = JSON.parse(getItem('accountInfo'));
   
   const handleClose = () =>{
     setShowModal1(false);
@@ -125,7 +127,7 @@ const Tokens = ({ isLoggedIn, updateTokens }) => {
         
         <Title>
           <img src={StepThree} width="65%"></img><br/><br/>
-          <span>Congrats &quot;{'First Name'}&quot;</span>
+          <span>Congrats &quot;{(userData) ? userData.first_name : 'First Name'}&quot;</span>
         </Title>
         <Subtitle>
           <span>Last step, choose your avatar and get started!</span>
