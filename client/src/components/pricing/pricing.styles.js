@@ -22,7 +22,7 @@ export const PriceTitle = styled.div`
 
 export const PriceSubtitle = styled.div`
   font-size: 22px;
-  color: #008E3C;
+  color: #257DA1;
   font-weight: 700;
 `;
 
