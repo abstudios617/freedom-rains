@@ -6,6 +6,8 @@ export const client = async (url = '', body = null, auth = null) => {
     url: url,
   };
 
+
+  //The token here is broken for some reason
   if (auth) {
     options.headers.Authorization = `Bearer ${auth}`;
   }

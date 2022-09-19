@@ -4,6 +4,7 @@ import { getItem } from '../utils';
 
 let user;
 const amp = amplitude.getInstance();
+console.log(`Amp key ${amplitudeKey}`);
 amp.init(amplitudeKey);
 
 if (getItem) {

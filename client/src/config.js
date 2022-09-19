@@ -1,8 +1,9 @@
 export const api = process.env.REACT_APP_API;
 
 export const imgServer = process.env.REACT_APP_IMG_URL;
-
-export const amplitudeKey = process.env.REACT_APP_AMP_KEY;
+//Had to set the key manually or else it wouldn't work. 
+export const amplitudeKey = '3d3d8925ed298021fdfb0bb4397aa8d8';        
+//process.env.REACT_APP_AMP_KEY;
 
 export const printfulKey = process.env.REACT_APP_PRINTFUL_KEY;
 
