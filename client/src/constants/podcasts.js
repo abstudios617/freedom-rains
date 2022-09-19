@@ -1,17 +1,20 @@
 export const podcasts = [
   {
-    title:'ABS Podcast - Episode 1 : Intro to Above & Beyond Studios Inc.',
-    link: 'https://www.youtube.com/embed/7y3iA5EYdy0',
+    title:'Made with ❤️ in Boston',
+    description:'We re a Local Startup Supporting Small Businesses in the community.',
+    link: 'https://patch.com/massachusetts/boston/boston-start-looking-help-local-minority-small-businesses',
     id:1,
   },
   {
-    title:'ABS Podcast - Episode 2 : Unrelenting Energy',
-    link: 'https://www.youtube.com/embed/dFFJFrAbbAU',
+    title:'HOW TO BUY SHARES OF FREEDOM',
+    description:'Support our journey by investing in our startup to help local businesses. Join the movement!',
+    link: 'https://netcapital.com/companies/above-beyond',
     id:2,
   },
   {
-    title:'ABS Podcast - Episode 3 : Coupons, Coupons and More Coupons!',
-    link: 'https://www.youtube.com/embed/pOdGGxs-t5c',
+    title:'Check out our Podcast',
+    description:'Learn more about what ABS can do for YOU!',
+    link: 'https://www.youtube.com/watch?v=cdxuxcvGyeg',
     id:3,
   },
 ];

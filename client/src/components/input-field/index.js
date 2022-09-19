@@ -5,6 +5,7 @@ const InputField = ({ type, placeHolder, name, register, disabled }) => {
   return (
     <InputFieldContainer>
       <input
+        className={type}
         type={type}
         name={name}
         placeholder={placeHolder}

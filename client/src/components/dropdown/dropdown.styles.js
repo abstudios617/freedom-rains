@@ -28,6 +28,11 @@ export const DropdownList = styled.select`
     margin-right: 30px;
   }
 
+  &.contact {
+    background-color: #F0F0F0;
+    border-radius: 0px; 
+  }
+
   @media only screen and (max-width: 480px) {
     width: 92%;
 

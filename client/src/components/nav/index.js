@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getItem, targetPage } from '../../utils/index';
-import { useHistory  } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import ButtonField from '../button-field';
 import logo from '../../assets/icons/freedom-logo-small.png';
 import SearchBar from '../search-bar';
@@ -31,7 +31,7 @@ import {
   NavItemsContainer,
   BusinessContainer
 } from './nav.styles';
-
+import ModalOneBtn from '../../components/modal-one-btn';
 import './nav.css';
 
 const Nav = ({ isLoggedIn, goToMerchPage }) => {
@@ -39,139 +39,153 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
   const [tabIndex, SetTab] = useState(0);
   const history = useHistory();
 
-  const handleClick = (e, num) =>{
+  const handleClick = (e, num) => {
     e.preventDefault(); //This makes it so it doesn't refresh on each tab click
     SetTab(num);
     history.push(`/${e.target.title}`);
   };
+  const [modalContactIsOpen, setModalContactIsOpen] = useState(false);
 
+  const closeModal = () => {
+    setModalContactIsOpen(false);
+  };
 
   //className added for readability in the Dom view
   return (
-    <NavContainer className="nav-container">
-      <NavTop className="nav-top">
-        <LogoContainer>
-          <Logo src={logo} alt="Freedom logo" className="logo" onClick={(e) => handleClick(e, 0)} title=""/>
-        </LogoContainer>
-        <SearchBar className="searchBar" />
-        {isLoggedIn ? (
-          <>
-            <UserDataContainer className="userDataContainer">
+    <div>
+      <ModalOneBtn
+        openModal={modalContactIsOpen}
+        closeModal={closeModal}
+        title={'Connect With Us!'}
+        type={'contact'}
+      />
+      <div>
+        <NavContainer className="nav-container">
+          <NavTop className="nav-top">
+            <LogoContainer>
+              <Logo src={logo} alt="Freedom logo" className="logo" onClick={(e) => handleClick(e, 0)} title="" />
+            </LogoContainer>
+            <SearchBar className="searchBar" />
+            {isLoggedIn ? (
+              <>
+                <UserDataContainer className="userDataContainer">
 
-              <UserContainer className="userContainer" title="account" onClick={(e) => handleClick(e, 0)} >
-                
-                <UserIcons className="profileImage" src={image} />
-                <div className="container">
-                  <div className="item1">
-                    {userData ? userData.first_name : 'Mary'}
-                  </div>
-                  <div className="item2" color="primary">
-                  Account & Menu
-                  </div>
-                </div>
-              </UserContainer>
-              <UserIcons className="shopping-cart" src={shopping_cart} />
-            </UserDataContainer>
-          </>
+                  <UserContainer className="userContainer" title="account" onClick={(e) => handleClick(e, 0)} >
 
-        ) : (
+                    <UserIcons className="profileImage" src={image} />
+                    <div className="container">
+                      <div className="item1">
+                        {userData ? userData.first_name : 'Mary'}
+                      </div>
+                      <div className="item2" color="primary">
+                        Account & Menu
+                      </div>
+                    </div>
+                  </UserContainer>
+                  <UserIcons className="shopping-cart" src={shopping_cart} />
+                </UserDataContainer>
+              </>
 
-          <BtnContainer>
-            <ButtonField 
-              className="Button-field"
-              color="allWhite"
-              title="login"
-              onClick={() => targetPage('login')}
-            >
-              LOG IN
-            </ButtonField>
-            <ButtonField
-              className="Button-field small"
-              color="primary"
-              title="create"
-              onClick={() => targetPage('create')}
-            >
-              SIGN UP
-            </ButtonField>
+            ) : (
 
-          </BtnContainer>
-        )}
-      </NavTop>
+              <BtnContainer>
+                <ButtonField
+                  className="Button-field"
+                  color="allWhite"
+                  title="login"
+                  onClick={() => targetPage('login')}
+                >
+                  LOG IN
+                </ButtonField>
+                <ButtonField
+                  className="Button-field small"
+                  color="primary"
+                  title="create"
+                  onClick={() => targetPage('create')}
+                >
+                  SIGN UP
+                </ButtonField>
 
-      {/* start of Bottom */}
-      <NavBottom className="Nav-bottom">
-        
-        {/* Start of left side container contents */}
-        <NavItemsContainer className="Nav-items">
-          <Coupons className={tabIndex === 0 && 'active'} >
-            <Image src={local_mall} alt="Local_Mall" />
+              </BtnContainer>
+            )}
+          </NavTop>
 
-            {/* 'deals' */}
-            <span title="deals" onClick={(e) => handleClick(e, 0)}>SHOP</span>
+          {/* start of Bottom */}
+          <NavBottom className="Nav-bottom">
 
-          </Coupons>
-          <Coupons className={tabIndex === 1 && 'active'} >
-            <Image src={sell} alt="Sell" />
+            {/* Start of left side container contents */}
+            <NavItemsContainer className="Nav-items">
+              <Coupons className={tabIndex === 0 && 'active'} >
+                <Image src={local_mall} alt="Local_Mall" />
 
-            {/* 'coupons' */}
-            <span title="coupons" onClick={(e) => handleClick(e, 1)}>COUPON</span> 
+                {/* 'deals' */}
+                <span title="deals" onClick={(e) => handleClick(e, 0)}>SHOP</span>
 
-          </Coupons>
+              </Coupons>
+              <Coupons className={tabIndex === 1 && 'active'} >
+                <Image src={sell} alt="Sell" />
 
-          <FreedomTV className={tabIndex === 2 && 'active'} >
-            <Image src={desktop_windows} alt="Desktop_Windows" />
+                {/* 'coupons' */}
+                <span title="coupons" onClick={(e) => handleClick(e, 1)}>COUPON</span>
 
-            {/* 'watch' */}
-            <span  title="watch" onClick={(e) => handleClick(e, 2)}>TV+</span>
+              </Coupons>
 
-          </FreedomTV>
+              <FreedomTV className={tabIndex === 2 && 'active'} >
+                <Image src={desktop_windows} alt="Desktop_Windows" />
 
-          <Activities className={tabIndex === 3 && 'active'}>
-            <Image src={sports_esports} alt="Sports_Exports" />
+                {/* 'watch' */}
+                <span title="watch" onClick={(e) => handleClick(e, 2)}>TV+</span>
 
-            {/* 'arcade' */}
-            <span title="arcade" onClick={(e) => handleClick(e, 3)}>GAME</span>
+              </FreedomTV>
 
-          </Activities>
-        
-          <Resources className={tabIndex === 4 && 'active'} >
-            <Image src={group} alt="Group" className="Image"/>
+              <Activities className={tabIndex === 3 && 'active'}>
+                <Image src={sports_esports} alt="Sports_Exports" />
 
-            <span title="team" onClick={(e) => handleClick(e, 4)}>ABOUT US</span>
+                {/* 'arcade' */}
+                <span title="arcade" onClick={(e) => handleClick(e, 3)}>GAME</span>
 
-            <SubNav className={'subResources'}>
-              <li onClick={goToMerchPage}>Buy Freedom Merch</li>
+              </Activities>
 
-              <li title="contact" onClick={(e) => handleClick(e, 4)}>Contact Us</li>
+              <Resources className={tabIndex === 4 && 'active'} >
+                <Image src={group} alt="Group" className="Image" />
 
-            </SubNav>
-          </Resources>
-        </NavItemsContainer>
-        
-        {/* End of left side container contents */}
+                <span title="team" onClick={(e) => handleClick(e, 4)}>ABOUT US</span>
 
-        {/* Right side container contents */}
-        <BusinessContainer className="Business">
-          <Resources className={tabIndex === 5 && 'active'}>
-            <Image src={vector} alt="vector" />
+                <SubNav className={'subResources'}>
+                  <li onClick={goToMerchPage}>Buy Freedom Merch</li>
 
-            <span onClick={(e) => handleClick(e, 5)} title="forbusiness">FOR BUSINESS</span>
+                  <li title="contact" onClick={() => setModalContactIsOpen(true)}>Contact Us</li>
 
-            <SubNav className={'subResources'}>
+                </SubNav>
+              </Resources>
+            </NavItemsContainer>
 
-              <li title="forbusiness#products" onClick={(e) => handleClick(e, 4)}>Past Work</li>
+            {/* End of left side container contents */}
 
-              <li title="pricing" onClick={(e) => handleClick(e, 4)}>Pricing</li>
+            {/* Right side container contents */}
+            <BusinessContainer className="Business">
+              <Resources className={tabIndex === 5 && 'active'}>
+                <Image src={vector} alt="vector" />
 
-              <li title="forbusiness#contact" onClick={(e) => handleClick(e, 4)}>Connect With Us</li>
-            </SubNav>
-          </Resources>
-        </BusinessContainer>
-        
-        {/* End of right side container contents */}
+                <span onClick={(e) => handleClick(e, 5)} title="forbusiness">FOR BUSINESS</span>
 
-      </NavBottom>
-    </NavContainer >
+                <SubNav className={'subResources'}>
+
+                  <li title="forbusiness#products" onClick={(e) => handleClick(e, 4)}>Past Work</li>
+
+                  <li title="pricing" onClick={(e) => handleClick(e, 4)}>Pricing</li>
+
+                  <li title="forbusiness#contact" onClick={(e) => handleClick(e, 4)}>Connect With Us</li>
+                </SubNav>
+              </Resources>
+            </BusinessContainer>
+
+            {/* End of right side container contents */}
+
+          </NavBottom>
+        </NavContainer >
+      </div>
+    </div>
   );
 };
 

@@ -41,6 +41,11 @@ export const ModalTitle = styled.div`
     font-weight: 700;
   }
 
+  &.contact {
+    margin: 20px;
+    font-size: 20px; 
+  }
+
   @media only screen and (max-width: 480px) {
     &.homepage {
       font-size: 13px;
@@ -77,6 +82,11 @@ export const ModalText = styled.div`
     font-weight: 700;
   }
 
+  &.contact {
+    text-align: left; 
+    margin-left: 15%;
+  }
+
   @media only screen and (max-width: 480px) {
     &.gamesErr {
       font-size: 8px;
@@ -104,6 +114,10 @@ export const ModalBtnContainer = styled.div`
       height: 30px;
       width: 80px;
     }
+  }
+
+  &.contact {
+    justify-content: center;
   }
 
   @media only screen and (max-width: 480px) {

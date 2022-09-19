@@ -270,6 +270,39 @@ export const BtnField = styled.button`
     }
   }
 
+  &.roundGreen {
+    background: #49a429;
+    color: #fff;
+    border-radius: 27px;
+    border-width: 0;
+    width: auto;
+    &:hover {
+      box-shadow: 0 3px 2px #777777;
+    }
+  }
+
+  &.roundPrimary {
+    background: #1988ff;
+    color: #fff;
+    border-radius: 27px;
+    width: auto;
+
+    &:hover {
+      box-shadow: 0 3px 2px #777777;
+    }
+  }
+
+  &.submitGreen {
+    background: #49a429;
+    color: #fff;
+    border-radius: 27px;
+    border-width: 0;
+    width: 80px;
+    &:hover {
+      box-shadow: 0 3px 2px #777777;
+    }
+  }
+
   @media only screen and (max-width: 480px) {
     padding: 10px;
     border-radius: 10px;
@@ -390,6 +423,10 @@ export const BtnField = styled.button`
       line-height: 22px;
       color: #FFFFFF;
       margin-top: -10px;
+    }
+
+    &.roundPrimary {
+      font-size: 15px;
     }
   }
 `;

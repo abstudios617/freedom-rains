@@ -18,6 +18,23 @@ export const InputFieldContainer = styled.div`
       font-weight: 400;
     }
 
+    &.contact {
+      background-color: #F0F0F0;
+      border-radius: 0px; 
+    }
+
+    &.contactService {
+      background-color: #F0F0F0;
+      border-radius: 0px; 
+      height: 120px; 
+    }
+
+    &.contactMessage {
+      background-color: #F0F0F0;
+      border-radius: 0px; 
+      height: 50px;
+    }
+
     @media only screen and (max-width: 480px) {
       width: 200px;
     }

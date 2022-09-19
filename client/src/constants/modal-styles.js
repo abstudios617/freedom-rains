@@ -122,3 +122,21 @@ export const tokenStyles = {
     transform: 'translate(-50%, -50%)',
   },
 };
+
+export const contactStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    padding: '20px',
+    height: '85%',
+    width: '50%',
+    display: 'grid',
+    alignItems: 'center',
+    textAlign: 'center',
+    transform: 'translate(-50%, -50%)',
+    borderRadius: '20px',
+    zIndex: '1000',
+  },
+};

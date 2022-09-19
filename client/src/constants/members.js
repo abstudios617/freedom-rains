@@ -8,18 +8,18 @@ import Jake from '../assets/about-us/jake.png';
 import Myra from '../assets/about-us/myra.png';
 export const members= [
   {
-    name: 'Steffan Jackson',
-    title: 'Chief Innovation Officer',
-    image: Steffan,
-    LinkedInLink: 'https://wwww.linkedin.com/in/steffanjackson/',
+    name: 'Aman Stuppard',
+    title: 'Chief Executive Officer',
+    image: Aman,
+    LinkedInLink: 'https://www.linkedin.com/in/aman-stuppard-730456b7/',
     id:1,
   
   },
   {
-    name: 'Aman Stuppard',
-    title: 'Chief Executive Officer',
-    image: Aman,
-    LinkedInLink: 'https://wwww.linkedin.com/in/aman-stuppard-730456b7/',
+    name: 'Steffan Jackson',
+    title: 'Chief Innovation Officer',
+    image: Steffan,
+    LinkedInLink: 'https://www.linkedin.com/in/steffanjackson/',
     id:2,
   
   },
@@ -27,47 +27,47 @@ export const members= [
     name: 'Stanley Ovile',
     title: 'VP of People',
     image: Stanley,
-    LinkedInLink: 'https://wwww.linkedin.com/in/stanley-ovile/',
+    LinkedInLink: 'https://www.linkedin.com/in/stanley-ovile/',
     id:3,
-  
-  },
-  {
-    name: 'Ronny Pena',
-    title: 'Producer',
-    image: Ronny,
-    LinkedInLink: 'https://wwww.linkedin.com/in/ronnypena17/',
-    id:4,
   
   },
   {
     name: 'Reyna Stuppard',
     title: 'Project Manager',
     image: Reyna,
-    LinkedInLink: 'https://wwww.linkedin.com/in/reyna-stuppard/',
-    id:5,
+    LinkedInLink: 'https://www.linkedin.com/in/reyna-stuppard/',
+    id:4,
   
   },
   {
     name: 'Joe McGlinchey',
     title: 'VP of Sales Operations',
     image: Joe,
-    LinkedInLink: 'https://wwww.linkedin.com/in/joseph-mcglinchey-b63112b4/',
-    id:6,
+    LinkedInLink: 'https://www.linkedin.com/in/joseph-mcglinchey-b63112b4/',
+    id:5,
   
   },
   {
-    name: 'Jake Pember',
-    title: 'Business Development Rep',
-    image: Jake,
-    LinkedInLink: 'https://wwww.linkedin.com/in/jake-pember/',
-    id:7,
+    name: 'Ronny Pena',
+    title: 'Producer',
+    image: Ronny,
+    LinkedInLink: 'https://www.linkedin.com/in/ronnypena17/',
+    id:6,
   
   },
   {
     name: 'Myra Memon',
     title: 'Social Media Strategist',
     image: Myra,
-    LinkedInLink: 'https://wwww.linkedin.com/in/myramemon96/',
+    LinkedInLink: 'https://www.linkedin.com/in/myramemon96/',
+    id:7,
+  
+  },
+  {
+    name: 'Jake Pember',
+    title: 'Business Development Rep',
+    image: Jake,
+    LinkedInLink: 'https://www.linkedin.com/in/jake-pember/',
     id:8,
   
   },
