@@ -80,6 +80,8 @@ export const ArrowIcon = styled.img`
 `;
 
 export const ServiceIcon = styled.img`
+  position: relative;
+  top: 20px;
   width: 50px;
   height: 50px;
 `;
@@ -110,7 +112,7 @@ export const ServiceTitle = styled.div`
   padding: 0px 20px 0px 0px;
 
   @media only screen and (max-width: 480px) {
-    width: 100%;
+    width: 85%;
     font-size: 16px;
     height: 180px; 
   }
@@ -125,7 +127,12 @@ export const ServiceDescription = styled.div`
   font-size: 14px;
   line-height: 27px;
   color: #000000;
-  padding: 10px 0px
+  padding: 10px 0px 0px 50px; 
+
+  @media only screen and (max-width: 480px) {
+    width: 80%;
+    padding: 10px 0px 10px 50px; 
+  }
 `;
 
 export const LearnmoreText = styled.div`
@@ -136,6 +143,7 @@ export const LearnmoreText = styled.div`
   font-weight: 600;
   font-size: 16px;
   color: #559EFF;
+  padding: 0px 50px;
 `;
 
 export const ContactContainer = styled.div`
@@ -144,7 +152,7 @@ export const ContactContainer = styled.div`
   justify-content: center;
   text-align: center;
   padding: 0px;
-  margin: auto;
+  margin: 0px; 
   background-color: #F9F9F9;
 
 `;
@@ -214,6 +222,7 @@ export const ContactDescriptionTitle = styled.div`
   @media only screen and (max-width: 480px) {
     margin: 0% 4%;
     font-size: 14px; 
+    width: auto;
   }
 `;
 
@@ -420,6 +429,9 @@ export const LogoContainer = styled.div`
   width: 440px;
   height: 210px;
   margin: auto;
+  @media only screen and (max-width: 480px) {
+    width: auto;
+  }
 `;
 
 export const LogoImage = styled.img`
@@ -491,6 +503,7 @@ export const ColorContainer = styled.div`
   @media only screen and (max-width: 480px) {
     flex-direction: column;
     height: 460px; 
+    width: auto;
   }
 `;
 
@@ -596,6 +609,7 @@ export const ColorTitle = styled.div`
 
   @media only screen and (max-width: 480px) {
     font-size: 13px;
+    width: auto;
   }
 `;
 
@@ -611,6 +625,7 @@ export const ColorDescription = styled.div`
 
   @media only screen and (max-width: 480px) {
     font-size: 13px;
+    width: auto;
   }
 `;
 
