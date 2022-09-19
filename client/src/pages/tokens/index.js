@@ -14,7 +14,7 @@ import {
   LeftBtn,
   RightBtn
 } from './token.style';
-import {Container,Title } from '../../styles/global.style';
+import { Container, Title } from '../../styles/global.style';
 import ModalTokens from '../../components/modalToken';
 import StepThree from '../../assets/account/step_three.png';
 import temp from '../../assets/tokens/temp.png';
@@ -125,7 +125,7 @@ const Tokens = ({ isLoggedIn, updateTokens }) => {
         
         <Title>
           <img src={StepThree} width="65%"></img><br/><br/>
-          <span>Congrats &quot;First Name&quot;</span>
+          <span>Congrats &quot;{'First Name'}&quot;</span>
         </Title>
         <Subtitle>
           <span>Last step, choose your avatar and get started!</span>
@@ -140,8 +140,9 @@ const Tokens = ({ isLoggedIn, updateTokens }) => {
         <ImgContainer src={temp}></ImgContainer><br/><br/>
         <Missions src={FirstMission}></Missions>
         <Footer>
-          <span>Community Tokens Blurb: The<br /> Freedom Community is powered by <br />commonuity tokens!
-            Complete taks & <br />missions to unlick NEW games, <br />EXCLUSIVE creator contentand the <br />BEST deals!
+          <span>
+            <u>Community Tokens Blurb:</u> <br/> The Freedom Community is powered by community tokens!<br/>
+            Complete tasks & missions to unlock <b>NEW</b> games, <br/><b>EXCLUSIVE</b> creator content, and the <b>BEST</b> deals!
           </span><br/><br/>
           <ButtonField color="mission">
             Finish Your First Mission!

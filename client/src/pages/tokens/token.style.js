@@ -24,7 +24,7 @@ export const Container = styled.div`
 export const Subtitle = styled.div`
   font-weight: 800;
   font-style: normal;
-  margin-top: 60px;
+  margin-top: 40px;
   margin-bottom: 30px;
   font-size: 20px;
   text-align: center;  
@@ -63,8 +63,8 @@ export const Missions = styled.img`
   display:block;
   margin-left:auto;
   margin-right: auto;
-  margin-bottom: 80px;
-  width: 197px;
+  margin-bottom: 50px;
+  width: 190px;
   height: 20px;
 `;
 
@@ -77,16 +77,15 @@ export const Disclaimer = styled.div`
 export const LeftBtn = styled.button`
   position:absolute;
   top: 30%;
-  left: 35%;
+  left: 37.5%;
   border: none;
   background: none;
-
 `;
 
 export const RightBtn = styled.button`
   position:absolute;
   top: 30%;
-  right: 35%;
+  right: 37.5%;
   border: none;
   background: none;
 

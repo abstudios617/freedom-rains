@@ -63,7 +63,7 @@ const ModalTokens = ({
               <th>+200</th>
             </tr>
             <tr>
-              <td>🗒 Compelte Sign Up</td>
+              <td>🗒 Complete Sign Up</td>
               <th>+200</th>
             </tr>
           </table>
@@ -91,7 +91,7 @@ const ModalTokens = ({
           </ModalLeftBtn>
           <table>
             <tr>
-              <td>🎮 Play Arcade Games!</td>
+              <td>🎮 Play Arcade Games</td>
               <th>+200</th>
             </tr>
             <tr>
@@ -99,7 +99,7 @@ const ModalTokens = ({
               <th>+50</th>
             </tr>
             <tr>
-              <td>🎁 Favorite Local Productsp</td>
+              <td>🎁 Favorite Local Products</td>
               <th>+50</th>
             </tr>
           </table>

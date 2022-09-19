@@ -299,8 +299,12 @@ export const BtnField = styled.button`
     background: #49a429;
     color: #fff;
     border-radius: 27px;
-    width: 280px;
+    width: fit-content;
     height: 50px;
+    padding: 0 1.5em;
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
   
     &:hover {
       box-shadow: 0 3px 2px #777777;
