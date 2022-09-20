@@ -164,7 +164,7 @@ const ForBusiness = () => {
           easy transition into the digital age.
         </Description>
         <ServiceItemWrapper>{services}</ServiceItemWrapper>
-        <ButtonField color="primary" onClick={sendToContact}>
+        <ButtonField color="cherryRed" onClick={sendToContact}>
           Connect With Us
         </ButtonField>
       </ServiceContainer>
@@ -175,7 +175,7 @@ const ForBusiness = () => {
           best product possible!
         </Description>
         <ProductItemWrapper>{helped}</ProductItemWrapper>
-        <ButtonField color="primary" onClick={sendToContact}>
+        <ButtonField color="cherryRed" onClick={sendToContact}>
           Learn More
         </ButtonField>
       </ProductContainer>

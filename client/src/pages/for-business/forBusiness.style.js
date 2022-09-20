@@ -109,7 +109,7 @@ export const HelpLink = styled.a`
 `;
 
 export const ServiceContainer = styled.div`
-  background-color: #5CB45010;
+  background-color: #14365B;
   background-image: url(${serviceBg});
   background-size: 90%;
   background-repeat: no-repeat;
@@ -170,7 +170,7 @@ export const ServiceItem = styled.div`
 `;
 
 export const ServiceItemTitle = styled.div`
-  color: #008e3c;
+  color: #FFFFFF;
   font-weight: 700;
   margin: 10px 0;
 `;
