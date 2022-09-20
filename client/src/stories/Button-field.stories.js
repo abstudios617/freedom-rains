@@ -18,6 +18,8 @@ export default {
         'fav',
         'started',
         'darkStarted',
+        'cherryRed',
+        'capriBlue',
         'yellow',
       ],
       control: { type: 'select' },

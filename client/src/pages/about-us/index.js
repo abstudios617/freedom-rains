@@ -216,7 +216,6 @@ const AboutUs = () => {
           </LearnmoreText>
         </ServiceTitle>
       </TotalContainer>
-
       <ContactContainer>
         <ContactTitle>
           Contact

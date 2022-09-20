@@ -61,12 +61,20 @@ export const BrowseContainer = styled.div`
   text-align: center;
   margin: auto;
   color: #2F7DA1;
+
+  @media only screen and (max-width: 480px) {
+    width: 350px;
+  }
 `;
 
 export const BorderContainer = styled.div`
   width: 1000px;
   height: 15px;
   background: linear-gradient( to right, #2F7DA1, #14365B, #F9193D);
+
+  @media only screen and (max-width: 480px) {
+    width: 410px; 
+  }
 `;
 
 export const SectionTitle = styled.div`
