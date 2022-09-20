@@ -50,7 +50,7 @@ export const BrowseContainer = styled.div`
 `;
 
 export const BorderContainer = styled.div`
-  width: 600px;
+  width: 1000px;
   height: 15px;
   background: linear-gradient( to right, #2F7DA1, #14365B, #F9193D);
 `;
