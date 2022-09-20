@@ -32,7 +32,7 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
 
   useEffect(() => {
     const alreadySelected = data.filter((elem) => elem.selected);
-    setShowButton(alreadySelected.length !== 0);
+    setShowButton(alreadySelected.length !== 0 && alreadySelected.length <= 4);
   });
  
   const onSelectionChange = (id) => {
@@ -60,8 +60,6 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
 
     if (alreadySelected.length >= 4) {
       if (!canDeselected) {
-        setHasSelected(false);
-        setOpenModalTwo(true);
         return;
       }
     }
@@ -82,8 +80,15 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
       setHasSelected(true);
       setOpenModalTwo(true);
       return;
+    } else if (arr.length > 4) {
+      setHasSelected(false);
+      setOpenModalTwo(true);
+      return;
+    } else {
+      setHasSelected(false);
+      setOpenModalOne(true);
     }
-
+    
     const values = {
       category: JSON.stringify(arr),
     };
@@ -134,7 +139,7 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
         key={item.value}
       >
         <ImgContainer 
-          onClick={() => showIcon ? setShowIcon(false) : setShowIcon(true)}>
+          onClick={() => setShowIcon((state) => !state)}>
           {
             showIcon && 
             <PreferenceCheckmarkContainer>
