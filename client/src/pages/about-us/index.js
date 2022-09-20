@@ -3,6 +3,8 @@ import {
   Toptitle,
   SectionTitle,
   IntroductionContainer,
+  BrowseContainer,
+  BorderContainer,
   ShopperIcon,
   ContactIcon,
   ContactContainer,
@@ -117,9 +119,12 @@ const AboutUs = () => {
           We build and use strategies to drive digital growth and expand customer reach so you can focus on growing your business!
         </IntroductionDescription>
       </IntroductionContainer>
-
+      <BrowseContainer>
+        Browse Our Past Work
+      </BrowseContainer>
+      <BorderContainer></BorderContainer>
       <SectionTitleContainer>
-        <SectionTitle>Service We Provide</SectionTitle>
+        <SectionTitle>Services We Provide</SectionTitle>
       </SectionTitleContainer>
       <TotalContainer>
         <ServiceTitle>
@@ -179,7 +184,6 @@ const AboutUs = () => {
           </LearnmoreText>
         </ServiceTitle>
       </TotalContainer>
-
       <ContactContainer>
         <ContactTitle>
           Contact
@@ -199,7 +203,6 @@ const AboutUs = () => {
         </ContactButton>
       </ContactContainer>
       
-
       <OurTeamContainer>
         <SectionTitleContainer>
           <SectionTitle>Meet the Team</SectionTitle>

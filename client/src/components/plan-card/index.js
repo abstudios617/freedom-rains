@@ -79,7 +79,7 @@ const PlanCard = ({ item, popularType, planType }) => {
       <PlanCardItemSpecs>{specs}</PlanCardItemSpecs>
       <PlanCardBtn>
         <ButtonField
-          color={popular ? 'darkStarted' : 'started'}
+          color={popular ? 'cherryRed' : 'capriBlue'}
           onClick={productPage}
         >
             Get Started

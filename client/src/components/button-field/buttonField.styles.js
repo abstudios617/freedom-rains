@@ -176,6 +176,24 @@ export const BtnField = styled.button`
     }
   }
 
+  &.capriBlue {
+    background: #2F7DA1;
+    color: #fff;
+      
+    &:hover {
+      box-shadow: 0 3px 2px #333333;
+    }
+  }
+
+  &.cherryRed {
+    background: #F9193D;
+    color: #fff;
+      
+    &:hover {
+      box-shadow: 0 3px 2px #333333;
+    }
+  }
+
   &.yellow {
     background: #ECDA35;
     color: #000;
