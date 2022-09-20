@@ -51,6 +51,24 @@ export const IntroductionDescription = styled.div`
   }
 `;
 
+export const BrowseContainer = styled.div`
+  width: 650px;
+  height: 150px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  margin: auto;
+  color: #2F7DA1;
+`;
+
+export const BorderContainer = styled.div`
+  width: 1000px;
+  height: 15px;
+  background: linear-gradient( to right, #2F7DA1, #14365B, #F9193D);
+`;
+
 export const SectionTitle = styled.div`
   color: #49A429;
   width: 380px;
