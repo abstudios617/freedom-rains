@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-// font-family: "Montserrat", sans-serif;
+
 export const Attribute = styled.input`
-  width: 100%;
+  width: 500px;
   height: 25px;
+  padding: 5px 5px 5px 15px;
   font-size: 14px;
   background-color: #fff;
-  border-radius: 20px;
-  border: none;
+  border: 1px solid #ced4da;
+  border-radius: 10px;
   font-family: "Montserrat", sans-serif;
   
   &::placeholder {
@@ -22,37 +23,16 @@ export const SearchBarContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ced4da;
-  border-radius: 10px;
-  width: 100%;
   button {
     border-radius: 0 10px 10px 0;
     height: 38px;
+    padding: 7px 5px 5px 5px;
     border: 1px solid #ced4da;
+    width: 50px;
     border-left: none;
   }
 
   @media only screen and (max-width: 480px) {
     margin: 25px 0 15px;
   }
-`;
-
-export const SearchContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 2;
-
-  .hideSearch {
-    display: none;
-  }
-
-  @media only screen and (max-width: 480px) {
-    width: 100%
-  }
-`;
-
-export const SearchIcon = styled.img`
-  width: 25px;
-  cursor: pointer;
 `;

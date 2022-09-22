@@ -102,8 +102,9 @@ export const NavWidth = styled.div`
 
 export const NavContainer = styled.div`
   z-index: 12;
-  width: 100%;
+  width: 1000px;
   margin: 0 auto;
+  padding: 20px;
   height: 127px;
 
   @media only screen and (max-width: 480px) {

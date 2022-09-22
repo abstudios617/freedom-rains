@@ -63,7 +63,7 @@ const Header = ({ setIsLoggedIn, isLoggedIn }) => {
 
   return (
     <>
-      <FullWidth className="mobilenav">
+      <FullWidth>
         <Container>
           <Logo>
             <img
