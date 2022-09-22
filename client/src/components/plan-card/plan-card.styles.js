@@ -62,7 +62,7 @@ export const PlanCardBtn = styled.div`
 `;
 
 export const PlanCardMP = styled.div`
-  background: #14365B;
+  background: #B33148;
   border-radius: 13.5px;
   font-weight: 700;
   font-size: 10px;
