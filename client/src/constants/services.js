@@ -1,9 +1,3 @@
-import socialMedia from '../assets/services/social-media.png';
-import seo from '../assets/services/seo.png';
-import website from '../assets/services/website.png';
-import ecommerce from '../assets/services/ecommerce.png';
-import email from '../assets/services/email.png';
-import mobileApp from '../assets/services/mobile-app.png';
 import organizeMe from '../assets/services/organize-me.png';
 import granbury from '../assets/services/granbury.png';
 import jurni from '../assets/services/jurni.png';
@@ -11,39 +5,45 @@ import discovery from '../assets/services/discovery.png';
 import plan from '../assets/services/plan.png';
 import execute from '../assets/services/execute.png';
 import deliver from '../assets/services/deliver.png';
+import ecommerceIcon from '../assets/services/ecommerceService.png';
+import emailMarketIcon from '../assets/services/emailMarketing.png';
+import mobileAppIcon from '../assets/services/mobileApp.png';
+import SEOIcon from '../assets/services/SEOService.png';
+import socialMediaIcon from '../assets/services/socialMediaServices.png';
+import webDesignIcon from '../assets/services/webDesign.png';
 
 export const businessService = [
   {
     name: 'Social Media Services',
-    image: socialMedia,
+    image: socialMediaIcon,
     descript:
       'Social Media is more important than your website to the next generation. ',
   },
   {
     name: 'SEO Optimization',
-    image: seo,
+    image: SEOIcon,
     descript:
       'Professional SEO helps brands increase their organic search score drastically.',
   },
   {
     name: 'Website Design',
-    image: website,
+    image: webDesignIcon,
     descript: 'Our team specializes in affordable web design and e-commerce.',
   },
   {
     name: 'E-Commerce Promotion',
-    image: ecommerce,
+    image: ecommerceIcon,
     descript:
       'We sell your products online and on social media through coupons.',
   },
   {
     name: 'Email Marketing',
-    image: email,
+    image: emailMarketIcon,
     descript: 'E-mail marketing converts mailing lists into return customers.',
   },
   {
     name: 'Mobile App Development',
-    image: mobileApp,
+    image: mobileAppIcon,
     descript:
       'Mobile is the future. We help create & develop your app no matter the size.',
   },
@@ -67,6 +67,12 @@ export const helpedService = [
     image: jurni,
     descript: 'Web & App Development',
     link: 'https://myjurni.org/',
+  },
+  {
+    name: 'Grab a shift',
+    image: jurni,
+    descript: 'Web & App Development',
+    link: 'https://grabashift.us/',
   },
 ];
 

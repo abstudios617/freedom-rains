@@ -183,6 +183,17 @@ export const BtnField = styled.button`
     }
   }
 
+  &.greenPricing {
+    background: #49a429;
+    color: #fff;
+    width: 700px;
+    border-radius: 15px;
+      
+    &:hover {
+      box-shadow: 0 3px 2px #333333;
+    }
+  }
+
   &.yellow {
     background: #ECDA35;
     color: #000;

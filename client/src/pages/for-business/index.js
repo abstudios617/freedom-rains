@@ -27,11 +27,9 @@ import {
   HelpLink,
   ServiceContainer,
   ServiceItemWrapper,
-  ProductItemWrapper,
   AdsItemWrapper,
   ServiceItem,
   ServiceItemTitle,
-  ServiceItemDescription,
   ProductContainer,
   AdsContainer,
   ProcessContainer,
@@ -58,8 +56,12 @@ import {
   TestimonyItemUserContent,
   TestimonyItemUserTitle,
   TestimonyItemUserDescription,
+  ProductItemImg,
+  PortfolioCarouselContainer,
+  PortfolioTitle,
 } from './forBusiness.style';
 import {Container} from '../../styles/global.style';
+import ResponsiveCarouselArrows from '../../components/responsive-carousel-arrows';
 
 const ForBusiness = () => {
   const [freeAccount, setFreeAccount] = useState(false);
@@ -69,7 +71,6 @@ const ForBusiness = () => {
       <ServiceItem key={item.name}>
         <img src={item.image} alt={item.name} />
         <ServiceItemTitle>{item.name}</ServiceItemTitle>
-        <ServiceItemDescription>{item.descript}</ServiceItemDescription>
       </ServiceItem>
     );
   });
@@ -77,11 +78,11 @@ const ForBusiness = () => {
   const helped = helpedService.map((item) => {
     return (
       <ProductItem key={item.name}>
+        <a href={item.link} target="_blank" rel="noreferrer">
+          <ProductItemImg src={item.image} alt={item.name} />
+        </a>
         <ProductItemTitle>{item.name}</ProductItemTitle>
         <ProductItemDescription>{item.descript}</ProductItemDescription>
-        <a href={item.link} target="_blank" rel="noreferrer">
-          <img src={item.image} alt={item.name} />
-        </a>
       </ProductItem>
     );
   });
@@ -122,11 +123,10 @@ const ForBusiness = () => {
     window.location.replace('/forbusiness#pricing');
   };
 
-  const sendToContact = (e) => {
-    e.preventDefault();
-    window.location.replace('/forbusiness#contact');
-  };
-
+  const breakPoints = [
+    { width: 1, itemsToShow: 3 },
+    { width: 480, itemsToShow: 3 },
+  ];
   return (
     <Container>
       <HelpContainer>
@@ -164,20 +164,18 @@ const ForBusiness = () => {
           easy transition into the digital age.
         </Description>
         <ServiceItemWrapper>{services}</ServiceItemWrapper>
-        <ButtonField color="cherryRed" onClick={sendToContact}>
-          Connect With Us
+        <ButtonField color="greenPricing" onClick={sendToPricing}>
+          See Pricing
         </ButtonField>
       </ServiceContainer>
-      <ProductContainer id="products">
-        <Title>Where We&lsquo;ve Helped</Title>
-        <Description>
-          We work till the job is done. We go Above &amp; Beyond to make the
-          best product possible!
-        </Description>
-        <ProductItemWrapper>{helped}</ProductItemWrapper>
-        <ButtonField color="cherryRed" onClick={sendToContact}>
-          Learn More
-        </ButtonField>
+      <ProductContainer>
+        <PortfolioTitle>Businesses We&lsquo;ve Helped</PortfolioTitle>
+        <PortfolioCarouselContainer>
+          <ResponsiveCarouselArrows
+            breakpoints={breakPoints}
+            items={helped}
+          />
+        </PortfolioCarouselContainer>
       </ProductContainer>
       <AdsContainer>
         <Title>Ads &amp; Commercials Created</Title>

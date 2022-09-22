@@ -1,17 +1,25 @@
 import styled from 'styled-components';
-import serviceBg from '../../assets/services/services-bg.png';
 import helperBg from '../../assets/services/helperBackground.png';
 
 export const Title = styled.div`
   font-size: 25px;
   font-weight: 900;
+  color: #49a429;
+  padding: 30px 0px 30px 0px;
+`;
+
+export const PortfolioTitle = styled.div`
+  font-size: 25px;
+  font-weight: 900;
+  padding: 30px 0px 30px 0px;
+  color: #FFFF;
 `;
 
 export const Description = styled.div`
-  color: rgb(0 0 0 /0.5);
   font-size: 16px;
   width: 80%;
   margin: 20px auto 0;
+  font-weight: 900;
 
   @media only screen and (max-width: 480px) {
     width: 100%;
@@ -109,12 +117,6 @@ export const HelpLink = styled.a`
 `;
 
 export const ServiceContainer = styled.div`
-  background-color: #14365B;
-  background-image: url(${serviceBg});
-  background-size: 90%;
-  background-repeat: no-repeat;
-  background-position: 37px 45px;
-  border-radius: 40px;
   margin: 70px 0;
   padding: 30px;
   text-align: center;
@@ -131,8 +133,15 @@ export const ServiceContainer = styled.div`
 export const ServiceItemWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 500px;
+
+  @media only screen and (max-width: 480px) {
+    flex-wrap: nowrap;
+    height: auto;
+  }
 `;
 
 export const ProductItemWrapper = styled.div`
@@ -158,6 +167,9 @@ export const AdsItemWrapper = styled.div`
 export const ServiceItem = styled.div`
   width: 30%;
   margin: 2% 1%;
+  display: flex;
+  flex-direction: row;
+  flex-basis: 90px;
 
   img {
     width: 80px;
@@ -166,13 +178,13 @@ export const ServiceItem = styled.div`
   @media only screen and (max-width: 480px) {
     width: 44%;
     margin: 2% 3%;
+    flex-basis: auto;
   }
 `;
 
 export const ServiceItemTitle = styled.div`
-  color: #FFFFFF;
   font-weight: 700;
-  margin: 10px 0;
+  margin: 20px 20px;
 `;
 
 export const ServiceItemDescription = styled.div`
@@ -183,6 +195,7 @@ export const ServiceItemDescription = styled.div`
 export const ProductContainer = styled.div`
   text-align: center;
   margin: 50px 0;
+  background-color: yellow;
 `;
 
 export const AdsContainer = styled.div`
@@ -362,4 +375,13 @@ export const TestimonyItemUserDescription = styled.div`
   color: rgb(0 0 0 /0.5);
   font-size: 14px;
   margin-top: 10px;
+`;
+
+export const ProductItemImg = styled.img`
+  width: 1000px;
+  height: 200px;
+`;
+
+export const PortfolioCarouselContainer = styled.div`
+  text-align: left;
 `;

@@ -71,12 +71,12 @@ import absLogo5 from '../../assets/about-us/abs-1-05.png';
 import absLogo6 from '../../assets/about-us/abs-1-06.png';
 import absLogo7 from '../../assets/about-us/abs-1-07.png';
 import absLogo8 from '../../assets/about-us/abs-1-08.png';
-import ecommerceIcon from '../../assets/about-us/ecommerce.png';
-import emailMarketIcon from '../../assets/about-us/emailMarketing.png';
-import mobileAppIcon from '../../assets/about-us/mobileApp.png';
-import SEOIcon from '../../assets/about-us/SEO.png';
-import socialMediaIcon from '../../assets/about-us/socialMediaServices.png';
-import webDesignIcon from '../../assets/about-us/webDesign.png';
+import ecommerceIcon from '../../assets/services/ecommerceService.png';
+import emailMarketIcon from '../../assets/services/emailMarketing.png';
+import mobileAppIcon from '../../assets/services/mobileApp.png';
+import SEOIcon from '../../assets/services/SEOService.png';
+import socialMediaIcon from '../../assets/services/socialMediaServices.png';
+import webDesignIcon from '../../assets/services/webDesign.png';
 
 
 import { members } from '../../constants/members';
@@ -146,7 +146,9 @@ const AboutUs = () => {
         </IntroductionDescription>
       </IntroductionContainer>
       <BrowseContainer>
-        Browse Our Past Work
+        <a href="/forbusiness#products">
+          Browse Our Past Work
+        </a>
       </BrowseContainer>
       <BorderContainer></BorderContainer>
       <SectionTitleContainer>
