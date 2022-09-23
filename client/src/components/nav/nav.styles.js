@@ -5,7 +5,6 @@ export const NavContainer = styled.div`
   z-index: 12;
   width: 100%;
   font-family: "Montserrat", sans-serif;
-  background: linear-gradient( to right, #2F7DA1, #14365B, #F9193D);
   @media only screen and (max-width: 480px) { 
     height: auto;
     width: 100%;
