@@ -3,8 +3,6 @@ import {
   Toptitle,
   SectionTitle,
   IntroductionContainer,
-  BrowseContainer,
-  BorderContainer,
   ShopperIcon,
   ContactIcon,
   ServiceIcon,
@@ -152,7 +150,7 @@ const AboutUs = () => {
       </BrowseContainer>
       <BorderContainer></BorderContainer>
       <SectionTitleContainer>
-        <SectionTitle>Services We Provide</SectionTitle>
+        <SectionTitle>Service We Provide</SectionTitle>
       </SectionTitleContainer>
       <TotalContainer>
         <ServiceTitle>
@@ -218,6 +216,7 @@ const AboutUs = () => {
           </LearnmoreText>
         </ServiceTitle>
       </TotalContainer>
+
       <ContactContainer>
         <ContactTitle>
           Contact
