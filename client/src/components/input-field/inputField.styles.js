@@ -16,7 +16,7 @@ export const InputFieldContainer = styled.div`
     border-radius: 0px;
     margin: 10px 0;
     font-family: "Montserrat", sans-serif;
-    box-shadow: 0 3px 5px lightgray;
+    box-shadow: 0 2px 5px lightgray;
     
     &::placeholder {
       font-weight: 800;

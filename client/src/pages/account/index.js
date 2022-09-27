@@ -17,6 +17,8 @@ import {Container, Title, Alert} from '../../styles/global.style';
 import DropDown from '../../components/dropdown';
 import FreedomLogo from '../../assets/icons/FreedomLogo.png';
 import LogoIcon from '../../components/logo-icons';
+import AccountMenu from '../../components/account-menu';
+import AccountMenuButton from '../../components/account-menu-button';
 
 const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   const userData = JSON.parse(getItem('accountInfo'));
@@ -124,6 +126,18 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <Container>
+      <AccountMenu>
+        <AccountMenuButton 
+          icon="O" 
+          title="Orders"
+          subtitle="Click here to view orders"
+        />
+        <AccountMenuButton 
+          icon="X" 
+          title="Settings"
+          subtitle="Click here for account settings"
+        />
+      </AccountMenu>
       <Title>
         <span>Account Info</span>
       </Title>
@@ -133,7 +147,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
           name="email"
           placeHolder="Email"
           type="email"
-          disabled={true}
           register={register({
             required: false,
             pattern:
