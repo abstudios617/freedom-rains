@@ -1,7 +1,7 @@
 import React from 'react';
-import { InputFieldContainer } from './inputField.styles';
+import { InputFieldContainer, ExtraStyle } from './inputField.styles';
 
-const InputField = ({ type, placeHolder, name, register, disabled }) => {
+const InputField = ({ type, placeHolder, name, register, disabled, extra }) => {
   return (
     <InputFieldContainer>
       <input
@@ -11,6 +11,11 @@ const InputField = ({ type, placeHolder, name, register, disabled }) => {
         ref={register}
         disabled={disabled || false}
       />
+      <ExtraStyle>
+        <span>
+          {extra}
+        </span>
+      </ExtraStyle>
     </InputFieldContainer>
   );
 };

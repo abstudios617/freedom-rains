@@ -9,9 +9,6 @@ import ModalOneBtn from '../../components/modal-one-btn';
 import Login from '../../components/login';
 import { getUserToken, setUserAccount, updateUserTokens } from '../../utils/account-utils';
 import { 
-  SubContent, 
-  Tabs, 
-  ContentWidth, 
   Submit, 
   AccountContain,
   SignIn,
@@ -26,9 +23,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   const accountData = JSON.parse(getItem('loggedIn'));
   const [openModalOne, setOpenModalOne] = useState(false);
   const [tokenReward, setTokenReward] = useState(false);
-  const [isOrganization, setIsOrganization] = useState(false);
-  const [isCredentials, setIsCredentials] = useState(true);
-  const [isPersonal, setIsPersonal] = useState(false);
   const [errMsg, setErrMsg] = useState(null);
   const { register, handleSubmit, getValues, errors, setValue } = useForm({
     defaultValues: {
@@ -135,178 +129,143 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       </Title>
       {errMsg && <Alert>{errMsg}</Alert>}
       <AccountContain>
-        <Tabs>
-          <SubContent className={isCredentials && 'selected'}
-            onClick={() => {
-              setIsOrganization(false);
-              setIsPersonal(false);
-              setIsCredentials(true);
-            }}
-          >
-            <div className="subtitle">Credentials</div>
-          </SubContent>
-          <SubContent className={isPersonal && 'selected'}
-            onClick={() => {
-              setIsOrganization(false);
-              setIsPersonal(true);
-              setIsCredentials(false);
-            }}
-          >
-            <div className="subtitle">Personal</div>
-          </SubContent>
-          <SubContent className={isOrganization && 'selected'}
-            onClick={() => {
-              setIsOrganization(true);
-              setIsPersonal(false);
-              setIsCredentials(false);
-            }}
-          >
-            <div className="subtitle">Work</div>
-          </SubContent>
-        </Tabs>
-        <ContentWidth>
-          <div style={{ display: isCredentials ? 'block' : 'none' }}>
-            <InputField
-              name="email"
-              placeHolder="Email"
-              type="email"
-              disabled={true}
-              register={register({
-                required: false,
-                pattern:
-                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-              })}
-            />
-            {errors.email && (
-              <Alert>
-                Please enter email address correctly
-              </Alert>
-            )}
-            <InputField
-              name="password"
-              placeHolder="Password"
-              type="password"
-              register={register({
-                required: false,
-              })}
-            />
-          </div>
-          <div style={{ display: isOrganization ? 'block' : 'none' }}>
-            <InputField
-              name="company"
-              placeHolder="Company"
-              type="text"
-              register={register({
-                required: false,
-              })}
-            />
-            <InputField
-              name="work_email"
-              placeHolder="Work Email"
-              type="tel"
-              register={register({
-                required: false,
-                pattern:
-                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-              })}
-            />
-            <InputField
-              name="work_phone"
-              placeHolder="Work Phone - Ex: 1234567890"
-              type="tel"
-              register={register({
-                required: false,
-                maxLength: 10,
-              })}
-            />
-          </div>
-          <div style={{ display: isPersonal ? 'block' : 'none' }}>
-            <InputField
-              name="first_name"
-              placeHolder="First Name"
-              type="text"
-              register={register({
-                required: false,
-              })}
-            />
-            {errors.first_name && (
-              <Alert>Please enter your first name</Alert>
-            )}
-            <InputField
-              name="last_name"
-              placeHolder="Last Name"
-              type="text"
-              register={register({
-                required: false,
-              })}
-            />
-            {errors.last_name && (
-              <Alert>Please enter your last name</Alert>
-            )}
-            <InputField
-              name="phone"
-              placeHolder="Phone - Ex: 1234567890"
-              type="tel"
-              register={register({
-                required: false,
-                maxLength: 10,
-              })}
-            />
-            {errors.phone && (
-              <Alert>
-                Please enter your phone number correctly
-              </Alert>
-            )}
-            <InputField
-              name="zip_code"
-              placeHolder="Zip Code"
-              type="tel"
-              register={register({
-                required: false,
-                maxLength: 5,
-              })}
-            />
-            {errors.zip_code && (
-              <Alert>Please enter your zip code</Alert>
-            )}
-            <InputField
-              name="age"
-              placeHolder="Age"
-              type="tel"
-              register={register({
-                required: false,
-                maxLength: 2,
-              })}
-            />
-            {errors.age && (
-              <Alert>Please enter your age</Alert>
-            )}
-            <DropDown
-              name="race"
-              ref={register({
-                required: false,
-              })}
-              label="Select an Ethnicity"
-              list={raceDropdown}
-            >
-            </DropDown>
-            {errors.race && (
-              <Alert>Please select your Ethnicity</Alert>
-            )}
-            <DropDown
-              name="gender"
-              ref={register({
-                required: false,
-              })}
-              label="Select a Gender"
-              list={genderDropdown}
-            >
-            </DropDown>
-            {errors.gender && (
-              <Alert>Please select your gender</Alert>
-            )}
-          </div>
-        </ContentWidth>
+        <InputField
+          name="email"
+          placeHolder="Email"
+          type="email"
+          disabled={true}
+          register={register({
+            required: false,
+            pattern:
+              /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+          })}
+        />
+        {errors.email && (
+          <Alert>
+            Please enter email address correctly
+          </Alert>
+        )}
+        <InputField
+          name="password"
+          placeHolder="Password"
+          type="password"
+          register={register({
+            required: false,
+          })}
+        />
+        <InputField
+          name="company"
+          placeHolder="Company"
+          type="text"
+          register={register({
+            required: false,
+          })}
+        />
+        <InputField
+          name="work_email"
+          placeHolder="Work Email"
+          type="tel"
+          register={register({
+            required: false,
+            pattern:
+              /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+          })}
+        />
+        <InputField
+          name="work_phone"
+          placeHolder="Work Phone Number"
+          type="tel"
+          register={register({
+            required: false,
+            maxLength: 10,
+          })}
+          extra="Use format 1234567890"
+        />
+        <InputField
+          name="first_name"
+          placeHolder="First Name"
+          type="text"
+          register={register({
+            required: false,
+          })}
+        />
+        {errors.first_name && (
+          <Alert>Please enter your first name</Alert>
+        )}
+        <InputField
+          name="last_name"
+          placeHolder="Last Name"
+          type="text"
+          register={register({
+            required: false,
+          })}
+        />
+        {errors.last_name && (
+          <Alert>Please enter your last name</Alert>
+        )}
+        <InputField
+          name="phone"
+          placeHolder="Phone Number"
+          type="tel"
+          register={register({
+            required: false,
+            maxLength: 10,
+          })}
+          extra="Use format 1234567890"
+        />
+        {errors.phone && (
+          <Alert>
+            Please enter your phone number correctly
+          </Alert>
+        )}
+        <InputField
+          name="zip_code"
+          placeHolder="Zip Code"
+          type="tel"
+          register={register({
+            required: false,
+            maxLength: 5,
+          })}
+        />
+        {errors.zip_code && (
+          <Alert>Please enter your zip code</Alert>
+        )}
+        <InputField
+          name="age"
+          placeHolder="Age"
+          type="tel"
+          register={register({
+            required: false,
+            maxLength: 2,
+          })}
+        />
+        {errors.age && (
+          <Alert>Please enter your age</Alert>
+        )}
+        <DropDown
+          name="race"
+          ref={register({
+            required: false,
+          })}
+          label="Select an Ethnicity"
+          list={raceDropdown}
+        >
+        </DropDown>
+        {errors.race && (
+          <Alert>Please select your Ethnicity</Alert>
+        )}
+        <DropDown
+          name="gender"
+          ref={register({
+            required: false,
+          })}
+          label="Select a Gender"
+          list={genderDropdown}
+        >
+        </DropDown>
+        {errors.gender && (
+          <Alert>Please select your gender</Alert>
+        )}
       </AccountContain>
       <Submit>
         <ButtonField color="primary" onClick={handleSubmit(updateAccountInfo)}>
