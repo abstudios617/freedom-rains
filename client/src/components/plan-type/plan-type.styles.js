@@ -36,7 +36,7 @@ export const PlanMonthly = styled.button`
   }
 
   &.monthlyActive {
-    background: #14365B;
+    background: #008E3C;
     color: #fff;
     border-radius: 0 22px 22px 0;
   }
