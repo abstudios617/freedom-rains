@@ -1,5 +1,17 @@
 import styled from 'styled-components';
 
+export const Content = styled.div`
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+
+  span {
+    font-size: small;
+  }
+`;
+
 export const SubContent = styled.div`
   line-height: 32px;
   padding: 10px 20px;

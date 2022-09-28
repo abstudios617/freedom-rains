@@ -12,6 +12,7 @@ import {
   Submit, 
   AccountContain,
   SignIn,
+  Content
 } from './account.style';
 import {Container, Title, Alert} from '../../styles/global.style';
 import DropDown from '../../components/dropdown';
@@ -19,6 +20,7 @@ import FreedomLogo from '../../assets/icons/FreedomLogo.png';
 import LogoIcon from '../../components/logo-icons';
 import AccountMenu from '../../components/account-menu';
 import AccountMenuButton from '../../components/account-menu-button';
+import testIcon from '../../assets/header/group.png';
 
 const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   const userData = JSON.parse(getItem('accountInfo'));
@@ -111,6 +113,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     );
   });
 
+  // test for opening account info
+  const [showAccountInfo, setShowAccountInfo] = useState(false);
+
   if (!isLoggedIn) {
     return (
       <Container>
@@ -125,183 +130,209 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   }
 
   return (
-    <Container>
-      <AccountMenu>
-        <AccountMenuButton 
-          icon="O" 
-          title="Orders"
-          subtitle="Click here to view orders"
-        />
-        <AccountMenuButton 
-          icon="X" 
-          title="Settings"
-          subtitle="Click here for account settings"
-        />
-      </AccountMenu>
-      <Title>
-        <span>Account Info</span>
-      </Title>
-      {errMsg && <Alert>{errMsg}</Alert>}
-      <AccountContain>
-        <InputField
-          name="email"
-          placeHolder="Email"
-          type="email"
-          register={register({
-            required: false,
-            pattern:
-              /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-          })}
-        />
-        {errors.email && (
-          <Alert>
-            Please enter email address correctly
-          </Alert>
-        )}
-        <InputField
-          name="password"
-          placeHolder="Password"
-          type="password"
-          register={register({
-            required: false,
-          })}
-        />
-        <InputField
-          name="company"
-          placeHolder="Company"
-          type="text"
-          register={register({
-            required: false,
-          })}
-        />
-        <InputField
-          name="work_email"
-          placeHolder="Work Email"
-          type="tel"
-          register={register({
-            required: false,
-            pattern:
-              /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-          })}
-        />
-        <InputField
-          name="work_phone"
-          placeHolder="Work Phone Number"
-          type="tel"
-          register={register({
-            required: false,
-            maxLength: 10,
-          })}
-          extra="Use format 1234567890"
-        />
-        <InputField
-          name="first_name"
-          placeHolder="First Name"
-          type="text"
-          register={register({
-            required: false,
-          })}
-        />
-        {errors.first_name && (
-          <Alert>Please enter your first name</Alert>
-        )}
-        <InputField
-          name="last_name"
-          placeHolder="Last Name"
-          type="text"
-          register={register({
-            required: false,
-          })}
-        />
-        {errors.last_name && (
-          <Alert>Please enter your last name</Alert>
-        )}
-        <InputField
-          name="phone"
-          placeHolder="Phone Number"
-          type="tel"
-          register={register({
-            required: false,
-            maxLength: 10,
-          })}
-          extra="Use format 1234567890"
-        />
-        {errors.phone && (
-          <Alert>
-            Please enter your phone number correctly
-          </Alert>
-        )}
-        <InputField
-          name="zip_code"
-          placeHolder="Zip Code"
-          type="tel"
-          register={register({
-            required: false,
-            maxLength: 5,
-          })}
-        />
-        {errors.zip_code && (
-          <Alert>Please enter your zip code</Alert>
-        )}
-        <InputField
-          name="age"
-          placeHolder="Age"
-          type="tel"
-          register={register({
-            required: false,
-            maxLength: 2,
-          })}
-        />
-        {errors.age && (
-          <Alert>Please enter your age</Alert>
-        )}
-        <DropDown
-          name="race"
-          ref={register({
-            required: false,
-          })}
-          label="Select an Ethnicity"
-          list={raceDropdown}
-        >
-        </DropDown>
-        {errors.race && (
-          <Alert>Please select your Ethnicity</Alert>
-        )}
-        <DropDown
-          name="gender"
-          ref={register({
-            required: false,
-          })}
-          label="Select a Gender"
-          list={genderDropdown}
-        >
-        </DropDown>
-        {errors.gender && (
-          <Alert>Please select your gender</Alert>
-        )}
-      </AccountContain>
-      <Submit>
-        <ButtonField color="primary" onClick={handleSubmit(updateAccountInfo)}>
-          Save
-        </ButtonField>
-      </Submit>
-      {tokenReward ? 
-        (<ModalOneBtn
-          openModal={openModalOne}
-          closeModal={closeModal}
-          message1={'You have been rewarded 200 tokens!'}
-          message2={'Successfully updated your account.'}
-          hasBtn={false}
-        />)
-        :
-        (<ModalOneBtn
-          openModal={openModalOne}
-          closeModal={closeModal}
-          message1={'Successfully updated your account.'}
-          hasBtn={false}
-        />)
+    <>
+      {
+        /* DESIGN FOR ACCOUNT MENU, TAKE THIS WHENEVER NEEDED */
+        <AccountMenu>
+          <Content>
+            <h3>Hi *First Name*, welcome to your account!</h3>
+            <span>Thank you for supporting small and local businesses!</span>
+          </Content>
+          <AccountMenuButton 
+            icon={testIcon}
+            title="Likes"
+          />
+          <AccountMenuButton 
+            icon={testIcon}
+            title="Order History"
+            subtitle="Track your order status, view order history and receipts."
+          />
+          <AccountMenuButton 
+            icon={testIcon}
+            title="Games & Tokens"
+            subtitle="Games you've played and tokens you've earned!"
+          />
+          <AccountMenuButton 
+            icon={testIcon}
+            title="Account Info"
+            subtitle="Edit your addresses, contact information, and password here."
+            onclick={() => setShowAccountInfo(true)}
+          />
+          <AccountMenuButton 
+            icon={testIcon}
+            title="Sign Out"
+          />
+        </AccountMenu>
       }
-    </Container>
+      {
+        showAccountInfo &&
+        <Container>
+          <Title>
+            <span>Account Info</span>
+          </Title>
+          {errMsg && <Alert>{errMsg}</Alert>}
+          <AccountContain>
+            <InputField
+              name="email"
+              placeHolder="Email"
+              type="email"
+              register={register({
+                required: false,
+                pattern:
+                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+              })}
+            />
+            {errors.email && (
+              <Alert>
+                Please enter email address correctly
+              </Alert>
+            )}
+            <InputField
+              name="password"
+              placeHolder="Password"
+              type="password"
+              register={register({
+                required: false,
+              })}
+            />
+            <InputField
+              name="company"
+              placeHolder="Company"
+              type="text"
+              register={register({
+                required: false,
+              })}
+            />
+            <InputField
+              name="work_email"
+              placeHolder="Work Email"
+              type="tel"
+              register={register({
+                required: false,
+                pattern:
+                  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+              })}
+            />
+            <InputField
+              name="work_phone"
+              placeHolder="Work Phone Number"
+              type="tel"
+              register={register({
+                required: false,
+                maxLength: 10,
+              })}
+              extra="Use format 1234567890"
+            />
+            <InputField
+              name="first_name"
+              placeHolder="First Name"
+              type="text"
+              register={register({
+                required: false,
+              })}
+            />
+            {errors.first_name && (
+              <Alert>Please enter your first name</Alert>
+            )}
+            <InputField
+              name="last_name"
+              placeHolder="Last Name"
+              type="text"
+              register={register({
+                required: false,
+              })}
+            />
+            {errors.last_name && (
+              <Alert>Please enter your last name</Alert>
+            )}
+            <InputField
+              name="phone"
+              placeHolder="Phone Number"
+              type="tel"
+              register={register({
+                required: false,
+                maxLength: 10,
+              })}
+              extra="Use format 1234567890"
+            />
+            {errors.phone && (
+              <Alert>
+                Please enter your phone number correctly
+              </Alert>
+            )}
+            <InputField
+              name="zip_code"
+              placeHolder="Zip Code"
+              type="tel"
+              register={register({
+                required: false,
+                maxLength: 5,
+              })}
+            />
+            {errors.zip_code && (
+              <Alert>Please enter your zip code</Alert>
+            )}
+            <InputField
+              name="age"
+              placeHolder="Age"
+              type="tel"
+              register={register({
+                required: false,
+                maxLength: 2,
+              })}
+            />
+            {errors.age && (
+              <Alert>Please enter your age</Alert>
+            )}
+            <DropDown
+              name="race"
+              ref={register({
+                required: false,
+              })}
+              label="Select an Ethnicity"
+              list={raceDropdown}
+            >
+            </DropDown>
+            {errors.race && (
+              <Alert>Please select your Ethnicity</Alert>
+            )}
+            <DropDown
+              name="gender"
+              ref={register({
+                required: false,
+              })}
+              label="Select a Gender"
+              list={genderDropdown}
+            >
+            </DropDown>
+            {errors.gender && (
+              <Alert>Please select your gender</Alert>
+            )}
+          </AccountContain>
+          <Submit>
+            <ButtonField color="primary" onClick={handleSubmit(updateAccountInfo)}>
+              Save
+            </ButtonField>
+          </Submit>
+          {tokenReward ? 
+            (<ModalOneBtn
+              openModal={openModalOne}
+              closeModal={closeModal}
+              message1={'You have been rewarded 200 tokens!'}
+              message2={'Successfully updated your account.'}
+              hasBtn={false}
+            />)
+            :
+            (<ModalOneBtn
+              openModal={openModalOne}
+              closeModal={closeModal}
+              message1={'Successfully updated your account.'}
+              hasBtn={false}
+            />)
+          }
+        </Container>
+      }
+    </>
   );
 };
 

@@ -6,12 +6,12 @@ import {
   OuterFlexible
 } from './accountMenuButton.styles';
 
-const AccountMenuButton = ({ icon, title, subtitle }) => {
-  return (
+const AccountMenuButton = ({ icon, title, subtitle, onclick }) => {
+  const contents = (
     <AccountMenuButtonStyles>
       <OuterFlexible>
         <IconContainer>
-          {icon}
+          <img src={icon} alt="" />
         </IconContainer>
         <InnerFlexible>
           <span>{title}</span>
@@ -19,6 +19,12 @@ const AccountMenuButton = ({ icon, title, subtitle }) => {
         </InnerFlexible>
       </OuterFlexible>
     </AccountMenuButtonStyles>
+  );
+  
+  return (
+    <div onClick={onclick}>
+      {contents}
+    </div>
   );
 };
 
