@@ -1,16 +1,20 @@
 import React from 'react';
 import { OuterFlexible, InnerFlexible } from './accountInfoField.styles';
 
-const AccountInfoField = ({ detail, value, edit }) => {
+const AccountInfoField = ({ detail, text, id, name, onClick }) => {
   return (
     <OuterFlexible>
       <InnerFlexible>
         <small>{detail}</small>
-        <span>{value}</span>
+        <span>{text}</span>
       </InnerFlexible>
-      <div className="edit" onClick={edit}>
-        Edit
-      </div>
+      <input 
+        type="button" 
+        id={id} 
+        name={name}
+        value="Edit"
+        onClick={onClick}
+      />
     </OuterFlexible>
   );
 };

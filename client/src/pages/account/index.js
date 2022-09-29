@@ -115,8 +115,23 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     );
   });
 
-  // test for opening account info
+  /* account info visibility & editing account info fields */
   const [showAccountInfo, setShowAccountInfo] = useState(false);
+  const [editAccountInfo, setEditAccountInfo] = useState({
+    name: false,
+    email: false,
+    phoneNumber: false,
+    address: false,
+    password: false
+  });
+  const handleAccountInfoChange = (e) => {
+    const { name, id } = e.target;
+    setEditAccountInfo(prevState => ({
+      ...prevState,
+      [name]: !id
+    }));
+    console.log(editAccountInfo);
+  };
 
   if (!isLoggedIn) {
     return (
@@ -179,79 +194,185 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 edit a certain field; if true, pop up text field
               */
             }
-            <AccountInfoField
-              detail="Full Name"
-              value={
-                //(userData.first_name !== undefined && userData.last_name !== undefined) ?
-                //String(`${userData.first_name} ${userData.last_name}`) :
-                'FirstName LastName'
-              }
-              edit={false}
-            />
-            <AccountInfoField
-              detail="Email"
-              value={
-                //(userData.email !== undefined) ?
-                //userData.email :
-                'firstnamelastname@gmail.com'
-              }
-              edit={true}
-            />
-            <AccountInfoField
-              detail="Phone Number"
-              value={
-                //(userData.phone !== undefined) ?
-                //userData.phone :
-                '1234567890'
-              }
-              edit={false}
-            />
-            <AccountInfoField
-              detail="Address"
-              value={'Add Address'}
-              edit={false}
-            />
-            <AccountInfoField
-              detail="Password"
-              value={'************'}
-              edit={false}
-            />
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <div>
+                <AccountInfoField
+                  detail="Full Name"
+                  text={
+                    //(userData.first_name !== undefined && userData.last_name !== undefined) ?
+                    //String(`${userData.first_name} ${userData.last_name}`) :
+                    'FirstName LastName'
+                  }
+                  name="name"
+                  id={editAccountInfo.name}
+                  onClick={handleAccountInfoChange}
+                />
+                {
+                  editAccountInfo.name &&
+                  <>
+                    <InputField
+                      name="first_name"
+                      placeHolder="First Name"
+                      type="text"
+                      register={register({
+                        required: false,
+                      })}
+                    />
+                    {errors.first_name && (
+                      <Alert>
+                        Please enter your first name
+                      </Alert>
+                    )}
+                    <InputField
+                      name="last_name"
+                      placeHolder="Last Name"
+                      type="text"
+                      register={register({
+                        required: false,
+                      })}
+                    />
+                    {errors.last_name && (
+                      <Alert>
+                        Please enter your last name
+                      </Alert>
+                    )}
+                  </>
+                }
+                <AccountInfoField
+                  detail="Email"
+                  text={
+                    //(userData.email !== undefined) ?
+                    //userData.email :
+                    'firstnamelastname@gmail.com'
+                  }
+                  name="email"
+                  id={editAccountInfo.email}
+                  onClick={handleAccountInfoChange}
+                />
+                {
+                  editAccountInfo.email &&
+                  <>
+                    <InputField
+                      name="email"
+                      placeHolder="Email"
+                      type="email"
+                      register={register({
+                        required: false,
+                        pattern:
+                          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                      })}
+                    />
+                    {errors.email && (
+                      <Alert>
+                        Please enter email address correctly
+                      </Alert>
+                    )}
+                  </>
+                }
+                <AccountInfoField
+                  detail="Phone Number"
+                  text={
+                    //(userData.phone !== undefined) ?
+                    //userData.phone :
+                    '1234567890'
+                  }
+                  name="phoneNumber"
+                  id={editAccountInfo.phoneNumber}
+                  onClick={handleAccountInfoChange}
+                />
+                {
+                  editAccountInfo.phoneNumber &&
+                  <>
+                    <InputField
+                      name="phone"
+                      placeHolder="Phone Number"
+                      type="tel"
+                      register={register({
+                        required: false,
+                        maxLength: 10,
+                      })}
+                      extra="Use format 1234567890"
+                    />
+                    {errors.phone && (
+                      <Alert>
+                        Please enter your phone number correctly
+                      </Alert>
+                    )}
+                  </>
+                }
+                <AccountInfoField
+                  detail="Address"
+                  text={'Add Address'}
+                  name="address"
+                  id={editAccountInfo.address}
+                  onClick={handleAccountInfoChange}
+                />
+                {
+                  editAccountInfo.address &&
+                  <>
+                    <InputField
+                      name="zip_code"
+                      placeHolder="Zip Code"
+                      type="tel"
+                      register={register({
+                        required: false,
+                        maxLength: 5,
+                      })}
+                    />
+                    {errors.zip_code && (
+                      <Alert>Please enter your zip code</Alert>
+                    )}
+                  </>
+                }
+                <AccountInfoField
+                  detail="Password"
+                  text={'************'}
+                  name="password"
+                  id={editAccountInfo.password}
+                  onClick={handleAccountInfoChange}
+                />
+                {
+                  editAccountInfo.password &&
+                  <InputField
+                    name="password"
+                    placeHolder="Password"
+                    type="password"
+                    register={register({
+                      required: false,
+                    })}
+                  />
+                }
+              </div>
+              <div>
+                <AccountInfoSpecial
+                  icon={testIcon}
+                  detail="Shopping Preference"
+                />
+                <AccountInfoSpecial
+                  icon={testIcon}
+                  detail="Delete Account"
+                />
+              </div>
+            </div>
 
-            <AccountInfoSpecial 
-              icon={testIcon}
-              detail="Shopping Preference"
-            />
-            <AccountInfoSpecial 
-              icon={testIcon}
-              detail="Delete Account"
-            />
+            <br />
+
+            {/* Communication preferences */}
+            <Title>
+              <span>Communication & Privacy Policies</span>
+            </Title>
+
+
+            <br />
 
             {/* contents for old account info page (all fields)*/}
+            <Title>
+              <span>(Old Stuff)</span>
+            </Title>
             {errMsg && <Alert>{errMsg}</Alert>}
             <AccountContain>
-              <InputField
-                name="email"
-                placeHolder="Email"
-                type="email"
-                register={register({
-                  required: false,
-                  pattern:
-                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                })}
-              />
-              {errors.email && (
-                <Alert>
-                  Please enter email address correctly
-                </Alert>
-              )}
-              <InputField
-                name="password"
-                placeHolder="Password"
-                type="password"
-                register={register({
-                  required: false,
-                })}
-              />
+
+
               <InputField
                 name="company"
                 placeHolder="Company"
@@ -280,55 +401,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 })}
                 extra="Use format 1234567890"
               />
-              <InputField
-                name="first_name"
-                placeHolder="First Name"
-                type="text"
-                register={register({
-                  required: false,
-                })}
-              />
-              {errors.first_name && (
-                <Alert>Please enter your first name</Alert>
-              )}
-              <InputField
-                name="last_name"
-                placeHolder="Last Name"
-                type="text"
-                register={register({
-                  required: false,
-                })}
-              />
-              {errors.last_name && (
-                <Alert>Please enter your last name</Alert>
-              )}
-              <InputField
-                name="phone"
-                placeHolder="Phone Number"
-                type="tel"
-                register={register({
-                  required: false,
-                  maxLength: 10,
-                })}
-                extra="Use format 1234567890"
-              />
-              {errors.phone && (
-                <Alert>
-                  Please enter your phone number correctly
-                </Alert>
-              )}
-              <InputField
-                name="zip_code"
-                placeHolder="Zip Code"
-                type="tel"
-                register={register({
-                  required: false,
-                  maxLength: 5,
-                })}
-              />
-              {errors.zip_code && (
-                <Alert>Please enter your zip code</Alert>
-              )}
+
+
+
               <InputField
                 name="age"
                 placeHolder="Age"
