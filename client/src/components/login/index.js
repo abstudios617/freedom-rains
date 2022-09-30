@@ -25,9 +25,11 @@ const Login = ({ redirect, setIsLoggedIn }) => {
   const sendContactInfo = async () => {
     const values = getValues();
 
+    // Returns a Cookie
     const isSignedIn = await signIn(values);
+    document.cookie = `token=${isSignedIn.token}; path= '/'; httpOnly; secure;`
 
-    if (isSignedIn.statusCode === 200) {
+    if (isSignedIn.statusCode === 201) { // 201 because backend returns 201 for sign-in success with cookies
       await setUserData(isSignedIn);
       setIsLoggedIn(true);
       targetPage(redirect);

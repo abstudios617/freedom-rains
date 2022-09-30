@@ -2,18 +2,12 @@ import { getItem, setItem, targetPage } from './index';
 import { addEvent } from '../requests/analytics-request';
 import { updateTokens } from '../requests/api-request';
 
-export const getUserToken = () => {
-  const userInfo = getItem('loggedIn');
-
-  return userInfo ? JSON.parse(userInfo).token : null;
-};
-
 export const setUserAccount = (account) => {
   setItem(
     'accountInfo',
     JSON.stringify({
       userInfo: account,
-      pwd: account.pwd,
+      password: account.password,
       first_name: account.first_name,
       last_name: account.last_name,
       email: account.email,
@@ -36,8 +30,7 @@ export const updateUserTokens = async (tokenCount, tasks) => {
     {
       total: total,
       tasks: tasks,
-    },
-    getUserToken()
+    }
   );
 
   if (availableTokens.statusCode === 200) {

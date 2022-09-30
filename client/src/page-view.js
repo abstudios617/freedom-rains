@@ -30,18 +30,27 @@ import AboutUs from './pages/about-us';
 import PricingPage from './pages/pricing';
 import Watch from './pages/watch';
 import FourOFour from './pages/404';
-import { getUserToken } from './utils/account-utils';
 import Merch from './pages/merch';
 import CustomerService from './pages/customer-service';
 import ShopSearch from './pages/shop-search';
 import Game from './pages/game';
+
+function getLoginToken() {
+  const loginToken = document.cookie.substring(
+    document.cookie.indexOf("token=") + "token=".length, 
+    document.cookie.indexOf(";", document.cookie.indexOf("token="))
+  );
+  return loginToken;
+}
 
 const PageView = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [updateTokens, setUpdateTokens] = useState(false);
 
   const checkIsLoggedIn = async () => {
-    const userToken = await getUserToken();
+    // REDO LOGIC FOR CHECKISLOGGEDIN
+    // const userToken = await getUserToken();
+    const userToken = getLoginToken();
 
     if (userToken) {
       const { exp } = jwt_decode(userToken);

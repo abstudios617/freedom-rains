@@ -1,4 +1,4 @@
-import { getUserInfo } from '../requests/api-request';
+import { createCommunityUser, getCommunityInfo, getUserInfo } from '../requests/api-request';
 import { setUserAccount } from './account-utils';
 import useSSR from 'use-ssr';
 
@@ -67,7 +67,7 @@ export const resetCache = () => {
 
 export const setUserData = async (loggedInData) => {
   setItem('loggedIn', JSON.stringify(loggedInData));
-  const userData = await getUserInfo(loggedInData.token);
+  const userData = await getUserInfo();
 
   setUserAccount(userData);
 
@@ -75,11 +75,27 @@ export const setUserData = async (loggedInData) => {
 
   setItem('favorites', userData.favorites || JSON.stringify([]));
 
-  setItem('tokens', userData.tokens);
-
-  setItem('unlockedItems', userData.locked);
-
-  setItem('tasks', userData.tasks);
+  
+  /* The three items below are from community_tokens */
+  const communityData = await getCommunityInfo();
+  if (communityData.statusCode === 200)
+  {
+    setItem('tokens', communityData.tokens);
+    setItem('unlockedItems', communityData.locked);
+    setItem('tasks', communityData.tasks);
+  }
+  else if (communityData.statusCode === 500) // New User...
+  {
+    const defValues = {
+      tokens: "0",
+      locked: JSON.stringify({}),
+      tasks: JSON.stringify({})
+    }
+    const makeCommunityData = await createCommunityUser(defValues);
+    setItem('tokens', makeCommunityData.tokens);
+    setItem('unlockedItems', makeCommunityData.locked);
+    setItem('tasks', makeCommunityData.tasks);
+  }
 };
 
 export const targetPage = (page) => {
