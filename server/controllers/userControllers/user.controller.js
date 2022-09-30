@@ -52,8 +52,8 @@ module.exports.addUser = async (req, res) => { // Dons not need jwt anymore
   const existingUser = await knex('users').where({ email: req.body.email }).first();
   if (existingUser) {
     return res.status(400).json({
-      type: "ExistingUser",
-      message: "User Already Exists With This Email"
+      type: 'ExistingUser',
+      message: 'User Already Exists With This Email'
     });
   }
   // const {} = req.body;
