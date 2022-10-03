@@ -98,6 +98,9 @@ export const setUserData = async (loggedInData) => {
   }
 };
 
+//This Function is outdated. Instead of using target page. 
+//We should be using the <Link to=""> anytime we want to link to something
+//Programmatically we should be using History()
 export const targetPage = (page) => {
   if (!isBrowser) {
     return false;

@@ -1,16 +1,9 @@
 import styled from 'styled-components';
 
 export const BtnField = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-  gap: 10px;
-  margin: 10px;
   border-color: #1988FF;
   border: 1px solid;
-  width: 150px;
+  width: 75px;
   height: 35px;
   background: #1988FF;
   border-radius: 7px;
