@@ -6,15 +6,18 @@ export const OuterFlexible = styled.div`
     padding: 1em;
     width: 600px;
 
-    .edit {
-        font-weight: 700;
-        cursor: pointer;
-        margin-top: 2.75em;
-        margin-left: 5%;
+    input {
+        height: fit-content;
+        margin-top: 4em;
+        background: none;
+        border: none;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
         text-decoration: underline;
 
         &:hover {
-            color: darkgray;
+            color: rgba(0, 0, 0, 80%);
+            cursor: pointer;
         }
     }
 `;

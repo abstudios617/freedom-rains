@@ -2,11 +2,13 @@ import styled from 'styled-components';
 
 export const AccountInfoSpecialStyles = styled.div`
     padding: 1em;
-    margin: 0.5em;
+    margin: 1em;
+    margin-left: -1em;
     background-color: lightgray;
     height: fit-content;
-    width: 25%;
+    width: 50%;
     font-weight: bold;
+    font-size: small;
 
     display: flex;
     flex-direction: row;

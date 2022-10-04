@@ -130,7 +130,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       ...prevState,
       [name]: !id
     }));
-    console.log(editAccountInfo);
   };
 
   if (!isLoggedIn) {
@@ -204,11 +203,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     'FirstName LastName'
                   }
                   name="name"
-                  id={editAccountInfo.name}
                   onClick={handleAccountInfoChange}
                 />
                 {
-                  editAccountInfo.name &&
                   <>
                     <InputField
                       name="first_name"
@@ -217,6 +214,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                       register={register({
                         required: false,
                       })}
+                      show={editAccountInfo.name}
                     />
                     {errors.first_name && (
                       <Alert>
@@ -230,6 +228,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                       register={register({
                         required: false,
                       })}
+                      show={editAccountInfo.name}
                     />
                     {errors.last_name && (
                       <Alert>
@@ -246,11 +245,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     'firstnamelastname@gmail.com'
                   }
                   name="email"
-                  id={editAccountInfo.email}
                   onClick={handleAccountInfoChange}
                 />
                 {
-                  editAccountInfo.email &&
                   <>
                     <InputField
                       name="email"
@@ -261,6 +258,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                         pattern:
                           /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                       })}
+                      show={editAccountInfo.email}
                     />
                     {errors.email && (
                       <Alert>
@@ -277,11 +275,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     '1234567890'
                   }
                   name="phoneNumber"
-                  id={editAccountInfo.phoneNumber}
                   onClick={handleAccountInfoChange}
                 />
                 {
-                  editAccountInfo.phoneNumber &&
                   <>
                     <InputField
                       name="phone"
@@ -292,6 +288,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                         maxLength: 10,
                       })}
                       extra="Use format 1234567890"
+                      show={editAccountInfo.phoneNumber}
                     />
                     {errors.phone && (
                       <Alert>
@@ -304,11 +301,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   detail="Address"
                   text={'Add Address'}
                   name="address"
-                  id={editAccountInfo.address}
                   onClick={handleAccountInfoChange}
                 />
                 {
-                  editAccountInfo.address &&
                   <>
                     <InputField
                       name="zip_code"
@@ -318,6 +313,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                         required: false,
                         maxLength: 5,
                       })}
+                      show={editAccountInfo.address}
                     />
                     {errors.zip_code && (
                       <Alert>Please enter your zip code</Alert>
@@ -328,11 +324,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   detail="Password"
                   text={'************'}
                   name="password"
-                  id={editAccountInfo.password}
                   onClick={handleAccountInfoChange}
                 />
                 {
-                  editAccountInfo.password &&
                   <InputField
                     name="password"
                     placeHolder="Password"
@@ -340,6 +334,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     register={register({
                       required: false,
                     })}
+                    show={editAccountInfo.password}
                   />
                 }
               </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { OuterFlexible, InnerFlexible } from './accountInfoField.styles';
 
-const AccountInfoField = ({ detail, text, id, name, onClick }) => {
+const AccountInfoField = ({ detail, text, name, onClick }) => {
   return (
     <OuterFlexible>
       <InnerFlexible>
@@ -10,7 +10,6 @@ const AccountInfoField = ({ detail, text, id, name, onClick }) => {
       </InnerFlexible>
       <input 
         type="button" 
-        id={id} 
         name={name}
         value="Edit"
         onClick={onClick}
