@@ -1,18 +1,11 @@
 import React, { useState } from 'react';
 import ButtonField from '../../components/button-field';
 import helperPerson from '../../assets/services/helper-person.png';
-import processPeople from '../../assets/services/process.png';
-import testimony from '../../assets/services/testimony.png';
-import stars from '../../assets/services/stars.png';
-import userPic from '../../assets/services/user-pic.png';
 import numberOne from '../../assets/services/number-one.png';
 import {
   businessService,
   helpedService,
-  adsService,
-  processService,
 } from '../../constants/services';
-import Pricing from '../../components/pricing';
 import ContactUs from '../../components/contact-us';
 import { 
   Title,
@@ -27,41 +20,19 @@ import {
   HelpLink,
   ServiceContainer,
   ServiceItemWrapper,
-  AdsItemWrapper,
   ServiceItem,
   ServiceItemTitle,
   ProductContainer,
-  AdsContainer,
-  ProcessContainer,
   ProductItem,
   ProductItemTitle,
-  AdsItemTitle,
   ProductItemDescription,
-  AdsItemDescription,
-  AdsItem, 
-  ProcessItemWrapper,
-  ProcessItemImage,
-  ProcessItemContent,
-  ProcessItem,
-  ProcessItemTitle,
-  ProcessItemDescription,
-  Quote,
-  QuoteMessage,
-  QuoteTag,
-  TestimonyContainer,
-  TestimonyContainerImage,
-  TestimonyItemWrapper,
-  TestimonyItemLabel,
-  TestimonyItemUser,
-  TestimonyItemUserContent,
-  TestimonyItemUserTitle,
-  TestimonyItemUserDescription,
   ProductItemImg,
   PortfolioCarouselContainer,
   PortfolioTitle,
 } from './forBusiness.style';
 import {Container} from '../../styles/global.style';
 import ResponsiveCarouselArrows from '../../components/responsive-carousel-arrows';
+import AboutUsPricing from '../../components/aboutusPricing';
 
 const ForBusiness = () => {
   const [freeAccount, setFreeAccount] = useState(false);
@@ -84,36 +55,6 @@ const ForBusiness = () => {
         <ProductItemTitle>{item.name}</ProductItemTitle>
         <ProductItemDescription>{item.descript}</ProductItemDescription>
       </ProductItem>
-    );
-  });
-
-  const commercials = adsService.map((item) => {
-    return (
-      <AdsItem key={item.name}>
-        <AdsItemTitle>{item.name}</AdsItemTitle>
-        <AdsItemDescription>{item.descript}</AdsItemDescription>
-        <iframe
-          width="560"
-          height="315"
-          src={item.video}
-          title={item.name}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </AdsItem>
-    );
-  });
-
-  const process = processService.map((item) => {
-    return (
-      <ProcessItem key={item.name}>
-        <img src={item.image} alt={item.name} />
-        <div>
-          <ProcessItemTitle>{item.name}</ProcessItemTitle>
-          <ProcessItemDescription>{item.descript}</ProcessItemDescription>
-        </div>
-      </ProcessItem>
     );
   });
 
@@ -177,65 +118,7 @@ const ForBusiness = () => {
           />
         </PortfolioCarouselContainer>
       </ProductContainer>
-      <AdsContainer>
-        <Title>Ads &amp; Commercials Created</Title>
-        <AdsItemWrapper>{commercials}</AdsItemWrapper>
-      </AdsContainer>
-      <ProcessContainer>
-        <Title>Our Local Process</Title>
-        <ProcessItemWrapper>
-          <ProcessItemImage
-            src={processPeople}
-            alt="people processing"
-          />
-          <ProcessItemContent>
-            <Description>
-              Every project is designed to the specifications of our clients! We
-              ensure the best practices for the most efficient results.
-            </Description>
-            {process}
-          </ProcessItemContent>
-        </ProcessItemWrapper>
-        <ButtonField color="primary" onClick={sendToPricing}>
-          Start Today!
-        </ButtonField>
-      </ProcessContainer>
-      <TestimonyContainer>
-        <TestimonyContainerImage
-          src={testimony}
-          alt="granbury website"
-        />
-        <TestimonyItemWrapper>
-          <Title>Customer Testimonial</Title>
-          <TestimonyItemLabel>
-            Great Work Start to Finish!
-          </TestimonyItemLabel>
-          <img src={stars} alt="5 stars" />
-          <Description>
-            I love working with ABS becuase they are extremely knowledgable,
-            thorough and took the time to understand my market. Now they help my
-            business with SEO &amp; Social Media Marketing too. Thanks for the
-            website upgrade!
-          </Description>
-          <TestimonyItemUser>
-            <img src={userPic} alt="user profile" />
-            <TestimonyItemUserContent>
-              <TestimonyItemUserTitle>Betsy Kruger</TestimonyItemUserTitle>
-              <TestimonyItemUserDescription>
-                Granbury Gardens
-              </TestimonyItemUserDescription>
-            </TestimonyItemUserContent>
-          </TestimonyItemUser>
-        </TestimonyItemWrapper>
-      </TestimonyContainer>
-      <Quote>
-        <QuoteMessage>
-          We&lsquo;re a local creative agency that uses design and code to solve
-          problems.
-        </QuoteMessage>
-        <QuoteTag>- The ABS Team</QuoteTag>
-      </Quote>
-      <Pricing freeAccount={freeAccount}/>
+      <AboutUsPricing freeAccount={freeAccount}></AboutUsPricing>
       <div id="contact">
         <ContactUs />
       </div>

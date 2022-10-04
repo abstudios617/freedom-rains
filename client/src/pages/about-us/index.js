@@ -143,12 +143,6 @@ const AboutUs = () => {
           We build and use strategies to drive digital growth and expand customer reach so you can focus on growing your business!
         </IntroductionDescription>
       </IntroductionContainer>
-      <BrowseContainer>
-        <a href="/forbusiness#products">
-          Browse Our Past Work
-        </a>
-      </BrowseContainer>
-      <BorderContainer></BorderContainer>
       <SectionTitleContainer>
         <SectionTitle>Service We Provide</SectionTitle>
       </SectionTitleContainer>
