@@ -4,7 +4,7 @@ module.exports.createOneCommunityUser = async (req, res) => { // Creates Communi
   knex('users').select('user_id').where({ email: req.user.email }).then((id) => {
     knex('community_tokens').where({ user_id: id[0].user_id }).then(user => {
       if (user.length) { // User Exists Already
-        res.status(500).json({ message: 'User Already Exists!', err: 'Community User Exists' });
+        res.status(400).json({ message: 'User Already Exists!', err: 'Community User Exists' });
       } else { // Makes New User
         knex('community_tokens')
           .insert({
