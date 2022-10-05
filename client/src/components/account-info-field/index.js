@@ -22,14 +22,16 @@ export const AccountInfoField = ({ detail, text, name, onClick }) => {
   );
 };
 
-export const AccountInfoSpecial = ({ icon, detail }) => {
+export const AccountInfoSpecial = ({ icon, detail, onClick }) => {
   return (
-    <AccountInfoSpecialStyles>
-      <img src={icon} alt="" />
-      <span>
-        {detail}
-      </span>
-      <div>{'>'}</div>
-    </AccountInfoSpecialStyles>
+    <div onClick={onClick}>
+      <AccountInfoSpecialStyles>
+        <img src={icon} alt="" />
+        <span>
+          {detail}
+        </span>
+        <div>{'>'}</div>
+      </AccountInfoSpecialStyles>
+    </div>
   );
 };

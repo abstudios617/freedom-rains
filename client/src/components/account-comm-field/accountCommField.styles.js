@@ -44,8 +44,14 @@ export const AccountCommFieldStyles = styled.div`
 export const AccountCommFieldChildren = styled.div`
     display: ${props => props.show !== false ? 'flex' : 'none'};
     flex-direction: column;
-
     width: 720px;
-
     padding: 0.5em;
+
+    .marketing-checkbox {
+        font-weight: bold;
+        input {
+            margin: 0.5em;
+            width: 150px;
+        }
+    }
 `;

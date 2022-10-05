@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { raceOptions, genderOptions } from '../../constants/account';
 import { updateAccount } from '../../requests/api-request';
-import { getItem, setItem } from '../../utils/index';
+import { getItem, setItem, targetPage } from '../../utils/index';
 import InputField from '../../components/input-field';
 import { useForm } from 'react-hook-form';
 import ButtonField from '../../components/button-field';
 import ModalOneBtn from '../../components/modal-one-btn';
 import Login from '../../components/login';
-import { 
-  getUserToken, setUserAccount, updateUserTokens 
+import {
+  getUserToken, setUserAccount, updateUserTokens
 } from '../../utils/account-utils';
 import {
   Submit,
@@ -29,6 +29,7 @@ import {
   AccountInfoField, AccountInfoSpecial
 } from '../../components/account-info-field';
 import AccountCommField from '../../components/account-comm-field';
+import DeleteAccount from '../../components/account-delete';
 import testIcon from '../../assets/header/group.png';
 
 const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
@@ -150,6 +151,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       [name]: !id
     }));
   };
+
+  const [showDeleteAccount, setShowDeleteAccount] = useState(false);
+  const [showDeleteModal, setDeleteModal] = useState(false);
 
   if (!isLoggedIn) {
     return (
@@ -351,10 +355,12 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 <AccountInfoSpecial
                   icon={testIcon}
                   detail="Shopping Preference"
+                  onClick={() => targetPage('preferences')}
                 />
                 <AccountInfoSpecial
                   icon={testIcon}
                   detail="Delete Account"
+                  onClick={() => setShowDeleteAccount(true)}
                 />
               </div>
             </AccountInfoContainer>
@@ -366,7 +372,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
               <span>Communication & Privacy Policies</span>
             </Title>
             <AccountCommContainer>
-              <AccountCommField 
+              <AccountCommField
                 title="Marketing Emails"
                 name="marketing"
                 onClick={handleCommInfoChange}
@@ -378,12 +384,21 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 </p>
                 <p>Receive marketing emails</p>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <input />
-                  <input />
-                  <input />
+                  <div className="marketing-checkbox">
+                    <input type="checkbox" id="marketing-email" name="marketing-email" />
+                    <label htmlFor="marketing-email">Yes! I want emails about savings, new items, and more!</label>
+                  </div>
+                  <div className="marketing-checkbox">
+                    <input type="checkbox" id="marketing-review" name="marketing-review" />
+                    <label htmlFor="marketing-review">Requests to rate and review products you&lsquo;ve offered</label>
+                  </div>
+                  <div className="marketing-checkbox">
+                    <input type="checkbox" id="marketing-invite" name="marketing-invite" />
+                    <label htmlFor="marketing-invite">Invitation to take customer surveys</label>
+                  </div>
                 </div>
               </AccountCommField>
-              <AccountCommField 
+              <AccountCommField
                 title="Information Sharing"
                 name="sharing"
                 onclick={handleCommInfoChange}
@@ -391,7 +406,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
               >
                 TEST
               </AccountCommField>
-              <AccountCommField 
+              <AccountCommField
                 title="Store Purchases"
                 name="purchases"
                 onClick={handleCommInfoChange}
@@ -401,7 +416,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
               </AccountCommField>
             </AccountCommContainer>
 
-
             <br />
 
             {/* contents for old account info page (all fields)*/}
@@ -410,8 +424,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
             </Title>
             {errMsg && <Alert>{errMsg}</Alert>}
             <AccountContain>
-
-
               <InputField
                 name="company"
                 placeHolder="Company"
@@ -440,9 +452,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 })}
                 extra="Use format 1234567890"
               />
-
-
-
               <InputField
                 name="age"
                 placeHolder="Age"
@@ -500,6 +509,27 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 message1={'Successfully updated your account.'}
                 hasBtn={false}
               />)
+            }
+            {
+              <br />
+              /* DELETE ACCOUNT: showing design for now, will maybe add to a seperate page eventually! */
+            }
+            {
+              showDeleteAccount &&
+              <>
+                <Title>
+                  <span>Delete Account (TEST)</span>
+                </Title>
+                <DeleteAccount 
+                  onClick={() => setDeleteModal(true)}
+                />
+              </>
+            }
+            {
+              showDeleteModal &&
+              <>
+                {'Account deleted!'}
+              </>
             }
           </Container>
         }
