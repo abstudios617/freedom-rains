@@ -1,7 +1,11 @@
 import React from 'react';
-import { OuterFlexible, InnerFlexible } from './accountInfoField.styles';
+import { 
+  OuterFlexible, 
+  InnerFlexible,
+  AccountInfoSpecialStyles
+} from './accountInfoField.styles';
 
-const AccountInfoField = ({ detail, text, name, onClick }) => {
+export const AccountInfoField = ({ detail, text, name, onClick }) => {
   return (
     <OuterFlexible>
       <InnerFlexible>
@@ -18,4 +22,14 @@ const AccountInfoField = ({ detail, text, name, onClick }) => {
   );
 };
 
-export default AccountInfoField;
+export const AccountInfoSpecial = ({ icon, detail }) => {
+  return (
+    <AccountInfoSpecialStyles>
+      <img src={icon} alt="" />
+      <span>
+        {detail}
+      </span>
+      <div>{'>'}</div>
+    </AccountInfoSpecialStyles>
+  );
+};

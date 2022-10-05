@@ -94,7 +94,6 @@ export const AccountContain = styled.div`
   }
 `;
 
-
 export const SignIn = styled.div`
   font-family: 'Montserrat', sans-serif;                                              
   font-weight: bold;
@@ -102,5 +101,11 @@ export const SignIn = styled.div`
   line-height: 27px;
   line-height: 100%;
   vertical-align: top;
-
 `;
+
+export const AccountInfoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const AccountCommContainer = styled.div``;

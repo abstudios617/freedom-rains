@@ -7,21 +7,28 @@ import { useForm } from 'react-hook-form';
 import ButtonField from '../../components/button-field';
 import ModalOneBtn from '../../components/modal-one-btn';
 import Login from '../../components/login';
-import { getUserToken, setUserAccount, updateUserTokens } from '../../utils/account-utils';
+import { 
+  getUserToken, setUserAccount, updateUserTokens 
+} from '../../utils/account-utils';
 import {
   Submit,
   AccountContain,
   SignIn,
-  Content
+  Content,
+  AccountInfoContainer,
+  AccountCommContainer
 } from './account.style';
 import { Container, Title, Alert } from '../../styles/global.style';
 import DropDown from '../../components/dropdown';
 import FreedomLogo from '../../assets/icons/FreedomLogo.png';
 import LogoIcon from '../../components/logo-icons';
-import AccountMenu from '../../components/account-menu';
-import AccountMenuButton from '../../components/account-menu-button';
-import AccountInfoField from '../../components/account-info-field';
-import AccountInfoSpecial from '../../components/account-info-special';
+import {
+  AccountMenu, AccountMenuButton
+} from '../../components/account-menu';
+import {
+  AccountInfoField, AccountInfoSpecial
+} from '../../components/account-info-field';
+import AccountCommField from '../../components/account-comm-field';
 import testIcon from '../../assets/header/group.png';
 
 const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
@@ -115,7 +122,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     );
   });
 
-  /* account info visibility & editing account info fields */
   const [showAccountInfo, setShowAccountInfo] = useState(false);
   const [editAccountInfo, setEditAccountInfo] = useState({
     name: false,
@@ -126,7 +132,20 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   });
   const handleAccountInfoChange = (e) => {
     const { name, id } = e.target;
-    setEditAccountInfo(prevState => ({
+    setEditAccountInfo((prevState) => ({
+      ...prevState,
+      [name]: !id
+    }));
+  };
+
+  const [editCommInfo, setEditCommInfo] = useState({
+    marketing: false,
+    sharing: false,
+    purchases: false
+  });
+  const handleCommInfoChange = (e) => {
+    const { name, id } = e.target;
+    setEditCommInfo((prevState) => ({
       ...prevState,
       [name]: !id
     }));
@@ -193,7 +212,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 edit a certain field; if true, pop up text field
               */
             }
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <AccountInfoContainer>
               <div>
                 <AccountInfoField
                   detail="Full Name"
@@ -205,38 +224,36 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   name="name"
                   onClick={handleAccountInfoChange}
                 />
-                {
-                  <>
-                    <InputField
-                      name="first_name"
-                      placeHolder="First Name"
-                      type="text"
-                      register={register({
-                        required: false,
-                      })}
-                      show={editAccountInfo.name}
-                    />
-                    {errors.first_name && (
-                      <Alert>
-                        Please enter your first name
-                      </Alert>
-                    )}
-                    <InputField
-                      name="last_name"
-                      placeHolder="Last Name"
-                      type="text"
-                      register={register({
-                        required: false,
-                      })}
-                      show={editAccountInfo.name}
-                    />
-                    {errors.last_name && (
-                      <Alert>
-                        Please enter your last name
-                      </Alert>
-                    )}
-                  </>
-                }
+                <>
+                  <InputField
+                    name="first_name"
+                    placeHolder="First Name"
+                    type="text"
+                    register={register({
+                      required: false,
+                    })}
+                    show={editAccountInfo.name}
+                  />
+                  {errors.first_name && (
+                    <Alert>
+                      Please enter your first name
+                    </Alert>
+                  )}
+                  <InputField
+                    name="last_name"
+                    placeHolder="Last Name"
+                    type="text"
+                    register={register({
+                      required: false,
+                    })}
+                    show={editAccountInfo.name}
+                  />
+                  {errors.last_name && (
+                    <Alert>
+                      Please enter your last name
+                    </Alert>
+                  )}
+                </>
                 <AccountInfoField
                   detail="Email"
                   text={
@@ -247,26 +264,24 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   name="email"
                   onClick={handleAccountInfoChange}
                 />
-                {
-                  <>
-                    <InputField
-                      name="email"
-                      placeHolder="Email"
-                      type="email"
-                      register={register({
-                        required: false,
-                        pattern:
-                          /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                      })}
-                      show={editAccountInfo.email}
-                    />
-                    {errors.email && (
-                      <Alert>
-                        Please enter email address correctly
-                      </Alert>
-                    )}
-                  </>
-                }
+                <>
+                  <InputField
+                    name="email"
+                    placeHolder="Email"
+                    type="email"
+                    register={register({
+                      required: false,
+                      pattern:
+                        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                    })}
+                    show={editAccountInfo.email}
+                  />
+                  {errors.email && (
+                    <Alert>
+                      Please enter email address correctly
+                    </Alert>
+                  )}
+                </>
                 <AccountInfoField
                   detail="Phone Number"
                   text={
@@ -277,66 +292,60 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   name="phoneNumber"
                   onClick={handleAccountInfoChange}
                 />
-                {
-                  <>
-                    <InputField
-                      name="phone"
-                      placeHolder="Phone Number"
-                      type="tel"
-                      register={register({
-                        required: false,
-                        maxLength: 10,
-                      })}
-                      extra="Use format 1234567890"
-                      show={editAccountInfo.phoneNumber}
-                    />
-                    {errors.phone && (
-                      <Alert>
-                        Please enter your phone number correctly
-                      </Alert>
-                    )}
-                  </>
-                }
+                <>
+                  <InputField
+                    name="phone"
+                    placeHolder="Phone Number"
+                    type="tel"
+                    register={register({
+                      required: false,
+                      maxLength: 10,
+                    })}
+                    extra="Use format 1234567890"
+                    show={editAccountInfo.phoneNumber}
+                  />
+                  {errors.phone && (
+                    <Alert>
+                      Please enter your phone number correctly
+                    </Alert>
+                  )}
+                </>
                 <AccountInfoField
                   detail="Address"
                   text={'Add Address'}
                   name="address"
                   onClick={handleAccountInfoChange}
                 />
-                {
-                  <>
-                    <InputField
-                      name="zip_code"
-                      placeHolder="Zip Code"
-                      type="tel"
-                      register={register({
-                        required: false,
-                        maxLength: 5,
-                      })}
-                      show={editAccountInfo.address}
-                    />
-                    {errors.zip_code && (
-                      <Alert>Please enter your zip code</Alert>
-                    )}
-                  </>
-                }
+                <>
+                  <InputField
+                    name="zip_code"
+                    placeHolder="Zip Code"
+                    type="tel"
+                    register={register({
+                      required: false,
+                      maxLength: 5,
+                    })}
+                    show={editAccountInfo.address}
+                  />
+                  {errors.zip_code && (
+                    <Alert>Please enter your zip code</Alert>
+                  )}
+                </>
                 <AccountInfoField
                   detail="Password"
                   text={'************'}
                   name="password"
                   onClick={handleAccountInfoChange}
                 />
-                {
-                  <InputField
-                    name="password"
-                    placeHolder="Password"
-                    type="password"
-                    register={register({
-                      required: false,
-                    })}
-                    show={editAccountInfo.password}
-                  />
-                }
+                <InputField
+                  name="password"
+                  placeHolder="Password"
+                  type="password"
+                  register={register({
+                    required: false,
+                  })}
+                  show={editAccountInfo.password}
+                />
               </div>
               <div>
                 <AccountInfoSpecial
@@ -348,7 +357,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   detail="Delete Account"
                 />
               </div>
-            </div>
+            </AccountInfoContainer>
 
             <br />
 
@@ -356,6 +365,41 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
             <Title>
               <span>Communication & Privacy Policies</span>
             </Title>
+            <AccountCommContainer>
+              <AccountCommField 
+                title="Marketing Emails"
+                name="marketing"
+                onClick={handleCommInfoChange}
+                show={editCommInfo.marketing}
+              >
+                <p>Emails about your account and orders are important. We send those even if you have opted out of marketing emails.</p>
+                <p>
+                  We send marketing emails to <b>{'firstnamelastname@gmail.com'}</b>
+                </p>
+                <p>Receive marketing emails</p>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <input />
+                  <input />
+                  <input />
+                </div>
+              </AccountCommField>
+              <AccountCommField 
+                title="Information Sharing"
+                name="sharing"
+                onclick={handleCommInfoChange}
+                show={editCommInfo.sharing}
+              >
+                TEST
+              </AccountCommField>
+              <AccountCommField 
+                title="Store Purchases"
+                name="purchases"
+                onClick={handleCommInfoChange}
+                show={editCommInfo.purchases}
+              >
+                TEST
+              </AccountCommField>
+            </AccountCommContainer>
 
 
             <br />
