@@ -10,6 +10,7 @@ import Login from '../../components/login';
 import {
   getUserToken, setUserAccount, updateUserTokens
 } from '../../utils/account-utils';
+
 import {
   Submit,
   AccountContain,
@@ -22,12 +23,12 @@ import { Container, Title, Alert } from '../../styles/global.style';
 import DropDown from '../../components/dropdown';
 import FreedomLogo from '../../assets/icons/FreedomLogo.png';
 import LogoIcon from '../../components/logo-icons';
-import {
-  AccountMenu, AccountMenuButton
-} from '../../components/account-menu';
-import {
-  AccountInfoField, AccountInfoSpecial
-} from '../../components/account-info-field';
+
+import { AccountMenu, AccountMenuButton } from '../../components/account-menu';
+import AccountLikes from '../../components/account-likes';
+import AccountOrderHistory from '../../components/account-order-history';
+import AccountGamesTokens from '../../components/account-games-tokens';
+import { AccountInfoField, AccountInfoSpecial } from '../../components/account-info-field';
 import AccountCommField from '../../components/account-comm-field';
 import DeleteAccount from '../../components/account-delete';
 import testIcon from '../../assets/header/group.png';
@@ -114,7 +115,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       </option>
     );
   });
-
   const genderDropdown = genderOptions.map((item) => {
     return (
       <option key={item.value} value={item.value}>
@@ -123,7 +123,31 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     );
   });
 
-  const [showAccountInfo, setShowAccountInfo] = useState(false);
+  /**
+   *  FOR ALL MENU ITEMS
+   */
+  const [showMenuItem, setShowMenuItem] = useState({
+    accountLikes: false,
+    accountOrders: false,
+    accountGames: false,
+    accountInfo: false
+  });
+
+  /**
+   *  FOR LIKES
+   */
+
+  /**
+   *  FOR ORDER HISTORY
+   */
+
+  /**
+   *  FOR GAMES & TOKENS
+   */
+
+  /**
+   *  FOR ACCOUNT INFO
+   */
   const [editAccountInfo, setEditAccountInfo] = useState({
     name: false,
     email: false,
@@ -131,29 +155,33 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     address: false,
     password: false
   });
-  const handleAccountInfoChange = (e) => {
-    const { name, id } = e.target;
-    setEditAccountInfo((prevState) => ({
-      ...prevState,
-      [name]: !id
-    }));
-  };
-
   const [editCommInfo, setEditCommInfo] = useState({
     marketing: false,
     sharing: false,
     purchases: false
   });
-  const handleCommInfoChange = (e) => {
-    const { name, id } = e.target;
-    setEditCommInfo((prevState) => ({
-      ...prevState,
-      [name]: !id
-    }));
+  const [showDelete, setShowDelete] = useState({
+    account: false,
+    accountModal: false
+  });
+
+  // lastly, all events to open fields that contain hidden subfields
+  const handleInfoChange = (e) => {
+    const { name, id, defaultValue } = e.target;
+    if (defaultValue === 'Edit') {
+      setEditAccountInfo((prevState) => ({
+        ...prevState,
+        [name]: !id
+      }));
+    } else {
+      setEditCommInfo((prevState) => ({
+        ...prevState,
+        [name]: !id
+      }));
+    }
   };
 
-  const [showDeleteAccount, setShowDeleteAccount] = useState(false);
-  const [showDeleteModal, setDeleteModal] = useState(false);
+
 
   if (!isLoggedIn) {
     return (
@@ -180,22 +208,41 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         <AccountMenuButton
           icon={testIcon}
           title="Likes"
+          onClick={
+            () => setShowMenuItem(
+              { accountLikes: true }
+            )
+          }
         />
         <AccountMenuButton
           icon={testIcon}
           title="Order History"
           subtitle="Track your order status, view order history and receipts."
+          onClick={
+            () => setShowMenuItem(
+              { accountOrders: true }
+            )
+          }
         />
         <AccountMenuButton
           icon={testIcon}
           title="Games & Tokens"
           subtitle="Games you've played and tokens you've earned!"
+          onClick={
+            () => setShowMenuItem(
+              { accountGames: true }
+            )
+          }
         />
         <AccountMenuButton
           icon={testIcon}
           title="Account Info"
           subtitle="Edit your addresses, contact information, and password here."
-          onclick={() => setShowAccountInfo(true)}
+          onClick={
+            () => setShowMenuItem(
+              { accountInfo: true }
+            )
+          }
         />
         <AccountMenuButton
           icon={testIcon}
@@ -204,18 +251,72 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       </AccountMenu>
       <div>
         {
-          showAccountInfo &&
+          /*
+          
+              ::: FOR LIKES :::
+          
+          */
+        }
+        {
+          showMenuItem.accountLikes &&
+          <Container>
+            <Title>
+              <span>Likes</span>
+            </Title>
+            <AccountLikes>
+              LIKES TEST
+            </AccountLikes>
+          </Container>
+        }
+        {
+          /*
+          
+              ::: FOR ORDER HISTORY :::
+          
+          */
+        }
+        {
+          showMenuItem.accountOrders &&
+          <Container>
+            <Title>
+              <span>Order History</span>
+            </Title>
+            <AccountOrderHistory>
+              ORDERS TEST
+            </AccountOrderHistory>
+          </Container>
+        }
+        {
+          /*
+          
+              ::: FOR GAMES & TOKENS :::
+          
+          */
+        }
+        {
+          showMenuItem.accountGames &&
+          <Container>
+            <Title>
+              <span>Games & Tokens</span>
+            </Title>
+            <AccountGamesTokens>
+              GAMES TEST
+            </AccountGamesTokens>
+          </Container>
+        }
+        {
+          /*
+          
+              ::: FOR ACCOUNT INFO :::
+          
+          */
+        }
+        {
+          showMenuItem.accountInfo &&
           <Container>
             <Title>
               <span>Account Information</span>
             </Title>
-            {
-              /* 
-                contents for new account information page
-                -> edit values are based on whether user wants to 
-                edit a certain field; if true, pop up text field
-              */
-            }
             <AccountInfoContainer>
               <div>
                 <AccountInfoField
@@ -226,7 +327,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     'FirstName LastName'
                   }
                   name="name"
-                  onClick={handleAccountInfoChange}
+                  onClick={handleInfoChange}
                 />
                 <>
                   <InputField
@@ -266,7 +367,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     'firstnamelastname@gmail.com'
                   }
                   name="email"
-                  onClick={handleAccountInfoChange}
+                  onClick={handleInfoChange}
                 />
                 <>
                   <InputField
@@ -294,7 +395,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     '1234567890'
                   }
                   name="phoneNumber"
-                  onClick={handleAccountInfoChange}
+                  onClick={handleInfoChange}
                 />
                 <>
                   <InputField
@@ -318,7 +419,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   detail="Address"
                   text={'Add Address'}
                   name="address"
-                  onClick={handleAccountInfoChange}
+                  onClick={handleInfoChange}
                 />
                 <>
                   <InputField
@@ -339,7 +440,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   detail="Password"
                   text={'************'}
                   name="password"
-                  onClick={handleAccountInfoChange}
+                  onClick={handleInfoChange}
                 />
                 <InputField
                   name="password"
@@ -360,7 +461,12 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 <AccountInfoSpecial
                   icon={testIcon}
                   detail="Delete Account"
-                  onClick={() => setShowDeleteAccount(true)}
+                  onClick={() => setShowDelete(
+                    {
+                      ...showDelete,
+                      account: true
+                    }
+                  )}
                 />
               </div>
             </AccountInfoContainer>
@@ -375,7 +481,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
               <AccountCommField
                 title="Marketing Emails"
                 name="marketing"
-                onClick={handleCommInfoChange}
+                onClick={handleInfoChange}
                 show={editCommInfo.marketing}
               >
                 <p>Emails about your account and orders are important. We send those even if you have opted out of marketing emails.</p>
@@ -401,7 +507,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
               <AccountCommField
                 title="Information Sharing"
                 name="sharing"
-                onclick={handleCommInfoChange}
+                onclick={handleInfoChange}
                 show={editCommInfo.sharing}
               >
                 TEST
@@ -409,7 +515,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
               <AccountCommField
                 title="Store Purchases"
                 name="purchases"
-                onClick={handleCommInfoChange}
+                onClick={handleInfoChange}
                 show={editCommInfo.purchases}
               >
                 TEST
@@ -515,18 +621,23 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
               /* DELETE ACCOUNT: showing design for now, will maybe add to a seperate page eventually! */
             }
             {
-              showDeleteAccount &&
+              showDelete.account &&
               <>
                 <Title>
                   <span>Delete Account (TEST)</span>
                 </Title>
-                <DeleteAccount 
-                  onClick={() => setDeleteModal(true)}
+                <DeleteAccount
+                  onClick={() => setShowDelete(
+                    {
+                      ...showDelete, 
+                      accountModal: true
+                    }
+                  )}
                 />
               </>
             }
             {
-              showDeleteModal &&
+              showDelete.modal &&
               <>
                 {'Account deleted!'}
               </>

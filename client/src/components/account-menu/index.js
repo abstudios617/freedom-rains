@@ -15,7 +15,7 @@ export const AccountMenu = ({ children }) => {
   );
 };
 
-export const AccountMenuButton = ({ icon, title, subtitle, onclick }) => {
+export const AccountMenuButton = ({ icon, title, subtitle, onClick }) => {
   const contents = (
     <AccountMenuButtonStyles>
       <OuterFlexible>
@@ -31,7 +31,7 @@ export const AccountMenuButton = ({ icon, title, subtitle, onclick }) => {
   );
   
   return (
-    <div onClick={onclick}>
+    <div onClick={onClick}>
       {contents}
     </div>
   );
