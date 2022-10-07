@@ -66,7 +66,7 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
                     {userData ? userData.first_name : 'Mary'}
                   </div>
                   <div className="item2" color="primary">
-                  Account & Menu
+                    Account & Menu
                   </div>
                 </div>
               </UserContainer>

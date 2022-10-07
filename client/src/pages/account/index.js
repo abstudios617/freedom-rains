@@ -130,7 +130,8 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     accountLikes: false,
     accountOrders: false,
     accountGames: false,
-    accountInfo: false
+    accountInfo: false,
+    accountSignOut: false
   });
 
   /**
@@ -144,6 +145,10 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   /**
    *  FOR GAMES & TOKENS
    */
+
+  // testing stuff
+  const testLeaders = [],
+    testMissions = [];
 
   /**
    *  FOR ACCOUNT INFO
@@ -161,7 +166,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     purchases: false
   });
   const [showDelete, setShowDelete] = useState({
-    account: false,
+    accountInfo: false,
     accountModal: false
   });
 
@@ -181,7 +186,21 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     }
   };
 
-
+  // test
+  if (showMenuItem.accountSignOut) {
+    window.alert('TEST: signed out.');
+    setShowMenuItem({
+      ...showMenuItem,
+      accountSignOut: false
+    });
+  }
+  if (showDelete.accountModal) {
+    window.alert('TEST: account deleted');
+    setShowDelete({
+      ...showDelete,
+      accountModal: false
+    });
+  }
 
   if (!isLoggedIn) {
     return (
@@ -247,6 +266,12 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         <AccountMenuButton
           icon={testIcon}
           title="Sign Out"
+          onClick={() => setShowMenuItem(
+            { 
+              ...showMenuItem, 
+              accountSignOut: true 
+            }
+          )}
         />
       </AccountMenu>
       <div>
@@ -299,9 +324,12 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
             <Title>
               <span>Games & Tokens</span>
             </Title>
-            <AccountGamesTokens>
-              GAMES TEST
-            </AccountGamesTokens>
+            <AccountGamesTokens 
+              name={'Stephen Believin'}
+              image={testIcon}
+              leaders={testLeaders}
+              missions={testMissions}
+            />
           </Container>
         }
         {
@@ -464,7 +492,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   onClick={() => setShowDelete(
                     {
                       ...showDelete,
-                      account: true
+                      accountInfo: true
                     }
                   )}
                 />
@@ -483,43 +511,19 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 name="marketing"
                 onClick={handleInfoChange}
                 show={editCommInfo.marketing}
-              >
-                <p>Emails about your account and orders are important. We send those even if you have opted out of marketing emails.</p>
-                <p>
-                  We send marketing emails to <b>{'firstnamelastname@gmail.com'}</b>
-                </p>
-                <p>Receive marketing emails</p>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <div className="marketing-checkbox">
-                    <input type="checkbox" id="marketing-email" name="marketing-email" />
-                    <label htmlFor="marketing-email">Yes! I want emails about savings, new items, and more!</label>
-                  </div>
-                  <div className="marketing-checkbox">
-                    <input type="checkbox" id="marketing-review" name="marketing-review" />
-                    <label htmlFor="marketing-review">Requests to rate and review products you&lsquo;ve offered</label>
-                  </div>
-                  <div className="marketing-checkbox">
-                    <input type="checkbox" id="marketing-invite" name="marketing-invite" />
-                    <label htmlFor="marketing-invite">Invitation to take customer surveys</label>
-                  </div>
-                </div>
-              </AccountCommField>
+              />
               <AccountCommField
                 title="Information Sharing"
                 name="sharing"
                 onclick={handleInfoChange}
                 show={editCommInfo.sharing}
-              >
-                TEST
-              </AccountCommField>
+              />
               <AccountCommField
                 title="Store Purchases"
                 name="purchases"
                 onClick={handleInfoChange}
                 show={editCommInfo.purchases}
-              >
-                TEST
-              </AccountCommField>
+              />
             </AccountCommContainer>
 
             <br />
@@ -621,7 +625,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
               /* DELETE ACCOUNT: showing design for now, will maybe add to a seperate page eventually! */
             }
             {
-              showDelete.account &&
+              showDelete.accountInfo &&
               <>
                 <Title>
                   <span>Delete Account (TEST)</span>
@@ -634,12 +638,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     }
                   )}
                 />
-              </>
-            }
-            {
-              showDelete.modal &&
-              <>
-                {'Account deleted!'}
               </>
             }
           </Container>
