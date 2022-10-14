@@ -26,6 +26,7 @@ export const BtnField = styled.button`
   &.primary {
     background: #1988ff;
     color: #fff;
+    width: auto;
 
     &:hover {
       box-shadow: 0 3px 2px #777777;
@@ -456,6 +457,10 @@ export const BtnField = styled.button`
 
     &.roundPrimary {
       font-size: 15px;
+    }
+
+    &.greenPricing {
+      width: 350px;
     }
   }
 `;

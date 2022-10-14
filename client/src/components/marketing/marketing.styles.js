@@ -18,12 +18,20 @@ export const MarketItemWrapper = styled.div`
 export const MarketTitle = styled.div`
   font-size: 40px;
   font-weight: 700;
+
+  &.marketSolutionTitle {
+    font-size: 36px; 
+  }
 `;
 
 export const MarketSubtitle = styled.div`
   font-size: 22px;
   color: #FF7143;
   font-weight: 700;
+  
+  &.marketSolutionSubTitle {
+    font-size: 20px;
+  }
 `;
 
 export const MarketHeading = styled.div`

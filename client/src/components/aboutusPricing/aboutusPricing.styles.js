@@ -32,4 +32,5 @@ export const PriceHeading = styled.div`
   margin: 30px 0 50px;
   flex-direction: column;
   align-items: center;
+
 `;

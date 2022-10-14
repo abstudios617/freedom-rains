@@ -6,136 +6,255 @@ import {
   PlanCardAmount,
   PlanCardItemSpecs,
   PlanCardMonthly,
-  PlanCardPlan,
   PlanCardMP,
   PlanCardMPContainer,
   PlanCardListItem,
 } from '../plan-card/plan-card.styles';
-import PlanType from '../plan-type';
-import { developmentFeatures, developmentFeaturesList } from '../../constants/pricing';
+import { 
+  PlanYearly,
+  PlanMonthly,
+  PlanCardItemSol,
+  PlanListSolName,
+  PlanCardButton,
+  PlanCardContainer
+} from './solution-card.styles';
+import { developmentFeaturesList } from '../../constants/pricing';
 
-const SolutionCard = ({ item, solutionType }) => {
+const SolutionCard = ({ solutionType, selectedPlan, setSelectedPlan, selectedDev, setSelectedDev, popularType, wholeItems }) => {
+  const [planType, setPlanType] = useState('yearly');
+  const switchPlanTypes = (type) => {
+    setPlanType(type);
+  };
+
+  const switchSelectedPlan = (plan) => {
+    setSelectedPlan(plan);
+  };
+
+  const isSelectedPlan = (plan) => {
+    return plan === selectedPlan; 
+  };
+
+  const switchSelectedDev = (plan) => {
+    setSelectedDev(plan);
+  };
+
+  const isSelectedDev = (plan) => {
+    return plan === selectedDev; 
+  };
+
+  const isPlanChanged = (timePlan, plan) => {
+    if (plan === selectedPlan) {
+      return timePlan === planType;
+    } else {
+      return false; 
+    }
+  };
+ 
+  // e-commerce solution display
+
   if (solutionType === 'ecommerce') {
-    const { plan, popular, amountYear, amountMonth, list} = item;
+    const commerceDisplay = wholeItems.map((item) => {
+      const { plan, amountYear, amountMonth, list} = item;
+  
+      const specs = list.map((prod) => {
+        const { bullet } = prod;
     
-    const [planType, setPlanType] = useState('yearly');
-
-    const specs = list.map((prod) => {
-      const { bullet } = prod;
-  
-      return (
-        <PlanCardListItem
-          key={bullet}
-          className={`${
-            popular && 'active'
-          }`}
-        >
-          <img src={popular ? whiteCheckmark : checkmark} alt="checkmark" />
-          {bullet}
-        </PlanCardListItem>
-      );
-    });
-  
-    return (
-      <PlanCardItem
-        key={plan}
-      >
-        {popular && (
-          <PlanCardMPContainer>
-            <PlanCardMP>Most Popular</PlanCardMP>
-          </PlanCardMPContainer>
-        )}
-        <PlanCardMonthly
-          className={`${
-            popular && 'active'
-          }`}
-        >
-          <PlanCardAmount
+        return (
+          <PlanCardListItem
+            key={solutionType}
             className={`${
-              popular && 'active'
+              false && 'active'
             }`}
           >
-            {planType === 'yearly' ? amountYear : amountMonth}
-          </PlanCardAmount>
-            /month
-        </PlanCardMonthly>x
-        <PlanCardPlan>{plan}</PlanCardPlan>
-        <PlanType planType={ planType }  setPlanType={ setPlanType } />
-        <PlanCardItemSpecs>{specs}</PlanCardItemSpecs>
-      </PlanCardItem>
-    );
-  } else if (solutionType === 'marketing') {
-    const { plan, popular, amountYear, amountMonth, list } = item;
-    
-    const [planType] = useState('yearly');
-
-    const specs = list.map((prod) => {
-      const { bullet } = prod;
-  
+            <img src={checkmark} alt="checkmark" />
+            {bullet}
+          </PlanCardListItem>
+        );
+      });
+      
       return (
-        <PlanCardListItem
-          key={bullet}
+        <PlanCardItem
+          key={plan}
           className={`${
-            popular && 'active'
+            false && popularType
           }`}
         >
-          <img src={popular ? whiteCheckmark : checkmark} alt="checkmark" />
-          {bullet}
-        </PlanCardListItem>
-      );
-    });
-  
-    return (
-      <PlanCardItem
-        key={plan}
-      >
-        {popular && (
-          <PlanCardMPContainer>
-            <PlanCardMP>Most Popular</PlanCardMP>
-          </PlanCardMPContainer>
-        )}
-        <PlanCardMonthly
-          className={`${
-            popular && 'active'
-          }`}
-        >
-          <PlanCardAmount
+          {isSelectedPlan(plan) && (
+            <PlanCardMPContainer>
+              <PlanCardMP>Selected</PlanCardMP>
+            </PlanCardMPContainer>
+          )}
+          <PlanCardButton
+            key={plan}
+            onClick={() => switchSelectedPlan(plan)}
             className={`${
-              popular && 'active'
+              isSelectedPlan(plan) && 'selected'
             }`}
           >
-            {planType === 'yearly' ? amountYear : amountMonth}
-          </PlanCardAmount>
-            /month
-        </PlanCardMonthly>x
-        <PlanCardPlan>{plan}</PlanCardPlan>
-        <PlanCardItemSpecs>{specs}</PlanCardItemSpecs>
-      </PlanCardItem>
+            {plan}
+          </PlanCardButton>
+          <PlanCardMonthly
+            className={`${
+              false && 'active'
+            }`}
+          >
+            <PlanCardAmount
+              className={`${
+                false && 'active'
+              }`}
+            >
+              {isPlanChanged('yearly', plan) ? amountYear : amountMonth}
+            </PlanCardAmount>
+              /month
+          </PlanCardMonthly>
+          <div>
+            <PlanYearly
+              onClick={() => isSelectedPlan(plan) ? switchPlanTypes('yearly') : undefined}
+              className={`${
+                isPlanChanged('yearly', plan) && 'yearlyActive'
+              }`}
+            >
+              Pay Yearly
+            </PlanYearly>
+            <PlanMonthly
+              onClick={() => isSelectedPlan(plan) ? switchPlanTypes('monthly') : undefined}
+              className={`${
+                isPlanChanged('monthly', plan) && 'monthlyActive'
+              }`}
+            >
+              Pay Monthly
+            </PlanMonthly>
+          </div>
+          <PlanCardItemSpecs>{specs}</PlanCardItemSpecs>
+        </PlanCardItem>
+      );
+    }); 
+  
+    return (
+      <PlanCardContainer>
+        {commerceDisplay}
+      </PlanCardContainer>
+      
     );
+  }
+
+  else if (solutionType === 'marketing') {
+    // marketing solution display
+    const marketingDisplay = wholeItems.map((item) => {
+      const { plan, amountYear, amountMonth, list } = item;
+    
+      const [planType] = useState('yearly');
+
+      const specs = list.map((prod) => {
+        const { bullet } = prod;
+    
+        return (
+          <PlanCardListItem
+            key={bullet}
+            className={`${
+              false && 'active'
+            }`}
+          >
+            <img src={checkmark} alt="checkmark" />
+            {bullet}
+          </PlanCardListItem>
+        );
+      });
+      return (
+        <PlanCardItem
+          key={plan}
+          className={`${
+            false && popularType
+          }`}
+        >
+          {isSelectedPlan(plan) && (
+            <PlanCardMPContainer>
+              <PlanCardMP>Selected</PlanCardMP>
+            </PlanCardMPContainer>
+          )}
+          <PlanCardButton
+            key={plan}
+            onClick={() => switchSelectedPlan(plan)}
+            className={`${
+              isSelectedPlan(plan) && 'selected'
+            }`}
+          >
+            {plan}
+          </PlanCardButton>
+          <PlanCardMonthly
+            className={`${
+              false && 'active'
+            }`}
+          >
+            <PlanCardAmount
+              className={`${
+                false && 'active'
+              }`}
+            >
+              {planType === 'yearly' ? amountYear : amountMonth}
+            </PlanCardAmount>
+              /year
+          </PlanCardMonthly>
+          <PlanCardItemSpecs>{specs}</PlanCardItemSpecs>
+        </PlanCardItem>
+      );
+    });
+
+    return (
+      <PlanCardContainer>
+        {marketingDisplay}
+      </PlanCardContainer>
+    );
+    
+  
+    
   } else {
-    const { name, uiDesigns, uxDesigns, adminDashoard, analyticsDashboard, seoOptimization, iosStoreOptimization, onPageOptimization, chatBox, clothingDropshipping, satisfactionFuarantee } = developmentFeatures;
-    const developmentList = [uiDesigns, uxDesigns, adminDashoard, analyticsDashboard, seoOptimization, iosStoreOptimization, onPageOptimization, chatBox, clothingDropshipping, satisfactionFuarantee];
+    // Development solution display
 
-    const specs = developmentList.map((prod, index) => {
-      const { bullet } = developmentFeaturesList[index];
+    const developmentDisplay = wholeItems.map((item) => {
+      const body = item; 
+      const developmentList = [body.uiDesigns, body.uxDesign, body.adminDashoard, body.analyticsDashboard, body.seoOptimization, body.iosStoreOptimization, body.onPageOptimization, body.chatBox, body.clothingDropshipping, body.satisfactionFuarantee];
+      const specs = developmentList.map((prod, index) => {
+        const bullet = developmentFeaturesList[index]; 
+        return (
+          <PlanListSolName
+            key={bullet}
+          >
+            <img src={prod ? whiteCheckmark : checkmark} alt="checkmark" />
+            {developmentFeaturesList[index]}
+          </PlanListSolName>
+        );
+      });
 
-  
       return (
-        <PlanCardListItem
-          key={bullet}
-        >
-          <img src={prod ? whiteCheckmark : checkmark} alt="checkmark" />
-          {bullet}
-        </PlanCardListItem>
+        <PlanCardItemSol
+          key={body.name}>
+          {isSelectedDev(body.name) && (
+            <PlanCardMPContainer>
+              <PlanCardMP>Selected</PlanCardMP>
+            </PlanCardMPContainer>
+          )}
+          <PlanCardButton
+            key={body.name}
+            onClick={() => switchSelectedDev(body.name)}
+            className={`${
+              isSelectedDev(body.name) && 'selected'
+            }`}
+          >
+            {body.name}
+          </PlanCardButton>
+          <PlanCardItemSpecs>{specs}</PlanCardItemSpecs>
+        </PlanCardItemSol>
       );
     });
 
     return (
-      <PlanCardItem>
-        <PlanCardPlan>{name}</PlanCardPlan>
-        <PlanCardItemSpecs>{specs}</PlanCardItemSpecs>
-      </PlanCardItem>
+      <PlanCardContainer>
+        {developmentDisplay}
+      </PlanCardContainer>
     );
+
+    
   }
 };
 

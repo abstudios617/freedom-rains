@@ -4,6 +4,10 @@ export const DevelopTitle = styled.div`
   margin-top: 60px;
   font-size: 40px;
   font-weight: 700;
+
+  &.solDev {
+    margin-top: 0px;
+  }
 `;
   
 export const DevelopSubTitle = styled.div`
