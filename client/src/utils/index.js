@@ -68,8 +68,9 @@ export const resetCache = () => {
 export const setUserData = async (loggedInData) => {
   setItem('loggedIn', JSON.stringify(loggedInData));
   const userData = await getUserInfo();
-
-  setUserAccount(userData);
+  if (userData.statusCode === 200) {
+    setUserAccount(userData);
+  }
 
   setItem('categories', userData.categories || JSON.stringify([]));
 
@@ -84,13 +85,13 @@ export const setUserData = async (loggedInData) => {
     setItem('unlockedItems', communityData.locked);
     setItem('tasks', communityData.tasks);
   }
-  else if (communityData.statusCode === 500) // New User...
+  else if (communityData.statusCode === 500 && userData.statusCode === 200) // New User...
   {
     const defValues = {
-      tokens: "0",
+      tokens: '0',
       locked: JSON.stringify({}),
       tasks: JSON.stringify({})
-    }
+    };
     const makeCommunityData = await createCommunityUser(defValues);
     setItem('tokens', makeCommunityData.tokens);
     setItem('unlockedItems', makeCommunityData.locked);

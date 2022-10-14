@@ -19,16 +19,21 @@ import {
 
 jest.mock('axios');
 
+/* TODO: Change the way getUserInfo works */
 describe('api-request - getUserInfo', () => {
-  it('should return user info', async () => {
+  it('should return user info - when we have cookies from login', async () => {
     axios.mockResolvedValueOnce({
       data: getAllUsers,
     });
 
-    const result = await request.getUserInfo('token');
+    const result = await request.getUserInfo();
 
     expect(result).toEqual(getAllUsers);
   });
+  it('should NOT return userinfo - no cookies', async () => {
+    const result = await request.getUserInfo();
+    expect(result).toContainEqual({statusCode: 401});
+  })
 });
 
 describe('api-request - addLead', () => {
@@ -75,6 +80,7 @@ describe('api-request - couponScraper', () => {
   });
 });
 
+/* TODO: Change the way createAccount works */
 describe('api-request - createAccount', () => {
   it('should create account', async () => {
     axios.mockResolvedValueOnce({
@@ -91,7 +97,7 @@ describe('api-request - createAccount', () => {
 });
 
 describe('api-request - forgotPassword', () => {
-  it('should redirect user to forgot password page', async () => {
+  it('should redirect user to forgot password page', async () => {f
     axios.mockResolvedValueOnce({
       data: defaultResponse,
     });
@@ -104,21 +110,24 @@ describe('api-request - forgotPassword', () => {
   });
 });
 
+/* TODO: Check if signIn test is valid */
 describe('api-request - signIn', () => {
-  it('should sign in', async () => {
-    axios.mockResolvedValueOnce({
-      data: createAccount,
-    });
+  it('should sign in - returns cookie', async () => {
+    // axios.mockResolvedValueOnce({
+    //   data: createAccount,
+    // });
 
     const result = await request.signIn({
       username: 'some@place.com',
       password: 'ndf89ner',
     });
 
-    expect(result).toEqual(createAccount);
+    // expect(result).toEqual(createAccount);
+    expect(result).toContainEqual({statusCode: 201});
   });
 });
 
+/* TODO: Change the way UpdateAccountCategory is setup */
 describe('api-request - updateAccountCategory', () => {
   it('should update account category', async () => {
     axios.mockResolvedValueOnce({
@@ -133,6 +142,7 @@ describe('api-request - updateAccountCategory', () => {
   });
 });
 
+/* TODO: updateTokens uses CommunityTokens, so need to change that */
 describe('api-request - updateTokens', () => {
   it('should update tokens', async () => {
     axios.mockResolvedValueOnce({
@@ -146,8 +156,10 @@ describe('api-request - updateTokens', () => {
 
     expect(result).toEqual(updateToken);
   });
+  /* TODO: Test Case where updateTokens return 401 because of unauthorized */
 });
 
+/* TODO: UpdateAccount uses cookies which is received from sign in */
 describe('api-request - updateAccount', () => {
   it('should update account', async () => {
     axios.mockResolvedValueOnce({
@@ -158,8 +170,10 @@ describe('api-request - updateAccount', () => {
 
     expect(result).toEqual(updateAccount);
   });
+  /* TODO: Case where updateAccount is 401 because no cookies */
 });
 
+/* TODO: updateLockedItems uses Community endpoint instead of account endpoint */
 describe('api-request - updateLockedItems', () => {
   it('should update locked items', async () => {
     axios.mockResolvedValueOnce({
@@ -173,6 +187,7 @@ describe('api-request - updateLockedItems', () => {
 
     expect(result).toEqual(defaultResponse);
   });
+  /* TODO: Case of 401; no cookies */
 });
 
 describe('api-request - getAllProducts', () => {
@@ -187,6 +202,7 @@ describe('api-request - getAllProducts', () => {
   });
 });
 
+/* TODO: See if we need to change the way updateFavorties is called */
 describe('api-request - updateFavorites', () => {
   it('should update favorites', async () => {
     axios.mockResolvedValueOnce({
@@ -200,6 +216,7 @@ describe('api-request - updateFavorites', () => {
 
     expect(result).toEqual(defaultResponse);
   });
+  /* TODO: case of 401; no cookie */
 });
 
 describe('api-request - getPrintfulProducts', () => {

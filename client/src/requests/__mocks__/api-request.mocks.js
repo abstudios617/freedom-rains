@@ -1,5 +1,6 @@
 export const testData = { test: 123 };
 
+/* TODO: Reflect on what CreateAccount would return */
 export const createAccount = {
   acct_id: 1,
   username: 'some@place.com',
@@ -13,6 +14,7 @@ export const defaultResponse = {
   statusCode: 200,
 };
 
+/* TODO: Not sure if we need this since we are using Cookies */
 export const updateToken = {
   message: 'default messaging',
   token:
@@ -40,6 +42,12 @@ export const allProducts = {
   store: 'Oasis Vegan Veggie',
 };
 
+/* TODO: Setup how getUser return data */
+export const getCurrentUser = {
+
+}
+
+/* TODO: Do we need this? */
 export const getAllUsers = {
   acct_id: 1,
   age: '23',
@@ -68,6 +76,7 @@ export const getAllUsers = {
   zip: '39485',
 };
 
+/* TODO: Is this how LoggedinAccount setup? */
 export const loggedInAccount = {
   acct_id: 1,
   created_on: '2021-08-19T06:16:00.000Z',
@@ -89,6 +98,7 @@ export const getLeads = {
   zip: '39485',
 };
 
+/* TODO: Check if this is actually the account body */
 export const accountBody = {
   age: '23',
   company: '',

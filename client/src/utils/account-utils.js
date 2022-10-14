@@ -23,6 +23,14 @@ export const setUserAccount = (account) => {
   );
 };
 
+export const getLoginToken = () => {
+  const loginToken = document.cookie.substring(
+    document.cookie.indexOf('token=') + 'token='.length, 
+    document.cookie.indexOf(';', document.cookie.indexOf('token='))
+  );
+  return loginToken;
+}
+
 export const updateUserTokens = async (tokenCount, tasks) => {
   const amount = getItem('tokens');
   const total = +amount + tokenCount;

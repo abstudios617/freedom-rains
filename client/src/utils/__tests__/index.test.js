@@ -84,8 +84,8 @@ describe('utils - targetPage', () => {
   });
 });
 
-describe('utils - setUserData', () => {
-  test('should set user data', async () => {
+describe('utils - setUserData - needs cookies', () => {
+  /* test('should set user data', async () => {
     const setItem = jest.spyOn(utils, 'setItem');
     const setUserAccount = jest.spyOn(accountUtils, 'setUserAccount');
     const getUserInfo = jest.spyOn(apiRequest, 'getUserInfo');
@@ -96,6 +96,22 @@ describe('utils - setUserData', () => {
     expect(setItem).toHaveBeenCalled();
     expect(setUserAccount).toHaveBeenCalled();
     expect(getUserInfo).toHaveBeenCalled();
+  }); */
+
+  test('should NOT set user data', async () => {
+    const setItem = jest.spyOn(utils, 'setItem');
+    const setUserAccount = jest.spyOn(accountUtils, 'setUserAccount');
+    const getUserInfo = jest.spyOn(apiRequest, 'getUserInfo');
+    
+    getUserInfo.mockReturnValue(accountInfo);
+    await utils.setUserData(userToken);
+
+    expect(setItem).toHaveBeenCalled();
+    // Since the if statement will fail to execute due to not having a status of 200
+    expect(setUserAccount).not.toHaveBeenCalled();
+    // expect(setUserAccount).toContainEqual({statusCode: 400});
+    // expect(getUserInfo).not.toHaveBeenCalled();
+    expect(getUserInfo).toContainEqual({statusCode: 401});
   });
 });
 

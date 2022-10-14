@@ -10,14 +10,14 @@ export const client = async (url = '', body = null, wildcards = null) => {
   if (wildcards)
   {
     switch (wildcards.key) {
-      case "printful":
-        options.headers = {
-          "Authorization": `Bearer ${wildcards.value}`
-        };
-        break;
-      case "update":
-        options.method = "update";
-        break;
+    case 'printful':
+      options.headers = {
+        'Authorization': `Bearer ${wildcards.value}`
+      };
+      break;
+    case 'update':
+      options.method = 'update';
+      break;
     }
   }
 

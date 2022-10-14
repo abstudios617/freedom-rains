@@ -5,26 +5,7 @@ import * as apiRequest from '../../requests/api-request';
 import * as analyticsRequest from '../../requests/analytics-request';
 import { accountInfo, hasAvailableTokens, noAvailableTokens, userToken } from '../__mocks__/account-utils.mocks';
 
-describe('account - getUserToken', () => {
-  test('should return user token info', () => {
-    const getItem = jest.spyOn(utils, 'getItem');
-    getItem.mockReturnValue(JSON.stringify(userToken));
-    const getUser = accountUtils.getUserToken();
-
-    expect(getItem).toHaveBeenCalled();
-    expect(getUser).toEqual(userToken.token);
-  });
-
-  test('should return no user token info', () => {
-    const getItem = jest.spyOn(utils, 'getItem');
-    getItem.mockReturnValue();
-    const getUser = accountUtils.getUserToken();
-
-    expect(getItem).toHaveBeenCalled();
-    expect(getUser).toEqual(null);
-  });
-});
-
+/* TODO: Needs a Review */
 describe('account - setUserAccount', () => {
   test('should set user account', () => {
     const setItem = jest.spyOn(utils, 'setItem');
@@ -34,8 +15,9 @@ describe('account - setUserAccount', () => {
   });
 });
 
+/* TODO: Need a Review */
 describe('account - updateUserTokens', () => {
-  test('should update user token', async () => {
+  /* test('should update user token - no cookie', async () => {
     const getItem = jest.spyOn(utils, 'getItem');
     const setItem = jest.spyOn(utils, 'setItem');
     const updateTokens = jest.spyOn(apiRequest, 'updateTokens');
@@ -50,8 +32,9 @@ describe('account - updateUserTokens', () => {
     expect(setItem).toHaveBeenCalled();
     expect(updateUser).toEqual(true);
   });
+  */
 
-  test('should not update user token', async () => {
+  test('should not update user token - no cookie', async () => {
     const getItem = jest.spyOn(utils, 'getItem');
     const updateTokens = jest.spyOn(apiRequest, 'updateTokens');
     
@@ -60,8 +43,8 @@ describe('account - updateUserTokens', () => {
     
     const updateUser = await accountUtils.updateUserTokens(3, {});
 
-    expect(getItem).toHaveBeenCalled();
-    expect(updateTokens).toHaveBeenCalled();
+    expect(getItem).not.toHaveBeenCalled();
+    expect(updateTokens).not.toHaveBeenCalled();
     expect(updateUser).toEqual(false);
   });
 });
