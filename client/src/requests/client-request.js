@@ -27,6 +27,7 @@ export const client = async (url = '', body = null, wildcards = null) => {
   }
 
   const response = await axios(options);
+  if (!response) return {statusCode: response};
   response.data.statusCode = response.status;
   return response.data;
 };

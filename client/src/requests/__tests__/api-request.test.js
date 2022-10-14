@@ -11,28 +11,37 @@ import {
   getLeads,
   printfulResponse,
   printfulSpecificProdResponse,
+  sampleAccountData,
   uninstalledBody,
   uninstalledResponse,
   updateAccount,
   updateToken,
 } from '../__mocks__/api-request.mocks';
+import { removeLoginCredentials, simpleLogin } from '../../utils/__tests__/account-utils.test';
 
 jest.mock('axios');
 
-/* TODO: Change the way getUserInfo works */
+/* TODO: Review Change the way getUserInfo works */
 describe('api-request - getUserInfo', () => {
   it('should return user info - when we have cookies from login', async () => {
+    // Login to generate cookies...
+    simpleLogin();
+
     axios.mockResolvedValueOnce({
-      data: getAllUsers,
+      data: sampleAccountData,
     });
 
     const result = await request.getUserInfo();
 
-    expect(result).toEqual(getAllUsers);
+    expect(result).toEqual(sampleAccountData);
+
+    // Be sure to sign out...
+    removeLoginCredentials();
   });
+
   it('should NOT return userinfo - no cookies', async () => {
     const result = await request.getUserInfo();
-    expect(result).toContainEqual({statusCode: 401});
+    expect(result).toHaveProperty("statusCode", 401);
   })
 });
 
@@ -80,24 +89,37 @@ describe('api-request - couponScraper', () => {
   });
 });
 
-/* TODO: Change the way createAccount works */
+/* TODO: Review Change the way createAccount works */
 describe('api-request - createAccount', () => {
-  it('should create account', async () => {
+  it('should create new account', async () => {
     axios.mockResolvedValueOnce({
       data: createAccount,
     });
 
     const result = await request.createAccount({
-      username: 'some@place.com',
+      first_name: "Three",
+      last_name: "Two",
+      email: 'three@twoone.com',
       password: '20eofkvn85',
     });
 
-    expect(result).toEqual(createAccount);
+    expect(result).toHaveProperty("statusCode", 200);
+  });
+
+  it('should NOT create new account - same email', async () => {
+    const result = await request.createAccount({
+      first_name: "First",
+      last_name: "Last",
+      email: "test2@test.com",
+      password: '20eofkvn85',
+    });
+
+    expect(result).toHaveProperty("statusCode", 400);
   });
 });
 
 describe('api-request - forgotPassword', () => {
-  it('should redirect user to forgot password page', async () => {f
+  it('should redirect user to forgot password page', async () => {
     axios.mockResolvedValueOnce({
       data: defaultResponse,
     });
@@ -118,17 +140,20 @@ describe('api-request - signIn', () => {
     // });
 
     const result = await request.signIn({
-      username: 'some@place.com',
-      password: 'ndf89ner',
+      email: 'test2@test.com',
+      password: 'Whoops1234',
     });
 
     // expect(result).toEqual(createAccount);
-    expect(result).toContainEqual({statusCode: 201});
+    expect(result).toHaveProperty("statusCode", 201);
   });
 });
 
-/* TODO: Change the way UpdateAccountCategory is setup */
+/* TODO: Review the way UpdateAccountCategory is setup */
 describe('api-request - updateAccountCategory', () => {
+  // Login...
+  simpleLogin();
+
   it('should update account category', async () => {
     axios.mockResolvedValueOnce({
       data: defaultResponse,
@@ -139,43 +164,65 @@ describe('api-request - updateAccountCategory', () => {
     });
 
     expect(result).toEqual(defaultResponse);
+
+    // Logout...
+    removeLoginCredentials();
   });
 });
 
-/* TODO: updateTokens uses CommunityTokens, so need to change that */
+/* TODO: Review updateTokens test */
 describe('api-request - updateTokens', () => {
   it('should update tokens', async () => {
-    axios.mockResolvedValueOnce({
-      data: updateToken,
-    });
+    // Login
+    simpleLogin();
 
     const result = await request.updateTokens({
       total: '100',
       tasks: '{"account":true,"shop":true}',
     });
 
-    expect(result).toEqual(updateToken);
+    expect(result).toHaveProperty("statusCode", 200);
+
+    // Logout...
+    removeLoginCredentials();
   });
-  /* TODO: Test Case where updateTokens return 401 because of unauthorized */
+  /* TODO: Review Test Case where updateTokens return 401 because of unauthorized */
+  it('should NOT update tokens', async () => {
+    const result = await request.updateTokens({
+      total: '100',
+      tasks: '{"account":true,"shop":true}',
+    });
+
+    expect(result).toHaveProperty("statusCode", 401);
+  });
 });
 
-/* TODO: UpdateAccount uses cookies which is received from sign in */
+/* TODO: Review UpdateAccount uses cookies which is received from sign in */
 describe('api-request - updateAccount', () => {
   it('should update account', async () => {
-    axios.mockResolvedValueOnce({
-      data: updateAccount,
-    });
+    // Login
+    simpleLogin();
 
     const result = await request.updateAccount(accountBody);
 
-    expect(result).toEqual(updateAccount);
+    expect(result).toHaveProperty("statusCode", 200);
+
+    // Logout
+    removeLoginCredentials();
   });
-  /* TODO: Case where updateAccount is 401 because no cookies */
+  /* TODO: Review Case where updateAccount is 401 because no cookies */
+  it('should NOT update account - no user found', async () => {
+    const result = await request.updateAccount(accountBody);
+
+    expect(result).toHaveProperty("statusCode", 401);
+  });
 });
 
-/* TODO: updateLockedItems uses Community endpoint instead of account endpoint */
+/* TODO: Review updateLockedItems uses Community endpoint instead of account endpoint */
 describe('api-request - updateLockedItems', () => {
   it('should update locked items', async () => {
+    // login
+    simpleLogin();
     axios.mockResolvedValueOnce({
       data: defaultResponse,
     });
@@ -186,8 +233,18 @@ describe('api-request - updateLockedItems', () => {
     });
 
     expect(result).toEqual(defaultResponse);
+    // logout
+    removeLoginCredentials();
   });
-  /* TODO: Case of 401; no cookies */
+  /* TODO: Review Case of 401; no cookies */
+  it('should NOT update locked items - no user found', async () => {
+    const result = await request.updateLockedItems({
+      unlocked:
+        '{"games":[1,2,3,7,6,4,5],"tvShows":[1,2,3],"music":[1,2,3],"vlogs":[1,2,3],"podcast":[1,2,3],"reels":[1,2,3]}',
+    });
+
+    expect(result).toHaveProperty("statusCode", 401);
+  });
 });
 
 describe('api-request - getAllProducts', () => {
@@ -202,9 +259,12 @@ describe('api-request - getAllProducts', () => {
   });
 });
 
-/* TODO: See if we need to change the way updateFavorties is called */
+/* TODO: Review See if we need to change the way updateFavorties is called */
 describe('api-request - updateFavorites', () => {
   it('should update favorites', async () => {
+    // Login
+    simpleLogin();
+
     axios.mockResolvedValueOnce({
       data: defaultResponse,
     });
@@ -215,8 +275,19 @@ describe('api-request - updateFavorites', () => {
     });
 
     expect(result).toEqual(defaultResponse);
+
+    // Logout
+    removeLoginCredentials();
   });
-  /* TODO: case of 401; no cookie */
+  /* TODO: Review case of 401; no cookie */
+  it('should update favorites', async () => {
+    const result = await request.updateFavorites({
+      favorites:
+        '["prod_L02g4odjdk6EXy","prod_KzjerxJxMY9MmC","prod_Jty71KKG2wCRD3"]',
+    });
+
+    expect(result).toHaveProperty("statusCode", 401);
+  });
 });
 
 describe('api-request - getPrintfulProducts', () => {

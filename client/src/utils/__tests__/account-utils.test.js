@@ -5,15 +5,15 @@ import * as apiRequest from '../../requests/api-request';
 import * as analyticsRequest from '../../requests/analytics-request';
 import { accountInfo, hasAvailableTokens, noAvailableTokens, userToken, sampleAccount } from '../__mocks__/account-utils.mocks';
 
-const simpleLogin = async () => {
+export const simpleLogin = async () => {
   const setTempCookie = (token) => {
     accountUtils.setLoginCookie(token);
   }
   const response = await apiRequest.signIn({email: sampleAccount.email, password: sampleAccount.password});
   setTempCookie(response.token);
-  return response;
+  // return response;
 }
-const removeLoginCredentials = () => {
+export const removeLoginCredentials = () => {
   accountUtils.removeLoginToken();
 }
 
@@ -29,7 +29,11 @@ describe('account - setUserAccount', () => {
 
 /* TODO: Need a Review */
 describe('account - updateUserTokens', () => {
-  /* test('should update user token - no cookie', async () => {
+  // TODO: Needs a Review
+  test("should update user tokens - cookie", async () => {
+    // First login to generate a cookie for test requests...
+    simpleLogin();
+
     const getItem = jest.spyOn(utils, 'getItem');
     const setItem = jest.spyOn(utils, 'setItem');
     const updateTokens = jest.spyOn(apiRequest, 'updateTokens');
@@ -43,14 +47,7 @@ describe('account - updateUserTokens', () => {
     expect(updateTokens).toHaveBeenCalled();
     expect(setItem).toHaveBeenCalled();
     expect(updateUser).toEqual(true);
-  });
-  */
 
-  test("should update user tokens - cookie", async () => {
-    // First login to generate a cookie for test requests...
-    simpleLogin();
-    const getItem = jest.spyOn(utils, 'getItem');
-    const updateTokens = jest.spyOn(apiRequest, 'updateTokens');
     // BE SURE TO REMOVE THE LOGIN CREDENTIALS
     removeLoginCredentials();
   });
@@ -64,7 +61,7 @@ describe('account - updateUserTokens', () => {
     
     const updateUser = await accountUtils.updateUserTokens(3, {});
 
-    expect(getItem).not.toHaveBeenCalled();
+    expect(getItem).toHaveBeenCalled();
     expect(updateTokens).toHaveBeenCalled();
     expect(updateUser).toEqual(false);
   });
