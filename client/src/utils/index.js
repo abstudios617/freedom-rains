@@ -63,6 +63,7 @@ export const resetCache = () => {
   removeItem('accountInfo');
   removeItem('favorites');
   removeItem('specificProd');
+  removeLoginToken();
 };
 
 export const setUserData = async (loggedInData) => {

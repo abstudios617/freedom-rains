@@ -1,5 +1,27 @@
 export const testData = { test: 123 };
 
+export const sampleAccount = {
+  first_name: "First",
+  last_name: "Last",
+  email: "test2@test.com",
+  password: "Whoops1234"
+}
+
+export const sampleAccountData = {
+    "user_id": 304,
+    "username": null,
+    "email": "test2@test.com",
+    "first_name": "First",
+    "last_name": "Last",
+    "age": null,
+    "race": null,
+    "gender": null,
+    "phone": null,
+    "zip": null,
+    "categories": null,
+    "favorites": null
+}
+
 /* TODO: Reflect on what CreateAccount would return */
 export const createAccount = {
   acct_id: 1,

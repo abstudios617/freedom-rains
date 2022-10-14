@@ -18,6 +18,7 @@ import {
   ContactFields,
 } from '../../styles/global.style';
 import google from '../../assets/footer/google.png';
+import { setLoginCookie } from '../../utils/account-utils';
 
 const Login = ({ redirect, setIsLoggedIn }) => {
   const { register, handleSubmit, getValues, errors } = useForm();
@@ -27,9 +28,10 @@ const Login = ({ redirect, setIsLoggedIn }) => {
 
     // Returns a Cookie
     const isSignedIn = await signIn(values);
-    document.cookie = `token=${isSignedIn.token}; path= '/'; httpOnly; secure;`;
 
     if (isSignedIn.statusCode === 201) { // 201 because backend returns 201 for sign-in success with cookies
+      // document.cookie = `token=${isSignedIn.token}; path= '/'; httpOnly; secure;`;
+      setLoginCookie(isSignedIn.token);
       await setUserData(isSignedIn);
       setIsLoggedIn(true);
       targetPage(redirect);

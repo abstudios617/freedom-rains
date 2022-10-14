@@ -31,6 +31,14 @@ export const getLoginToken = () => {
   return loginToken;
 }
 
+export const setLoginCookie = (token) => {
+  document.cookie = `token=${token}; path= '/'; httpOnly; secure;`;
+}
+
+export const removeLoginToken = () => {
+  document.cookie = `token=; path = '/'; Max-Age=0`;
+}
+
 export const updateUserTokens = async (tokenCount, tasks) => {
   const amount = getItem('tokens');
   const total = +amount + tokenCount;
