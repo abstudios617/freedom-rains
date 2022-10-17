@@ -20,3 +20,16 @@ module.exports = (app) =>{
   youtubeRoutes(app); 
   vimeoRoutes(app); 
 };
+const checkoutRoutes = require('./checkoutRoutes/checkout.routes.js');
+
+//single file for routes so index isn't cluttered
+module.exports = (app) =>{
+  leadsRoutes(app); //leads routes
+  userRoutes(app); //user routes
+  uninstallRoutes(app); //uninstalled routes 
+  productRoutes(app); //product routes
+  scrapRoutes(app); //scrap routes
+  gamingRoutes(app); //gaming routes
+  googleRoutes(app); //google routes
+  checkoutRoutes(app); //checkout routes
+};
