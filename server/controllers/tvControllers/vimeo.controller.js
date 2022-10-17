@@ -1,4 +1,4 @@
-const  Vimeo  = require('vimeo').Vimeo;
+const Vimeo = require('vimeo').Vimeo;
 const { vimeo , vimeo_client, vimeo_secret } = require('../../config')
 const client = new Vimeo(vimeo_client, vimeo_secret, vimeo)
 const knex = require('../../utils/knex').instance();
