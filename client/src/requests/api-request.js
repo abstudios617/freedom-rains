@@ -8,7 +8,7 @@ import { api, printfulUrl, printfulStoreId, printfulKey } from '../config';
 export const getUserInfo = async (token) => {
   const url = `${api}/login`;
   const userInfo = await client(url, null, token);
-  console.log('testing git commit');
+
   return userInfo;
 };
 

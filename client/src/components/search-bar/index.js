@@ -30,6 +30,10 @@ const SearchBar = ({ showSearch }) => {
     });
   };
 
+  const handleKeyPressed = (event) => {
+    if (event.code === 'Enter') handleSearch(); 
+  };
+  
   return (
     <SearchContainer className={!showSearch && 'hideSearch'}> 
       {/* What is this used for ^ */}
@@ -43,6 +47,7 @@ const SearchBar = ({ showSearch }) => {
               required: true,
             })}
             onChange={handleKeyword}
+            onKeyDown={handleKeyPressed}
           />
           <SearchIcon
             src={searchIcon}
