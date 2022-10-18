@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const MinusButton = styled.button`
   padding-bottom: 6px;
+
+  &.cartPage {
+    border-radius: 50%;
+  }
 `;
 
 export const PlusButton = styled.button`
@@ -17,6 +21,10 @@ export const QuantityTitle = styled.span`
   font-size: 16px;
   line-height: 27px;
   color: #828A94;
+
+  &.cartPage {
+    display: none;
+  }
 `;
 
 export const QuantityContainer = styled.div`
@@ -39,8 +47,14 @@ export const QuantityContainer = styled.div`
 
     &:hover {
       cursor: pointer;
-      border: 1px solid #E0E0E0;
     }
+  }
+
+  &.cartPage {
+    width: 141px;
+    height: 32px;
+    border: 1px solid black;
+    border-radius: 4px;
   }
 
 `;
@@ -55,4 +69,14 @@ export const Number = styled.span`
   font-size: 18px;
   line-height: 20px;
   color: #3C4044;
+
+  &.cartPage {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 13px;
+    color: #3C4044;
+    margin-top: 7px;
+  }
 `;
