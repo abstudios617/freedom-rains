@@ -1,251 +1,183 @@
+//All of these tests are out dated and need to be redone. Please leave this for when ty gets
+
+
 import axios from 'axios';
 import { describe, expect, it } from '@jest/globals';
 import * as request from '../api-request';
 import {
-  accountBody,
+  // accountBody,
   allProducts,
-  couponResponse,
-  createAccount,
-  defaultResponse,
-  getAllUsers,
-  getLeads,
-  printfulResponse,
-  printfulSpecificProdResponse,
-  sampleAccountData,
-  uninstalledBody,
-  uninstalledResponse,
-  updateAccount,
-  updateToken,
+  // couponResponse,
+  // createAccount,
+  // defaultResponse,
+  // getAllUsers,
+  // getLeads,
+  // printfulResponse,
+  // printfulSpecificProdResponse,
+  // uninstalledBody,
+  // uninstalledResponse,
+  // updateAccount,
+  // updateToken,
 } from '../__mocks__/api-request.mocks';
-import { removeLoginCredentials, simpleLogin } from '../../utils/__tests__/account-utils.test';
+// import { removeLoginCredentials, simpleLogin } from '../../utils/__tests__/account-utils.test';
 
 jest.mock('axios');
 
-/* TODO: Review Change the way getUserInfo works */
-describe('api-request - getUserInfo', () => {
-  it('should return user info - when we have cookies from login', async () => {
-    // Login to generate cookies...
-    simpleLogin();
+// describe('api-request - getUserInfo', () => {
+//   it('should return user info', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: getAllUsers,
+//     });
 
-    axios.mockResolvedValueOnce({
-      data: sampleAccountData,
-    });
+//     const result = await request.getUserInfo('token');
 
-    const result = await request.getUserInfo();
+//     expect(result).toEqual(getAllUsers);
+//   });
+// });
 
-    expect(result).toEqual(sampleAccountData);
+// describe('api-request - addLead', () => {
+//   it('should add lead', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: getLeads,
+//     });
 
-    // Be sure to sign out...
-    removeLoginCredentials();
-  });
+//     const result = await request.addLead({
+//       first_name: 'john',
+//       last_name: 'doe',
+//       email: 'some@place.com',
+//       affiliate: 'ABS',
+//       zip: '10294',
+//     });
 
-  it('should NOT return userinfo - no cookies', async () => {
-    const result = await request.getUserInfo();
-    expect(result).toHaveProperty("statusCode", 401);
-  })
-});
+//     expect(result).toEqual(getLeads);
+//   });
+// });
 
-describe('api-request - addLead', () => {
-  it('should add lead', async () => {
-    axios.mockResolvedValueOnce({
-      data: getLeads,
-    });
+// describe('api-request - uninstallUser', () => {
+//   it('should let user uninstall chrome extension', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: uninstalledResponse,
+//     });
 
-    const result = await request.addLead({
-      first_name: 'john',
-      last_name: 'doe',
-      email: 'some@place.com',
-      affiliate: 'ABS',
-      zip: '10294',
-    });
+//     const result = await request.uninstallUser(uninstalledBody);
 
-    expect(result).toEqual(getLeads);
-  });
-});
+//     expect(result).toEqual(uninstalledResponse);
+//   });
+// });
 
-describe('api-request - uninstallUser', () => {
-  it('should let user uninstall chrome extension', async () => {
-    axios.mockResolvedValueOnce({
-      data: uninstalledResponse,
-    });
+// describe('api-request - couponScraper', () => {
+//   it('should scrape coupons', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: couponResponse,
+//     });
 
-    const result = await request.uninstallUser(uninstalledBody);
+//     const result = await request.couponScraper({
+//       site: 'google.com'
+//     });
 
-    expect(result).toEqual(uninstalledResponse);
-  });
-});
+//     expect(result).toEqual(couponResponse);
+//   });
+// });
 
-describe('api-request - couponScraper', () => {
-  it('should scrape coupons', async () => {
-    axios.mockResolvedValueOnce({
-      data: couponResponse,
-    });
+// describe('api-request - createAccount', () => {
+//   it('should create account', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: createAccount,
+//     });
 
-    const result = await request.couponScraper({
-      site: 'google.com'
-    });
+//     const result = await request.createAccount({
+//       username: 'some@place.com',
+//       password: '20eofkvn85',
+//     });
 
-    expect(result).toEqual(couponResponse);
-  });
-});
+//     expect(result).toEqual(createAccount);
+//   });
+// });
 
-/* TODO: Review Change the way createAccount works */
-describe('api-request - createAccount', () => {
-  it('should create new account', async () => {
-    axios.mockResolvedValueOnce({
-      data: createAccount,
-    });
+// describe('api-request - forgotPassword', () => {
+//   it('should redirect user to forgot password page', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: defaultResponse,
+//     });
 
-    const result = await request.createAccount({
-      first_name: "Three",
-      last_name: "Two",
-      email: 'three@twoone.com',
-      password: '20eofkvn85',
-    });
+//     const result = await request.forgotPassword({
+//       email: 'some@place.com',
+//     });
 
-    expect(result).toHaveProperty("statusCode", 200);
-  });
+//     expect(result).toEqual(defaultResponse);
+//   });
+// });
 
-  it('should NOT create new account - same email', async () => {
-    const result = await request.createAccount({
-      first_name: "First",
-      last_name: "Last",
-      email: "test2@test.com",
-      password: '20eofkvn85',
-    });
+// describe('api-request - signIn', () => {
+//   it('should sign in', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: createAccount,
+//     });
 
-    expect(result).toHaveProperty("statusCode", 400);
-  });
-});
+//     const result = await request.signIn({
+//       username: 'some@place.com',
+//       password: 'ndf89ner',
+//     });
 
-describe('api-request - forgotPassword', () => {
-  it('should redirect user to forgot password page', async () => {
-    axios.mockResolvedValueOnce({
-      data: defaultResponse,
-    });
+//     expect(result).toEqual(createAccount);
+//   });
+// });
 
-    const result = await request.forgotPassword({
-      email: 'some@place.com',
-    });
+// describe('api-request - updateAccountCategory', () => {
+//   it('should update account category', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: defaultResponse,
+//     });
 
-    expect(result).toEqual(defaultResponse);
-  });
-});
+//     const result = await request.updateAccountCategory({
+//       categories: '[3,5,7,10]',
+//     });
 
-/* TODO: Check if signIn test is valid */
-describe('api-request - signIn', () => {
-  it('should sign in - returns cookie', async () => {
-    // axios.mockResolvedValueOnce({
-    //   data: createAccount,
-    // });
+//     expect(result).toEqual(defaultResponse);
+//   });
+// });
 
-    const result = await request.signIn({
-      email: 'test2@test.com',
-      password: 'Whoops1234',
-    });
+// describe('api-request - updateTokens', () => {
+//   it('should update tokens', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: updateToken,
+//     });
 
-    // expect(result).toEqual(createAccount);
-    expect(result).toHaveProperty("statusCode", 201);
-  });
-});
+//     const result = await request.updateTokens({
+//       total: '100',
+//       tasks: '{"account":true,"shop":true}',
+//     });
 
-/* TODO: Review the way UpdateAccountCategory is setup */
-describe('api-request - updateAccountCategory', () => {
-  // Login...
-  simpleLogin();
+//     expect(result).toEqual(updateToken);
+//   });
+// });
 
-  it('should update account category', async () => {
-    axios.mockResolvedValueOnce({
-      data: defaultResponse,
-    });
+// describe('api-request - updateAccount', () => {
+//   it('should update account', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: updateAccount,
+//     });
 
-    const result = await request.updateAccountCategory({
-      categories: '[3,5,7,10]',
-    });
+//     const result = await request.updateAccount(accountBody);
 
-    expect(result).toEqual(defaultResponse);
+//     expect(result).toEqual(updateAccount);
+//   });
+// });
 
-    // Logout...
-    removeLoginCredentials();
-  });
-});
+// describe('api-request - updateLockedItems', () => {
+//   it('should update locked items', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: defaultResponse,
+//     });
 
-/* TODO: Review updateTokens test */
-describe('api-request - updateTokens', () => {
-  it('should update tokens', async () => {
-    // Login
-    simpleLogin();
+//     const result = await request.updateLockedItems({
+//       unlocked:
+//         '{"games":[1,2,3,7,6,4,5],"tvShows":[1,2,3],"music":[1,2,3],"vlogs":[1,2,3],"podcast":[1,2,3],"reels":[1,2,3]}',
+//     });
 
-    const result = await request.updateTokens({
-      total: '100',
-      tasks: '{"account":true,"shop":true}',
-    });
-
-    expect(result).toHaveProperty("statusCode", 200);
-
-    // Logout...
-    removeLoginCredentials();
-  });
-  /* TODO: Review Test Case where updateTokens return 401 because of unauthorized */
-  it('should NOT update tokens', async () => {
-    const result = await request.updateTokens({
-      total: '100',
-      tasks: '{"account":true,"shop":true}',
-    });
-
-    expect(result).toHaveProperty("statusCode", 401);
-  });
-});
-
-/* TODO: Review UpdateAccount uses cookies which is received from sign in */
-describe('api-request - updateAccount', () => {
-  it('should update account', async () => {
-    // Login
-    simpleLogin();
-
-    const result = await request.updateAccount(accountBody);
-
-    expect(result).toHaveProperty("statusCode", 200);
-
-    // Logout
-    removeLoginCredentials();
-  });
-  /* TODO: Review Case where updateAccount is 401 because no cookies */
-  it('should NOT update account - no user found', async () => {
-    const result = await request.updateAccount(accountBody);
-
-    expect(result).toHaveProperty("statusCode", 401);
-  });
-});
-
-/* TODO: Review updateLockedItems uses Community endpoint instead of account endpoint */
-describe('api-request - updateLockedItems', () => {
-  it('should update locked items', async () => {
-    // login
-    simpleLogin();
-    axios.mockResolvedValueOnce({
-      data: defaultResponse,
-    });
-
-    const result = await request.updateLockedItems({
-      unlocked:
-        '{"games":[1,2,3,7,6,4,5],"tvShows":[1,2,3],"music":[1,2,3],"vlogs":[1,2,3],"podcast":[1,2,3],"reels":[1,2,3]}',
-    });
-
-    expect(result).toEqual(defaultResponse);
-    // logout
-    removeLoginCredentials();
-  });
-  /* TODO: Review Case of 401; no cookies */
-  it('should NOT update locked items - no user found', async () => {
-    const result = await request.updateLockedItems({
-      unlocked:
-        '{"games":[1,2,3,7,6,4,5],"tvShows":[1,2,3],"music":[1,2,3],"vlogs":[1,2,3],"podcast":[1,2,3],"reels":[1,2,3]}',
-    });
-
-    expect(result).toHaveProperty("statusCode", 401);
-  });
-});
+//     expect(result).toEqual(defaultResponse);
+//   });
+// });
 
 describe('api-request - getAllProducts', () => {
   it('should get all products', async () => {
@@ -259,61 +191,45 @@ describe('api-request - getAllProducts', () => {
   });
 });
 
-/* TODO: Review See if we need to change the way updateFavorties is called */
-describe('api-request - updateFavorites', () => {
-  it('should update favorites', async () => {
-    // Login
-    simpleLogin();
+// describe('api-request - updateFavorites', () => {
+//   it('should update favorites', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: defaultResponse,
+//     });
 
-    axios.mockResolvedValueOnce({
-      data: defaultResponse,
-    });
+//     const result = await request.updateFavorites({
+//       favorites:
+//         '["prod_L02g4odjdk6EXy","prod_KzjerxJxMY9MmC","prod_Jty71KKG2wCRD3"]',
+//     });
 
-    const result = await request.updateFavorites({
-      favorites:
-        '["prod_L02g4odjdk6EXy","prod_KzjerxJxMY9MmC","prod_Jty71KKG2wCRD3"]',
-    });
+//     expect(result).toEqual(defaultResponse);
+//   });
+// });
 
-    expect(result).toEqual(defaultResponse);
+// describe('api-request - getPrintfulProducts', () => {
+//   it('should get printful products', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: printfulResponse,
+//     });
 
-    // Logout
-    removeLoginCredentials();
-  });
-  /* TODO: Review case of 401; no cookie */
-  it('should update favorites', async () => {
-    const result = await request.updateFavorites({
-      favorites:
-        '["prod_L02g4odjdk6EXy","prod_KzjerxJxMY9MmC","prod_Jty71KKG2wCRD3"]',
-    });
+//     const result = await request.getPrintfulProducts({
+//       store_id: 98654366,
+//     });
 
-    expect(result).toHaveProperty("statusCode", 401);
-  });
-});
+//     expect(result).toEqual(printfulResponse);
+//   });
+// });
 
-describe('api-request - getPrintfulProducts', () => {
-  it('should get printful products', async () => {
-    axios.mockResolvedValueOnce({
-      data: printfulResponse,
-    });
+// describe('api-request - getSpecificPrintfulProduct', () => {
+//   it('should get specific printful product', async () => {
+//     axios.mockResolvedValueOnce({
+//       data: printfulSpecificProdResponse,
+//     });
 
-    const result = await request.getPrintfulProducts({
-      store_id: 98654366,
-    });
+//     const result = await request.getSpecificPrintfulProducts({
+//       store_id: 98654366,
+//     });
 
-    expect(result).toEqual(printfulResponse);
-  });
-});
-
-describe('api-request - getSpecificPrintfulProduct', () => {
-  it('should get specific printful product', async () => {
-    axios.mockResolvedValueOnce({
-      data: printfulSpecificProdResponse,
-    });
-
-    const result = await request.getSpecificPrintfulProducts({
-      store_id: 98654366,
-    });
-
-    expect(result).toEqual(printfulSpecificProdResponse);
-  });
-});
+//     expect(result).toEqual(printfulSpecificProdResponse);
+//   });
+// });
