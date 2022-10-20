@@ -1,5 +1,5 @@
 import { createCommunityUser, getCommunityInfo, getUserInfo } from '../requests/api-request';
-import { setUserAccount } from './account-utils';
+import { setUserAccount, removeLoginToken } from './account-utils';
 import useSSR from 'use-ssr';
 
 const { isBrowser } = useSSR();

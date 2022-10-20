@@ -3,8 +3,7 @@ import axios from 'axios';
 export const client = async (url = '', body = null, wildcards = null) => {
   const options = {
     method: body ? 'post' : 'get',
-    url: url,
-    withCredentials: true
+    url: url
   };
 
   if (wildcards)
