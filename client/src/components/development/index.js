@@ -75,7 +75,7 @@ const Development = () => {
   });
 
   return (
-    <div id="development">
+    <div id="Development">
       <DevelopHeading>
         <div>
           <DevelopTitle>
