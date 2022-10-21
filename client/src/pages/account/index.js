@@ -4,15 +4,12 @@ import { updateAccount } from '../../requests/api-request';
 import { getItem, setItem, targetPage } from '../../utils/index';
 import InputField from '../../components/input-field';
 import { useForm } from 'react-hook-form';
-import ButtonField from '../../components/button-field';
 import ModalOneBtn from '../../components/modal-one-btn';
 import Login from '../../components/login';
 import {
   getUserToken, setUserAccount, updateUserTokens
 } from '../../utils/account-utils';
-
 import {
-  Submit,
   AccountContain,
   SignIn,
   Content,
@@ -149,11 +146,12 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
    *  FOR ACCOUNT INFO
    */
   const [showEditAccountInfo, setShowEditAccountInfo] = useState({
-    name: false,
+    first_name: false,
+    last_name: false,
     email: false,
-    phoneNumber: false,
+    phone_number: false,
     address: false,
-    password: false
+    pwd: false
   });
   const [showEditCommInfo, setShowEditCommInfo] = useState({
     marketing: false,
@@ -161,8 +159,8 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     purchases: false
   });
   const [showDeleteAccount, setShowDeleteAccount] = useState({
-    accountInfo: false,
-    accountModal: false
+    account: false,
+    modal: false
   });
 
   // lastly, all events to open fields that contain hidden subfields
@@ -189,11 +187,11 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       accountSignOut: false
     });
   }
-  if (showDeleteAccount.accountModal) {
+  if (showDeleteAccount.modal) {
     window.alert('TEST: account deleted');
     setShowDeleteAccount({
       ...showDeleteAccount,
-      accountModal: false
+      modal: false
     });
   }
 
@@ -349,7 +347,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     //String(`${userData.first_name} ${userData.last_name}`) :
                     'FirstName'
                   }
-                  name="name"
+                  name="first_name"
                   onClick={handleInfoChange}
                 />
                 <InputField
@@ -359,15 +357,29 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   register={register({
                     required: false,
                   })}
-                  show={showEditAccountInfo.firstName}
-                  showHandler={setShowEditAccountInfo}
-                  save={null}
+                  show={showEditAccountInfo.first_name}
+                  showHandler={() => setShowEditAccountInfo({
+                    ...showEditAccountInfo,
+                    first_name: false
+                  })}
+                  save={() => {
+                    setShowEditAccountInfo({
+                      ...showEditAccountInfo,
+                      first_name: false
+                    });
+                    try {
+                      handleSubmit(updateAccountInfo);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
                 />
                 {errors.first_name && (
                   <Alert>
                     Please enter your first name
                   </Alert>
                 )}
+
                 <AccountInfoField 
                   detail="Last Name"
                   text={
@@ -383,15 +395,29 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   register={register({
                     required: false,
                   })}
-                  show={showEditAccountInfo.name}
-                  showHandler={setShowEditAccountInfo}
-                  save={null}
+                  show={showEditAccountInfo.last_name}
+                  showHandler={() => setShowEditAccountInfo({
+                    ...showEditAccountInfo,
+                    last_name: false
+                  })}
+                  save={() => {
+                    setShowEditAccountInfo({
+                      ...showEditAccountInfo,
+                      last_name: false
+                    });
+                    try {
+                      handleSubmit(updateAccountInfo);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
                 />
                 {errors.last_name && (
                   <Alert>
                     Please enter your last name
                   </Alert>
                 )}
+
                 <AccountInfoField
                   detail="Email"
                   text={
@@ -412,14 +438,28 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                   })}
                   show={showEditAccountInfo.email}
-                  showHandler={setShowEditAccountInfo}
-                  save={null}
+                  showHandler={() => setShowEditAccountInfo({
+                    ...showEditAccountInfo,
+                    email: false
+                  })}
+                  save={() => {
+                    setShowEditAccountInfo({
+                      ...showEditAccountInfo,
+                      email: false
+                    });
+                    try {
+                      handleSubmit(updateAccountInfo);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
                 />
                 {errors.email && (
                   <Alert>
                     Please enter email address correctly
                   </Alert>
                 )}
+
                 <AccountInfoField
                   detail="Phone Number"
                   text={
@@ -427,11 +467,11 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     //userData.phone :
                     '1234567890'
                   }
-                  name="phoneNumber"
+                  name="phone_number"
                   onClick={handleInfoChange}
                 />
                 <InputField
-                  name="phone"
+                  name="phone_number"
                   placeHolder="Phone Number"
                   type="tel"
                   register={register({
@@ -439,15 +479,29 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     maxLength: 10,
                   })}
                   extra="Use format 1234567890"
-                  show={showEditAccountInfo.phoneNumber}
-                  showHandler={setShowEditAccountInfo}
-                  save={null}
+                  show={showEditAccountInfo.phone_number}
+                  showHandler={() => setShowEditAccountInfo({
+                    ...showEditAccountInfo,
+                    phone_number: false
+                  })}
+                  save={() => {
+                    setShowEditAccountInfo({
+                      ...showEditAccountInfo,
+                      phone_number: false
+                    });
+                    try {
+                      handleSubmit(updateAccountInfo);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
                 />
                 {errors.phone && (
                   <Alert>
                     Please enter your phone number correctly
                   </Alert>
                 )}
+
                 <AccountInfoField
                   detail="Address"
                   text={'Add Address'}
@@ -463,29 +517,57 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     maxLength: 5,
                   })}
                   show={showEditAccountInfo.address}
-                  showHandler={setShowEditAccountInfo}
-                  save={null}
+                  showHandler={() => setShowEditAccountInfo({
+                    ...showEditAccountInfo,
+                    address: false
+                  })}
+                  save={() => {
+                    setShowEditAccountInfo({
+                      ...showEditAccountInfo,
+                      address: false
+                    });
+                    try {
+                      handleSubmit(updateAccountInfo);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
                 />
                 {errors.zip_code && (
                   <Alert>Please enter your zip code</Alert>
                 )}
+
                 <AccountInfoField
                   detail="Password"
                   text={'************'}
-                  name="password"
+                  name="pwd"
                   onClick={handleInfoChange}
                 />
                 <InputField
-                  name="password"
+                  name="pwd"
                   placeHolder="Password"
                   type="password"
                   register={register({
                     required: false,
                   })}
-                  show={showEditAccountInfo.password}
-                  showHandler={setShowEditAccountInfo}
-                  save={null}
+                  show={showEditAccountInfo.pwd}
+                  showHandler={() => setShowEditAccountInfo({
+                    ...showEditAccountInfo,
+                    pwd: false
+                  })}
+                  save={() => {
+                    setShowEditAccountInfo({
+                      ...showEditAccountInfo,
+                      pwd: false
+                    });
+                    try {
+                      handleSubmit(updateAccountInfo);
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
                 />
+
               </div>
               <div>
                 <AccountInfoSpecial
@@ -499,13 +581,12 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   onClick={() => setShowDeleteAccount(
                     {
                       ...showDeleteAccount,
-                      accountInfo: true
+                      account: true
                     }
                   )}
                 />
               </div>
             </AccountInfoContainer>
-
             <br />
 
             {/* Communication preferences */}
@@ -518,43 +599,69 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 name="marketing"
                 onClick={handleInfoChange}
                 show={showEditCommInfo.marketing}
+                showHandler={() => setShowEditCommInfo({
+                  ...showEditCommInfo,
+                  marketing: false,
+                })}
+                save={() => {
+                  setShowEditCommInfo({
+                    ...showEditCommInfo,
+                    marketing: false,
+                  });
+                  try {
+                    handleSubmit(updateAccountInfo);
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
               />
               <AccountCommField
                 title="Information Sharing"
                 name="sharing"
                 onclick={handleInfoChange}
                 show={showEditCommInfo.sharing}
+                showHandler={() => setShowEditCommInfo({
+                  ...showEditCommInfo,
+                  sharing: false,
+                })}
+                save={() => {
+                  setShowEditCommInfo({
+                    ...showEditCommInfo,
+                    sharing: false,
+                  });
+                  try {
+                    handleSubmit(updateAccountInfo);
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
               />
               <AccountCommField
                 title="Store Purchases"
                 name="purchases"
                 onClick={handleInfoChange}
                 show={showEditCommInfo.purchases}
+                showHandler={() => setShowEditCommInfo({
+                  ...showEditCommInfo,
+                  purchases: false,
+                })}
+                save={() => {
+                  setShowEditCommInfo({
+                    ...showEditCommInfo,
+                    purchases: false,
+                  });
+                  try {
+                    handleSubmit(updateAccountInfo);
+                  } catch (err) {
+                    console.error(err);
+                  }
+                }}
               />
             </AccountCommContainer>
 
             {errMsg && <Alert>{errMsg}</Alert>}
+
             <AccountContain>
-              <InputField
-                name="company"
-                placeHolder="Company"
-                type="text"
-                register={register({
-                  required: false,
-                })}
-              />
-              <InputField
-                name="age"
-                placeHolder="Age"
-                type="tel"
-                register={register({
-                  required: false,
-                  maxLength: 2,
-                })}
-              />
-              {errors.age && (
-                <Alert>Please enter your age</Alert>
-              )}
               <DropDown
                 name="race"
                 ref={register({
@@ -580,11 +687,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 <Alert>Please select your gender</Alert>
               )}
             </AccountContain>
-            <Submit>
-              <ButtonField color="primary" onClick={handleSubmit(updateAccountInfo)}>
-                Save
-              </ButtonField>
-            </Submit>
             {tokenReward ?
               (<ModalOneBtn
                 openModal={openModalOne}
@@ -605,12 +707,14 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
             {
               /**
                *  DELETE ACCOUNT
-               *  Purpose: to show separate page for redirecting user to delete their account
+               *  Located on lines 615-634
+               *  Purpose: to show design for account deletion
                *  What needs to change: 
+               *        - redirect to a different page when user, take this design
                */
             }
             {
-              showDeleteAccount.accountInfo &&
+              showDeleteAccount.account &&
               <>
                 <Title>
                   <span>Delete Account</span>
@@ -619,7 +723,13 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   onClick={() => setShowDeleteAccount(
                     {
                       ...showDeleteAccount, 
-                      accountModal: true
+                      modal: true
+                    }
+                  )}
+                  onCancel={() => setShowDeleteAccount(
+                    {
+                      ...showDeleteAccount,
+                      account: false
                     }
                   )}
                 />

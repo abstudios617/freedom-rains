@@ -31,15 +31,8 @@ const commInfoMarketing = (
   </>
 );
 
-const commInfoSharing = (
-  <>
-  </>
-);
-
-const commInfoPurchases = (
-  <>
-  </>
-);
+const commInfoPurchases = <></>;
+const commInfoSharing = <></>;
 
 function mapNameToInfo(name) {
   let info;
@@ -54,7 +47,7 @@ function mapNameToInfo(name) {
     info = commInfoPurchases;
     break;
   default:
-    info = '';
+    info = null;
     break;
   }
   return (
@@ -64,19 +57,16 @@ function mapNameToInfo(name) {
   );
 }
 
-const AccountCommField = ({ 
+const AccountCommField = ({
   title, name, onClick, show, showHandler, save
 }) => {
   return (
     <AccountCommFieldStyles>
-      <div
-        className="title"
-        style={{ display: 'flex', flexDirection: 'row' }}
-      >
-        <span>{title}</span>
+      <div className="title">
         <input
           type="button"
           name={name}
+          value={title}
           onClick={onClick}
         />
       </div>
@@ -85,13 +75,10 @@ const AccountCommField = ({
           mapNameToInfo(name)
         }
         <span>
-          <AccountCommButton className="cancel" onClick={() => showHandler(!show)}>
+          <AccountCommButton className="cancel" onClick={() => showHandler()}>
             Cancel
           </AccountCommButton>
-          <AccountCommButton className="save" onClick={() => {
-            console.log('cool');
-            save;
-          }}>
+          <AccountCommButton className="save" onClick={() => save()}>
             Save
           </AccountCommButton>
         </span>

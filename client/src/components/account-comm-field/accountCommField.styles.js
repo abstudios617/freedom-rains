@@ -9,6 +9,14 @@ export const AccountCommFieldStyles = styled.div`
         font-size: large;
         padding: 1em;
         border-bottom: 1px solid gray;
+        display: flex;
+        flex-direction: row;
+        height: 1em;
+
+        &:hover {
+            cursor: pointer;
+            background-color: lightgray;
+        }
 
         span {
             width: 400px;
@@ -30,12 +38,13 @@ export const AccountCommFieldStyles = styled.div`
             font-size: larger;
             background-color: rgba(0, 0, 0, 0);
             position: absolute;
-        }
 
-        &:hover {
-            cursor: pointer;
-            background-color: lightgray;
-            z-index: 2;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            padding: 1em;
+            margin-top: -1.25em;
+            margin-left: -1.5em;
+            text-align: left;
         }
     }
 

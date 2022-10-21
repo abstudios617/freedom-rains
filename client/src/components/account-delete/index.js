@@ -4,7 +4,7 @@ import {
   DeleteAccountButton
 } from './accountDelete.styles';
 
-const DeleteAccount = ({ onClick }) => {
+const DeleteAccount = ({ onClick, onCancel }) => {
   const info = (
     <p>
       <b>Deleting your account is permanent.</b> 
@@ -24,7 +24,8 @@ const DeleteAccount = ({ onClick }) => {
         </DeleteAccountButton>
         <input
           type="button"
-          value={'Cancel'}
+          value="Cancel"
+          onClick={onCancel}
         />
       </div>
     </DeleteAccountStyles>

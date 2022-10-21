@@ -21,15 +21,12 @@ const InputField = ({
         {extra}
       </div>
       <InputFieldOptions>
-        <div onClick={() => showHandler(!show)}>
+        <div onClick={() => showHandler()}>
           <InputFieldButton className="cancel">
             Cancel
           </InputFieldButton>
         </div>
-        <div onClick={() => {
-          console.log('wow');
-          save;
-        }}>
+        <div onClick={() => save()}>
           <InputFieldButton className="save">
             Save
           </InputFieldButton>
