@@ -30,14 +30,14 @@ export const DeleteAccountButton = styled.div`
     border-radius: 1.5em;
     padding: 1em;
     background-color: white;
-    border: 2px solid #49a429;
-    color: #49a429;
+    border: 2px solid #F9193D;
+    color: #F9193D;
     font-weight: bold;
     width: fit-content;
     user-select: none;
 
     &:hover {
-        background-color: #49a429;
+        background-color: #F9193D;
         color: white;
         cursor: pointer;
     }

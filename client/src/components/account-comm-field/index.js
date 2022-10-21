@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   AccountCommFieldStyles,
-  AccountCommFieldChildren
+  AccountCommFieldChildren,
+  AccountCommButton
 } from './accountCommField.styles';
 
 const commInfoMarketing = (
@@ -41,7 +42,7 @@ const commInfoPurchases = (
 );
 
 function mapNameToInfo(name) {
-  let info = (<></>);
+  let info;
   switch (name) {
   case 'marketing':
     info = commInfoMarketing;
@@ -53,12 +54,19 @@ function mapNameToInfo(name) {
     info = commInfoPurchases;
     break;
   default:
+    info = '';
     break;
   }
-  return info;
+  return (
+    <>
+      {info}
+    </>
+  );
 }
 
-const AccountCommField = ({ title, name, onClick, show }) => {
+const AccountCommField = ({ 
+  title, name, onClick, show, showHandler, save
+}) => {
   return (
     <AccountCommFieldStyles>
       <div
@@ -73,7 +81,20 @@ const AccountCommField = ({ title, name, onClick, show }) => {
         />
       </div>
       <AccountCommFieldChildren show={show}>
-        {mapNameToInfo(name)}
+        {
+          mapNameToInfo(name)
+        }
+        <span>
+          <AccountCommButton className="cancel" onClick={() => showHandler(!show)}>
+            Cancel
+          </AccountCommButton>
+          <AccountCommButton className="save" onClick={() => {
+            console.log('cool');
+            save;
+          }}>
+            Save
+          </AccountCommButton>
+        </span>
       </AccountCommFieldChildren>
     </AccountCommFieldStyles>
   );

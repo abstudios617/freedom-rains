@@ -47,11 +47,50 @@ export const AccountCommFieldChildren = styled.div`
     width: 720px;
     padding: 0.5em;
 
+    span {
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        padding: 1em 0 0.5em;
+    }
+
     .marketing-checkbox {
         font-weight: bold;
         input {
             margin: 0.5em;
             width: 150px;
+        }
+    }
+`;
+
+export const AccountCommButton = styled.div`
+    border-radius: 1em;
+    width: fit-content;
+    padding: 0.5em;
+    margin: 0.25em;
+    font-weight: bold;
+    font-size: small;
+    background-color: white;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.cancel {
+        border: 2px solid #000;
+        color: #000;
+        &:hover {
+            background-color: #000;
+            color: white;
+        }
+    }
+
+    &.save {
+        border: 2px solid #49a429;
+        color: #49a429;
+        &:hover {
+            background-color: #49a429;
+            color: white;
         }
     }
 `;

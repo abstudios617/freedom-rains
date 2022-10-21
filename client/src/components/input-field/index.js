@@ -5,7 +5,9 @@ import {
   InputFieldButton
 } from './inputField.styles';
 
-const InputField = ({ type, placeHolder, name, register, disabled, extra, show }) => {
+const InputField = ({ 
+  type, placeHolder, name, register, disabled, extra, show, showHandler, save
+}) => {
   return (
     <InputFieldContainer show={show}>
       <input
@@ -19,12 +21,19 @@ const InputField = ({ type, placeHolder, name, register, disabled, extra, show }
         {extra}
       </div>
       <InputFieldOptions>
-        <InputFieldButton className="cancel">
-          Cancel
-        </InputFieldButton>
-        <InputFieldButton className="save">
-          Save
-        </InputFieldButton>
+        <div onClick={() => showHandler(!show)}>
+          <InputFieldButton className="cancel">
+            Cancel
+          </InputFieldButton>
+        </div>
+        <div onClick={() => {
+          console.log('wow');
+          save;
+        }}>
+          <InputFieldButton className="save">
+            Save
+          </InputFieldButton>
+        </div>
       </InputFieldOptions>
     </InputFieldContainer>
   );
