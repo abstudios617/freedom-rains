@@ -6,18 +6,18 @@ const LikeItem = ({
 }) => {
   return (
     <LikeItemStyles>
-      <div onClick={() => console.log(link)} key={key}>
-        <img src={image} alt="" />
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <div>
+      <div className="likeMain" onClick={() => console.log(link)} key={key}>
+        <img className="likePicture" src={image} alt="" />
+        <div className="likeTop" style={{ display: 'flex', flexDirection: 'row' }}>
+          <div className="likeTopText">
             {name}
           </div>
           &nbsp;
-          <div>
+          <div className="likeTopDelete" onClick={() => window.alert('TEST: like item deleted')}>
             {'X'}
           </div>
         </div>
-        <div>
+        <div className="likeBottom">
           {desc}
         </div>
       </div>

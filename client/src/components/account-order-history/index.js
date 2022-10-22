@@ -1,10 +1,9 @@
 import React from 'react';
-import { AccountOrderHistoryContainer } from './accountOrderHistory.styles';
 import OrderItem from './orderItem';
 
 const AccountOrderHistory = ({ orders }) => {
   return (
-    <AccountOrderHistoryContainer>
+    <>
       {
         orders.map((item) => {
           const { 
@@ -33,7 +32,7 @@ const AccountOrderHistory = ({ orders }) => {
           );
         })
       }
-    </AccountOrderHistoryContainer>
+    </>
   );
 };
 

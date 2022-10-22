@@ -3,7 +3,6 @@ import { AccountLikesContainer } from './accountLikes.styles';
 import LikeItem from './likeItem';
 
 const AccountLikes = ({ likes }) => {
-  console.log('HO: ', likes);
   return (
     <AccountLikesContainer>
       {

@@ -201,7 +201,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         points: 100,
         user: {
           name: 'Stephen',
-          image: null,
+          image: '../../assets/header/group.png',
           link: '/'
         }
       },
@@ -210,7 +210,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         points: 90,
         user: {
           name: 'Step',
-          image: null,
+          image: '../../assets/header/group.png',
           link: '/'
         }
       },
@@ -219,7 +219,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         points: 80,
         user: {
           name: 'Phen',
-          image: null,
+          image: '../../assets/header/group.png',
           link: '/'
         }
       },
@@ -228,7 +228,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         points: 50,
         user: {
           name: 'Random Guy',
-          image: null,
+          image: '../../assets/header/group.png',
           link: '/'
         }
       }
@@ -236,17 +236,17 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     testMissions = [
       {
         title: 'Play Arcade Games',
-        image: null,
+        image: '../../assets/header/group.png',
         link: '/'
       },
       {
         title: 'Share Freedom on Social Media',
-        image: null,
+        image: '../../assets/header/group.png',
         link: '/'
       },
       {
         title: 'Share Freedom Partnerships',
-        image: null,
+        image: '../../assets/header/group.png',
         link: '/'
       }
     ],
@@ -257,19 +257,19 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
           {
             itemName: 'High-quality rose bouquet',
             itemPrice: 23.00,
-            itemImage: null,
+            itemImage: '../../assets/header/group.png',
             link: '/'
           },
           {
             itemName: 'Batteries',
             itemPrice: 15.00,
-            itemImage: null,
+            itemImage: '../../assets/header/group.png',
             link: '/'
           },
           {
             itemName: '24-pack soda',
             itemPrice: 14.00,
-            itemImage: null,
+            itemImage: '../../assets/header/group.png',
             link: '/'
           }
         ],
@@ -290,19 +290,19 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
           {
             itemName: 'Makeup kit',
             itemPrice: 34.00,
-            itemImage: null,
+            itemImage: '../../assets/header/group.png',
             itemLink: '/'
           },
           {
             itemName: 'Organic orange juice',
             itemPrice: 8.00,
-            itemImage: null,
+            itemImage: '../../assets/header/group.png',
             itemLink: '/'
           },
           {
             itemName: 'High-quality carnation bouquet',
             itemitemPrice: 30.00,
-            itemImage: null,
+            itemImage: '../../assets/header/group.png',
             itemLink: '/'
           }
         ],
@@ -322,19 +322,19 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       {
         name: 'Bouquet of roses',
         description: 'They are... roses',
-        image: null,
+        image: '../../assets/header/group.png',
         link: '/'
       },
       {
         name: 'Kindle Fire 7',
         description: 'Great for reading',
-        image: null,
+        image: '../../assets/header/group.png',
         link: '/'
       },
       {
         name: 'Car',
         description: 'Very expensive, vroom vroom',
-        image: null,
+        image: '../../assets/header/group.png',
         link: '/'
       },
     ];
