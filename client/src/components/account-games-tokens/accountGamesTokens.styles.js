@@ -38,11 +38,16 @@ export const GamesLevel = styled.div`
 
 export const LeaderboardItemStyles = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  border: 1px solid gray;
+  
+  background: white;
 `;
 
 export const MissionItemStyles = styled.div`
-
+  display: flex;
+  flex-direction: column;
+  border: 1px solid pink;
 `;
 
 export const LeaderboardToggle = styled.div`

@@ -29,14 +29,7 @@ const AccountGamesTokens = ({
         </GamesLevel>
       </GamesSubContainer>
       <GamesSubContainer>
-        <div>
-          {leaders.map((item) => {
-            (
-              <LeaderboardItem item={item} />
-            );
-          })}
-        </div>
-        <div>
+        <>
           <FlexColumn>
             <FlexRow>
               <LeaderboardToggle
@@ -67,13 +60,36 @@ const AccountGamesTokens = ({
                 onClick={() => window.alert('TEST: friend added')}
               />
             </FriendButtonContainer>
+            <div>
+              {selectLeaderboard && leaders.map((item) => {
+                const { index, position, points, user } = item;
+                return (
+                  <LeaderboardItem 
+                    key={index}
+                    position={position}
+                    points={points}
+                    name={user.name}
+                    image={user.image}
+                    link={user.link}
+                  />
+                );
+              })}
+            </div>
+            <div>
+              {!selectLeaderboard && missions.map((item) => {
+                const { index, title, image, link } = item;
+                return (
+                  <MissionItem 
+                    key={index}
+                    title={title}
+                    image={image}
+                    link={link}
+                  />
+                );
+              })}
+            </div>
           </FlexColumn>
-          {missions.map((item) => {
-            (
-              <MissionItem item={item} />
-            );
-          })}
-        </div>
+        </>
       </GamesSubContainer>
     </AccountGamesTokensContainer>
   );

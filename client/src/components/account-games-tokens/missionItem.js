@@ -3,10 +3,12 @@ import {
   MissionItemStyles
 } from './accountGamesTokens.styles';
 
-const MissionItem = ({ title, image, link }) => {
+const MissionItem = ({ 
+  key, title, image, link 
+}) => {
   return (
     <MissionItemStyles>
-      <div onClick={link}>
+      <div onClick={() => console.log(link)} key={key}>
         <img src={image} alt="" />
         <div>
           {title}

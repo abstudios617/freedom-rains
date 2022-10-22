@@ -202,7 +202,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         user: {
           name: 'Stephen',
           image: null,
-          link: ''
+          link: '/'
         }
       },
       {
@@ -211,7 +211,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         user: {
           name: 'Step',
           image: null,
-          link: ''
+          link: '/'
         }
       },
       {
@@ -220,7 +220,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         user: {
           name: 'Phen',
           image: null,
-          link: ''
+          link: '/'
         }
       },
       {
@@ -229,7 +229,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         user: {
           name: 'Random Guy',
           image: null,
-          link: ''
+          link: '/'
         }
       }
     ],
@@ -237,118 +237,106 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       {
         title: 'Play Arcade Games',
         image: null,
-        link: ''
+        link: '/'
       },
       {
         title: 'Share Freedom on Social Media',
         image: null,
-        link: ''
+        link: '/'
       },
       {
         title: 'Share Freedom Partnerships',
         image: null,
-        link: ''
+        link: '/'
       }
     ],
     testOrders = [
       {
-        orderNumber: '',
+        orderNumber: '1001',
         items: [
           {
-            name: '',
-            price: 23.00,
-            image: null,
-            link: ''
+            itemName: 'High-quality rose bouquet',
+            itemPrice: 23.00,
+            itemImage: null,
+            link: '/'
           },
           {
-            name: '',
-            price: 15.00,
-            image: null,
-            link: ''
+            itemName: 'Batteries',
+            itemPrice: 15.00,
+            itemImage: null,
+            link: '/'
           },
           {
-            name: '',
-            price: 14.00,
-            image: null,
-            link: ''
+            itemName: '24-pack soda',
+            itemPrice: 14.00,
+            itemImage: null,
+            link: '/'
           }
         ],
-        shippedDate: '',
-        deliveryEarliestDate: '',
-        deliveryLatestDate: '',
+        shipped: true,
+        shippedDate: '2022-10-13',
+        delivered: true,
+        deliveryEarliestDate: '2022-10-15',
+        deliveryLatestDate: '2022-10-17',
         returned: false,
-        totalPrice: 52.00,
-        address: '',
-        link: ''
+        tracked: false,
+        total: 52.00,
+        addr: '1234 N 15th Street',
+        link: '/'
       },
       {
-        orderNumber: '',
+        orderNumber: '1002',
         items: [
           {
-            name: '',
-            price: 34.00,
-            image: null,
-            link: ''
+            itemName: 'Makeup kit',
+            itemPrice: 34.00,
+            itemImage: null,
+            itemLink: '/'
           },
           {
-            name: '',
-            price: 8.00,
-            image: null,
-            link: ''
+            itemName: 'Organic orange juice',
+            itemPrice: 8.00,
+            itemImage: null,
+            itemLink: '/'
           },
           {
-            name: '',
-            price: 20.00,
-            image: null,
-            link: ''
+            itemName: 'High-quality carnation bouquet',
+            itemitemPrice: 30.00,
+            itemImage: null,
+            itemLink: '/'
           }
         ],
-        shippedDate: '',
-        deliveryEarliestDate: '',
-        deliveryLatestDate: '',
+        shipped: true,
+        shippedDate: '2022-10-19',
+        delivered: false,
+        deliveryEarliestDate: '2022-10-24',
+        deliveryLatestDate: '2022-10-27',
         returned: false,
-        totalPrice: 62.00,
-        address: '',
-        link: ''
+        tracked: true,
+        total: 72.00,
+        addr: '9876 S 12th Avenue',
+        link: '/'
       }
     ],
     testLikes = [
       {
-        name: '',
-        description: '',
-        image: false,
-        link: ''
+        name: 'Bouquet of roses',
+        description: 'They are... roses',
+        image: null,
+        link: '/'
       },
       {
-        name: '',
-        description: '',
-        image: false,
-        link: ''
+        name: 'Kindle Fire 7',
+        description: 'Great for reading',
+        image: null,
+        link: '/'
       },
       {
-        name: '',
-        description: '',
-        image: false,
-        link: ''
+        name: 'Car',
+        description: 'Very expensive, vroom vroom',
+        image: null,
+        link: '/'
       },
-      {
-        name: '',
-        description: '',
-        image: false,
-        link: ''
-      },
-      {
-        name: '',
-        description: '',
-        image: false,
-        link: ''
-      },
-      {
-        name: '',
-        description: '',
-        image: false,
-        link: ''
-      }
     ];
 
   if (!isLoggedIn) {
@@ -438,7 +426,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
               <span>Likes</span>
             </Title>
             <AccountLikes 
-              orders={testLikes}
+              likes={testLikes}
             />
           </Container>
         }

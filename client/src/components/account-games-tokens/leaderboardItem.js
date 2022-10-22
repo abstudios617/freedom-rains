@@ -3,14 +3,16 @@ import {
   LeaderboardItemStyles
 } from './accountGamesTokens.styles';
 
-const LeaderboardItem = ({ position, points, user }) => {
+const LeaderboardItem = ({
+  key, position, points, name, image, link
+}) => {
   return (
     <LeaderboardItemStyles>
-      <div onClick={user.link}>
+      <div onClick={() => console.log(link)} key={key}>
         <div>#{position}</div>
-        <img src={user.image} alt="" />
+        <img src={image} alt="" />
         <div>
-          {user.name}
+          {name}
         </div>
         <div>
           {points}
