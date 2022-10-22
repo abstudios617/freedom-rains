@@ -19,12 +19,13 @@ export const LikeItemStyles = styled.div`
         margin: 0.5em;
     }
 
-    .likePicture {
-        border: 1px solid black;
+    img {
         background-color: gray;
         min-height: 12em;
         min-width: 12em;
         user-select: none;
+        margin: 0.125em;
+        margin-bottom: 0.5em;
 
         &:hover {
             cursor: pointer;

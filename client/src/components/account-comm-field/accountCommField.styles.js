@@ -12,6 +12,7 @@ export const AccountCommFieldStyles = styled.div`
         display: flex;
         flex-direction: row;
         height: 1em;
+        cursor: pointer;
 
         &:hover {
             cursor: pointer;
@@ -32,7 +33,7 @@ export const AccountCommFieldStyles = styled.div`
 
         input {
             z-index: 2;
-            width: 480px;
+            width: fit-content;
             margin-left: 0em;
             border: none;
             font-size: larger;
@@ -45,6 +46,10 @@ export const AccountCommFieldStyles = styled.div`
             margin-top: -1.25em;
             margin-left: -1.5em;
             text-align: left;
+
+            &:hover {
+                cursor: pointer;
+            }
         }
     }
 

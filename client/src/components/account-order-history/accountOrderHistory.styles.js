@@ -40,6 +40,11 @@ export const OrderItemStyles = styled.div`
         width: 8em;
         background-color: gray;
         border: 1px solid black;
+
+        &:hover {
+            box-shadow: 0 0 3px 5px #49a429;
+            cursor: pointer;
+        }
     }
 
     .orderItemObjectText {
@@ -69,7 +74,7 @@ export const OrderItemStyles = styled.div`
         &:hover {
             cursor: pointer;
             background-color: white;
-            border: 2px solid light;
+            border: 2px solid gray;
             color: gray;
             transition-duration: 0.25s;
         }

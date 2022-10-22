@@ -30,8 +30,13 @@ const OrderItem = ({
                   index, itemName, itemPrice, itemImage, itemLink
                 } = i;
                 return (
-                  <div className="orderItemObject" onClick={() => console.log(itemLink)} key={index}>
-                    <img className="orderItemObjectImg" src={itemImage} alt="" />
+                  <div className="orderItemObject" key={index}>
+                    <img 
+                      className="orderItemObjectImg" 
+                      src={itemImage} alt="" 
+                      onClick={() => window.alert(`Redirecting to link ${itemLink} for item ${itemName}.`)}
+                    />
+                    {/* only show each item name and item price on order details & when hovering */}
                     <div className="orderItemObjectText">
                       <small>{itemName} (${itemPrice})</small>
                     </div>

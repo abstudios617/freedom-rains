@@ -7,7 +7,7 @@ const LikeItem = ({
   return (
     <LikeItemStyles>
       <div className="likeMain" onClick={() => console.log(link)} key={key}>
-        <img className="likePicture" src={image} alt="" />
+        <img src={image} alt="" />
         <div className="likeTop" style={{ display: 'flex', flexDirection: 'row' }}>
           <div className="likeTopText">
             {name}

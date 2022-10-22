@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { raceOptions, genderOptions } from '../../constants/account';
+//import { raceOptions, genderOptions } from '../../constants/account';
 import { updateAccount } from '../../requests/api-request';
 import { getItem, setItem, targetPage } from '../../utils/index';
 import InputField from '../../components/input-field';
@@ -10,14 +10,14 @@ import {
   getUserToken, setUserAccount, updateUserTokens
 } from '../../utils/account-utils';
 import {
-  AccountContain,
+  //AccountContain,
   SignIn,
   Content,
   AccountInfoContainer,
   AccountCommContainer
 } from './account.style';
 import { Container, Title, Alert } from '../../styles/global.style';
-import DropDown from '../../components/dropdown';
+//import DropDown from '../../components/dropdown';
 import FreedomLogo from '../../assets/icons/FreedomLogo.png';
 import LogoIcon from '../../components/logo-icons';
 
@@ -29,13 +29,15 @@ import { AccountInfoField, AccountInfoSpecial } from '../../components/account-i
 import AccountCommField from '../../components/account-comm-field';
 import DeleteAccount from '../../components/account-delete';
 import testIcon from '../../assets/header/group.png';
+import {
+  testLikes, testOrders, testLeaders, testMissions
+} from './testData.account';
 
 const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   const userData = JSON.parse(getItem('accountInfo'));
   const accountData = JSON.parse(getItem('loggedIn'));
   const [openModalOne, setOpenModalOne] = useState(false);
   const [tokenReward, setTokenReward] = useState(false);
-  const [errMsg, setErrMsg] = useState(null);
   const { register, handleSubmit, getValues, errors, setValue } = useForm({
     defaultValues: {
       email: accountData && accountData.username,
@@ -88,11 +90,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
 
       updateAllfields(update.account);
       await setUserAccount(update.account);
-      setErrMsg(null);
       setOpenModalOne(true);
     } else {
       console.log('Update Account Error');
-      setErrMsg(update.message);
     }
   };
 
@@ -100,21 +100,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     setOpenModalOne(false);
     setTokenReward(false);
   };
-
-  const raceDropdown = raceOptions.map((item) => {
-    return (
-      <option key={item.value} value={item.value}>
-        {item.label}
-      </option>
-    );
-  });
-  const genderDropdown = genderOptions.map((item) => {
-    return (
-      <option key={item.value} value={item.value}>
-        {item.label}
-      </option>
-    );
-  });
 
   /**
    *  FOR ALL MENU ITEMS
@@ -150,11 +135,13 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     address: false,
     pwd: false
   });
+
   const [showEditCommInfo, setShowEditCommInfo] = useState({
     marketing: false,
     sharing: false,
     purchases: false
   });
+
   const [showDeleteAccount, setShowDeleteAccount] = useState({
     account: false,
     modal: false
@@ -191,153 +178,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       modal: false
     });
   }
-
-  /**
-   *  DUMMY INFORMATION FOR PAGES THAT INVOLVE MULTIPLE ITEMS OF DATA
-   */
-  const testLeaders = [
-      {
-        position: 1,
-        points: 100,
-        user: {
-          name: 'Stephen',
-          image: '../../assets/header/group.png',
-          link: '/'
-        }
-      },
-      {
-        position: 2,
-        points: 90,
-        user: {
-          name: 'Step',
-          image: '../../assets/header/group.png',
-          link: '/'
-        }
-      },
-      {
-        position: 3,
-        points: 80,
-        user: {
-          name: 'Phen',
-          image: '../../assets/header/group.png',
-          link: '/'
-        }
-      },
-      {
-        position: 4,
-        points: 50,
-        user: {
-          name: 'Random Guy',
-          image: '../../assets/header/group.png',
-          link: '/'
-        }
-      }
-    ],
-    testMissions = [
-      {
-        title: 'Play Arcade Games',
-        image: '../../assets/header/group.png',
-        link: '/'
-      },
-      {
-        title: 'Share Freedom on Social Media',
-        image: '../../assets/header/group.png',
-        link: '/'
-      },
-      {
-        title: 'Share Freedom Partnerships',
-        image: '../../assets/header/group.png',
-        link: '/'
-      }
-    ],
-    testOrders = [
-      {
-        orderNumber: '1001',
-        items: [
-          {
-            itemName: 'High-quality rose bouquet',
-            itemPrice: 23.00,
-            itemImage: '../../assets/header/group.png',
-            link: '/'
-          },
-          {
-            itemName: 'Batteries',
-            itemPrice: 15.00,
-            itemImage: '../../assets/header/group.png',
-            link: '/'
-          },
-          {
-            itemName: '24-pack soda',
-            itemPrice: 14.00,
-            itemImage: '../../assets/header/group.png',
-            link: '/'
-          }
-        ],
-        shipped: true,
-        shippedDate: '2022-10-13',
-        delivered: true,
-        deliveryEarliestDate: '2022-10-15',
-        deliveryLatestDate: '2022-10-17',
-        returned: false,
-        tracked: false,
-        total: 52.00,
-        addr: '1234 N 15th Street',
-        link: '/'
-      },
-      {
-        orderNumber: '1002',
-        items: [
-          {
-            itemName: 'Makeup kit',
-            itemPrice: 34.00,
-            itemImage: '../../assets/header/group.png',
-            itemLink: '/'
-          },
-          {
-            itemName: 'Organic orange juice',
-            itemPrice: 8.00,
-            itemImage: '../../assets/header/group.png',
-            itemLink: '/'
-          },
-          {
-            itemName: 'High-quality carnation bouquet',
-            itemitemPrice: 30.00,
-            itemImage: '../../assets/header/group.png',
-            itemLink: '/'
-          }
-        ],
-        shipped: true,
-        shippedDate: '2022-10-19',
-        delivered: false,
-        deliveryEarliestDate: '2022-10-24',
-        deliveryLatestDate: '2022-10-27',
-        returned: false,
-        tracked: true,
-        total: 72.00,
-        addr: '9876 S 12th Avenue',
-        link: '/'
-      }
-    ],
-    testLikes = [
-      {
-        name: 'Bouquet of roses',
-        description: 'They are... roses',
-        image: '../../assets/header/group.png',
-        link: '/'
-      },
-      {
-        name: 'Kindle Fire 7',
-        description: 'Great for reading',
-        image: '../../assets/header/group.png',
-        link: '/'
-      },
-      {
-        name: 'Car',
-        description: 'Very expensive, vroom vroom',
-        image: '../../assets/header/group.png',
-        link: '/'
-      },
-    ];
 
   if (!isLoggedIn) {
     return (
@@ -414,9 +254,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       <div>
         {
           /*
-          
               ::: FOR LIKES :::
-          
           */
         }
         {
@@ -432,9 +270,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         }
         {
           /*
-          
               ::: FOR ORDER HISTORY :::
-          
           */
         }
         {
@@ -450,9 +286,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         }
         {
           /*
-          
               ::: FOR GAMES & TOKENS :::
-          
           */
         }
         {
@@ -471,9 +305,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         }
         {
           /*
-          
               ::: FOR ACCOUNT INFO :::
-          
           */
         }
         {
@@ -526,9 +358,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
 
                 <AccountInfoField
                   detail="Last Name"
-                  text={
-                    'LastName'
-                  }
+                  text={'LastName'}
                   name="last_name"
                   onClick={handleInfoChange}
                 />
@@ -802,35 +632,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 }}
               />
             </AccountCommContainer>
-
-            {errMsg && <Alert>{errMsg}</Alert>}
-
-            <AccountContain>
-              <DropDown
-                name="race"
-                ref={register({
-                  required: false,
-                })}
-                label="Select an Ethnicity"
-                list={raceDropdown}
-              >
-              </DropDown>
-              {errors.race && (
-                <Alert>Please select your Ethnicity</Alert>
-              )}
-              <DropDown
-                name="gender"
-                ref={register({
-                  required: false,
-                })}
-                label="Select a Gender"
-                list={genderDropdown}
-              >
-              </DropDown>
-              {errors.gender && (
-                <Alert>Please select your gender</Alert>
-              )}
-            </AccountContain>
             {tokenReward ?
               (<ModalOneBtn
                 openModal={openModalOne}

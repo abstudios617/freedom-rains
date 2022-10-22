@@ -40,5 +40,6 @@ export const DeleteAccountButton = styled.div`
         background-color: #F9193D;
         color: white;
         cursor: pointer;
+        transition-duration: 0.25s;
     }
 `;
