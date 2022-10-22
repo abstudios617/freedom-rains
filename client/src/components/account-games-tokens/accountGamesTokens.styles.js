@@ -36,41 +36,52 @@ export const GamesLevel = styled.div`
   box-shadow: 0 2px 3px rgba(51, 51, 51, 50%);
 `;
 
-export const GamesLeaderboardItem = styled.div`
+export const LeaderboardItemStyles = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const MissionItemStyles = styled.div`
 
 `;
 
-export const GamesMissionItem = styled.div`
-
-`;
-
-export const Toggle = styled.div`
+export const LeaderboardToggle = styled.div`
   padding: 1em;
   color: black;
   width: fit-content;
   font-weight: bold;
   user-select: none;
   box-shadow: 0 2px 3px rgba(51, 51, 51, 30%);
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
 
   &:hover {
-    cursor: pointer;
+    cursor: ${(props) => props.active ? 'default' : 'pointer'};
+    transition-duration: 0.5s;
   }
 
   &.leaderboard {
-    border-top-left-radius: 1em;
-    border-bottom-left-radius: 1em;
     background-color: gold;
+  }
+`;
+
+export const MissionsToggle = styled.div`
+  padding: 1em;
+  color: black;
+  width: fit-content;
+  font-weight: bold;
+  user-select: none;
+  box-shadow: 0 2px 3px rgba(51, 51, 51, 30%);
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+
+  &:hover {
+    cursor: ${(props) => props.active ? 'pointer' : 'default'};
+    transition-duration: 0.5s;
   }
 
   &.missions {
-    border-top-right-radius: 1em;
-    border-bottom-right-radius: 1em;
-    background-color: white;
-
-    &:hover {
-      background-color: cream;
-      transition-duration: 0.5s;
-    }
+    background-color: gold;
   }
 `;
 

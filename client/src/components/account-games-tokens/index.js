@@ -1,19 +1,22 @@
-import React from 'react';
-import { 
-  AccountGamesTokensContainer, 
+import React, { useState } from 'react';
+import {
+  AccountGamesTokensContainer,
   GamesSubContainer,
   GamesLevel,
-  GamesLeaderboardItem,
-  GamesMissionItem,
-  Toggle,
   FlexRow,
   FlexColumn,
-  FriendButtonContainer
+  FriendButtonContainer,
+  LeaderboardToggle,
+  MissionsToggle
 } from './accountGamesTokens.styles';
+import LeaderboardItem from './leaderboardItem';
+import MissionItem from './missionItem';
 
 const AccountGamesTokens = ({
   name, image, leaders, missions
 }) => {
+  const [selectLeaderboard, setSelectLeaderboard] = useState(true);
+
   return (
     <AccountGamesTokensContainer>
       <GamesSubContainer>
@@ -22,41 +25,52 @@ const AccountGamesTokens = ({
           <span>{name}</span>
         </FlexColumn>
         <GamesLevel>
-          Your Level (TEST)
+          Your Level
         </GamesLevel>
       </GamesSubContainer>
       <GamesSubContainer>
         <div>
           {leaders.map((item) => {
             (
-              <GamesLeaderboardItem>
-                {item}
-              </GamesLeaderboardItem>
+              <LeaderboardItem item={item} />
             );
           })}
         </div>
         <div>
           <FlexColumn>
             <FlexRow>
-              <Toggle className="leaderboard">
+              <LeaderboardToggle
+                onClick={
+                  () => setSelectLeaderboard(true)
+                }
+                className={`${selectLeaderboard && 'leaderboard'
+                  }`}
+                active={selectLeaderboard}
+              >
                 Leaderboard
-              </Toggle>
-              <Toggle className="missions">
+              </LeaderboardToggle>
+              <MissionsToggle
+                onClick={
+                  () => setSelectLeaderboard(false)
+                }
+                className={`${!selectLeaderboard && 'missions'
+                  }`}
+                active={selectLeaderboard}
+              >
                 Your Missions
-              </Toggle>
+              </MissionsToggle>
             </FlexRow>
             <FriendButtonContainer>
-              <input 
+              <input
                 type="button"
                 value="Add a Friend"
+                onClick={() => window.alert('TEST: friend added')}
               />
             </FriendButtonContainer>
           </FlexColumn>
           {missions.map((item) => {
             (
-              <GamesMissionItem>
-                {item}
-              </GamesMissionItem>
+              <MissionItem item={item} />
             );
           })}
         </div>

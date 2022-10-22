@@ -139,9 +139,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
    *  FOR GAMES & TOKENS
    */
 
-  // testing stuff
-  const testLeaders = [], testMissions = [];
-
   /**
    *  FOR ACCOUNT INFO
    */
@@ -194,6 +191,165 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       modal: false
     });
   }
+
+  /**
+   *  DUMMY INFORMATION FOR PAGES THAT INVOLVE MULTIPLE ITEMS OF DATA
+   */
+  const testLeaders = [
+      {
+        position: 1,
+        points: 100,
+        user: {
+          name: 'Stephen',
+          image: null,
+          link: ''
+        }
+      },
+      {
+        position: 2,
+        points: 90,
+        user: {
+          name: 'Step',
+          image: null,
+          link: ''
+        }
+      },
+      {
+        position: 3,
+        points: 80,
+        user: {
+          name: 'Phen',
+          image: null,
+          link: ''
+        }
+      },
+      {
+        position: 4,
+        points: 50,
+        user: {
+          name: 'Random Guy',
+          image: null,
+          link: ''
+        }
+      }
+    ],
+    testMissions = [
+      {
+        title: 'Play Arcade Games',
+        image: null,
+        link: ''
+      },
+      {
+        title: 'Share Freedom on Social Media',
+        image: null,
+        link: ''
+      },
+      {
+        title: 'Share Freedom Partnerships',
+        image: null,
+        link: ''
+      }
+    ],
+    testOrders = [
+      {
+        orderNumber: '',
+        items: [
+          {
+            name: '',
+            price: 23.00,
+            image: null,
+            link: ''
+          },
+          {
+            name: '',
+            price: 15.00,
+            image: null,
+            link: ''
+          },
+          {
+            name: '',
+            price: 14.00,
+            image: null,
+            link: ''
+          }
+        ],
+        shippedDate: '',
+        deliveryEarliestDate: '',
+        deliveryLatestDate: '',
+        returned: false,
+        totalPrice: 52.00,
+        address: '',
+        link: ''
+      },
+      {
+        orderNumber: '',
+        items: [
+          {
+            name: '',
+            price: 34.00,
+            image: null,
+            link: ''
+          },
+          {
+            name: '',
+            price: 8.00,
+            image: null,
+            link: ''
+          },
+          {
+            name: '',
+            price: 20.00,
+            image: null,
+            link: ''
+          }
+        ],
+        shippedDate: '',
+        deliveryEarliestDate: '',
+        deliveryLatestDate: '',
+        returned: false,
+        totalPrice: 62.00,
+        address: '',
+        link: ''
+      }
+    ],
+    testLikes = [
+      {
+        name: '',
+        description: '',
+        image: false,
+        link: ''
+      },
+      {
+        name: '',
+        description: '',
+        image: false,
+        link: ''
+      },
+      {
+        name: '',
+        description: '',
+        image: false,
+        link: ''
+      },
+      {
+        name: '',
+        description: '',
+        image: false,
+        link: ''
+      },
+      {
+        name: '',
+        description: '',
+        image: false,
+        link: ''
+      },
+      {
+        name: '',
+        description: '',
+        image: false,
+        link: ''
+      }
+    ];
 
   if (!isLoggedIn) {
     return (
@@ -260,9 +416,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
           icon={testIcon}
           title="Sign Out"
           onClick={() => setShowMenuItem(
-            { 
-              ...showMenuItem, 
-              accountSignOut: true 
+            {
+              ...showMenuItem,
+              accountSignOut: true
             }
           )}
         />
@@ -281,9 +437,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
             <Title>
               <span>Likes</span>
             </Title>
-            <AccountLikes>
-              LIKES TEST
-            </AccountLikes>
+            <AccountLikes 
+              orders={testLikes}
+            />
           </Container>
         }
         {
@@ -299,9 +455,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
             <Title>
               <span>Order History</span>
             </Title>
-            <AccountOrderHistory>
-              ORDERS TEST
-            </AccountOrderHistory>
+            <AccountOrderHistory 
+              orders={testOrders}
+            />
           </Container>
         }
         {
@@ -317,7 +473,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
             <Title>
               <span>Games & Tokens</span>
             </Title>
-            <AccountGamesTokens 
+            <AccountGamesTokens
               name={'Stephen Believin'}
               image={testIcon}
               leaders={testLeaders}
@@ -380,7 +536,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   </Alert>
                 )}
 
-                <AccountInfoField 
+                <AccountInfoField
                   detail="Last Name"
                   text={
                     'LastName'
@@ -703,7 +859,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 hasBtn={false}
               />)
             }
-            <br/>
+            <br />
             {
               /**
                *  DELETE ACCOUNT
@@ -722,7 +878,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 <DeleteAccount
                   onClick={() => setShowDeleteAccount(
                     {
-                      ...showDeleteAccount, 
+                      ...showDeleteAccount,
                       modal: true
                     }
                   )}
