@@ -2,7 +2,7 @@ import React from 'react';
 import { signIn } from '../../requests/api-request';
 import { setUserData, targetPage, resetCache } from '../../utils/index';
 import { useForm } from 'react-hook-form';
-import InputField from '../input-field';
+import LoginField from '../login-field';
 import ButtonField from '../button-field';
 import {
   LoginBox,
@@ -46,7 +46,7 @@ const Login = ({ redirect, setIsLoggedIn }) => {
     <LoginContainer>
       <LoginBox>
         <ContactFields>
-          <InputField
+          <LoginField
             name="email"
             placeHolder="Email"
             type="email"
@@ -57,11 +57,13 @@ const Login = ({ redirect, setIsLoggedIn }) => {
             })}
           />
           {errors.email && <Alert>Email required</Alert>}
-          <InputField
+          <LoginField
             name="password"
             placeHolder="Password"
             type="password"
-            register={register({ required: true })}
+            register={register({ 
+              required: true
+            })}
           />
           {errors.password && <Alert>Password required</Alert>}
           <br></br>
@@ -77,11 +79,9 @@ const Login = ({ redirect, setIsLoggedIn }) => {
             Sign in with Google
             <LogoIcon src={google} alt="google" />
           </ButtonField>
-          <br></br>
-          <br></br>
-          <br></br>
+          <br/><br/><br/>
           <NoAccount>Don&apos;t have an account?</NoAccount>
-          <br></br>
+          <br />
           <ButtonField color="createAcc" onClick={() => targetPage('create')}>
             Create Account
           </ButtonField>

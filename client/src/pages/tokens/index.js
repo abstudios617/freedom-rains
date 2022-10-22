@@ -126,7 +126,8 @@ const Tokens = ({ isLoggedIn, updateTokens }) => {
         />
         
         <Title>
-          <img src={StepThree} width="65%"></img><br/><br/>
+          <img src={StepThree} width="65%"></img>
+          <br/><br/>
           <span>Congrats &quot;{(userData) ? userData.first_name : 'First Name'}&quot;</span>
         </Title>
         <Subtitle>
@@ -145,7 +146,8 @@ const Tokens = ({ isLoggedIn, updateTokens }) => {
           <span>
             <u>Community Tokens Blurb:</u> <br/> The Freedom Community is powered by community tokens!<br/>
             Complete tasks & missions to unlock <b>NEW</b> games, <br/><b>EXCLUSIVE</b> creator content, and the <b>BEST</b> deals!
-          </span><br/><br/>
+          </span>
+          <br/><br/>
           <ButtonField color="mission">
             Finish Your First Mission!
           </ButtonField>
@@ -177,7 +179,7 @@ const Tokens = ({ isLoggedIn, updateTokens }) => {
               Filling out all Account information - 200 tokens
             </Task>
           </div>
-          <div onClick={() => handleShopPrefTask('shopping-preference')}>
+          <div onClick={() => handleShopPrefTask('preferences')}>
             <Task className={shopComplete && 'complete'}>
               Selecting your Shopping Preference - 200 tokens
             </Task>

@@ -6,7 +6,7 @@ export const Subcontent = styled.div`
 `;
 
 export const Footer = styled.div`
-  display:block;
+  display: block;
   text-align:center;
   margin-top: 30px;
   margin-bottom: 60px;
@@ -52,7 +52,7 @@ export const Task = styled.span`
 `;
 
 export const ImgContainer = styled.img`
-  display:block;
+  display: block;
   margin-left:auto;
   margin-right: auto;
   width: 238px;
@@ -60,7 +60,7 @@ export const ImgContainer = styled.img`
 `;
 
 export const Missions = styled.img`
-  display:block;
+  display: block;
   margin-left:auto;
   margin-right: auto;
   margin-bottom: 50px;
@@ -75,16 +75,16 @@ export const Disclaimer = styled.div`
 `;
 
 export const LeftBtn = styled.button`
-  position:absolute;
-  top: 30%;
+  position: absolute;
+  top: 27.5%;
   left: 37.5%;
   border: none;
   background: none;
 `;
 
 export const RightBtn = styled.button`
-  position:absolute;
-  top: 30%;
+  position: absolute;
+  top: 27.5%;
   right: 37.5%;
   border: none;
   background: none;
