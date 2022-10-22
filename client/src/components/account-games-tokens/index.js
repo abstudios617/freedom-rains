@@ -63,14 +63,15 @@ const AccountGamesTokens = ({
             <div>
               {selectLeaderboard && leaders.map((item) => {
                 const { index, position, points, user } = item;
+                const { name, image, link } = user;
                 return (
                   <LeaderboardItem 
                     key={index}
                     position={position}
                     points={points}
-                    name={user.name}
-                    image={user.image}
-                    link={user.link}
+                    name={name}
+                    image={image}
+                    link={link}
                   />
                 );
               })}

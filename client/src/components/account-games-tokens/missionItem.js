@@ -8,9 +8,9 @@ const MissionItem = ({
 }) => {
   return (
     <MissionItemStyles>
-      <div onClick={() => console.log(link)} key={key}>
+      <div className="missionItemMain" onClick={() => console.log(link)} key={key}>
         <img src={image} alt="" />
-        <div>
+        <div className="missionItemText">
           {title}
         </div>
       </div>
