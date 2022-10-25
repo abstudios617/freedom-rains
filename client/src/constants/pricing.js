@@ -328,7 +328,7 @@ export const pricingPackage = [
       'We handle all your marketing needs from strategy to design and implementation.',
   },
   {
-    name: 'Solutions',
+    name: 'Development',
     image: developIcon,
     content:
       'Let us develop a website or application for you that actually converts visitors into customers.',
