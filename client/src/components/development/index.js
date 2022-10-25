@@ -30,11 +30,11 @@ const Development = () => {
   });
 
   const featureChecklist = developmentFeatures.map((type) => {
-    const { name, uiDesigns, uxDesigns, adminDashoard, analyticsDashboard, seoOptimization, iosStoreOptimization, onPageOptimization, chatBox, clothingDropshipping, satisfactionGuarantee } = type;
+    const { name, title, uiDesigns, uxDesigns, adminDashoard, analyticsDashboard, seoOptimization, iosStoreOptimization, onPageOptimization, chatBox, clothingDropshipping, satisfactionGuarantee } = type;
     return (
       <DevelopItemWrapperApp key={name}>
         <DevelopTypeHeading> {name} </DevelopTypeHeading>
-        <DevelopFeatureHeading> Features </DevelopFeatureHeading>
+        <DevelopFeatureHeading> {title} </DevelopFeatureHeading>
         <DevelopFeature>
           <img src={uiDesigns ? greenCheckmark : blueX}/>
         </DevelopFeature>
@@ -75,7 +75,7 @@ const Development = () => {
   });
 
   return (
-    <div id="Development">
+    <div id="Solutions">
       <DevelopHeading>
         <div>
           <DevelopTitle>
@@ -90,7 +90,7 @@ const Development = () => {
           <img src={sideImg} alt="Workspace Image"/>
         </DevelopSideImg>
         <div> 
-          <DevelopTitleHeading> Development </DevelopTitleHeading> 
+          <DevelopTitleHeading> Solutions </DevelopTitleHeading> 
           {featureList} 
         </div>
         <DevelopCenter> {featureChecklist} </DevelopCenter>

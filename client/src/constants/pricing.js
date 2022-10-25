@@ -284,6 +284,7 @@ export const developmentFeaturesList = [
 export const developmentFeatures = [
   {
     name: 'Website',
+    title: 'Online/Mobile',
     isFeatured: false,
     uiDesigns: true,
     uxDesigns: true,
@@ -298,6 +299,7 @@ export const developmentFeatures = [
   },
   {
     name: 'Application',
+    title: 'Mobile',
     isFeatured: true,
     uiDesigns: true,
     uxDesigns: true,
@@ -326,7 +328,7 @@ export const pricingPackage = [
       'We handle all your marketing needs from strategy to design and implementation.',
   },
   {
-    name: 'Development',
+    name: 'Solutions',
     image: developIcon,
     content:
       'Let us develop a website or application for you that actually converts visitors into customers.',

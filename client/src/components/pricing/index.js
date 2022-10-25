@@ -25,7 +25,7 @@ const Pricing = ({freeAccount}) => {
   });
 
   return (
-    <div id="Pricing">
+    <div id="E-Commerce">
       <PriceHeading>
         <div>
           <PriceTitle>Simple, pricing for Everyone</PriceTitle>
