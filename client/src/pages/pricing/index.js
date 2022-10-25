@@ -33,11 +33,8 @@ const PricingPage = () => {
 
     return (
       <div key={name}>
-        <a href="https://www.freedomrains.com">
-          <a href={'/pricing#' + name}>
-            <img src={image} alt={name}></img>
-          </a>
-          
+        <a href={'/pricing#' + name}>
+          <img src={image} alt={name}></img>
         </a>
         <PackagesName>
           {name}
