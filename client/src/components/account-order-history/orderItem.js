@@ -4,11 +4,12 @@ import { OrderItemStyles, OrderMoreInfo } from './accountOrderHistory.styles';
 const OrderItem = ({
   key, number, items, shipped, shippedDate,
   delivered, deliveryDate, returned, tracked,
-  addr, total, orderLink
+  addr, total, orderLink, orderDate, payment
 }) => {
+  /* just in case, band-aid. Order can't be both tracked and returned :-) */
+  if (returned && tracked || delivered && tracked) tracked = false;
   const [showDetails, setShowDetails] = useState(false);
   const RANDOM = Math.round(Math.random());
-  /* random for now, although it changes every time I click for view details */
 
   return (
     <>
@@ -16,30 +17,39 @@ const OrderItem = ({
         <div className="orderMain" onClick={() => console.log(orderLink)} key={key}>
           <div className="orderNumber">#{number}</div>
           <div className="orderDelivery">
-            <div>
-              Shipped on: {shippedDate}
-            </div>
-            <div>
-              Delivered on: {deliveryDate[RANDOM]}
-            </div>
+            {
+              (delivered && !tracked) ? (
+                <div>Delivered on: {deliveryDate[RANDOM]}</div>
+              ) : (
+                <div>
+                  {
+                    shipped ? `Shipped on: ${shippedDate}` : `Ordered on: ${orderDate}`
+                  }
+                </div>
+              )
+            }
+            {
+              returned &&
+              <div>Order has been retuned.</div>
+            }
+            {
+              tracked &&
+              <div>Order is currently being tracked.</div>
+            }
           </div>
           <div className="orderItemsPreview">
             {
               items.map((i) => {
                 const {
-                  index, itemName, itemPrice, itemImage, itemLink
+                  index, itemName, itemImage, itemLink
                 } = i;
                 return (
                   <div className="orderItemObject" key={index}>
-                    <img 
-                      className="orderItemObjectImg" 
-                      src={itemImage} alt="" 
+                    <img
+                      className="orderItemObjectImg"
+                      src={itemImage} alt=""
                       onClick={() => window.alert(`Redirecting to link ${itemLink} for item ${itemName}.`)}
                     />
-                    {/* only show each item name and item price on order details & when hovering */}
-                    <div className="orderItemObjectText">
-                      <small>{itemName} (${itemPrice})</small>
-                    </div>
                   </div>
                 );
               })
@@ -68,26 +78,91 @@ const OrderItem = ({
             </div>
           </div>
         </div>
-        {
-          /* EXTRA */
-          <div className="extras">
-            EXTRAS: <br />
-            For address: {addr} |
-            Returned: {returned} |
-            Tracked: {tracked} |
-            Shipped: {shipped} |
-            Delivered: {delivered}
-          </div>
-        }
       </OrderItemStyles>
       {
         /* More details can be added later */
         showDetails &&
         <OrderMoreInfo>
           <div className="orderDetailMain">
-            HELLO WORLD
+            <div className="orderDetailDetail">
+              {
+                (delivered && !tracked) ? (
+                  <div>Delivered on: {deliveryDate[RANDOM]}</div>
+                ) : (
+                  <div>
+                    {
+                      shipped ? `Shipped on: ${shippedDate}` : `Ordered on: ${orderDate}`
+                    }
+                  </div>
+                )
+              }
+              {
+                returned &&
+                <div>Order has been retuned.</div>
+              }
+              {
+                tracked &&
+                <div>Order is currently being tracked.</div>
+              }
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <div className="orderDetailInventory">
+                <span>
+                  Items: 
+                </span>
+                {
+                  items.map((item) => {
+                    const { index, itemName, itemPrice, itemAmount, itemImage, itemLink } = item;
+                    return (
+                      <div
+                        key={index}
+                        onClick={() => window.alert(`Redirecting to link: ${itemLink}`)}
+                        className="orderDetailItem"
+                      >
+                        <img src={itemImage} alt="" />
+                        <div 
+                          style={{ display: 'flex', flexDirection: 'column' }}
+                          className="orderDetailItemOptions"  
+                        >
+                          <span>{itemName}</span>
+                          <div>Option</div>
+                          <div>
+                            <b>${itemPrice}</b> 
+                            &nbsp;&nbsp;
+                            {
+                              itemAmount > 1 &&
+                              <u>x {itemAmount}</u>
+                            }
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })
+                }
+              </div>
+              <div className="orderDetailOptions">
+                {
+                  !delivered &&
+                  <span>
+                    <b>Expected delivery date:</b> <br/>
+                    {deliveryDate[RANDOM]}
+                  </span>
+                }
+                <span>
+                  <b>Delivery Address</b> <br />
+                  {addr}
+                </span>
+                <span>
+                  <b>Delivery Payment</b> <br />
+                  {(payment !== null) ? payment : 'None'}
+                </span>
+              </div>
+            </div>
+            <div className="orderDetailPrice">
+              Total price: &nbsp; ${total}
+            </div>
           </div>
-          <input 
+          <input
             className="cancelDetails"
             type="button"
             value="Cancel"

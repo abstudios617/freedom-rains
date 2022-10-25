@@ -10,7 +10,7 @@ const AccountOrderHistory = ({ orders }) => {
             index, orderNumber, items, 
             shipped, shippedDate, delivered, 
             deliveryEarliestDate, deliveryLatestDate,
-            returned, tracked, total, addr, link
+            returned, tracked, total, addr, link, payment
           } = item;
           return (
             <OrderItem
@@ -28,6 +28,7 @@ const AccountOrderHistory = ({ orders }) => {
               addr={addr}
               total={total}
               orderLink={link}
+              payment={payment}
             />
           );
         })

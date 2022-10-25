@@ -66,21 +66,25 @@ export const testOrders = [
         itemName: 'High-quality rose bouquet',
         itemPrice: 23.00,
         itemImage: '../../assets/header/group.png',
-        itemLink: '/'
+        itemLink: '/',
+        itemAmount: 2
       },
       {
         itemName: 'Batteries',
         itemPrice: 15.00,
         itemImage: '../../assets/header/group.png',
-        itemLink: '/'
+        itemLink: '/',
+        itemAmount: 3
       },
       {
         itemName: '24-pack soda',
         itemPrice: 14.00,
         itemImage: '../../assets/header/group.png',
-        itemLink: '/'
+        itemLink: '/',
+        itemQuantity: 1
       }
     ],
+    orderDate: '2022-10-12',
     shipped: true,
     shippedDate: '2022-10-13',
     delivered: true,
@@ -90,7 +94,8 @@ export const testOrders = [
     tracked: false,
     total: 52.00,
     addr: '1234 N 15th Street',
-    link: '/'
+    link: '/',
+    payment: 'Credit Card ending in 1234'
   },
   {
     orderNumber: '1002',
@@ -99,21 +104,25 @@ export const testOrders = [
         itemName: 'Makeup kit',
         itemPrice: 34.00,
         itemImage: '../../assets/header/group.png',
-        itemLink: '/'
+        itemLink: '/',
+        itemAmount: 2
       },
       {
         itemName: 'Organic orange juice',
         itemPrice: 8.00,
         itemImage: '../../assets/header/group.png',
-        itemLink: '/'
+        itemLink: '/',
+        itemAmount: 1
       },
       {
         itemName: 'High-quality carnation bouquet',
         itemitemPrice: 30.00,
         itemImage: '../../assets/header/group.png',
-        itemLink: '/'
+        itemLink: '/',
+        itemAmount: 2
       }
     ],
+    orderDate: '2022-10-17',
     shipped: true,
     shippedDate: '2022-10-19',
     delivered: false,
@@ -123,7 +132,8 @@ export const testOrders = [
     tracked: true,
     total: 72.00,
     addr: '9876 S 12th Avenue',
-    link: '/'
+    link: '/',
+    payment: null
   }
 ];
 
