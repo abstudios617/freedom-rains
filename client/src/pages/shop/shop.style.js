@@ -46,6 +46,7 @@ export const SearchContainer = styled.div`
 `;
 
 export const SearchItems = styled.div`
+  top: 80px;
   margin-bottom: 30px;
 `;
 

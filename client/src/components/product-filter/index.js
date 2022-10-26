@@ -23,6 +23,10 @@ const ProductFilter = ({
   setItemOffset,
   setForcePageNum,
 }) => {
+  const [platformList, setPlatformList] = useState(false);
+  const [categoriesList, setCategoriesList] = useState(false);
+  const [storeList, setStoreList] = useState(false);
+  const [priceList, setPriceList] = useState(false);
   const [filterPlatform, setFilterPlatform] = useState(null);
   const [filterCategory, setFilterCategory] = useState(null);
   const [filterStore, setFilterStore] = useState(null);
@@ -151,8 +155,9 @@ const ProductFilter = ({
     const arr = [];
 
     products.forEach((item) => {
-      if (arr.indexOf(item.category) === -1) {
-        arr.push(item.category);
+      const category = item.product.metadata.category; 
+      if (arr.indexOf(category) === -1) {
+        arr.push(category);
       }
     });
 
@@ -166,8 +171,9 @@ const ProductFilter = ({
     const arr = [];
 
     products.forEach((item) => {
-      if (arr.indexOf(item.store) === -1) {
-        arr.push(item.store);
+      const store = item.product.metadata.store;
+      if (arr.indexOf(store) === -1) {
+        arr.push(store);
       }
     });
 
@@ -179,10 +185,11 @@ const ProductFilter = ({
       return;
     }
     const arr = [];
-
+    
     products.forEach((item) => {
-      if (arr.indexOf(item.platform) === -1 && item.platform !== 'exclusive') {
-        arr.push(item.platform);
+      const platform = item.product.metadata.platform;
+      if (arr.indexOf(platform) === -1 && platform !== 'exclusive') {
+        arr.push(platform);
       }
     });
 
@@ -196,22 +203,23 @@ const ProductFilter = ({
     const arr = [];
 
     products.forEach((item) => {
-      if (+item.price < 10 && arr.indexOf(10) === -1) {
+      const price = item.product.default_price; 
+      if (+price < 10 && arr.indexOf(10) === -1) {
         arr.push(10);
       }
-      if (+item.price > 10 && +item.price < 20 && arr.indexOf(20) === -1) {
+      if (+price > 10 && +price < 20 && arr.indexOf(20) === -1) {
         arr.push(20);
       }
-      if (+item.price > 20 && +item.price < 30 && arr.indexOf(30) === -1) {
+      if (+price > 20 && +price < 30 && arr.indexOf(30) === -1) {
         arr.push(30);
       }
-      if (+item.price > 30 && +item.price < 40 && arr.indexOf(40) === -1) {
+      if (+price > 30 && +price < 40 && arr.indexOf(40) === -1) {
         arr.push(40);
       }
-      if (+item.price > 40 && +item.price < 50 && arr.indexOf(50) === -1) {
+      if (+price > 40 && +price < 50 && arr.indexOf(50) === -1) {
         arr.push(50);
       }
-      if (+item.price > 50 && arr.indexOf(999) === -1) {
+      if (+price > 50 && arr.indexOf(999) === -1) {
         arr.push(999);
       }
     });
@@ -273,6 +281,24 @@ const ProductFilter = ({
     }
   };
 
+  const handlePlatformClick = () => {
+    platformList ? setPlatformList(false) : setPlatformList(true); 
+  };
+
+  const handleCategoryClick = () => {
+    categoriesList ? setCategoriesList(false) : setCategoriesList(true); 
+  };
+
+  const handleStoreClick = () => {
+    storeList ? setStoreList(false) : setStoreList(true); 
+  };
+
+  const handlePriceClick = () => {
+    priceList ? setPriceList(false) : setPriceList(true); 
+  };
+
+  const didFiltered = platformList || categoriesList || storeList || priceList;
+  
   useEffect(() => {
     setOrigProducts(origItems);
   }, [origItems]);
@@ -313,7 +339,7 @@ const ProductFilter = ({
   }, [allPrices, products]);
 
   return (
-    <Filter>
+    <Filter className={didFiltered ? 'filtered' : undefined}>
       <ViewFilter>
         <ButtonField color="allWhite" onClick={() => setShowFilter(!showFilter)}>
           Filters
@@ -323,7 +349,7 @@ const ProductFilter = ({
         <FilterContainer>
           <FilterTitle>
             Platform
-            <img src={vector} alt="vector" />
+            <img src={vector} alt="vector" onClick={() => handlePlatformClick()}/>
           </FilterTitle>
           {filterPlatform ? (
             <FilterSelected>
@@ -336,7 +362,8 @@ const ProductFilter = ({
             </FilterSelected>
           ) : (
             <FilterItemContainer>
-              {allPlatforms &&
+              {platformList &&
+              allPlatforms &&
                 allPlatforms.map((platform, index) => {
                   return (
                     <FilterItem
@@ -353,7 +380,7 @@ const ProductFilter = ({
         <FilterContainer>
           <FilterTitle>
             Categories
-            <img src={vector} alt="vector" />
+            <img src={vector} alt="vector" onClick={() => handleCategoryClick()}/>
           </FilterTitle>
           {filterCategory ? (
             <FilterSelected>
@@ -366,7 +393,8 @@ const ProductFilter = ({
             </FilterSelected>
           ) : (
             <FilterItemContainer>
-              {allCategories &&
+              {categoriesList &&
+              allCategories &&
                 categoryViewable === 5 &&
                 allCategories
                   .slice(0, categoryViewable)
@@ -380,7 +408,8 @@ const ProductFilter = ({
                       </FilterItem>
                     );
                   })}
-              {allCategories &&
+              {categoriesList &&
+              allCategories &&
                 categoryViewable > 5 &&
                 allCategories.map((category, index) => {
                   return (
@@ -392,7 +421,8 @@ const ProductFilter = ({
                     </FilterItem>
                   );
                 })}
-              {allCategories &&
+              {categoriesList &&
+              allCategories &&
                 allCategories.length > 5 &&
                 categoryViewable === 5 && (
                 <ViewItems
@@ -416,7 +446,7 @@ const ProductFilter = ({
         <FilterContainer>
           <FilterTitle>
             Store
-            <img src={vector} alt="vector" />
+            <img src={vector} alt="vector" onClick={() => handleStoreClick()}/>
           </FilterTitle>
           {filterStore ? (
             <FilterSelected>
@@ -429,7 +459,8 @@ const ProductFilter = ({
             </FilterSelected>
           ) : (
             <FilterItemContainer>
-              {allStores &&
+              {storeList &&
+                allStores &&
                 storeViewable === 5 &&
                 allStores.slice(0, storeViewable).map((store, index) => {
                   return (
@@ -441,7 +472,8 @@ const ProductFilter = ({
                     </FilterItem>
                   );
                 })}
-              {allStores &&
+              {storeList &&
+                allStores &&
                 storeViewable > 5 &&
                 allStores.map((store, index) => {
                   return (
@@ -453,7 +485,7 @@ const ProductFilter = ({
                     </FilterItem>
                   );
                 })}
-              {allStores && allStores.length > 5 && storeViewable === 5 && (
+              {storeList && allStores && allStores.length > 5 && storeViewable === 5 && (
                 <ViewItems
                   onClick={() => viewableItems('store', allStores.length)}
                 >
@@ -473,7 +505,7 @@ const ProductFilter = ({
         <FilterContainer>
           <FilterTitle>
             Price Range
-            <img src={vector} alt="vector" />
+            <img src={vector} alt="vector" onClick={() => handlePriceClick()} />
           </FilterTitle>
           {filterPrice ? (
             <FilterSelected>
@@ -490,7 +522,8 @@ const ProductFilter = ({
             </FilterSelected>
           ) : (
             <FilterItemContainer>
-              {allPrices &&
+              {priceList &&
+                allPrices &&
                 allPrices.map((price, index) => {
                   return (
                     <FilterItem

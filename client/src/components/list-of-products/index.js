@@ -12,16 +12,18 @@ import {
   FavBtn,
   HomepageProduct,
   ProductNameHomepage,
+  Icon,
 } from './listOfProducts.styles';
 import { hpStoresConstant } from '../../constants/homepage';
 import { BtnField } from '../button-field/buttonField.styles';
 import cart from '../../assets/icons/cart.svg';
+import FavoriteBorderOutlined from '@mui/icons-material/FavoriteBorderOutlined';
 
 const ListOfProducts = ({
   currentItems,
   specificProd,
   removeFromFav,
-  search = false,
+  search=false, // for some reason, search is false from shop index.js call
   isHomepage,
   isStoreList,
 }) => {
@@ -47,7 +49,7 @@ const ListOfProducts = ({
     const blackClass = search ? 'productBlackSearch' : 'productBlack';
     const platformLocal = search ? 'platformLocalSearch' : 'platformLocal';
     const platformBlack = search ? 'platformBlackSearch' : 'platformBlack';
-
+    
     return (
       (!isHomepage ? (
         <div
@@ -59,6 +61,7 @@ const ListOfProducts = ({
           <div onClick={() => goToProductClass(item)}>
             <ImgContainer className={search && 'imgContainerSearch'}>
               <ProdImg src={images[0]} alt={name} className={search && 'prodImgSearch'} />
+              <Icon><FavoriteBorderOutlined/></Icon>
             </ImgContainer>
             <ProductPrice>${formatPrice(unit_amount)}</ProductPrice>
             <ProductName>{name}</ProductName>
@@ -69,7 +72,7 @@ const ListOfProducts = ({
                   : platformBlack
               }
             >
-              {Platform === 'local' ? 'Local' : 'Black'}
+              {Platform === 'local' ? 'Local' : 'Black Owned'}
             </div>
           </div>
 
@@ -112,7 +115,7 @@ const ListOfProducts = ({
                   : 'platformBlackHomepage'
               }
             >
-              {Platform === 'local' ? 'Local' : 'Black'}
+              {Platform === 'local' ? 'Local' : 'Black Owned'}
             </div>
           </div>
           }

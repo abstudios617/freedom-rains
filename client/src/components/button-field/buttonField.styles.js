@@ -270,6 +270,31 @@ export const BtnField = styled.button`
     }
   }
 
+  &.addToCart {
+    width: 100px;
+    height: auto;
+    font-weight: 900;
+    font-size: 12px;
+    margin: 0px -10px;
+    color: white;
+  }
+
+  &.share {
+    font-weight: 900;
+    font-size: 12px;
+    height: auto;
+    color: white; 
+  }
+
+  &.addToLikes {
+    margin: 0px 20px;
+    font-weight: 900;
+    font-size: 12px;
+    width: auto;
+    color: white; 
+    height: auto;
+  }
+
   @media only screen and (max-width: 480px) {
     padding: 10px;
     border-radius: 10px;
