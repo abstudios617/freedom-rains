@@ -33,6 +33,7 @@ import {
   ImageContainer,
   SecondaryImg,
   SecondaryImgContain,
+  PlatformSearch,
 } from './productClass.style';
 import { BtnField } from '../../components/button-field/buttonField.styles';
 import {Container} from '../../styles/global.style';
@@ -218,7 +219,7 @@ const ProductClass = ({ isLoggedIn }) => {
               {prodItem.metadata.platform === 'local' ? (
                 <Platform>Local</Platform>
               ) : (
-                <Platform className="black">Black</Platform>
+                <PlatformSearch>Black Owned</PlatformSearch>
               )}
               <Store>{prodItem.product.metadata.Store}</Store>
               <Title>{prodItem.product.name}</Title>            

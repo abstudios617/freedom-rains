@@ -23,7 +23,7 @@ const ListOfProducts = ({
   currentItems,
   specificProd,
   removeFromFav,
-  search=false, // for some reason, search is false from shop index.js call
+  search=false, 
   isHomepage,
   isStoreList,
 }) => {

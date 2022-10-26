@@ -275,7 +275,7 @@ export const ListProd = styled.div`
     padding: 10px;
     gap: 10px;
     width: 85px;
-    height: 30px;
+    height: 40px;
     background: #FFFFFF;
     border: 4px solid #3C4044;
     border-radius: 0px 18px 18px 18px;

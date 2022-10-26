@@ -220,3 +220,14 @@ export const Platform = styled.div`
     color: #3C4044;
   }
 `;
+
+export const PlatformSearch = styled.div `
+  background-color: #3C4044;
+  color: #fff;
+  text-align: left;
+  padding: 5px 10px;
+  text-transform: capitalize;
+  font-weight: 700;
+  width: 24%;
+  margin-top: 15px;
+`;
