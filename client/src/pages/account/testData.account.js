@@ -43,17 +43,17 @@ export const testLeaders = [
 export const testMissions = [
   {
     title: 'Play Arcade Games',
-    image: '../../assets/header/group.png',
+    icon: '../../assets/icons/gamepad-solid.svg',
     link: '/'
   },
   {
     title: 'Share Freedom on Social Media',
-    image: '../../assets/header/group.png',
+    icon: '../../assets/icons/arrow-up-from-bracket-solid.svg',
     link: '/'
   },
   {
     title: 'Share Freedom Partnerships',
-    image: '../../assets/header/group.png',
+    icon: '../../assets/icons/arrow-up-from-bracket-solid.svg',
     link: '/'
   }
 ];

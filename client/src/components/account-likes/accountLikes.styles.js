@@ -26,7 +26,7 @@ export const LikeItemStyles = styled.div`
         }
     }
 
-    img {
+    .likeMainImage {
         background-color: gray;
         min-height: 12em;
         min-width: 12em;
@@ -58,14 +58,16 @@ export const LikeItemStyles = styled.div`
     .likeTopDelete {
         color: red;
         margin: 0 1em;
-        user-select: none;
         padding: 0 0.5em;
         margin: 0.25em;
+        width: 20px;
+        height: 24px;
+        padding: 0.25em 0;
 
         &:hover {
-            border-radius: 0.5em;
-            border: 1px solid red;
+            box-shadow: 0 0 0.5em 0.25em red;
             background-color: red;
+            border-radius: 1em;
             color: white;
             transition-duration: 0.25s;
             cursor: pointer;

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import { raceOptions, genderOptions } from '../../constants/account';
 import { updateAccount } from '../../requests/api-request';
 import { getItem, setItem, targetPage } from '../../utils/index';
 import InputField from '../../components/input-field';
@@ -10,14 +9,12 @@ import {
   getUserToken, setUserAccount, updateUserTokens
 } from '../../utils/account-utils';
 import {
-  //AccountContain,
   SignIn,
   Content,
   AccountInfoContainer,
   AccountCommContainer
 } from './account.style';
 import { Container, Title, Alert } from '../../styles/global.style';
-//import DropDown from '../../components/dropdown';
 import FreedomLogo from '../../assets/icons/FreedomLogo.png';
 import LogoIcon from '../../components/logo-icons';
 
@@ -32,6 +29,17 @@ import testIcon from '../../assets/header/group.png';
 import {
   testLikes, testOrders, testLeaders, testMissions
 } from './testData.account';
+
+/**
+ *  ICONS
+ */
+import likeIcon from '../../assets/icons/heart-solid.svg';
+import orderIcon from '../../assets/icons/scroll-solid.svg';
+import gamesIcon from '../../assets/icons/gamepad-solid.svg';
+import accountIcon from '../../assets/icons/user-solid.svg';
+import signOutIcon from '../../assets/icons/right-from-bracket-solid.svg';
+import shopIcon from '../../assets/icons/shop-solid.svg';
+import deleteIcon from '../../assets/icons/right-from-bracket-solid.svg';
 
 const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   const userData = JSON.parse(getItem('accountInfo'));
@@ -113,18 +121,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   });
 
   /**
-   *  FOR LIKES
-   */
-
-  /**
-   *  FOR ORDER HISTORY
-   */
-
-  /**
-   *  FOR GAMES & TOKENS
-   */
-
-  /**
    *  FOR ACCOUNT INFO
    */
   const [showEditAccountInfo, setShowEditAccountInfo] = useState({
@@ -202,7 +198,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
           <span>Thank you for supporting small and local businesses!</span>
         </Content>
         <AccountMenuButton
-          icon={testIcon}
+          icon={likeIcon}
           title="Likes"
           onClick={
             () => setShowMenuItem(
@@ -211,7 +207,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
           }
         />
         <AccountMenuButton
-          icon={testIcon}
+          icon={orderIcon}
           title="Order History"
           subtitle="Track your order status, view order history and receipts."
           onClick={
@@ -221,7 +217,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
           }
         />
         <AccountMenuButton
-          icon={testIcon}
+          icon={gamesIcon}
           title="Games & Tokens"
           subtitle="Games you've played and tokens you've earned!"
           onClick={
@@ -231,7 +227,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
           }
         />
         <AccountMenuButton
-          icon={testIcon}
+          icon={accountIcon}
           title="Account Info"
           subtitle="Edit your addresses, contact information, and password here."
           onClick={
@@ -241,7 +237,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
           }
         />
         <AccountMenuButton
-          icon={testIcon}
+          icon={signOutIcon}
           title="Sign Out"
           onClick={() => setShowMenuItem(
             {
@@ -545,12 +541,12 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
               </div>
               <div>
                 <AccountInfoSpecial
-                  icon={testIcon}
+                  icon={shopIcon}
                   detail="Shopping Preference"
                   onClick={() => targetPage('preferences')}
                 />
                 <AccountInfoSpecial
-                  icon={testIcon}
+                  icon={deleteIcon}
                   detail="Delete Account"
                   onClick={() => setShowDeleteAccount(
                     {

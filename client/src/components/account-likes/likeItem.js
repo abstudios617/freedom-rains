@@ -1,5 +1,6 @@
 import React from 'react';
 import { LikeItemStyles } from './accountLikes.styles';
+import trashIcon from '../../assets/icons/trash-solid.svg';
 
 const LikeItem = ({
   key, name, desc, image, link
@@ -7,14 +8,14 @@ const LikeItem = ({
   return (
     <LikeItemStyles>
       <div className="likeMain" onClick={() => console.log(link)} key={key}>
-        <img src={image} alt="" />
+        <img className="likeMainImage" src={image} alt="" />
         <div className="likeTop" style={{ display: 'flex', flexDirection: 'row' }}>
           <div className="likeTopText">
             {name}
           </div>
           &nbsp;
-          <div className="likeTopDelete" onClick={() => window.alert('TEST: like item deleted')}>
-            {'X'}
+          <div onClick={() => window.alert('TEST: like item deleted')}>
+            <img className="likeTopDelete" src={trashIcon} alt="" />
           </div>
         </div>
         <div className="likeBottom">

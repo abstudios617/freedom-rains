@@ -104,12 +104,12 @@ const AccountGamesTokens = ({
             </div>
             <div>
               {!selectLeaderboard && missions.map((item) => {
-                const { index, title, image, link } = item;
+                const { index, title, link, icon } = item;
                 return (
                   <MissionItem 
                     key={index}
                     title={title}
-                    image={image}
+                    image={icon}
                     link={link}
                   />
                 );

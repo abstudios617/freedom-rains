@@ -44,7 +44,6 @@ export const IconContainer = styled.div`
     margin: 0.5em 0.25em;
     width: 5%;
     max-height: 20px;
-    box-shadow: 0 0 40px black inset;
 
     img {
         height: 16px;
