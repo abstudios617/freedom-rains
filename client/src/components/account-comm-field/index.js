@@ -61,15 +61,13 @@ const AccountCommField = ({
   title, name, onClick, show, showHandler, save
 }) => {
   return (
-    <AccountCommFieldStyles>
-      <div className="title">
-        <input
-          type="button"
-          name={name}
-          value={title}
-          onClick={onClick}
-        />
-      </div>
+    <AccountCommFieldStyles onClick={onClick}>
+      <input
+        type="button"
+        name={name}
+        value={title}
+        onClick={onClick}
+      />
       <AccountCommFieldChildren show={show}>
         {
           mapNameToInfo(name)

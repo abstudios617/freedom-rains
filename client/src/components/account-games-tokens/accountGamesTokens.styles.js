@@ -19,8 +19,8 @@ export const GamesSubContainer = styled.div`
     border-radius: 0.25em;
     margin: 0.25em;
     border: 1px solid black;
-    width: 50px;
-    height: 50px;
+    width: 150px;
+    height: 150px;
   }
 
   span {
@@ -32,8 +32,17 @@ export const GamesLevel = styled.div`
   margin: 1em;
   border-radius: 0.5em;
   padding: 1em;
-  max-width: 360px;
+  max-width: 330px;
   box-shadow: 0 2px 3px rgba(51, 51, 51, 50%);
+`;
+
+export const ProgressBar = styled.div`
+  margin: 1em;
+  border-radius: 0.5em;
+  padding: 1em;
+  max-width: 300px;
+  box-shadow: 0 2px 3px rgba(51, 51, 51, 50%);
+  margin-bottom: 5%;
 `;
 
 export const LeaderboardItemStyles = styled.div`
@@ -42,8 +51,7 @@ export const LeaderboardItemStyles = styled.div`
 
   .lbItemMain {
     border-radius: 1em;
-    border: 2px solid gray;
-    padding: 0.5em;
+    padding: 0.75em 2.25em;
     margin: 0.25em;
     display: flex;
     flex-direction: row;
@@ -57,6 +65,12 @@ export const LeaderboardItemStyles = styled.div`
               'lightgray' 
       )
     };
+
+    &:hover {
+      box-shadow: 1px 1px 5px 0 #333;
+      cursor: pointer;
+      transition-duration: 0.5s;
+    }
   }
 
   .lbItemMain span {
@@ -82,10 +96,6 @@ export const LeaderboardItemStyles = styled.div`
     font-weight: bold;
     font-size: large;
   }
-
-  .lbItemPoints {
-    font-size: small;
-  }
 `;
 
 export const MissionItemStyles = styled.div`
@@ -93,15 +103,20 @@ export const MissionItemStyles = styled.div`
   flex-direction: column;
   
   .missionItemMain {
-    border: 2px solid gray;
     border-radius: 1em;
-    padding: 0.5em;
+    padding: 0.75em 2.25em;
     margin: 0.5em;
     background-color: lightgray;
     width: 18em;
 
     display: flex;
     flex-direction: row;
+
+    &:hover {
+      box-shadow: 1px 1px 5px 0 #333;
+      cursor: pointer;
+      transition-duration: 0.5s;
+    }
   }
 
   img {
@@ -161,6 +176,12 @@ export const MissionsToggle = styled.div`
   }
 `;
 
+export const MissionsTitle = styled.div`
+  font-size: large;
+  font-weight: bold;
+  padding: 1.5em;
+`;
+
 export const FlexColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -173,20 +194,42 @@ export const FlexRow = styled.div`
 
 export const FriendButtonContainer = styled.div`
   input {
-    border: 2px solid lightskyblue;
+    border: 2px solid rgb(0, 150, 255);
     background-color: white;
-    color: lightskyblue;
+    color: rgb(0, 150, 255);
     font-weight: bold;
-    padding: 0.5em;
+    padding: 0.75em;
     border-radius: 1em;
     user-select: none;
-    margin: 1em;
-    margin-left: 37%;
+    margin: 2em 1em;
+    margin-bottom: 5%;
 
     &:hover {
       cursor: pointer; 
-      background-color: lightskyblue;
+      background-color: rgb(0, 150, 255);
       color: white;
+      transition-duration: 0.25s;
     }
   }
 `; 
+
+export const EarnTokensButtonContainer = styled.div`
+  input {
+    border: 2px solid #49a429;
+    background-color: white;
+    color: #49a429;
+    font-weight: bold;
+    padding: 0.75em;
+    border-radius: 1em;
+    user-select: none;
+    margin: 1em;
+    margin-top: 2em;
+
+    &:hover {
+      cursor: pointer; 
+      background-color: #49a429;
+      color: white;
+      transition-duration: 0.25s;
+    }
+  }
+`;

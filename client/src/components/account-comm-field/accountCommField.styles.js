@@ -3,16 +3,23 @@ import styled from 'styled-components';
 export const AccountCommFieldStyles = styled.div`
     margin-left: 12.5%;
 
-    .title {
+    input {
         width: 720px;
         font-weight: bold;
         font-size: large;
         padding: 1em;
+        border: none;
         border-bottom: 1px solid gray;
         display: flex;
         flex-direction: row;
-        height: 1em;
         cursor: pointer;
+
+        font-size: larger;
+        background-color: white;
+
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        text-align: left;
 
         &:hover {
             cursor: pointer;
@@ -20,32 +27,8 @@ export const AccountCommFieldStyles = styled.div`
         }
 
         span {
-            width: 400px;
+            width: 360px;
             z-index: 1;
-            &:hover {
-                cursor: pointer;
-            }
-        }
-
-        div {
-            margin-left: 50px;
-        }
-
-        input {
-            z-index: 2;
-            width: fit-content;
-            margin-left: 0em;
-            border: none;
-            font-size: larger;
-            background-color: rgba(0, 0, 0, 0);
-            position: absolute;
-
-            font-family: 'Montserrat', sans-serif;
-            font-weight: bold;
-            padding: 1em;
-            margin-top: -1.25em;
-            margin-left: -1.5em;
-            text-align: left;
 
             &:hover {
                 cursor: pointer;
@@ -69,6 +52,8 @@ export const AccountCommFieldChildren = styled.div`
     }
 
     .marketing-checkbox {
+        display: flex;
+        flex-direction: row;
         font-weight: bold;
         input {
             margin: 0.5em;

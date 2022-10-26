@@ -3,11 +3,14 @@ import {
   AccountGamesTokensContainer,
   GamesSubContainer,
   GamesLevel,
+  ProgressBar,
   FlexRow,
   FlexColumn,
   FriendButtonContainer,
+  EarnTokensButtonContainer,
   LeaderboardToggle,
-  MissionsToggle
+  MissionsToggle,
+  MissionsTitle
 } from './accountGamesTokens.styles';
 import LeaderboardItem from './leaderboardItem';
 import MissionItem from './missionItem';
@@ -53,13 +56,36 @@ const AccountGamesTokens = ({
                 Your Missions
               </MissionsToggle>
             </FlexRow>
-            <FriendButtonContainer>
-              <input
-                type="button"
-                value="Add a Friend"
-                onClick={() => window.alert('TEST: friend added')}
-              />
-            </FriendButtonContainer>
+            {
+              (selectLeaderboard) ? (
+                <FriendButtonContainer>
+                  <input
+                    type="button"
+                    value="Add a Friend"
+                    onClick={() => window.alert('TEST: friend added!')}
+                  />
+                </FriendButtonContainer>
+              ) : (
+                <>
+                  <EarnTokensButtonContainer>
+                    <input
+                      type="button"
+                      value="Play Games to Earn Tokens"
+                      onClick={() => window.alert('TEST: tokens earned!')} 
+                    />
+                  </EarnTokensButtonContainer>
+                  <MissionsTitle>
+                    Progress
+                  </MissionsTitle>
+                  <ProgressBar>
+                    Your Progress
+                  </ProgressBar>
+                </>
+              )
+            }
+            <MissionsTitle>
+              Mission List
+            </MissionsTitle>
             <div>
               {selectLeaderboard && leaders.map((item) => {
                 const { index, position, points, user } = item;
@@ -89,6 +115,11 @@ const AccountGamesTokens = ({
                 );
               })}
             </div>
+            <span style={{ marginTop: '2.5em', width: '400px', color: 'gray' }}>
+              The Freedom Community is powered by Community Tokens! <br/><br/>
+              Complete tasks, missions, and share Freedom with you friends to earn tokens to unlock new games,
+              EXCLUSIVE creator content, and cool new features in the app!
+            </span>
           </FlexColumn>
         </>
       </GamesSubContainer>
