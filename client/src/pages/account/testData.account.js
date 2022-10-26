@@ -116,7 +116,7 @@ export const testOrders = [
       },
       {
         itemName: 'High-quality carnation bouquet',
-        itemitemPrice: 30.00,
+        itemPrice: 30.00,
         itemImage: '../../assets/header/group.png',
         itemLink: '/',
         itemAmount: 2

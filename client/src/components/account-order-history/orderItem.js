@@ -68,47 +68,73 @@ const OrderItem = ({
               <input
                 type="button"
                 value="Start a Return"
-                onClick={() => window.alert('TEST: order is set to return')}
+                onClick={() => window.alert(`TEST: order #${number} is set to return.`)}
               />
               <input
                 type="button"
                 value="Track Order"
-                onClick={() => window.alert('TEST: order to be tracked')}
+                onClick={() => window.alert(`TEST: order #${number} to be tracked.`)}
               />
             </div>
           </div>
         </div>
       </OrderItemStyles>
+
       {
         /* More details can be added later */
         showDetails &&
         <OrderMoreInfo>
           <div className="orderDetailMain">
             <div className="orderDetailDetail">
-              {
-                (delivered && !tracked) ? (
-                  <div>Delivered on: {deliveryDate[RANDOM]}</div>
-                ) : (
-                  <div>
-                    {
-                      shipped ? `Shipped on: ${shippedDate}` : `Ordered on: ${orderDate}`
-                    }
-                  </div>
-                )
-              }
-              {
-                returned &&
-                <div>Order has been retuned.</div>
-              }
-              {
-                tracked &&
-                <div>Order is currently being tracked.</div>
-              }
+              <div>
+                <div>
+                  Order Number #{number}
+                </div>
+                {
+                  (delivered && !tracked) ? (
+                    <div>Delivered on: {deliveryDate[RANDOM]}</div>
+                  ) : (
+                    <div>
+                      {
+                        shipped ? `Shipped on: ${shippedDate}` : `Ordered on: ${orderDate}`
+                      }
+                    </div>
+                  )
+                }
+                {
+                  returned &&
+                  <div>Order has been retuned.</div>
+                }
+                {
+                  tracked &&
+                  <div>Order is currently being tracked.</div>
+                }
+              </div>
+            </div>
+            <div className="orderDetailButtons">
+              <input
+                type="button"
+                value="Start a Return"
+                onClick={() => {
+                  window.alert(`TEST: order #${number} has been called for a return.`);
+                  returned = true;
+                }}
+              />
+              <input
+                type="button"
+                value="Track Order"
+                onClick={() => window.alert(`TEST: order #${number} is now tracked.`)}
+              />
+              <input
+                type="button"
+                value="Customer Support"
+                onClick={() => window.alert(`TEST: calling customer support for order #${number}`)}
+              />
             </div>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div className="orderDetailInventory">
                 <span>
-                  Items: 
+                  Items:
                 </span>
                 {
                   items.map((item) => {
@@ -120,14 +146,14 @@ const OrderItem = ({
                         className="orderDetailItem"
                       >
                         <img src={itemImage} alt="" />
-                        <div 
+                        <div
                           style={{ display: 'flex', flexDirection: 'column' }}
-                          className="orderDetailItemOptions"  
+                          className="orderDetailItemOptions"
                         >
                           <span>{itemName}</span>
                           <div>Option</div>
                           <div>
-                            <b>${itemPrice}</b> 
+                            <b>${itemPrice}</b>
                             &nbsp;&nbsp;
                             {
                               itemAmount > 1 &&
@@ -144,7 +170,7 @@ const OrderItem = ({
                 {
                   !delivered &&
                   <span>
-                    <b>Expected delivery date:</b> <br/>
+                    <b>Expected delivery date:</b> <br />
                     {deliveryDate[RANDOM]}
                   </span>
                 }

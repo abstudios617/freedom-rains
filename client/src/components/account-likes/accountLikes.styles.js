@@ -17,6 +17,13 @@ export const LikeItemStyles = styled.div`
         padding: 1em;
         width: fit-content;
         margin: 0.5em;
+
+        &:hover {
+            box-shadow: 0 0 3px 5px #49a429;
+            cursor: pointer;
+            background-color: rgba(73, 164, 41, 25%);
+            transition-duration: 0.5s;
+        }
     }
 
     img {

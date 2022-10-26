@@ -44,6 +44,7 @@ export const OrderItemStyles = styled.div`
         &:hover {
             box-shadow: 0 0 3px 5px #49a429;
             cursor: pointer;
+            transition-duration: 0.25s;
         }
     }
 
@@ -69,9 +70,9 @@ export const OrderItemStyles = styled.div`
 
         &:hover {
             cursor: pointer;
-            background-color: white;
-            border: 2px solid gray;
-            color: gray;
+            background-color: #49a429;
+            border: 2px solid #49a429;
+            color: white;
             transition-duration: 0.25s;
         }
     }
@@ -101,9 +102,9 @@ export const OrderMoreInfo = styled.div`
         font-weight: bold;
 
         &:hover {
-            border: 2px solid gray;
-            background-color: white;
-            color: gray;
+            border: 2px solid red;
+            background-color: red;
+            color: white;
             transition-duration: 0.5s;
             cursor: pointer;
         }
@@ -118,9 +119,30 @@ export const OrderMoreInfo = styled.div`
         }
     }
 
+    .orderDetailButtons {
+        float: right;
+        margin-top: -2.5em;
+
+        input {
+            border: 2px solid #49a429;
+            padding: 0.5em;
+            margin: 0.25em 0.5em;
+            border-radius: 1em;
+            background-color: white;
+            color: green;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+
+            &:hover {
+                background-color: #49a429;
+                color: white;
+                cursor: pointer;
+                transition-duration: 0.5s;
+            }
+        }
+    }
+
     .orderDetailInventory {
-        border-radius: 1em;
-        background-color: lightgray;
         padding: 1em;
         margin-top: 1em;
 
@@ -137,6 +159,7 @@ export const OrderMoreInfo = styled.div`
         background-color: white;
         border: 2px solid #49a429;
         margin: 1em 0.5em;
+        width: 480px;
 
         display: flex;
         flex-direction: row;
@@ -151,7 +174,7 @@ export const OrderMoreInfo = styled.div`
         &:hover {
             background-color: rgba(73, 164, 41, 40%);
             border: 2px solid rgba(73, 164, 41, 40%);
-            transition-duration: 0.25s;
+            transition-duration: 0.125s;
             cursor: pointer;
         }
     }
@@ -169,18 +192,16 @@ export const OrderMoreInfo = styled.div`
     }
 
     .orderDetailOptions {
-        padding: 1em;
+        padding: 4em;
         margin: 0.5em;
 
         display: flex;
         flex-direction: column;
-        text-align: right;
-        float: right;
 
         span {
-            border: 1px solid gray;
-            background-color: gray;
-            color: white;
+            border: 1px solid lightgray;
+            background-color: lightgray;
+            color: black;
             padding: 0.5em 1em;
             border-radius: 0.25em;
             margin-bottom: 1em;
