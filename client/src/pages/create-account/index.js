@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { createAccount } from '../../requests/api-request';
 import { setUserData, targetPage } from '../../utils/index';
 import { useForm } from 'react-hook-form';
-import InputField from '../../components/input-field';
+import LoginField from '../../components/login-field';
 import ButtonField from '../../components/button-field';
 import { Submit, Create, Or } from './createAccount.style';
 import {
@@ -53,19 +53,19 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
       </Title>
       <ContactFields>
         {errorMsg && <Alert>{errorMsg}</Alert>}
-        <InputField
+        <LoginField
           name="First Name"
           placeHolder="First Name"
           type="First Name"
           register={register({ required: true })}
         />
-        <InputField
+        <LoginField
           name="Last Name"
           placeHolder="Last Name"
           type="Last Name"
           register={register({ required: true })}
         />
-        <InputField
+        <LoginField
           name="email"
           placeHolder="Email"
           type="email"
@@ -78,7 +78,7 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
         {errors.email && (
           <Alert>Please enter your email address</Alert>
         )}
-        <InputField
+        <LoginField
           name="password"
           placeHolder="Password"
           type="password"

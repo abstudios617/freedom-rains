@@ -76,7 +76,7 @@ export const Disclaimer = styled.div`
 
 export const LeftBtn = styled.button`
   position: absolute;
-  top: 27.5%;
+  top: 18%;
   left: 37.5%;
   border: none;
   background: none;
@@ -84,7 +84,7 @@ export const LeftBtn = styled.button`
 
 export const RightBtn = styled.button`
   position: absolute;
-  top: 27.5%;
+  top: 18%;
   right: 37.5%;
   border: none;
   background: none;

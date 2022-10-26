@@ -66,20 +66,20 @@ const PageView = () => {
           <LoginTest />
         </Route>
         <Route exact path="/">
-          <Homepage isLoggedIn={true} />
+          <Homepage isLoggedIn={isLoggedIn} />
         </Route>
         <Route exact path="/earlyaccess">
           <Promo />
         </Route>
         <Route exact path="/arcade">
           <Arcade
-            isLoggedIn={true}
+            isLoggedIn={isLoggedIn}
             updateTokens={updateTokens}
             setUpdateTokens={setUpdateTokens}
           />
         </Route>
         <Route exact path="/arcade/:gameName">
-          <Game isLoggedIn={true} />
+          <Game isLoggedIn={isLoggedIn} />
         </Route>
         <Route exact path="/coupons">
           <Coupon />
@@ -88,30 +88,30 @@ const PageView = () => {
           <ContactUs />
         </Route>
         <Route exact path="/login">
-          <SignIn setIsLoggedIn={setIsLoggedIn} isLoggedIn={true} />
+          <SignIn setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
         </Route>
         <Route exact path="/create">
           <CreateAccount
             setIsLoggedIn={setIsLoggedIn}
-            isLoggedIn={true}
+            isLoggedIn={isLoggedIn}
           />
         </Route>
         <Route exact path="/forget">
-          <ForgotPassword isLoggedIn={true} />
+          <ForgotPassword isLoggedIn={isLoggedIn} />
         </Route>
         <Route exact path="/preferences">
           <ShoppingPreference
-            isLoggedIn={true}
+            isLoggedIn={isLoggedIn}
             setUpdateTokens={setUpdateTokens}
             setIsLoggedIn={setIsLoggedIn}
           />
         </Route>
         <Route exact path="/missions">
-          <EarnTokens isLoggedIn={true} setIsLoggedIn={setIsLoggedIn} />
+          <EarnTokens isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </Route>
         <Route exact path="/account">
           <Account
-            isLoggedIn={true}
+            isLoggedIn={isLoggedIn}
             setUpdateTokens={setUpdateTokens}
             setIsLoggedIn={setIsLoggedIn}
           />
@@ -126,16 +126,16 @@ const PageView = () => {
           <ForBusiness />
         </Route>
         <Route exact path="/likes">
-          <Favorites isLoggedIn={true} setIsLoggedIn={setIsLoggedIn} />
+          <Favorites isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
         </Route>
         <Route exact path="/shop/:shopId">
-          <ProductClass isLoggedIn={true} />
+          <ProductClass isLoggedIn={isLoggedIn} />
         </Route>
         <Route exact path="/deals">
-          <Shop isLoggedIn={true} />
+          <Shop isLoggedIn={isLoggedIn} />
         </Route>
         <Route exact path="/search/:type/:val">
-          <ShopSearch isLoggedIn={true} /> 
+          <ShopSearch isLoggedIn={isLoggedIn} /> 
         </Route>
         <Route exact path="/team">
           <AboutUs />
