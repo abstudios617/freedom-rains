@@ -1,15 +1,9 @@
 import React from 'react';
-import { 
-  InputFieldContainer, 
-  InputFieldOptions,
-  InputFieldButton
-} from './inputField.styles';
+import { InputFieldContainer } from './inputField.styles';
 
-const InputField = ({ 
-  type, placeHolder, name, register, disabled, extra, show, showHandler, save
-}) => {
+const InputField = ({ type, placeHolder, name, register, disabled }) => {
   return (
-    <InputFieldContainer show={show}>
+    <InputFieldContainer>
       <input
         type={type}
         name={name}
@@ -17,21 +11,6 @@ const InputField = ({
         ref={register}
         disabled={disabled || false}
       />
-      <div>
-        {extra}
-      </div>
-      <InputFieldOptions>
-        <div onClick={() => showHandler()}>
-          <InputFieldButton className="cancel">
-            Cancel
-          </InputFieldButton>
-        </div>
-        <div onClick={() => save()}>
-          <InputFieldButton className="save">
-            Save
-          </InputFieldButton>
-        </div>
-      </InputFieldOptions>
     </InputFieldContainer>
   );
 };
