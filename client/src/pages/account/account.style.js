@@ -84,10 +84,12 @@ export const Submit = styled.div`
 `;
 
 export const AccountContain = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 30px;
+  align-items: right;
+  float: right;
+  margin-top: -40em;
+  background-color: white;
+  z-index: 999;
+  position: relative;
 
   @media only screen and (max-width: 480px) {
     width: 70%;

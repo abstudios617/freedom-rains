@@ -4,6 +4,14 @@ import {
   DeleteAccountButton
 } from './accountDelete.styles';
 
+/**
+ * deleteAccount
+ * -> displays separate section on Account Info page for deleting account
+ * __ see pages/account/index.js lines 746-750 for more detail on getting modal.
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
 const DeleteAccount = ({ onClick, onCancel }) => {
   const info = (
     <p>

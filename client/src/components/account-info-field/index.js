@@ -5,6 +5,13 @@ import {
   AccountInfoSpecialStyles
 } from './accountInfoField.styles';
 
+/**
+ * AccountInfoField
+ * -> for user information text fields, able to edit
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
 export const AccountInfoField = ({ detail, text, name, onClick }) => {
   return (
     <OuterFlexible>
@@ -22,6 +29,13 @@ export const AccountInfoField = ({ detail, text, name, onClick }) => {
   );
 };
 
+/**
+ * AccountInfoSpecial
+ * -> component for 'Shopping preferences' and 'Account deletion'
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
 export const AccountInfoSpecial = ({ icon, detail, onClick }) => {
   return (
     <div onClick={onClick}>

@@ -8,12 +8,20 @@ const LikeItem = ({
   return (
     <LikeItemStyles>
       <div className="likeMain" onClick={() => console.log(link)} key={key}>
+        {
+          /**
+           *  when user clicks on specific item, link redirects to that item's page
+           */
+        }
         <img className="likeMainImage" src={image} alt="" />
-        <div className="likeTop" style={{ display: 'flex', flexDirection: 'row' }}>
+        <div className="likeTop">
           <div className="likeTopText">
             {name}
           </div>
           &nbsp;
+          {
+            /* when user chooses to remove favorite */
+          }
           <div onClick={() => window.alert('TEST: like item deleted')}>
             <img className="likeTopDelete" src={trashIcon} alt="" />
           </div>

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const AccountMenuContainer = styled.div`
-    border: 1px solid black;
-    padding: 1em;
-    margin: 0 auto;
+    padding: 1.5em;
     max-width: 360px;
+    border-right: 0.5px solid gray;
+    position: relative;
 `;
 
 export const AccountMenuButtonStyles = styled.div`

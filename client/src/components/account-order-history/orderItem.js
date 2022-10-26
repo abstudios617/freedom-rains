@@ -8,6 +8,10 @@ const OrderItem = ({
 }) => {
   /* just in case, band-aid. Order can't be both tracked and returned :-) */
   if (returned && tracked || delivered && tracked) tracked = false;
+
+  /**
+   *  showDetails indicates a state that allows user to reveal detailed information about an order
+   */
   const [showDetails, setShowDetails] = useState(false);
   const RANDOM = Math.round(Math.random());
 
@@ -17,6 +21,16 @@ const OrderItem = ({
         <div className="orderMain" onClick={() => console.log(orderLink)} key={key}>
           <div className="orderNumber">#{number}</div>
           <div className="orderDelivery">
+            {
+              /**
+               *  depending on the state of the order, different messages or text may appear
+               *  based on the following:
+               *  -> shipped: user's order will be shipped, only true if all other conditions are false
+               *  -> returned: user requests to have order returned, only true when shipped is true, !(tracked), and !(delivered)
+               *  -> tracked: user requests to have the order tracked, only true when shipped is true, !(returned), and !(delivered)
+               *  -> delivered: Order has been delivered; once delivered, all other conditions above are false
+               */
+            }
             {
               (delivered && !tracked) ? (
                 <div>Delivered on: {deliveryDate[RANDOM]}</div>
@@ -39,12 +53,21 @@ const OrderItem = ({
           </div>
           <div className="orderItemsPreview">
             {
+              /**
+               *  for each item listed in the order object, get their attributes
+               */
               items.map((i) => {
                 const {
                   index, itemName, itemImage, itemLink
                 } = i;
                 return (
                   <div className="orderItemObject" key={index}>
+                    {
+                      /**
+                       *  when user CLICKS on any given picture, both when showing order detail or not,
+                       *  the picture should redirect to the item's page as user had seen when adding to their cart the first time
+                       */
+                    }
                     <img
                       className="orderItemObjectImg"
                       src={itemImage} alt=""
@@ -80,8 +103,11 @@ const OrderItem = ({
         </div>
       </OrderItemStyles>
 
+
       {
-        /* More details can be added later */
+        /**
+         *  all details of any order are to be shown here
+         */
         showDetails &&
         <OrderMoreInfo>
           <div className="orderDetailMain">
@@ -139,6 +165,12 @@ const OrderItem = ({
                 {
                   items.map((item) => {
                     const { index, itemName, itemPrice, itemAmount, itemImage, itemLink } = item;
+                    {
+                      /**
+                       *  when user CLICKS on any given picture, both when showing order detail or not,
+                       *  the picture should redirect to the item's page as user had seen when adding to their cart the first time
+                       */
+                    }
                     return (
                       <div
                         key={index}
@@ -151,11 +183,15 @@ const OrderItem = ({
                           className="orderDetailItemOptions"
                         >
                           <span>{itemName}</span>
+                          {
+                            /* unclear what this does, only shown in Figma */
+                          }
                           <div>Option</div>
                           <div>
                             <b>${itemPrice}</b>
                             &nbsp;&nbsp;
                             {
+                              /* indicate number of items ordered */
                               itemAmount > 1 &&
                               <u>x {itemAmount}</u>
                             }
@@ -175,15 +211,30 @@ const OrderItem = ({
                   </span>
                 }
                 <span>
+                  {
+                    /**
+                     *  expecting real full addresses (as shown on Figma)
+                     */
+                  }
                   <b>Delivery Address</b> <br />
                   {addr}
                 </span>
                 <span>
+                  {
+                    /**
+                     *  this will most likely change to pass real payment info
+                     */
+                  }
                   <b>Delivery Payment</b> <br />
                   {(payment !== null) ? payment : 'None'}
                 </span>
               </div>
             </div>
+            {
+              /**
+               *  hardcoded total price for now, change to calculate each item's price in the future
+               */
+            }
             <div className="orderDetailPrice">
               Total price: &nbsp; ${total}
             </div>

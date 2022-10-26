@@ -9,6 +9,7 @@ import {
   getUserToken, setUserAccount, updateUserTokens
 } from '../../utils/account-utils';
 import {
+  AccountContain,
   SignIn,
   Content,
   AccountInfoContainer,
@@ -41,6 +42,7 @@ import signOutIcon from '../../assets/icons/right-from-bracket-solid.svg';
 import shopIcon from '../../assets/icons/shop-solid.svg';
 import deleteIcon from '../../assets/icons/right-from-bracket-solid.svg';
 
+// main class
 const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   const userData = JSON.parse(getItem('accountInfo'));
   const accountData = JSON.parse(getItem('loggedIn'));
@@ -123,6 +125,11 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   /**
    *  FOR ACCOUNT INFO
    */
+  
+  /**
+   *  for user profile information, as shown in Account Info text fields (when editing)
+   *  for any state that is true, that specified state will allow visibility of corresponding field
+   */
   const [showEditAccountInfo, setShowEditAccountInfo] = useState({
     first_name: false,
     last_name: false,
@@ -132,18 +139,28 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     pwd: false
   });
 
+  /**
+   *  for communication/policies information, same Account Info page
+   *  for any state that is true, the option from the policies menu will be visible
+   */
   const [showEditCommInfo, setShowEditCommInfo] = useState({
     marketing: false,
     sharing: false,
     purchases: false
   });
 
+  /**
+   *  for account deletion
+   *  if account is true, that means the account deletion section itself is visible
+   *  if modal is true, then show modal right before confirming that the account is to be deleted
+   */
   const [showDeleteAccount, setShowDeleteAccount] = useState({
     account: false,
     modal: false
   });
 
   // lastly, all events to open fields that contain hidden subfields
+  // all events handled have 'Edit' if the value (text) of button input is 'Edit', as is the case with editing user info fields
   const handleInfoChange = (e) => {
     const { name, id, defaultValue } = e.target;
     if (defaultValue === 'Edit') {
@@ -175,6 +192,9 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
     });
   }
 
+  /**
+   *  IF not logged in to the website
+   */
   if (!isLoggedIn) {
     return (
       <Container>
@@ -187,8 +207,6 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
       </Container>
     );
   }
-
-  /* DESIGN FOR ACCOUNT MENU WITHIN <AccountMenu />, TAKE THIS WHENEVER NEEDED */
 
   return (
     <div style={{ direction: 'flex', flexDirection: 'row' }}>
@@ -247,10 +265,12 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
           )}
         />
       </AccountMenu>
-      <div>
+      <AccountContain>
         {
           /*
               ::: FOR LIKES :::
+              AccountLikes handles the primary componenets for the Account Likes page
+              - likes: sample data of likes made by the user
           */
         }
         {
@@ -267,6 +287,8 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         {
           /*
               ::: FOR ORDER HISTORY :::
+              AccountOrderHistory handles the primary components for the Order History page
+              - orders: sample data of orders made
           */
         }
         {
@@ -283,6 +305,11 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         {
           /*
               ::: FOR GAMES & TOKENS :::
+              AccountGamesTokens handles the primary components for showing the Games and Tokens page
+              - name: test name
+              - image: test icon
+              - leaders: sample data of leaders for leaderboard
+              - missions: sample data of missions for mission list
           */
         }
         {
@@ -292,7 +319,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
               <span>Games & Tokens</span>
             </Title>
             <AccountGamesTokens
-              name={'Stephen Believin'}
+              name={'Random Guy'}
               image={testIcon}
               leaders={testLeaders}
               missions={testMissions}
@@ -302,6 +329,8 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
         {
           /*
               ::: FOR ACCOUNT INFO :::
+              This portion of the account page focuses on the user's information and ability to edit profile
+              In practice, these will mostly be linked to userData, as shown in some fields with example comments
           */
         }
         {
@@ -312,6 +341,11 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
             </Title>
             <AccountInfoContainer>
               <div>
+                {
+                  /**
+                   *  For editing first Name of user
+                   */
+                }
                 <AccountInfoField
                   detail="First Name"
                   text={
@@ -352,6 +386,11 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   </Alert>
                 )}
 
+                {
+                  /**
+                   *  For editing last name of user
+                   */
+                }
                 <AccountInfoField
                   detail="Last Name"
                   text={'LastName'}
@@ -388,6 +427,11 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   </Alert>
                 )}
 
+                {
+                  /**
+                   *  For editing email 
+                   */
+                }
                 <AccountInfoField
                   detail="Email"
                   text={
@@ -430,6 +474,11 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   </Alert>
                 )}
 
+                {
+                  /**
+                   *  For editing phone number
+                   */
+                }
                 <AccountInfoField
                   detail="Phone Number"
                   text={
@@ -472,6 +521,11 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   </Alert>
                 )}
 
+                {
+                  /**
+                   *  For editing address (zip code)
+                   */
+                }
                 <AccountInfoField
                   detail="Address"
                   text={'Add Address'}
@@ -507,6 +561,12 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   <Alert>Please enter your zip code</Alert>
                 )}
 
+                {
+                  /**
+                   *  For editing password
+                   *  This may be changed once userData works again, will most likely need actual authentication practices to blank out passwords
+                   */
+                }
                 <AccountInfoField
                   detail="Password"
                   text={'************'}
@@ -537,8 +597,18 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                     }
                   }}
                 />
-
               </div>
+
+              {
+                /**
+                 *  For special options:
+                 *  - shopping preferences
+                 *  - deleting account
+                 * 
+                 *  Shopping preferences redirects to the preferences page for now
+                 *  Delete account directs to an additional section of the page where users will see 'Continue to Account Deletion'
+                 */
+              }
               <div>
                 <AccountInfoSpecial
                   icon={shopIcon}
@@ -563,6 +633,10 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
             <Title>
               <span>Communication & Privacy Policies</span>
             </Title>
+
+            {
+              /* For marketing emails (all information listed in here is inscribed from Figma) */
+            }
             <AccountCommContainer>
               <AccountCommField
                 title="Marketing Emails"
@@ -585,6 +659,11 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   }
                 }}
               />
+
+              {
+                /* For information sharing (nothing shows up here) */
+                /* NOTE: cancel/save buttons are supposed to show here, but they don't for some reason */
+              }
               <AccountCommField
                 title="Information Sharing"
                 name="sharing"
@@ -606,6 +685,10 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                   }
                 }}
               />
+
+              {
+                /* For store purchases (nothing shows up here)*/
+              }
               <AccountCommField
                 title="Store Purchases"
                 name="purchases"
@@ -648,10 +731,10 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
             {
               /**
                *  DELETE ACCOUNT
-               *  Located on lines 615-634
                *  Purpose: to show design for account deletion
+               * 
                *  What needs to change: 
-               *        - redirect to a different page when user, take this design
+               *  - redirect to a different page when user, take this design
                */
             }
             {
@@ -660,6 +743,11 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
                 <Title>
                   <span>Delete Account</span>
                 </Title>
+                {
+                  /**
+                   *  modal not configured yet, if modal is true, show modal first, THEN confirm account deletion.
+                   */
+                }
                 <DeleteAccount
                   onClick={() => setShowDeleteAccount(
                     {
@@ -678,7 +766,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
             }
           </Container>
         }
-      </div>
+      </AccountContain>
     </div>
   );
 };

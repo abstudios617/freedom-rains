@@ -18,6 +18,11 @@ import MissionItem from './missionItem';
 const AccountGamesTokens = ({
   name, image, leaders, missions
 }) => {
+  /**
+   *  this state goes with the toggle between the Leaderboard and Missions
+   *  if selectLeaderboard is true, show leaderboard (default when opening page)
+   *  else, show missions list and progress
+   */
   const [selectLeaderboard, setSelectLeaderboard] = useState(true);
 
   return (
@@ -27,6 +32,11 @@ const AccountGamesTokens = ({
           <img className="profileImage" src={image} alt="" />
           <span>{name}</span>
         </FlexColumn>
+        {
+          /**
+           *  GamesLevel: NEEDS TO BE FILLED LATER
+           */
+        }
         <GamesLevel>
           Your Level
         </GamesLevel>
@@ -74,6 +84,11 @@ const AccountGamesTokens = ({
                       onClick={() => window.alert('TEST: tokens earned!')} 
                     />
                   </EarnTokensButtonContainer>
+                  {
+                    /**
+                     *  MissionsTitle: NEEDS TO BE FILLED IN LATER
+                     */
+                  }
                   <MissionsTitle>
                     Progress
                   </MissionsTitle>
@@ -86,6 +101,11 @@ const AccountGamesTokens = ({
             <MissionsTitle>
               Mission List
             </MissionsTitle>
+            {
+              /**
+               *  list all leaderboard users from given sample data
+               */
+            }
             <div>
               {selectLeaderboard && leaders.map((item) => {
                 const { index, position, points, user } = item;
@@ -102,6 +122,11 @@ const AccountGamesTokens = ({
                 );
               })}
             </div>
+            {
+              /**
+               * list all missions and progress from given sample data
+               */
+            }
             <div>
               {!selectLeaderboard && missions.map((item) => {
                 const { index, title, link, icon } = item;

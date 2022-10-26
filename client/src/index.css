@@ -25,7 +25,7 @@ code {
 }
 
 #root {
-  min-height: 200vh;
+  min-height: 300vh;
   position: relative;
 }
 
@@ -76,7 +76,7 @@ code {
   }
 
   #root {
-    min-height: 200vh;
+    min-height: 300vh;
     position: relative;
   }
 }

@@ -31,9 +31,21 @@ const commInfoMarketing = (
   </>
 );
 
+/**
+ *  left blank since there's no information provided for these two options
+ */
 const commInfoPurchases = <></>;
 const commInfoSharing = <></>;
 
+/**
+ * mapNameToInfo
+ * -> based on the name of the option clicked, indicate which information needs to be returned
+ * __ NOTE: may need to be moved to regular account page index.js file IF information (e.g. checkboxes)
+ *          affect user's profile information or preferences directly 
+ * 
+ * @param {*} name 
+ * @returns React.Component
+ */
 function mapNameToInfo(name) {
   let info;
   switch (name) {
