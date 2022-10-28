@@ -1,5 +1,5 @@
-import React from "react";
-import { Container } from "../../../styles/global.style";
+import React from 'react';
+import { Container } from '../../../styles/global.style';
 import { 
   ConfirmationBanner,
   ConfirmationBannerMobile,
@@ -14,11 +14,11 @@ import {
   OrderDetailsButton,
   OrdersButton,
   RelatedProducts,
-} from "./confirmation.styles";
-import ListOfProducts from "../../../components/list-of-products";
-import confirmation from "../../../assets/order_confirmation/confirmation.png";
-import confirmationMobile from "../../../assets/order_confirmation/confirmationMobile.png";
-import ad1 from "../../../assets/ads/ad1.png";
+} from './confirmation.styles';
+import ListOfProducts from '../../../components/list-of-products';
+import confirmation from '../../../assets/order_confirmation/confirmation.png';
+import confirmationMobile from '../../../assets/order_confirmation/confirmationMobile.png';
+import ad1 from '../../../assets/ads/ad1.png';
 
 const Confirmation = () => {
   return (
@@ -41,7 +41,7 @@ const Confirmation = () => {
         </SummaryDetails>
         <ProductRow>
           {Array(5).fill(0).map((i) => (
-            <Product index={i}>
+            <Product index={i} key={i}>
               <ProdImg src={ad1} alt="product" />
               <ProdName>Product Name</ProdName>
               <ProdQuantity>Qty: 1</ProdQuantity>
@@ -55,6 +55,6 @@ const Confirmation = () => {
       </Summary>
     </Container>
   );
-}
+};
 
 export default Confirmation;

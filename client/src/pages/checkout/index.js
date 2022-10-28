@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Container } from "../../styles/global.style";
+import React, { useState } from 'react';
+import { Container } from '../../styles/global.style';
 import {
   Main,
   UserInfo,
@@ -41,19 +41,19 @@ import {
   Price,
   CouponDiv,
   Coupon,
-} from "./checkout.styles";
+} from './checkout.styles';
 import { targetPage } from '../../utils/index';
-import mail from "../../assets/icons/mail.svg";
-import edit from "../../assets/icons/edit.svg";
-import addressImg from "../../assets/icons/address.svg";
-import shipping from "../../assets/icons/shipping.svg";
-import payment from "../../assets/icons/payment.svg";
-import cart from "../../assets/icons/checkoutCart.svg";
-import creditCard from "../../assets/icons/creditCard.svg";
-import payPal from "../../assets/icons/payPal.svg";
-import plus from "../../assets/icons/circlePlus.svg";
+import mail from '../../assets/icons/mail.svg';
+import edit from '../../assets/icons/edit.svg';
+import addressImg from '../../assets/icons/address.svg';
+import shipping from '../../assets/icons/shipping.svg';
+import payment from '../../assets/icons/payment.svg';
+import cart from '../../assets/icons/checkoutCart.svg';
+import creditCard from '../../assets/icons/creditCard.svg';
+import payPal from '../../assets/icons/payPal.svg';
+import plus from '../../assets/icons/circlePlus.svg';
 //sample image for frontend
-import image from '../../assets/about-us/LinkerdInIcon.png'
+import image from '../../assets/about-us/LinkerdInIcon.png';
 
 // contact information section should only appear
 // if user is not logged in
@@ -64,36 +64,36 @@ const Checkout = () => {
   const [shippingIsHidden, setShippingIsHidden] = useState(true);
   const [paymentIsHidden, setPaymentIsHidden] = useState(true);
   const [itemReviewIsHidden, setItemReviewIsHidden] = useState(true);
-  const [address, setAddress] = useState("");
-  const [email, setEmail] = useState("");
-  const [creditCardNumber, setCreditCardNumber] = useState("");
+  const [address, setAddress] = useState('');
+  const [email, setEmail] = useState('');
+  const [creditCardNumber, setCreditCardNumber] = useState('');
   const [addresses, setAddresses] = useState([]);
 
   const ContactSection = () => {
     return (
       <ContactBar>
         <Icon src={mail} alt="mail" className="dropDown" />
-        <span>{email === "" ? "Contact Information" : email}</span>
+        <span>{email === '' ? 'Contact Information' : email}</span>
         <EditButton onClick={() => setContactIsHidden(false)} >
           <Icon src={edit} alt="edit" />
           <span>Edit</span>
         </EditButton>
       </ContactBar>
-    )
-  }
+    );
+  };
 
   const AddressSection = () => {
     return (
       <ContactBar>
         <Icon src={addressImg} alt="address" className="dropDown" />
-        <span>{address === "" ? "Shipping Address" : address}</span>
+        <span>{address === '' ? 'Shipping Address' : address}</span>
         <EditButton onClick={() => setAddressIsHidden(false)} >
           <Icon src={edit} alt="edit" />
           <span>Edit</span>
         </EditButton>
       </ContactBar>
-    )
-  }
+    );
+  };
 
   const ShippingSection = () => {
     return (
@@ -105,21 +105,21 @@ const Checkout = () => {
           <span>Edit</span>
         </EditButton>
       </ContactBar>
-    )
-  }
+    );
+  };
 
   const PaymentSection = () => {
     return (
       <ContactBar>
         <Icon src={payment} alt="payment" className="dropDown" />
-        <span>{creditCardNumber === "" ? "Payment" : "**** **** **** " + creditCardNumber.substring(creditCardNumber.length - 4, creditCardNumber.length)}</span>
+        <span>{creditCardNumber === '' ? 'Payment' : '**** **** **** ' + creditCardNumber.substring(creditCardNumber.length - 4, creditCardNumber.length)}</span>
         <EditButton onClick={() => setPaymentIsHidden(false)} >
           <Icon src={edit} alt="edit" />
           <span>Edit</span>
         </EditButton>
       </ContactBar>
-    )
-  }
+    );
+  };
 
   const ItemReviewSection = () => {
     return (
@@ -131,8 +131,8 @@ const Checkout = () => {
           <span>Edit</span>
         </EditButton>
       </ContactBar>
-    )
-  }
+    );
+  };
 
   return (
     <Container>
@@ -155,7 +155,7 @@ const Checkout = () => {
                   setAddressIsHidden(false);
                 }
               }/>
-              <Login onClick={() => targetPage("login")}>Already ready have an account? login &gt;</Login>
+              <Login onClick={() => targetPage('login')}>Already ready have an account? login &gt;</Login>
             </InfoSection>
           }
           {adressIsHidden ? <AddressSection /> :
@@ -207,7 +207,7 @@ const Checkout = () => {
                     <span>Expidited Shipping</span>
                     <span className="shippingDays">(2-3 Business Days*)</span>
                     <ShippingPrice>$5.00</ShippingPrice>
-                  </ShippingContainer>
+                  </ShippingContainer>;
                 })}
               </ShippingDiv>
               <SaveButton type="submit" value="CONFIRM" onClick={
@@ -230,14 +230,14 @@ const Checkout = () => {
                   <Icon className="payment" src={creditCard} alt="credit card" />
                   <span>Credit Card</span>
                 </PaymentContainer>
-                  <PaymentInfo>
-                    <CardInfo type="text" placeholder="Credit Card Holder Name:" required />
-                    <CardInfo type="password" placeholder="Credit Card Number:" required onChange={e => setCreditCardNumber(e.target.value)} />
-                    <InputRow>
-                      <CardInfo className="expiration" type="text" placeholder="MM/YY" required />
-                      <CardInfo className="cvv" type="password" placeholder="CVV" required />
-                    </InputRow>
-                  </PaymentInfo>
+                <PaymentInfo>
+                  <CardInfo type="text" placeholder="Credit Card Holder Name:" required />
+                  <CardInfo type="password" placeholder="Credit Card Number:" required onChange={e => setCreditCardNumber(e.target.value)} />
+                  <InputRow>
+                    <CardInfo className="expiration" type="text" placeholder="MM/YY" required />
+                    <CardInfo className="cvv" type="password" placeholder="CVV" required />
+                  </InputRow>
+                </PaymentInfo>
                 <PaymentContainer>
                   <PaymentCheckbox type="radio" name="payment" value="Credit Card" />
                   <Icon className="payment" src={payPal} alt="paypal logo" />
@@ -274,23 +274,23 @@ const Checkout = () => {
                 </ProductInfo>
               </Product>
               <CouponDiv>
-                  <Coupon>
-                    <span>COUPON NAME...</span>
-                    <span className="couponType">GIFT</span>
-                    <input type="checkbox" />
-                  </Coupon>
-                  <Coupon>
-                    <span>COUPON NAME...</span>
-                    <span className="couponType">GIFT</span>
-                    <input type="checkbox" />
-                  </Coupon>
-                  <Coupon>
-                    <span>COUPON NAME...</span>
-                    <span className="couponType">BUY  1 GET 1</span>
-                    <input type="checkbox" />
-                  </Coupon>
-                </CouponDiv>
-                <SaveButton type="submit" value="CONFIRM" />
+                <Coupon>
+                  <span>COUPON NAME...</span>
+                  <span className="couponType">GIFT</span>
+                  <input type="checkbox" />
+                </Coupon>
+                <Coupon>
+                  <span>COUPON NAME...</span>
+                  <span className="couponType">GIFT</span>
+                  <input type="checkbox" />
+                </Coupon>
+                <Coupon>
+                  <span>COUPON NAME...</span>
+                  <span className="couponType">BUY  1 GET 1</span>
+                  <input type="checkbox" />
+                </Coupon>
+              </CouponDiv>
+              <SaveButton type="submit" value="CONFIRM" />
             </InfoSection>
           }
         </UserInfo>
@@ -317,6 +317,6 @@ const Checkout = () => {
       </Main>
     </Container>
   );
-}
+};
 
 export default Checkout;

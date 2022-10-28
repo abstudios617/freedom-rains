@@ -25,7 +25,7 @@ import {
   MoveToCart
 } from './cart.styles';
 import { Container } from '../../styles/global.style';
-import image from '../../assets/about-us/LinkerdInIcon.png'
+import image from '../../assets/about-us/LinkerdInIcon.png';
 import Quantity from '../../components/quantity-field';
 import deleteIcon from '../../assets/icons/delete.svg';
 import { targetPage } from '../../utils/index';
@@ -47,7 +47,7 @@ const Cart = () => {
               <ProductColumn>
                 <ProductImg src={image} alt="product" />
                 <ButtonRow>
-                  <Quantity cta='cartPage' />
+                  <Quantity cta="cartPage" />
                   <SaveForLaterButton className="noCoupon">SAVE FOR LATER</SaveForLaterButton>
                 </ButtonRow>
               </ProductColumn>
@@ -74,7 +74,7 @@ const Cart = () => {
               <ProductColumn>
                 <ProductImg src={image} alt="product" />
                 <ButtonRow>
-                  <Quantity cta='cartPage' />
+                  <Quantity cta="cartPage" />
                   <MoveToCart>MOVE TO CART</MoveToCart>
                   <CouponButton>COUPON</CouponButton>
                 </ButtonRow>
