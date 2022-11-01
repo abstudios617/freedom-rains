@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MinusButton, PlusButton, QuantityContainer, Number, QuantityTitle } from './quantityField.styles';
 import minus from '../../assets/icons/minus.svg';
 import plus from '../../assets/icons/plus.svg';
 
-const Quantity = () => { 
-  const [quantity, setQuantity] = useState(1);
+const Quantity = ({quantity, setQuantity}) => { 
 
   const subtract = () => {
     if (quantity > 1) {
