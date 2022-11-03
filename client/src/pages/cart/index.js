@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   CartContainer,
   CartPageContainer,
@@ -28,15 +28,30 @@ import { Container } from '../../styles/global.style';
 import image from '../../assets/about-us/LinkerdInIcon.png';
 import Quantity from '../../components/quantity-field';
 import deleteIcon from '../../assets/icons/delete.svg';
-import { targetPage } from '../../utils/index';
+import { cart } from '../../constants/cart'; 
+import { createCartCheckoutSession } from '../../requests/api-request';
 
 const Cart = () => {
+
+  const [quantity, setQuantity] = useState(1);
+
+
+  console.log(cart); 
+  const createCartCheckout = () => {
+    createCartCheckoutSession(cart)
+      .then((result) => {
+        window.location.href = result.url; 
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <Container>
       <CartPageContainer>
         <CartContainer>
-          <Header>Your Cart<span>(5 items)</span></Header>
+          <Header>Your Cart<span>({cart.length} items)</span></Header>
           <CartOptions>
             <span className="first">Remove all items</span>
             <span>Save all for later</span>
@@ -47,7 +62,7 @@ const Cart = () => {
               <ProductColumn>
                 <ProductImg src={image} alt="product" />
                 <ButtonRow>
-                  <Quantity cta="cartPage" />
+                  <Quantity cta="cartPage" quantity={quantity} setQuantity={setQuantity}/>
                   <SaveForLaterButton className="noCoupon">SAVE FOR LATER</SaveForLaterButton>
                 </ButtonRow>
               </ProductColumn>
@@ -95,7 +110,7 @@ const Cart = () => {
             <SubtotalDiv>
               <span>Subtotal: (not including tax or shipping)</span>
               <Total>$51000</Total>
-              <CheckoutButton onClick={() => targetPage('checkout')}>GO TO CHECKOUT</CheckoutButton>
+              <CheckoutButton onClick={() => createCartCheckout()}>GO TO CHECKOUT</CheckoutButton>
             </SubtotalDiv>
           </CheckoutMobile>
         </CartContainer>
@@ -103,7 +118,7 @@ const Cart = () => {
           <SubtotalDiv>
             <span>Subtotal: (not including tax or shipping)</span>
             <Total>$51000</Total>
-            <CheckoutButton onClick={() => targetPage('checkout')}>GO TO CHECKOUT</CheckoutButton>
+            <CheckoutButton onClick={() => createCartCheckout()}>GO TO CHECKOUT</CheckoutButton>
           </SubtotalDiv>
         </Checkout>
       </CartPageContainer>

@@ -153,7 +153,7 @@ const PageView = () => {
           <CustomerService />
         </Route>
         <Route exact path="/cart">
-          <Cart />
+          <Cart /> 
         </Route>
         <Route exact path="/checkout">
           <Checkout />

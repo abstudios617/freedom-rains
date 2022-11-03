@@ -68,6 +68,7 @@ const Checkout = () => {
   const [email, setEmail] = useState('');
   const [creditCardNumber, setCreditCardNumber] = useState('');
   const [addresses, setAddresses] = useState([]);
+  const [quantity, setQuantity] = useState(1);
 
   const ContactSection = () => {
     return (
@@ -268,7 +269,7 @@ const Checkout = () => {
                   <OrderDetails>
                     <ProductName>Product Name</ProductName>
                     <Platform>Local</Platform>
-                    <Quantity>Qty:1</Quantity>
+                    <Quantity quantity={quantity} setQuantity={setQuantity}>Qty:1</Quantity>
                     <Price>$50505</Price>
                   </OrderDetails>
                 </ProductInfo>
