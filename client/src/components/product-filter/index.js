@@ -282,19 +282,19 @@ const ProductFilter = ({
   };
 
   const handlePlatformClick = () => {
-    platformList ? setPlatformList(false) : setPlatformList(true); 
+    setPlatformList((state) => !state);  
   };
 
   const handleCategoryClick = () => {
-    categoriesList ? setCategoriesList(false) : setCategoriesList(true); 
+    setCategoriesList((state) => !state); 
   };
 
   const handleStoreClick = () => {
-    storeList ? setStoreList(false) : setStoreList(true); 
+    setStoreList((state) => !state); 
   };
 
   const handlePriceClick = () => {
-    priceList ? setPriceList(false) : setPriceList(true); 
+    setPriceList((state) => !state); 
   };
 
   const didFiltered = platformList || categoriesList || storeList || priceList;
@@ -349,7 +349,7 @@ const ProductFilter = ({
         <FilterContainer>
           <FilterTitle>
             Platform
-            <img src={vector} alt="vector" onClick={() => handlePlatformClick()}/>
+            <img src={vector} alt="vector" onClick={handlePlatformClick}/>
           </FilterTitle>
           {filterPlatform ? (
             <FilterSelected>
@@ -380,7 +380,7 @@ const ProductFilter = ({
         <FilterContainer>
           <FilterTitle>
             Categories
-            <img src={vector} alt="vector" onClick={() => handleCategoryClick()}/>
+            <img src={vector} alt="vector" onClick={handleCategoryClick}/>
           </FilterTitle>
           {filterCategory ? (
             <FilterSelected>
@@ -446,7 +446,7 @@ const ProductFilter = ({
         <FilterContainer>
           <FilterTitle>
             Store
-            <img src={vector} alt="vector" onClick={() => handleStoreClick()}/>
+            <img src={vector} alt="vector" onClick={handleStoreClick}/>
           </FilterTitle>
           {filterStore ? (
             <FilterSelected>
@@ -505,7 +505,7 @@ const ProductFilter = ({
         <FilterContainer>
           <FilterTitle>
             Price Range
-            <img src={vector} alt="vector" onClick={() => handlePriceClick()} />
+            <img src={vector} alt="vector" onClick={handlePriceClick} />
           </FilterTitle>
           {filterPrice ? (
             <FilterSelected>
