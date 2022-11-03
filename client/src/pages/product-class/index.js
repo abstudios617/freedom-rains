@@ -43,6 +43,7 @@ import shareIcon from '../../assets/icons/share.svg';
 import { useParams } from 'react-router-dom';
 import leftArrow from '../../assets/icons/leftArrow.svg';
 import rightArrow from '../../assets/icons/rightArrow.svg';
+import { addItem } from '../../constants/cart'; 
 
 const ProductClass = ({ isLoggedIn }) => {
   const [prodItem, setProdItem] = useState(null);
@@ -53,6 +54,7 @@ const ProductClass = ({ isLoggedIn }) => {
   const [storeProds, setStoreProds] = useState(null);
   const { shopId } = useParams();
   const [currentImage, setCurrentImage] = useState(0);
+  const [itemQuantity, setItemQuantity] = useState(1);
 
   const closeModal = () => {
     setModalIsOpen(false);
@@ -106,16 +108,16 @@ const ProductClass = ({ isLoggedIn }) => {
     }
   };
 
-  const goToProduct = (link, prodId) => {
-    addEvent({
-      event: 'Product purchased',
-      props: {
-        action: 'Click',
-        label: prodId,
-      },
-    });
-    window.open(link);
-  };
+  // const goToProduct = (link, prodId) => {
+  //   addEvent({
+  //     event: 'Product purchased',
+  //     props: {
+  //       action: 'Click',
+  //       label: prodId,
+  //     },
+  //   });
+  //   window.open(link);
+  // };
 
   const getSpecificProd = () => {
     const prodId = shopId;
@@ -172,6 +174,17 @@ const ProductClass = ({ isLoggedIn }) => {
     if (currentImage < prodItem.product.images.length - 1) {
       setCurrentImage(currentImage + 1);
     }
+  };
+
+  const addItemInCart = () => {
+    const itemObject = {
+      id: prodItem.id,
+      quantity: itemQuantity
+    };
+
+    addItem(itemObject); 
+
+    targetPage('cart'); 
   };
   
   return (
@@ -232,10 +245,10 @@ const ProductClass = ({ isLoggedIn }) => {
                   <ProdDetail>{prodItem.product.metadata.Size}</ProdDetail>
                 </>
               )}
-              <Quantity />
+              <Quantity quantity={itemQuantity} setQuantity={setItemQuantity}></Quantity> 
               <ButtonRow>
                 <BtnField className="addToCart"
-                  onClick={() => goToProduct(prodItem.product.metadata.Link, prodItem.product.id)}
+                  onClick={() => addItemInCart()}
                 >
                   Add to Cart 
                   <img
