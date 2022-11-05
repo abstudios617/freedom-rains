@@ -222,7 +222,7 @@ const Homepage = ({ isLoggedIn }) => {
         openModal={modalThreeIsOpen}
         closeModal={closeModal}
         title={'Daily Mission'}
-        message1={'Get 4 points  in 2 Dots Challenge'}
+        message1={'Get 4 points in 2 Dots Challenge'}
         btnMessage1={'Play Now!'}
         btnLink1={() => targetPage('arcade')}
         btnMessage2={'Complete Mission Later'}

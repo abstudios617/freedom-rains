@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { socialsConstant } from '../../constants/socials';
 import { addEvent } from '../../requests/analytics-request';
-import absLogo from '../../assets/footer/abs_logo.png';
+import absLogo from '../../assets/footer/new_abs_logo.png';
 import roku from '../../assets/footer/roku.png';
 import ios from '../../assets/footer/ios.png';
 import chrome from '../../assets/footer/google.png';
@@ -195,7 +195,7 @@ const Footer = () => {
       <FullWidth>
         <Container className={'bottom'}>
           <Content className={'bottom'}>
-            <Text onClick={() => targetPage('')}>
+            <Text onClick={() => window.open('http://abstudios.us', '_blank')}>
               <Logo
                 src={absLogo}
                 alt="Above & Beyond Studios"
