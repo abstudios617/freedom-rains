@@ -8,21 +8,27 @@ module.exports.getGamer = (req, res) => {
 };
 
 module.exports.addGamer = (userInfo, res) => {
-  const { acct_username, gaming_id, users_highest_score, curr_level, time_played, bubbleshot, curr_tokens, x_levels_completed, number_comm_tokens, event_id, user_id} = userInfo.body;
+  const { 
+    acct_username, gaming_id, users_highest_score, curr_level, time_played, bubbleshot, curr_tokens, x_levels_completed, number_comm_tokens, event_id, user_id
+  } = userInfo.body;
   knex('gaming_user_data')
-    .insert({
-      acct_username: acct_username, 
-      gaming_id: gaming_id, 
-      users_highest_score: users_highest_score, 
-      curr_level: curr_level, 
-      time_played: time_played, 
-      bubbleshot: bubbleshot, 
-      curr_tokens: curr_tokens, 
-      x_levels_completed: x_levels_completed, 
-      number_comm_tokens: number_comm_tokens, 
-      event_id: event_id,
-      user_id: user_id
-    }, ['acct_username', 'gaming_id', 'users_highest_score', 'curr_level', 'time_played', 'bubbleshot', 'curr_tokens', 'x_levels_completed', 'number_comm_tokens', 'event_id', 'user_id']
+    .insert(
+      {
+        acct_username: acct_username, 
+        gaming_id: gaming_id, 
+        users_highest_score: users_highest_score, 
+        curr_level: curr_level, 
+        time_played: time_played, 
+        bubbleshot: bubbleshot, 
+        curr_tokens: curr_tokens, 
+        x_levels_completed: x_levels_completed, 
+        number_comm_tokens: number_comm_tokens, 
+        event_id: event_id,
+        user_id: user_id
+      }, [
+        'acct_username', 'gaming_id', 'users_highest_score', 'curr_level', 'time_played', 'bubbleshot', 
+        'curr_tokens', 'x_levels_completed', 'number_comm_tokens', 'event_id', 'user_id'
+      ]
     )
     .then((gamingUsers) => res.status(200).json(gamingUsers[0])) 
     .catch((err) => res.status(500).json(err));
@@ -52,7 +58,10 @@ module.exports.updateGamer = (req, res) => {
         number_comm_tokens: req.body.number_comm_tokens, 
         event_id: req.body.event_id,
         user_id: req.body.user_id
-      }, ['acct_username', 'gaming_id', 'users_highest_score', 'curr_level', 'time_played', 'bubbleshot', 'curr_tokens', 'x_levels_completed', 'number_comm_tokens', 'event_id', 'user_id']
+      }, [
+        'acct_username', 'gaming_id', 'users_highest_score', 'curr_level', 'time_played', 'bubbleshot', 
+        'curr_tokens', 'x_levels_completed', 'number_comm_tokens', 'event_id', 'user_id'
+      ]
     )
     .then((gamingUser) => res.status(200).json(gamingUser[0]))
     .catch((err) => res.status(500).json(err));  
