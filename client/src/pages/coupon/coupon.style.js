@@ -194,3 +194,12 @@ export const Top = styled.div`
   flex-direction: column;
 `;
 
+export const CouponViewAll = styled.div`
+  border-bottom: 2px solid black;
+  padding-bottom: 0.0625em;
+
+  &:hover {
+    font-weight: bold;
+    cursor: pointer;
+  }
+`;

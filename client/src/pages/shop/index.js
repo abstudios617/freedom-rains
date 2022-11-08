@@ -19,11 +19,14 @@ const Shop = ({ isLoggedIn }) => {
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const [forcedPageNum, setForcePageNum] = useState(undefined);
-  const [isLoading, setIsLoading] = useState(true);
+  
+  /* TESTING: disable loading */
+  const [isLoading, setIsLoading] = useState(false);
+  
   const itemsPerPage = 16;
 
-  const getProducts = () => {
-    getAllProducts()
+  const getProducts = async () => {
+    await getAllProducts()
       .then((results) => {
         setProducts(true);
         setCurrentItems(shuffleArray(results));
@@ -61,6 +64,8 @@ const Shop = ({ isLoggedIn }) => {
       </Container>
     );
   }
+
+  console.log('TEST:', currentItems);
 
   return (
     <Container>

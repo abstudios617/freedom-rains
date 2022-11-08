@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro';
 
 export const Coupon = styled.div`
+  border: 2px solid purple;
+
   margin: 0 2% 20px;
   width: 200px;
   min-width: 200px;

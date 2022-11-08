@@ -8,6 +8,10 @@ export const BtnField = styled.button`
   background: #1988FF;
   border-radius: 7px;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &.large {
     padding: 12px 32px;
   }
