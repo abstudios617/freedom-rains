@@ -6,7 +6,7 @@ import {
   Body, 
   Hide,
   Sponsored,
-} from './couponFilter.styles'; 
+} from './couponFeatured.styles'; 
 import { 
   ImgContainer,
   ProdImg,
