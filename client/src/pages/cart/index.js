@@ -28,17 +28,28 @@ import { Container } from '../../styles/global.style';
 import image from '../../assets/about-us/LinkerdInIcon.png';
 import Quantity from '../../components/quantity-field';
 import deleteIcon from '../../assets/icons/delete.svg';
-import { cart } from '../../constants/cart'; 
 import { createCartCheckoutSession } from '../../requests/api-request';
 
 const Cart = () => {
 
   const [quantity, setQuantity] = useState(1);
 
-
-  console.log(cart); 
-  const createCartCheckout = () => {
-    createCartCheckoutSession(cart)
+  // a ideal cart object that need to be stored in the backend
+  const cartMockObj = {
+    id: 1,
+    items: [
+      {
+        id: "price_1LSOxMFiSX0kathO35npm8yT",
+        quantity: "3"
+      },
+      {
+        id: "price_1LSOw6FiSX0kathOSA1GkzVF",
+        quantity: "1"
+      }
+    ]
+  }
+  const createCartCheckout = async () => {
+    await createCartCheckoutSession(cartMockObj)
       .then((result) => {
         window.location.href = result.url; 
       })
@@ -51,7 +62,7 @@ const Cart = () => {
     <Container>
       <CartPageContainer>
         <CartContainer>
-          <Header>Your Cart<span>({cart.length} items)</span></Header>
+          <Header>Your Cart<span>(0 items)</span></Header>
           <CartOptions>
             <span className="first">Remove all items</span>
             <span>Save all for later</span>
