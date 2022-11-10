@@ -39,15 +39,15 @@ const Cart = () => {
     id: 1,
     items: [
       {
-        id: "price_1LSOxMFiSX0kathO35npm8yT",
-        quantity: "3"
+        id: 'price_1LSOxMFiSX0kathO35npm8yT',
+        quantity: '3'
       },
       {
-        id: "price_1LSOw6FiSX0kathOSA1GkzVF",
-        quantity: "1"
+        id: 'price_1LSOw6FiSX0kathOSA1GkzVF',
+        quantity: '1'
       }
     ]
-  }
+  };
   const createCartCheckout = async () => {
     await createCartCheckoutSession(cartMockObj)
       .then((result) => {
