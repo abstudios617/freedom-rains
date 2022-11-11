@@ -318,12 +318,12 @@ export const PodcastItemContainer = styled.div`
 `;
 
 export const LogoTitle = styled.div`
-  width: 330px;
-  height: 22px;
+  width: 360px;
+  height: 20px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 22px;
   color: #000000;
   text-align: center;
@@ -342,31 +342,9 @@ export const LogoContainer = styled.div`
 `;
 
 export const LogoImage = styled.img`
-  width: 170px;
-  height: 180px;
-  margin: auto;
-`;
-
-export const LogoImage2 = styled.img`
-  width: 220px;
-  height: 170px;
-  margin: auto;
-`;
-
-export const AbsLogoContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 20px;
-  width: 240px;
-  height: 210px;
-  margin: auto;
-`;
-
-export const AbsImage = styled.img`
-  width: 240px;
-  height: 210px;
+  height: 180px;  
+  width: auto;
+  max-width: 240px;
   margin: auto;
 `;
 

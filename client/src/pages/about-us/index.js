@@ -33,9 +33,6 @@ import {
   LogoTitle,
   LogoContainer,
   LogoImage,
-  LogoImage2,
-  AbsLogoContainer,
-  AbsImage,
   ColorContainer,
   CherryredColorBox,
   MidnightblueColorBox,
@@ -45,18 +42,22 @@ import {
   ColorTitle,
   ColorDescription,
   BlackColorTitle,
-  BlackColorDescription} from './aboutUs.style';
+  BlackColorDescription
+} from './aboutUs.style';
+
 import steffan_aman from '../../assets/about-us/steffan_aman.png';
 import linkedInIcon from '../../assets/about-us/LinkerdInIcon.png';
 import phoneIcon from '../../assets/about-us/PhoneIcon.png';
 import emailIcon from '../../assets/about-us/EmailIcon.png';
 import shopIcon from '../../assets/about-us/ShopperIcon.png';
+
 import freedomLogo1 from '../../assets/about-us/Freedom1.png';
 import freedomLogo2 from '../../assets/about-us/freedom2.png';
 import absLogo from '../../assets/about-us/abs.png';
+import path from 'path';
 
-import {members}from '../../constants/members';
-import {podcasts}from '../../constants/podcasts';
+import { members } from '../../constants/members';
+import { podcasts } from '../../constants/podcasts';
 import { Container } from '../../styles/global.style';
 import ButtonField from '../../components/button-field';
 
@@ -69,13 +70,48 @@ const AboutUs = () => {
     window.open('https://docs.google.com/forms/d/1xlvNcwjmCJZ4CdIRBn1BzXstP9CA-S0ULBsM803aDr4');
   };
 
-  const downloadFreeLogo = () => {
-    window.open({freedomLogo1});
-    window.open({freedomLogo2});
-  };
+  const MediaAsset = ({ title, images }) => {
+    const pathToFile = (e) => {
+      return path.join(
+        __dirname, 'client', 'src', 'assets', 'about-us', e.target.title
+      );
+    };
 
-  const downloadAbsLogo = () => {
-    window.open({absLogo});
+    const listImages = (images) => {
+      return (
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
+          {Object.keys(images).map((item, index) => {
+            return (
+              <>
+                <div style={{ 
+                  display: 'flex', flexDirection: 'column', margin: '0 auto' 
+                }}>
+                  <LogoContainer>
+                    <LogoImage key={index} src={images[item]} alt={item} />
+                  </LogoContainer>
+                  <ContactButton>
+                    <a href={images[item]} title={item} download={pathToFile}>
+                      <ButtonField color="green">
+                        Download Logo
+                      </ButtonField>
+                    </a>
+                  </ContactButton>
+                </div>
+              </>
+            );
+          })}
+        </div>
+      );
+    };
+
+    return (
+      <>
+        <LogoTitle>{title}</LogoTitle>
+        {
+          listImages(images)
+        }
+      </>
+    );
   };
 
   const team = members.map((item) => {
@@ -109,10 +145,10 @@ const AboutUs = () => {
 
   return (
     <Container>
-    
+
       <Toptitle>Helping Small Business Enter the Digital Age</Toptitle>
       <IntroductionContainer>
-        <ShopperIcon src={shopIcon} alt="Picture"/>
+        <ShopperIcon src={shopIcon} alt="Picture" />
         <IntroductionDescription>
           We build and use strategies to drive digital growth and expand customer reach so you can focus on growing your business!
         </IntroductionDescription>
@@ -185,12 +221,12 @@ const AboutUs = () => {
           Contact
         </ContactTitle>
         <ContactDescriptionTitle>
-          <ContactIcon src={phoneIcon} alt="Phone"/>
+          <ContactIcon src={phoneIcon} alt="Phone" />
           Phone Number
           <ContactDescription>1-718-975-6166</ContactDescription>
         </ContactDescriptionTitle>
         <ContactDescriptionTitle>
-          <ContactIcon src={emailIcon} alt="Email"/>
+          <ContactIcon src={emailIcon} alt="Email" />
           Email
           <ContactDescription>sjackson@freedomrains.com</ContactDescription>
         </ContactDescriptionTitle>
@@ -198,7 +234,7 @@ const AboutUs = () => {
           <ButtonField color="primary" onClick={goToIntern}>Contact with us!</ButtonField>
         </ContactButton>
       </ContactContainer>
-      
+
 
       <OurTeamContainer>
         <SectionTitleContainer>
@@ -214,7 +250,7 @@ const AboutUs = () => {
       </div>
 
       <HiringDescriptionContainer>
-        <HiringMessage>We are Hiring!<br/>Join the team and help us suport local businesses</HiringMessage>
+        <HiringMessage>We are Hiring!<br />Join the team and help us suport local businesses</HiringMessage>
         <SeeOpenButton>
           <ButtonField color="green" onClick={goToPositions}>See Openings</ButtonField>
         </SeeOpenButton>
@@ -223,21 +259,19 @@ const AboutUs = () => {
       <SectionTitleContainer>
         <SectionTitle>Company Assets</SectionTitle>
       </SectionTitleContainer>
-      <LogoTitle>The Freedom Logo</LogoTitle>
-      <LogoContainer>
-        <LogoImage src={freedomLogo1} alt="Logo1"/>
-        <LogoImage2 src={freedomLogo2} alt="Logo2"/>
-      </LogoContainer>
-      <ContactButton>
-        <ButtonField color="green" onClick={downloadFreeLogo}>Download Logos</ButtonField>
-      </ContactButton>
-      <LogoTitle>The Above & Beyond Studios Logo</LogoTitle>
-      <AbsLogoContainer>
-        <AbsImage src={absLogo} alt="AbsLogo"/>
-      </AbsLogoContainer>
-      <ContactButton>
-        <ButtonField color="green" onClick={downloadAbsLogo}>Download Logos</ButtonField>
-      </ContactButton>
+      <MediaAsset
+        title="The Freedom Logo"
+        images={{
+          'Logo1': freedomLogo1,
+          'Logo2': freedomLogo2
+        }}
+      />
+      <MediaAsset
+        title="The Above & Beyond Studios Logo"
+        images={{
+          'CompanyLogo': absLogo
+        }}
+      />
       <LogoTitle>Colors</LogoTitle>
       <ColorContainer>
         <CherryredColorBox>
@@ -245,7 +279,7 @@ const AboutUs = () => {
             Cherry Red
           </ColorTitle>
           <ColorDescription>
-            Hex: #F9193D<br/>Rgb: 249, 25, 61
+            Hex: #F9193D<br />Rgb: 249, 25, 61
           </ColorDescription>
         </CherryredColorBox>
         <MidnightblueColorBox>
@@ -253,7 +287,7 @@ const AboutUs = () => {
             Midnight Blue
           </ColorTitle>
           <ColorDescription>
-            Hex: #14365B<br/>Rgb: 20, 54, 91
+            Hex: #14365B<br />Rgb: 20, 54, 91
           </ColorDescription>
         </MidnightblueColorBox>
         <CapriblueColorBox>
@@ -261,7 +295,7 @@ const AboutUs = () => {
             Capri Blue
           </ColorTitle>
           <ColorDescription>
-            Hex: #2F7DA1<br/>Rgb: 47, 125, 161
+            Hex: #2F7DA1<br />Rgb: 47, 125, 161
           </ColorDescription>
         </CapriblueColorBox>
         <LightturquoiseColorBox>
@@ -269,7 +303,7 @@ const AboutUs = () => {
             Light Turquoise
           </ColorTitle>
           <ColorDescription>
-            Hex: #9ADCDB<br/>Rgb: 154, 220, 219
+            Hex: #9ADCDB<br />Rgb: 154, 220, 219
           </ColorDescription>
         </LightturquoiseColorBox>
         <HoneydewColorBox>
@@ -277,7 +311,7 @@ const AboutUs = () => {
             Honeydew
           </BlackColorTitle>
           <BlackColorDescription>
-            Hex: #EEFAEE<br/>Rgb: 238, 250, 38
+            Hex: #EEFAEE<br />Rgb: 238, 250, 38
           </BlackColorDescription>
         </HoneydewColorBox>
       </ColorContainer>
