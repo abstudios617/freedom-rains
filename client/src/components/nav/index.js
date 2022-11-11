@@ -34,7 +34,7 @@ import {
 
 import './nav.css';
 
-const Nav = ({ isLoggedIn, goToMerchPage }) => {
+const Nav = ({ isLoggedIn }) => {
   const userData = JSON.parse(getItem('accountInfo'));
   const [tabIndex, SetTab] = useState(0);
   const history = useHistory();
@@ -140,7 +140,9 @@ const Nav = ({ isLoggedIn, goToMerchPage }) => {
             <span title="team" onClick={(e) => handleClick(e, 4)}>ABOUT US</span>
 
             <SubNav className={'subResources'}>
-              <li onClick={goToMerchPage}>Buy Freedom Merch</li>
+              <li onClick={
+                () => window.open('https://shopfreedom.io/products/embroidered-polo-shirt', '_blank')
+              }>Buy Freedom Merch</li>
 
               <li title="contact" onClick={(e) => handleClick(e, 4)}>Contact Us</li>
 
