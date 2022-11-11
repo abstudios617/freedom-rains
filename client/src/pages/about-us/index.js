@@ -155,7 +155,7 @@ const AboutUs = () => {
       </IntroductionContainer>
 
       <SectionTitleContainer>
-        <SectionTitle>Service We Provide</SectionTitle>
+        <SectionTitle>Services We Provide</SectionTitle>
       </SectionTitleContainer>
       <TotalContainer>
         <ServiceTitle>
@@ -299,12 +299,12 @@ const AboutUs = () => {
           </ColorDescription>
         </CapriblueColorBox>
         <LightturquoiseColorBox>
-          <ColorTitle>
+          <BlackColorTitle>
             Light Turquoise
-          </ColorTitle>
-          <ColorDescription>
+          </BlackColorTitle>
+          <BlackColorDescription>
             Hex: #9ADCDB<br />Rgb: 154, 220, 219
-          </ColorDescription>
+          </BlackColorDescription>
         </LightturquoiseColorBox>
         <HoneydewColorBox>
           <BlackColorTitle>

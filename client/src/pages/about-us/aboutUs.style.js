@@ -39,13 +39,16 @@ export const IntroductionDescription = styled.div`
 
 export const SectionTitle = styled.div`
   color: #49A429;
-  width: 380px;
+  width: 400px;
   height: 30px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
   line-height: 30px;
+  margin: 0 auto;
+  margin-left: 7em;
+  padding-bottom: 1em;
 `;
 
 export const SectionTitleContainer = styled.div`
@@ -70,8 +73,8 @@ export const TotalContainer = styled.div`
   height: 180px;
   display: flex;
   flex-direction: row;
+  margin-left: -7em;
 `;
-
 
 export const ServiceTitle = styled.div`
   width: 450px;
@@ -352,17 +355,19 @@ export const ColorContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0px;
+  padding: 1px;
   gap: 43px;
   width: 1098px;
   height: 216px;
+  margin: 0 auto;
+  margin-left: -6em;
 `;
 
 export const CherryredColorBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 93px 25px 44px;
+  padding: 30px 25px 44px;
   gap: 10px;
   width: 185px;
   background-color: #F9193D;
@@ -373,7 +378,7 @@ export const MidnightblueColorBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 93px 25px 44px;
+  padding: 30px 25px 44px;
   gap: 10px;
   width: 185px;
   background-color: #14365B;
@@ -384,7 +389,7 @@ export const CapriblueColorBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 93px 25px 44px;
+  padding: 30px 25px 44px;
   gap: 10px;
   width: 185px;
   background-color: #2F7DA1;
@@ -395,7 +400,7 @@ export const LightturquoiseColorBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 93px 25px 44px;
+  padding: 30px 25px 44px;
   gap: 10px;
   width: 185px;
   background-color: #9ADCDB;
@@ -406,7 +411,7 @@ export const HoneydewColorBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 93px 25px 44px;
+  padding: 30px 25px 44px;
   gap: 10px;
   width: 185px;
   background-color: #EEFAEE;
