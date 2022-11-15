@@ -47,7 +47,7 @@ export const SectionTitle = styled.div`
   font-size: 40px;
   line-height: 30px;
   margin: 0 auto;
-  margin-left: 7em;
+  margin-left: 6em;
   padding-bottom: 1em;
 `;
 
@@ -178,6 +178,7 @@ export const HiringImage = styled.img`
   width: 100%;
   height: auto;
   object-fit: cover;
+  opacity: 60%;
 `;
 
 export const HiringDescriptionContainer = styled.div`
@@ -198,8 +199,9 @@ export const HiringMessage = styled.div`
   font-weight: 700;
   font-size: 35px;
   text-align: center;
-  color: #F9F9F9;
+  color: #333;
   position: absolute;
+  margin-bottom: 1em;
 `;
 
 export const SeeOpenButton = styled.div`

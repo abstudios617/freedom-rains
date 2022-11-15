@@ -156,7 +156,11 @@ const AboutUs = () => {
       </IntroductionContainer>
 
       <SectionTitleContainer>
-        <SectionTitle>Services We Provide</SectionTitle>
+        <SectionTitle
+          style={{ margin: '1em 6.67em' }}
+        >
+          Services We Provide
+        </SectionTitle>
       </SectionTitleContainer>
       <TotalContainer>
         <ServiceTitle>
@@ -245,20 +249,28 @@ const AboutUs = () => {
       </OurTeamContainer>
       <PodcastContainer>
         <SectionTitleContainer>
-          <SectionTitle>Media & Press</SectionTitle>
+          <SectionTitle
+            style={{ margin: '1em 7.67em' }}
+          >
+            Media & Press
+          </SectionTitle>
         </SectionTitleContainer>
         <Podcast>{podcast}</Podcast>
       </PodcastContainer>
 
       <HiringDescriptionContainer>
+        <HiringImage src={steffan_aman} alt="Logo" />
         <HiringMessage>We are Hiring!<br />Join the team and help us suport local businesses</HiringMessage>
         <SeeOpenButton>
           <ButtonField color="green" onClick={goToPositions}>See Openings</ButtonField>
         </SeeOpenButton>
-        <HiringImage src={steffan_aman} alt="Logo" />
       </HiringDescriptionContainer>
       <SectionTitleContainer>
-        <SectionTitle>Company Assets</SectionTitle>
+        <SectionTitle
+          style={{ margin: '30px 300px',  }}
+        >
+          Company Assets
+        </SectionTitle>
       </SectionTitleContainer>
       <MediaAsset
         title="The Freedom Logo"
