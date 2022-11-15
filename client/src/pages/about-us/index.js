@@ -243,7 +243,11 @@ const AboutUs = () => {
 
       <OurTeamContainer>
         <SectionTitleContainer>
-          <SectionTitle>Meet the Team</SectionTitle>
+          <SectionTitle
+            style={{ margin: '1em 7.5em' }}
+          >
+            Meet the Team
+          </SectionTitle>
         </SectionTitleContainer>
         <TeamContainer>{team}</TeamContainer>
       </OurTeamContainer>
