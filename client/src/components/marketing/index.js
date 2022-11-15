@@ -24,7 +24,7 @@ const Marketing = () => {
   });
 
   return (
-    <div id="marketing">
+    <div id="Marketing">
       <MarketHeading>
         <div>
           <MarketTitle>
