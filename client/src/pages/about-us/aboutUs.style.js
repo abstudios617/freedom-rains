@@ -310,6 +310,10 @@ export const PodcastTitle = styled.div`
   padding: 2%;
 `;
 
+export const PodcastContainer = styled.div`
+  margin-left: 1em;
+`;
+
 export const PodcastItemContainer = styled.div`
   display: block;
   justify-content: center;

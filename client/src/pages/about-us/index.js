@@ -17,6 +17,7 @@ import {
   MemberTitle,
   MemberLinkedIn,
   Podcast,
+  PodcastContainer,
   PodcastItemContainer,
   PodcastTitle,
   SectionTitleContainer,
@@ -242,12 +243,12 @@ const AboutUs = () => {
         </SectionTitleContainer>
         <TeamContainer>{team}</TeamContainer>
       </OurTeamContainer>
-      <div>
+      <PodcastContainer>
         <SectionTitleContainer>
           <SectionTitle>Media & Press</SectionTitle>
         </SectionTitleContainer>
         <Podcast>{podcast}</Podcast>
-      </div>
+      </PodcastContainer>
 
       <HiringDescriptionContainer>
         <HiringMessage>We are Hiring!<br />Join the team and help us suport local businesses</HiringMessage>
