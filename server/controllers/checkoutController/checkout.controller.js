@@ -3,6 +3,7 @@ const stripeConnect = require('stripe')(stripe);
 const { sendEmail } = require('../../utils/mailer');
 
 module.exports.createCheckoutSession = async (req, res) => {
+  console.log(req.body);
   /* example req =
     "items": [
         {"id": "price_1LSOxMFiSX0kathO35npm8yT", "quantity": 3},
@@ -20,7 +21,7 @@ module.exports.createCheckoutSession = async (req, res) => {
           quantity: item.quantity
         };
       }),
-      success_url: 'http://localhost/success.html', //CHANGE when success page created <------
+      success_url: 'http://localhost:3001/checkout/confirmation', //CHANGE when success page created <------
       cancel_url: 'http://localhost/cancel.html' //CHANGE when cancel page created <----------
     });
     // return res.redirect(303, session.url);

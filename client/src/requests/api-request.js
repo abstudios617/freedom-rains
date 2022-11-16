@@ -110,3 +110,9 @@ export const getSpecificPrintfulProducts = async (productId) => {
 
   return await client(url, val, printfulKey);
 };
+
+export const createCartCheckoutSession = async (items, tokens) => {
+  const url = `${api}/checkout/createSession`;
+  console.log('fake'+tokens);
+  return await client(url, items, printfulKey); 
+};
