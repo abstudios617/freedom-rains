@@ -20,8 +20,7 @@ import {
 } from './solution-card.styles';
 import { developmentFeaturesList } from '../../constants/pricing';
 
-const SolutionCard = ({ solutionType, selectedPlan, setSelectedPlan, selectedDev, setSelectedDev, popularType, wholeItems }) => {
-  const [planType, setPlanType] = useState('yearly');
+const SolutionCard = ({ solutionType, selectedPlan, setSelectedPlan, selectedDev, setSelectedDev, popularType, wholeItems, planType, setPlanType }) => {
   const switchPlanTypes = (type) => {
     setPlanType(type);
   };

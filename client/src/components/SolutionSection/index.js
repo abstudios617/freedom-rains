@@ -26,6 +26,7 @@ import SolutionCard from '../SolutionCard';
 const SolutionSection = ({solutionItems, solutionType}) => {
   const [selectedPlan, setSelectedPlan ] = useState('Basic');
   const [selectedDev, setSelectedDev] = useState('Website'); 
+  const [planType, setPlanType] = useState('yearly');
 
   const solutionGrid = () => {
     return (
@@ -38,6 +39,8 @@ const SolutionSection = ({solutionItems, solutionType}) => {
         setSelectedDev = { setSelectedDev }
         popularType = "pricePopular"
         wholeItems = {solutionItems}
+        planType = {planType}
+        setPlanType={setPlanType}
       />
     );
   };
@@ -47,16 +50,20 @@ const SolutionSection = ({solutionItems, solutionType}) => {
     const goToCommercePackage = () => {
       switch(selectedPlan) {
       case 'Basic':
-        window.open('');
+        planType === 'yearly' ? window.open('https://shopfreedom.io/products/basic-e-commerce-package-yearly') 
+          : window.open('https://shopfreedom.io/products/basic-e-commerce-package-monthly');
         break;
       case 'Digital Package':
-        window.open('');
+        planType === 'yearly' ? window.open('https://shopfreedom.io/products/digital-e-commerce-package-yearly')
+          : window.open('https://shopfreedom.io/products/digital-e-commerce-package-monthly');
         break; 
       case 'Amazon Extension':
-        window.open('');
+        planType === 'yearly' ? window.open('https://shopfreedom.io/products/amazon-extension-e-commerce-package-yearly')
+          : window.open('https://shopfreedom.io/products/amazon-extension-e-commerce-package-monthly');
         break;
       case 'Enterprise':
-        window.open(''); 
+        planType === 'yearly' ? window.open('https://shopfreedom.io/products/enterprise-e-commerce-package-yearly')
+          : window.open('https://shopfreedom.io/products/enterprise-e-commerce-package-monthly');
         break; 
       default:
         // error page
@@ -90,13 +97,13 @@ const SolutionSection = ({solutionItems, solutionType}) => {
     const goToMarketingPackage = () => {
       switch(selectedPlan) {
       case 'Basic':
-        window.open('');
+        window.open('https://shopfreedom.io/products/basic-package');
         break;
       case 'Professional':
-        window.open('');
+        window.open('https://shopfreedom.io/products/professional-package-yearly');
         break; 
       case 'Enterprise':
-        window.open(''); 
+        window.open('https://shopfreedom.io/products/enterprise-package-yearly'); 
         break; 
       default:
         // error page
