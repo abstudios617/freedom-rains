@@ -33,8 +33,15 @@ import FourOFour from './pages/404';
 import { getUserToken } from './utils/account-utils';
 import Merch from './pages/merch';
 import CustomerService from './pages/customer-service';
+import TvPlus from './pages/Tv+';
 import ShopSearch from './pages/shop-search';
 import Game from './pages/game';
+import TvExplore from './pages/Tv+/explore';
+import Channel from './pages/Tv+/channel';
+import Playing from './pages/Tv+/playing';
+import Subscriptions from './pages/Tv+/subscriptions';
+import Playlists from './pages/Tv+/playlists';
+import Saved from './pages/Tv+/saved';
 
 const PageView = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -148,6 +155,27 @@ const PageView = () => {
         </Route>
         <Route exact path="/faqs">
           <CustomerService />
+        </Route>
+        <Route exact path="/tv+">
+          <TvPlus />
+        </Route>
+        <Route exact path="/tv+/explore">
+          <TvExplore />
+        </Route>
+        <Route exact path="/tv+/channel">
+          <Channel />
+        </Route>
+        <Route exact path="/tv+/playing">
+          <Playing />
+        </Route>
+        <Route exact path="/tv+/subscriptions">
+          <Subscriptions />
+        </Route>
+        <Route exact path="/tv+/playlists">
+          <Playlists />
+        </Route>
+        <Route exact path="/tv+/saved">
+          <Saved />
         </Route>
         <Route path="*">
           <Redirect to="/404" />
