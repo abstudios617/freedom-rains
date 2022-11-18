@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { MinusButton, PlusButton, QuantityContainer, Number, QuantityTitle } from './quantityField.styles';
 import minus from '../../assets/icons/minus.svg';
 import plus from '../../assets/icons/plus.svg';
+import minusBlack from '../../assets/icons/minusBlack.svg';
+import plusBlack from '../../assets/icons/plusBlack.svg';
 
-const Quantity = () => { 
+const Quantity = ({ cta }) => { 
   const [quantity, setQuantity] = useState(1);
 
   const subtract = () => {
@@ -14,18 +16,21 @@ const Quantity = () => {
 
   const add = () => {
     setQuantity(quantity + 1);
+    if(cta === 'cartPage' && quantity >= 10) {
+      setQuantity(10);
+    }
   };
 
   return (
     <>
-      <QuantityTitle>Quantity</QuantityTitle>
-      <QuantityContainer>
-        <MinusButton onClick={subtract} >
-          <img src={minus} alt="minus" />
+      <QuantityTitle className={cta}>Quantity</QuantityTitle>
+      <QuantityContainer className={cta}>
+        <MinusButton className={cta} onClick={subtract} >
+          <img src={cta === 'cartPage' ? minusBlack : minus} alt="minus" />
         </MinusButton>
-        <Number>{quantity}</Number>
+        <Number className={cta}>{quantity}</Number>
         <PlusButton onClick={add}>
-          <img src={plus} alt="plus" />
+          <img src={cta === 'cartPage' ? plusBlack : plus} alt="plus" />
         </PlusButton>
       </QuantityContainer>
     </>
