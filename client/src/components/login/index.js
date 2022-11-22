@@ -75,7 +75,8 @@ const Login = ({ redirect, setIsLoggedIn }) => {
           <br></br>
           <ButtonField color="google" onClick={googleSignIn}>
             <ButtonImg alt="Google" src={google}/>
-            Sign In With Google
+             Comment here Sign In With Google 
+            
           </ButtonField>
           <br></br>
           <br></br>
