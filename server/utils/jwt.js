@@ -34,7 +34,8 @@ module.exports.middleware = () => {
       '/auth/google', // main google login endpoint
       '/auth/google/callback', // google callback
       '/error', // google error
-      '/doc' // api documentation
+      '/doc', // api documentation
+      '/getCart'
     ],
   });
 };
