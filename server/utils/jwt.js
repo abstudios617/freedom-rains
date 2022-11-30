@@ -28,6 +28,12 @@ module.exports.middleware = () => {
       '/users/forgotPassword', // sends an email with temporary password
       '/users/contactUs', // sends contact message to SWF team
       '/users/login', // login user and generate token
+      
+      /* TEMPORARY */
+      '/gameplay/create',
+      '/gameplay',
+      /* BACK TO NORMAL */
+
       '/products', // gets all products
       /^\/products\/extra\/.*/, // gets extra products by last product id
       /^\/products\/.*/, // gets single product by id

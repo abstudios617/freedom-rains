@@ -22,6 +22,7 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
 
   const createUserAccount = async () => {
     const values = getValues();
+    console.log(values);
     const account = await createAccount(values);
 
     if (account.statusCode === 200) {
@@ -50,13 +51,13 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
         <InputField
           name="First Name"
           placeHolder="First Name"
-          type="First Name"
+          type="first_name"
           register={register({ required: true })}
         />
         <InputField
           name="Last Name"
           placeHolder="Last Name"
-          type="Last Name"
+          type="last_name"
           register={register({ required: true })}
         />
         <InputField

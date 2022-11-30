@@ -4,6 +4,7 @@ const uninstallRoutes = require('./uninstalledRoutes/uninstall.route');
 const productRoutes = require('./productRoutes/product.route');
 const scrapRoutes = require('./scrapRoutes/scrap.route');
 const gamingRoutes = require('./gamingRoutes/gaming.route');
+const gameplayRoutes = require('./gameplayRoutes/gameplay.route');
 const googleRoutes = require('./googleRoutes/google.routes');
 const checkoutRoutes = require('./checkoutRoutes/checkout.routes.js');
 
@@ -15,6 +16,7 @@ module.exports = (app) =>{
   productRoutes(app); //product routes
   scrapRoutes(app); //scrap routes
   gamingRoutes(app); //gaming routes
+  gameplayRoutes(app); // gameplay data routes 
   googleRoutes(app); //google routes
   checkoutRoutes(app); //checkout routes
 };
