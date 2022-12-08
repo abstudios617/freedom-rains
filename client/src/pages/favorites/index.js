@@ -3,7 +3,6 @@ import { getItem, setItem } from '../../utils/index';
 import Login from '../../components/login';
 import { getAllProducts, updateFavorites } from '../../requests/api-request';
 import ListOfProducts from '../../components/list-of-products';
-import { getUserToken } from '../../utils/account-utils';
 import { Gallery, NotAvailable } from './favorites.style';
 import {Container, Title, SubTitle} from '../../styles/global.style';
 
@@ -22,8 +21,7 @@ const Favorites = ({ isLoggedIn, setIsLoggedIn }) => {
     await updateFavorites(
       {
         favorites: JSON.stringify(favs),
-      },
-      await getUserToken()
+      }
     );
     getFavStores();
   };
