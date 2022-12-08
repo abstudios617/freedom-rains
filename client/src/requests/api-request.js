@@ -17,14 +17,14 @@ export const getCartItems = async (id) => {
   const cartItems = await client(url); 
   
   return cartItems; 
-}
+};
 
 export const getCart = async (id) => {
   const url = `${api}/carts/${id}`;
   const cartItems = await client(url); 
   
   return cartItems; 
-}
+};
 
 /************************
 	POST Method
@@ -135,11 +135,11 @@ export const addCartItem = async (items) => {
   const url = `${api}/carts/addItem`;
   
   return await client(url, items); 
-}
+};
 
 export const addCart = async (items) => {
   const url = `${api}/carts/addCart`;
 
   return await client(url, items); 
-}
+};
 
