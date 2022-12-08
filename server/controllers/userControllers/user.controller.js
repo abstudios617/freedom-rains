@@ -65,7 +65,8 @@ module.exports.addUser = async (req, res) => { //Needs jwt somehow
         phone: req.body.phone,
         zip: req.body.zip,
         categories: req.body.categories,
-        favorites: req.body.favorites
+        favorites: req.body.favorites,
+        cart_id: req.body.cart_id
       },
       ['user_id', 'username', 'email', 'first_name', 'last_name', 'age', 'race', 'gender', 'phone', 'zip', 'categories', 'favorites']
     )

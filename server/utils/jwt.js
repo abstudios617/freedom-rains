@@ -35,7 +35,13 @@ module.exports.middleware = () => {
       '/auth/google/callback', // google callback
       '/error', // google error
       '/doc', // api documentation
-      '/getCart'
+      /^\/carts\/[1-9][0-9]*/, // getCart endpoint with any whole number id
+      /^\/carts\/allItem\/[1-9][0-9]*/,
+      '/carts/addItem',
+      '/carts/removeItem',
+      '/carts/removeAll',
+      '/carts/addCart',
+      '/carts/delete'
     ],
   });
 };
