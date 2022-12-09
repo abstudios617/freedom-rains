@@ -38,15 +38,23 @@ module.exports.loginUser = async (req, res) => {
           secure: true, //Secure means, the cookie will be sent with https
           expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000) //Tells browser to store the cookie for 604,800,000 ms. Which is equal to one week. 
         })
-      .json(accessToken) //Sends back the access token to the frontend. Maybe this goes.
+      .json({token: accessToken}) //Sends back the access token to the frontend. Maybe this goes.
   ); 
 };
 
 //Create a user
-module.exports.addUser = async (req, res) => { //Needs jwt somehow
+module.exports.addUser = async (req, res) => { // Dons not need jwt anymore
   const checkValidate = validateInput(req.body);
   if (checkValidate.length > 0) {
     return res.status(400).json(checkValidate);
+  }
+  // Check if user exists already...
+  const existingUser = await knex('users').where({ email: req.body.email }).first();
+  if (existingUser) {
+    return res.status(400).json({
+      type: 'ExistingUser',
+      message: 'User Already Exists With This Email'
+    });
   }
   // const {} = req.body;
   let hashed = bcrypt.hashSync(req.body.password, 8);

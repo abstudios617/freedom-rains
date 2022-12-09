@@ -5,11 +5,17 @@ import { api, printfulUrl, printfulStoreId, printfulKey } from '../config';
 	GET Method
 ************************/
 
-export const getUserInfo = async (token) => {
-  const url = `${api}/login`;
-  const userInfo = await client(url, null, token);
+export const getUserInfo = async () => {
+  const url = `${api}/user`;
+  const userInfo = await client(url, null);
 
   return userInfo;
+};
+
+export const getCommunityInfo = async () => {
+  const url = `${api}/community/user`;
+
+  return await client(url, null);
 };
 
 export const getCartItems = async (id) => {
@@ -29,6 +35,12 @@ export const getCart = async (id) => {
 /************************
 	POST Method
 ************************/
+export const createCommunityUser = async (val) => {
+  const url = `${api}/community/user`;
+
+  return await client(url, val);
+};
+
 export const contactUs = async (val) => {
   const url = `${api}/users/contactUs`;
 
@@ -71,28 +83,28 @@ export const signIn = async (val) => {
   return await client(url, val);
 };
 
-export const updateAccountCategory = async (val, token) => {
-  const url = `${api}/login/category`;
+export const updateAccountCategory = async (val) => {
+  const url = `${api}/users/update`;
 
-  return await client(url, val, token);
+  return await client(url, val, {key: 'update'});
 };
 
-export const updateTokens = async (val, token) => {
-  const url = `${api}/login/token`;
+export const updateTokens = async (val) => { /* Community */
+  const url = `${api}/community/user/update`;
 
-  return await client(url, val, token);
+  return await client(url, val, {key: 'update'});
 };
 
-export const updateAccount = async (val, token) => {
-  const url = `${api}/login/update`;
+export const updateAccount = async (val) => {
+  const url = `${api}/users/update`;
 
-  return await client(url, val, token);
+  return await client(url, val, {key: 'update'});
 };
 
-export const updateLockedItems = async (val, token) => {
-  const url = `${api}/login/unlock`;
+export const updateLockedItems = async (val) => {
+  const url = `${api}/community/user/update`; /* Community_Tokens has access to it, will change it later... */
 
-  return await client(url, val, token);
+  return await client(url, val, {key: 'update'});
 };
 
 export const getAllProducts = async () => {
@@ -101,10 +113,10 @@ export const getAllProducts = async () => {
   return await client(url, null);
 };
 
-export const updateFavorites = async (val, token) => {
-  const url = `${api}/login/favs`;
+export const updateFavorites = async (val) => {
+  const url = `${api}/users/update`;
 
-  return await client(url, val, token);
+  return await client(url, val, {key: 'update'});
 };
 
 export const getPrintfulProducts = async () => {
@@ -113,7 +125,7 @@ export const getPrintfulProducts = async () => {
     'store_id': printfulStoreId
   };
 
-  return await client(url, val, printfulKey);
+  return await client(url, val, {key: 'printful', value: printfulKey});
 };
 
 export const getSpecificPrintfulProducts = async (productId) => {
@@ -124,7 +136,6 @@ export const getSpecificPrintfulProducts = async (productId) => {
 
   return await client(url, val, printfulKey);
 };
-
 export const createCartCheckoutSession = async (items, tokens) => {
   const url = `${api}/checkout/createSession`;
   console.log('fake'+tokens);
@@ -142,4 +153,3 @@ export const addCart = async (items) => {
 
   return await client(url, items); 
 };
-

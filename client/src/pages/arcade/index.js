@@ -4,7 +4,7 @@ import ArcadeView from '../../components/arcade-view';
 import { gamesConstant } from '../../constants/games';
 import { imgServer } from '../../config';
 import { updateLockedItems } from '../../requests/api-request';
-import { getUserToken, updateUserTokens } from '../../utils/account-utils';
+import { updateUserTokens } from '../../utils/account-utils';
 import {
   getItem,
   setItem,
@@ -196,8 +196,7 @@ const Arcade = ({ setUpdateTokens }) => {
     setItem('unlockedItems', JSON.stringify(unlockedItems));
 
     await updateLockedItems(
-      { unlocked: JSON.stringify(unlockedItems) },
-      await getUserToken()
+      { unlocked: JSON.stringify(unlockedItems) }
     );
     getGames();
     closeModal();

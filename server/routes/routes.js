@@ -7,6 +7,7 @@ const gamingRoutes = require('./gamingRoutes/gaming.route');
 const googleRoutes = require('./googleRoutes/google.routes');
 const checkoutRoutes = require('./checkoutRoutes/checkout.routes.js');
 const cartRoutes = require('./cartRoutes/cart.routes');
+const communityRoutes = require('./communityRoutes/community.route.js');
 
 //single file for routes so index isn't cluttered
 module.exports = (app) =>{
@@ -19,4 +20,5 @@ module.exports = (app) =>{
   googleRoutes(app); //google routes
   checkoutRoutes(app); //checkout routes
   cartRoutes(app); //cart routes
+  communityRoutes(app); //community routes
 };

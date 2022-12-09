@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { createAccount } from '../../requests/api-request';
+import { createAccount, addCart } from '../../requests/api-request';
 import { setUserData, targetPage } from '../../utils/index';
 import { useForm } from 'react-hook-form';
 import InputField from '../../components/input-field';
@@ -22,6 +22,11 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
 
   const createUserAccount = async () => {
     const values = getValues();
+
+    // create new empty shopping cart for the new user
+    const cart = await addCart([]); 
+
+    values.cart_id = cart.cart_id; 
     const account = await createAccount(values);
 
     if (account.statusCode === 200) {

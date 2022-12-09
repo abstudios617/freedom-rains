@@ -28,28 +28,19 @@ import { Container } from '../../styles/global.style';
 import image from '../../assets/about-us/LinkerdInIcon.png';
 import Quantity from '../../components/quantity-field';
 import deleteIcon from '../../assets/icons/delete.svg';
-import { createCartCheckoutSession } from '../../requests/api-request';
+import { createCartCheckoutSession, getCart, getUserInfo } from '../../requests/api-request';
 
-const Cart = () => {
+const Cart = async () => {
+
+  const loggedInUser = await getUserInfo(); 
+
+  // send endpoint request to retrieve the logged-in user's cart
+  const userCart = await getCart(loggedInUser.cart_id); 
 
   const [quantity, setQuantity] = useState(1);
 
-  // a ideal cart object that need to be stored in the backend
-  const cartMockObj = {
-    id: 1,
-    items: [
-      {
-        id: 'price_1LSOxMFiSX0kathO35npm8yT',
-        quantity: '3'
-      },
-      {
-        id: 'price_1LSOw6FiSX0kathOSA1GkzVF',
-        quantity: '1'
-      }
-    ]
-  };
   const createCartCheckout = async () => {
-    await createCartCheckoutSession(cartMockObj)
+    await createCartCheckoutSession(userCart)
       .then((result) => {
         window.location.href = result.url; 
       })

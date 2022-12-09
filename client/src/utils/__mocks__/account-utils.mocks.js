@@ -7,7 +7,7 @@ export const userToken = {
 };
 
 export const accountInfo = {
-  pwd: 'password',
+  password: 'password',
   first_name: 'john',
   last_name: 'doe',
   email: 'john.doe@gmail.com',
@@ -27,7 +27,7 @@ export const hasAvailableTokens = {
 };
 
 export const noAvailableTokens = {
-  statusCode: 500
+  statusCode: 400
 };
 
 export const listOfProducts = [

@@ -2,18 +2,12 @@ import { getItem, setItem, targetPage } from './index';
 import { addEvent } from '../requests/analytics-request';
 import { updateTokens } from '../requests/api-request';
 
-export const getUserToken = () => {
-  const userInfo = getItem('loggedIn');
-
-  return userInfo ? JSON.parse(userInfo).token : null;
-};
-
 export const setUserAccount = (account) => {
   setItem(
     'accountInfo',
     JSON.stringify({
       userInfo: account,
-      pwd: account.pwd,
+      password: account.password,
       first_name: account.first_name,
       last_name: account.last_name,
       email: account.email,
@@ -29,6 +23,22 @@ export const setUserAccount = (account) => {
   );
 };
 
+export const getLoginToken = () => {
+  const loginToken = document.cookie.substring(
+    document.cookie.indexOf('token=') + 'token='.length, 
+    document.cookie.indexOf(';', document.cookie.indexOf('token='))
+  );
+  return loginToken;
+};
+
+export const setLoginCookie = (token) => {
+  document.cookie = `token=${token}; path= '/'; httpOnly; secure;`;
+};
+
+export const removeLoginToken = () => {
+  document.cookie = 'token=; path = /; Max-Age=0';
+};
+
 export const updateUserTokens = async (tokenCount, tasks) => {
   const amount = getItem('tokens');
   const total = +amount + tokenCount;
@@ -36,8 +46,7 @@ export const updateUserTokens = async (tokenCount, tasks) => {
     {
       total: total,
       tasks: tasks,
-    },
-    getUserToken()
+    }
   );
 
   if (availableTokens.statusCode === 200) {

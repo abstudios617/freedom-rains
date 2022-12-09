@@ -19,12 +19,8 @@ import ListOfProducts from '../../../components/list-of-products';
 import confirmation from '../../../assets/order_confirmation/confirmation.png';
 import confirmationMobile from '../../../assets/order_confirmation/confirmationMobile.png';
 import ad1 from '../../../assets/ads/ad1.png';
-import { emptyCart } from '../../../constants/cart'; 
 
 const Confirmation = () => {
-
-  // empty all the items that was in the cart once user checked out all items
-  emptyCart();
   
   return (
     <Container>

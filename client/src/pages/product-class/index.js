@@ -5,12 +5,11 @@ import {
   targetPage,
   formatPrice,
 } from '../../utils';
-import { updateFavorites, getAllProducts } from '../../requests/api-request';
+import { updateFavorites, getAllProducts, addCartItem, getUserInfo} from '../../requests/api-request';
 import ModalOneBtn from '../../components/modal-one-btn';
 import { addEvent } from '../../requests/analytics-request';
 import Loader from '../../components/loader';
 import ListOfProducts from '../../components/list-of-products';
-import { getUserToken } from '../../utils/account-utils';
 import { 
   ProductRow,
   ProductImg,
@@ -43,7 +42,6 @@ import shareIcon from '../../assets/icons/share.svg';
 import { useParams } from 'react-router-dom';
 import leftArrow from '../../assets/icons/leftArrow.svg';
 import rightArrow from '../../assets/icons/rightArrow.svg';
-import { addItem } from '../../constants/cart'; 
 
 const ProductClass = ({ isLoggedIn }) => {
   const [prodItem, setProdItem] = useState(null);
@@ -76,8 +74,7 @@ const ProductClass = ({ isLoggedIn }) => {
       await updateFavorites(
         {
           favorites: JSON.stringify(favs),
-        },
-        await getUserToken()
+        }
       );
 
       addEvent({
@@ -92,8 +89,7 @@ const ProductClass = ({ isLoggedIn }) => {
       await updateFavorites(
         {
           favorites: JSON.stringify([prodId]),
-        },
-        await getUserToken()
+        }
       );
 
       addEvent({
@@ -176,15 +172,24 @@ const ProductClass = ({ isLoggedIn }) => {
     }
   };
 
-  const addItemInCart = () => {
+  const addItemInCart = async () => {
+
+    const loggedInUser = await getUserInfo();
+
     const itemObject = {
       id: prodItem.id,
       quantity: itemQuantity
     };
 
-    addItem(itemObject); 
+    const addItemRequest = {
+      cart_id: loggedInUser.cart_id,
+      item: itemObject
+    };
 
-    targetPage('cart'); 
+    // add the item in the user's cart
+    const addCart = await addCartItem(addItemRequest); 
+    
+    if (addCart) targetPage('cart'); 
   };
   
   return (

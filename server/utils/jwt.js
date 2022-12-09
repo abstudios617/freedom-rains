@@ -24,6 +24,7 @@ module.exports.middleware = () => {
       '/users/login', // login user and generate token
       '/checkout/createSession', // guests can purchase items
       '/checkout/subscribe', // create subscription checkout session
+      '/community/users', // For Getting All info for community users
       '/webhook', // hit webhook for stripe, will verify from stripe route
       '/users/forgotPassword', // sends an email with temporary password
       '/users/contactUs', // sends contact message to SWF team
