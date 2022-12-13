@@ -32,6 +32,13 @@ export const getCart = async (id) => {
   return cartItems; 
 };
 
+export const getProduct = async (id) => {
+  const url = `${api}/products/${id}`;
+
+  const product = await client(url);
+  return product; 
+};
+
 /************************
 	POST Method
 ************************/
@@ -152,4 +159,16 @@ export const addCart = async (items) => {
   const url = `${api}/carts/addCart`;
 
   return await client(url, items); 
+};
+
+export const deleteCartItem = async (item) => {
+  const url = `${api}/carts/removeItem`;
+
+  return await client(url, item); 
+};
+
+export const deleteAllCartItem = async (cartId) => {
+  const url = `${api}/carts/removeAll`;
+
+  return await client(url, cartId); 
 };

@@ -154,7 +154,7 @@ export const ExtraDetails = styled.ul`
   }
 `;
 
-export const Delete = styled.img`
+export const Delete = styled.button`
   cursor: pointer;
   margin-top: 0px;
   width: 16px;

@@ -5,7 +5,7 @@ export const sampleAccount = {
   last_name: 'Last',
   email: 'test2@test.com',
   password: 'Whoops1234'
-}
+};
 
 export const sampleAccountData = {
   'user_id': 304,
@@ -23,22 +23,22 @@ export const sampleAccountData = {
   'created_on': '2022-10-14T14:58:48.670Z',
   'email': 'test2@test.com',
   'token': null
-}
+};
 
 /* TODO: Reflect on what CreateAccount would return */
 export const createAccount = {
-    'username': null,
-    'email': 'test2@test.com',
-    'first_name': 'First',
-    'last_name': 'Last',
-    'age': null,
-    'race': null,
-    'gender': null,
-    'phone': null,
-    'zip': null,
-    'categories': null,
-    'favorites': null,
-    statusCode: 200
+  'username': null,
+  'email': 'test2@test.com',
+  'first_name': 'First',
+  'last_name': 'Last',
+  'age': null,
+  'race': null,
+  'gender': null,
+  'phone': null,
+  'zip': null,
+  'categories': null,
+  'favorites': null,
+  statusCode: 200
 };
 
 export const defaultResponse = {
@@ -74,7 +74,7 @@ export const allProducts = {
 /* TODO: Setup how getUser return data */
 export const getCurrentUser = {
 
-}
+};
 
 /* TODO: Do we need this? */
 export const getAllUsers = {

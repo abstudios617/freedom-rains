@@ -253,7 +253,7 @@ const ProductClass = ({ isLoggedIn }) => {
               <Quantity quantity={itemQuantity} setQuantity={setItemQuantity}></Quantity> 
               <ButtonRow>
                 <BtnField className="addToCart"
-                  onClick={() => addItemInCart()}
+                  onClick={addItemInCart}
                 >
                   Add to Cart 
                   <img
