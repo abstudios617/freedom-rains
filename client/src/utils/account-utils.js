@@ -24,6 +24,9 @@ export const setUserAccount = (account) => {
 };
 
 export const getLoginToken = () => {
+  if (document.cookie.indexOf('token=') === -1) {
+    return undefined; 
+  }
   const loginToken = document.cookie.substring(
     document.cookie.indexOf('token=') + 'token='.length, 
     document.cookie.indexOf(';', document.cookie.indexOf('token='))
