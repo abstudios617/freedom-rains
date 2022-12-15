@@ -38,6 +38,7 @@ const Cart = async () => {
 
   // send endpoint request to retrieve the logged-in user's cart
   const userCart = await getCart(loggedInUser.cart_id); 
+  // if the user is not logged in, cannot use getUserInfo
 
 
   // send endpoint request to remove certain item from the cart

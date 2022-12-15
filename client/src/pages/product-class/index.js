@@ -175,6 +175,7 @@ const ProductClass = ({ isLoggedIn }) => {
   const addItemInCart = async () => {
 
     const loggedInUser = await getUserInfo();
+    // if the user is not logged in, cannot use getUserInfo endpoint
 
     const itemObject = {
       id: prodItem.id,
@@ -190,6 +191,7 @@ const ProductClass = ({ isLoggedIn }) => {
     const addCart = await addCartItem(addItemRequest); 
     
     if (addCart) targetPage('cart'); 
+    else alert('items was not added due to error'); 
   };
   
   return (
