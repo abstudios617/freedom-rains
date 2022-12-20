@@ -4,6 +4,11 @@ export const Filter = styled.div`
   width: 100%;
   height: 56px;
   box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+
+  &.filtered {
+    margin-bottom: 230px;
+  }
+  
   @media only screen and (max-width: 480px) {
     width: 100%;
   }

@@ -5,8 +5,8 @@ export const ImgContainer = styled.div`
   display: grid;
   align-items: center;
   justify-content: center;
+  position: relative;
   overflow: hidden;
-  z-index: -1;
   &.featured {
     height: 200px;
   }
@@ -18,12 +18,16 @@ export const ImgContainer = styled.div`
   }
 
   .homepage {
+    position: static; 
+    z-index: -1;
     height: 160px;
     width: 110px;
   }
 
   @media only screen and (max-width: 480px) {
     &.homepage {
+      position: static; 
+      z-index: -1;
       height: auto;
       width: 100%;
     }
@@ -33,6 +37,7 @@ export const ImgContainer = styled.div`
 export const ProdImg = styled.img`
   width: 100%;
   height: auto;
+  display:block;
 
   &.featured {
     width: 100%;
@@ -270,7 +275,7 @@ export const ListProd = styled.div`
     padding: 10px;
     gap: 10px;
     width: 85px;
-    height: 30px;
+    height: 40px;
     background: #FFFFFF;
     border: 4px solid #3C4044;
     border-radius: 0px 18px 18px 18px;
