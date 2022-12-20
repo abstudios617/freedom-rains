@@ -1,11 +1,44 @@
 export const testData = { test: 123 };
 
+export const sampleAccount = {
+  first_name: 'First',
+  last_name: 'Last',
+  email: 'test2@test.com',
+  password: 'Whoops1234'
+}
+
+export const sampleAccountData = {
+  'user_id': 304,
+  'first_name': 'First',
+  'last_name': 'Last',
+  'age': null,
+  'race': null,
+  'gender': null,
+  'phone': null,
+  'zip': null,
+  'categories': null,
+  'favorites': null,
+  'username': null,
+  'password': '$2a$08$ZBmVEvMZMwTC6jSC7TqidOL.Lr3KmKubNgLeb4vwKs/1NOOOeoDTG',
+  'created_on': '2022-10-14T14:58:48.670Z',
+  'email': 'test2@test.com',
+  'token': null
+}
+
+/* TODO: Reflect on what CreateAccount would return */
 export const createAccount = {
-  acct_id: 1,
-  username: 'some@place.com',
-  token: 'siuky3483ehiud92h2eih',
-  created_on: '2020-12-04T20:38:00.000Z',
-  statusCode: 200,
+    'username': null,
+    'email': 'test2@test.com',
+    'first_name': 'First',
+    'last_name': 'Last',
+    'age': null,
+    'race': null,
+    'gender': null,
+    'phone': null,
+    'zip': null,
+    'categories': null,
+    'favorites': null,
+    statusCode: 200
 };
 
 export const defaultResponse = {
@@ -13,10 +46,8 @@ export const defaultResponse = {
   statusCode: 200,
 };
 
+/* TODO: Not sure if we need this since we are using Cookies */
 export const updateToken = {
-  message: 'default messaging',
-  token:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImlhdCI6MTY1Nzk0MTQ1OCwiZXhwIjoxNjU4NTQ2MjU4fQ.5JnOfvXYtwPXIO-DeAGBrJRYlfgKcnrXYa9Dvl5IESs',
   statusCode: 200,
 };
 
@@ -40,6 +71,12 @@ export const allProducts = {
   store: 'Oasis Vegan Veggie',
 };
 
+/* TODO: Setup how getUser return data */
+export const getCurrentUser = {
+
+}
+
+/* TODO: Do we need this? */
 export const getAllUsers = {
   acct_id: 1,
   age: '23',
@@ -68,6 +105,7 @@ export const getAllUsers = {
   zip: '39485',
 };
 
+/* TODO: Is this how LoggedinAccount setup? */
 export const loggedInAccount = {
   acct_id: 1,
   created_on: '2021-08-19T06:16:00.000Z',
@@ -89,6 +127,7 @@ export const getLeads = {
   zip: '39485',
 };
 
+/* TODO: Check if this is actually the account body */
 export const accountBody = {
   age: '23',
   company: '',

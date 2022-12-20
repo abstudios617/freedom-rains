@@ -1,5 +1,5 @@
-import { getUserInfo } from '../requests/api-request';
-import { setUserAccount } from './account-utils';
+import { createCommunityUser, getCommunityInfo, getUserInfo } from '../requests/api-request';
+import { setUserAccount, removeLoginToken } from './account-utils';
 import useSSR from 'use-ssr';
 
 const { isBrowser } = useSSR();
@@ -63,23 +63,41 @@ export const resetCache = () => {
   removeItem('accountInfo');
   removeItem('favorites');
   removeItem('specificProd');
+  removeLoginToken();
 };
 
 export const setUserData = async (loggedInData) => {
   setItem('loggedIn', JSON.stringify(loggedInData));
-  const userData = await getUserInfo(loggedInData.token);
-
-  setUserAccount(userData);
+  const userData = await getUserInfo();
+  if (userData.statusCode === 200) {
+    setUserAccount(userData);
+  }
 
   setItem('categories', userData.categories || JSON.stringify([]));
 
   setItem('favorites', userData.favorites || JSON.stringify([]));
 
-  setItem('tokens', userData.tokens);
-
-  setItem('unlockedItems', userData.locked);
-
-  setItem('tasks', userData.tasks);
+  
+  /* The three items below are from community_tokens */
+  const communityData = await getCommunityInfo();
+  if (communityData.statusCode === 200)
+  {
+    setItem('tokens', communityData.tokens);
+    setItem('unlockedItems', communityData.locked);
+    setItem('tasks', communityData.tasks);
+  }
+  else if (communityData.statusCode === 500 && userData.statusCode === 200) // New User...
+  {
+    const defValues = {
+      tokens: '0',
+      locked: JSON.stringify({}),
+      tasks: JSON.stringify({})
+    };
+    const makeCommunityData = await createCommunityUser(defValues);
+    setItem('tokens', makeCommunityData.tokens);
+    setItem('unlockedItems', makeCommunityData.locked);
+    setItem('tasks', makeCommunityData.tasks);
+  }
 };
 
 //This Function is outdated. Instead of using target page. 

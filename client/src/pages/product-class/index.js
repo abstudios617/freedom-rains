@@ -10,7 +10,6 @@ import ModalOneBtn from '../../components/modal-one-btn';
 import { addEvent } from '../../requests/analytics-request';
 import Loader from '../../components/loader';
 import ListOfProducts from '../../components/list-of-products';
-import { getUserToken } from '../../utils/account-utils';
 import { 
   ProductRow,
   ProductImg,
@@ -75,8 +74,7 @@ const ProductClass = ({ isLoggedIn }) => {
       await updateFavorites(
         {
           favorites: JSON.stringify(favs),
-        },
-        await getUserToken()
+        }
       );
 
       addEvent({
@@ -91,8 +89,7 @@ const ProductClass = ({ isLoggedIn }) => {
       await updateFavorites(
         {
           favorites: JSON.stringify([prodId]),
-        },
-        await getUserToken()
+        }
       );
 
       addEvent({

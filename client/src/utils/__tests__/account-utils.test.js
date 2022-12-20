@@ -3,28 +3,21 @@ import * as accountUtils from '../account-utils';
 import * as utils from '..';
 import * as apiRequest from '../../requests/api-request';
 import * as analyticsRequest from '../../requests/analytics-request';
-import { accountInfo, hasAvailableTokens, noAvailableTokens, userToken } from '../__mocks__/account-utils.mocks';
+import { accountInfo, hasAvailableTokens, noAvailableTokens, userToken, sampleAccount } from '../__mocks__/account-utils.mocks';
 
-describe('account - getUserToken', () => {
-  test('should return user token info', () => {
-    const getItem = jest.spyOn(utils, 'getItem');
-    getItem.mockReturnValue(JSON.stringify(userToken));
-    const getUser = accountUtils.getUserToken();
+export const simpleLogin = async () => {
+  const setTempCookie = (token) => {
+    accountUtils.setLoginCookie(token);
+  }
+  const response = await apiRequest.signIn({email: sampleAccount.email, password: sampleAccount.password});
+  setTempCookie(response.token);
+  // return response;
+}
+export const removeLoginCredentials = () => {
+  accountUtils.removeLoginToken();
+}
 
-    expect(getItem).toHaveBeenCalled();
-    expect(getUser).toEqual(userToken.token);
-  });
-
-  test('should return no user token info', () => {
-    const getItem = jest.spyOn(utils, 'getItem');
-    getItem.mockReturnValue();
-    const getUser = accountUtils.getUserToken();
-
-    expect(getItem).toHaveBeenCalled();
-    expect(getUser).toEqual(null);
-  });
-});
-
+/* TODO: Needs a Review */
 describe('account - setUserAccount', () => {
   test('should set user account', () => {
     const setItem = jest.spyOn(utils, 'setItem');
@@ -34,8 +27,13 @@ describe('account - setUserAccount', () => {
   });
 });
 
+/* TODO: Need a Review */
 describe('account - updateUserTokens', () => {
-  test('should update user token', async () => {
+  // TODO: Needs a Review
+  test("should update user tokens - cookie", async () => {
+    // First login to generate a cookie for test requests...
+    simpleLogin();
+
     const getItem = jest.spyOn(utils, 'getItem');
     const setItem = jest.spyOn(utils, 'setItem');
     const updateTokens = jest.spyOn(apiRequest, 'updateTokens');
@@ -49,9 +47,12 @@ describe('account - updateUserTokens', () => {
     expect(updateTokens).toHaveBeenCalled();
     expect(setItem).toHaveBeenCalled();
     expect(updateUser).toEqual(true);
+
+    // BE SURE TO REMOVE THE LOGIN CREDENTIALS
+    removeLoginCredentials();
   });
 
-  test('should not update user token', async () => {
+  test('should not update user token - no cookie', async () => {
     const getItem = jest.spyOn(utils, 'getItem');
     const updateTokens = jest.spyOn(apiRequest, 'updateTokens');
     

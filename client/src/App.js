@@ -30,7 +30,7 @@ import AboutUs from './pages/about-us';
 import PricingPage from './pages/pricing';
 import Watch from './pages/watch';
 import FourOFour from './pages/404';
-import { getUserToken } from './utils/account-utils';
+import { getLoginToken } from './utils/account-utils';
 import Merch from './pages/merch';
 import CustomerService from './pages/customer-service';
 import ShopSearch from './pages/shop-search';
@@ -41,7 +41,7 @@ const PageView = () => {
   const [updateTokens, setUpdateTokens] = useState(false);
 
   const checkIsLoggedIn = async () => {
-    const userToken = await getUserToken();
+    const userToken = getLoginToken();
 
     if (userToken) {
       const { exp } = jwt_decode(userToken);
