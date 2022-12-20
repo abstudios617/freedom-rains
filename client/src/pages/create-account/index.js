@@ -90,7 +90,7 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
         <Submit>
           <ButtonField color="google" onClick={googleSignIn}>
             <ButtonImg alt="Google" src={google}/>
-                Sign In With Google
+                {/*Sign In With Google*/}
           </ButtonField>
         </Submit><br/><br/>
       </ContactFields>

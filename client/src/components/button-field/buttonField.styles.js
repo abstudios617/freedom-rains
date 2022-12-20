@@ -194,6 +194,7 @@ export const BtnField = styled.button`
   }
 
   &.google{
+    width: auto;
     font-family: 'Montserrat', sans-serif;                                          
     font-style: Bold;
     font-size: 20px;
@@ -203,7 +204,7 @@ export const BtnField = styled.button`
     background-color: #fff;
     border-radius: 25px;
     border: 2px solid #73AD21;
-    padding: 15px;
+    
 
     &:hover {
       box-shadow: 0 3px 2px #333333;

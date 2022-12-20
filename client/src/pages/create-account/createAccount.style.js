@@ -10,7 +10,7 @@ export const Submit = styled.div`
 `;
 
 export const ButtonImg = styled.img`
-  width: 22px;
+  width: auto;
   height: 22px;
   margin-bottom: 2px;
   margin-right: 2px;
