@@ -23,7 +23,7 @@ const Development = () => {
 
   const featureList = developmentFeaturesList.map((feature) => {
     return (
-      <DevelopFeature key={feature}>
+      <DevelopFeature className="names" key={feature}>
         {feature}
       </DevelopFeature>
     );
@@ -66,7 +66,7 @@ const Development = () => {
           <img src={satisfactionGuarantee ? greenCheckmark : blueX}/>
         </DevelopFeature>
         <DevelopCenter> 
-          <ButtonField color="yellow" onClick={() => targetPage('forbusiness#contact')}>
+          <ButtonField color="newYellow" onClick={() => targetPage('forbusiness#contact')}>
             Contact Sales
           </ButtonField>
         </DevelopCenter>
@@ -79,7 +79,7 @@ const Development = () => {
       <DevelopHeading>
         <div>
           <DevelopTitle>
-                        Get the right plan for your business
+             Get the right plan for your business
           </DevelopTitle>
           <DevelopSubTitle>Development Solutions</DevelopSubTitle>
         </div>

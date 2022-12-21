@@ -185,7 +185,7 @@ const ContactUs = () => {
               />
               <br/>
               <ButtonField
-                color="primary"
+                color="newPrimary"
                 onClick={handleSubmit(sendContactInfo)}
               >
                 Contact Sales

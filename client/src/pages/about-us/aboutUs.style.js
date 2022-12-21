@@ -143,7 +143,7 @@ export const ContactIcon = styled.img`
 `;
 
 export const ContactDescriptionTitle = styled.div`
-  width: 450px;
+  width: 280px;
   height: 25px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -151,14 +151,14 @@ export const ContactDescriptionTitle = styled.div`
   font-size: 18px;
   line-height: 22px;
   color: #3C4044;
-  text-align: center;
+  text-align: left;
   margin: auto;
   display: flex;
   flex-direction: row;
 `;
 
 export const ContactDescription = styled.div`
-  width: 130px;
+  width: 125px;
   height: 22px;
   text-align: center;
   display: flex;
@@ -171,14 +171,17 @@ export const ContactDescription = styled.div`
   margin: auto;
 `;
 
-
+export const ContactDescriptionInfo = styled.div`
+  width: 120px;
+  margin: auto;
+`;
 
 
 export const HiringImage = styled.img`
   width: 100%;
   height: auto;
   object-fit: cover;
-  opacity: 60%;
+  opacity: 35%;
 `;
 
 export const HiringDescriptionContainer = styled.div`
@@ -196,12 +199,12 @@ export const HiringMessage = styled.div`
   height: 200px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: 35px;
+  font-weight: 800;
+  font-size: 40px;
   text-align: center;
   color: #333;
   position: absolute;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 `;
 
 export const SeeOpenButton = styled.div`

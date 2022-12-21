@@ -30,6 +30,26 @@ export const BtnField = styled.button`
   &.primary {
     background: #1988ff;
     color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+
+    &:hover {
+      box-shadow: 0 3px 2px #777777;
+    }
+  }
+
+  &.newPrimary {
+    background: #1988ff;
+    color: #fff;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    position: relative;
 
     &:hover {
       box-shadow: 0 3px 2px #777777;
@@ -98,6 +118,23 @@ export const BtnField = styled.button`
     }
   }
 
+  &.newGreen {
+    background: #49a429;
+    color: #fff;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+
+    &:hover {
+      box-shadow: 0 3px 2px #777;
+    }
+  }
+
   &.lime-green {
     background: #8ec90e;
     color: #fff;
@@ -128,6 +165,8 @@ export const BtnField = styled.button`
   &.allWhite {
     background-color: #fff;
     color: #559eff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
 
     &:hover {
       box-shadow: 0 3px 2px #333333;
@@ -165,6 +204,14 @@ export const BtnField = styled.button`
   &.started {
     background: #008E3C10;
     color: #008E3C;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
       
     &:hover {
       box-shadow: 0 3px 2px #333333;
@@ -174,6 +221,14 @@ export const BtnField = styled.button`
   &.darkStarted {
     background: #008E3C;
     color: #fff;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
       
     &:hover {
       box-shadow: 0 3px 2px #333333;
@@ -184,6 +239,23 @@ export const BtnField = styled.button`
     background: #ECDA35;
     color: #000;
       
+    &:hover {
+      box-shadow: 0 3px 2px #777777;
+    }
+  }
+
+  &.newYellow {
+    background: #ECDA35;
+    color: #000;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+
     &:hover {
       box-shadow: 0 3px 2px #777777;
     }

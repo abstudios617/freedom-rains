@@ -140,7 +140,7 @@ const ForBusiness = () => {
           <HelpTitle>
             <span>Helping Small Businesses Enter the Digital Age</span>
           </HelpTitle>
-          <ButtonField color="primary" onClick={sendToPricing}>
+          <ButtonField color="newPrimary" onClick={sendToPricing}>
             Get Started For Free
           </ButtonField>
           <HelpContent>
@@ -164,7 +164,7 @@ const ForBusiness = () => {
           easy transition into the digital age.
         </Description>
         <ServiceItemWrapper>{services}</ServiceItemWrapper>
-        <ButtonField color="primary" onClick={sendToContact}>
+        <ButtonField color="newPrimary" onClick={sendToContact}>
           Connect With Us
         </ButtonField>
       </ServiceContainer>
@@ -175,7 +175,7 @@ const ForBusiness = () => {
           best product possible!
         </Description>
         <ProductItemWrapper>{helped}</ProductItemWrapper>
-        <ButtonField color="primary" onClick={sendToContact}>
+        <ButtonField color="newPrimary" onClick={sendToContact}>
           Learn More
         </ButtonField>
       </ProductContainer>
@@ -198,7 +198,7 @@ const ForBusiness = () => {
             {process}
           </ProcessItemContent>
         </ProcessItemWrapper>
-        <ButtonField color="primary" onClick={sendToPricing}>
+        <ButtonField color="newPrimary" onClick={sendToPricing}>
           Start Today!
         </ButtonField>
       </ProcessContainer>

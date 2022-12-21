@@ -75,7 +75,7 @@ const ArcadeView = ({mostPopularList, recommendedList, newestList, oldestList, g
             {currentGameList?.slice(0,10)}
           </Videos>
           <BtnContainer>
-            <ButtonField color="primary" onClick={() => setViewAll(true)}>
+            <ButtonField color="newPrimary" onClick={() => setViewAll(true)}>
               View All
             </ButtonField>
           </BtnContainer>

@@ -8,6 +8,7 @@ import {
   ContactContainer,
   ContactTitle,
   ContactDescription,
+  ContactDescriptionInfo,
   ContactDescriptionTitle,
   OurTeamContainer,
   TeamContainer,
@@ -92,7 +93,7 @@ const AboutUs = () => {
                   </LogoContainer>
                   <ContactButton>
                     <a href={images[item]} title={item} download={pathToFile}>
-                      <ButtonField color="green">
+                      <ButtonField color="newGreen">
                         Download Logo
                       </ButtonField>
                     </a>
@@ -225,18 +226,24 @@ const AboutUs = () => {
         <ContactTitle>
           Contact
         </ContactTitle>
-        <ContactDescriptionTitle>
-          <ContactIcon src={phoneIcon} alt="Phone" />
-          Phone Number
-          <ContactDescription>1-718-975-6166</ContactDescription>
-        </ContactDescriptionTitle>
-        <ContactDescriptionTitle>
-          <ContactIcon src={emailIcon} alt="Email" />
-          Email
-          <ContactDescription>sjackson@freedomrains.com</ContactDescription>
-        </ContactDescriptionTitle>
+        <div style={{ marginLeft: '2em' }}>
+          <ContactDescriptionTitle>
+            <ContactDescriptionInfo>
+              <ContactIcon src={phoneIcon} alt="Phone" />
+              Phone:
+            </ContactDescriptionInfo>
+            <ContactDescription>1-718-975-6166</ContactDescription>
+          </ContactDescriptionTitle>
+          <ContactDescriptionTitle>
+            <ContactDescriptionInfo>
+              <ContactIcon src={emailIcon} alt="Email" />
+              Email:
+            </ContactDescriptionInfo>
+            <ContactDescription>sjackson@freedomrains.com</ContactDescription>
+          </ContactDescriptionTitle>
+        </div>
         <ContactButton>
-          <ButtonField color="primary" onClick={goToIntern}>Contact with us!</ButtonField>
+          <ButtonField color="newPrimary" onClick={goToIntern}>Contact with us!</ButtonField>
         </ContactButton>
       </ContactContainer>
 
@@ -264,9 +271,9 @@ const AboutUs = () => {
 
       <HiringDescriptionContainer>
         <HiringImage src={steffan_aman} alt="Logo" />
-        <HiringMessage>We are Hiring!<br />Join the team and help us suport local businesses</HiringMessage>
+        <HiringMessage>We are Hiring!<br />Join the Team and Help Us Support Local Businesses</HiringMessage>
         <SeeOpenButton>
-          <ButtonField color="green" onClick={goToPositions}>See Openings</ButtonField>
+          <ButtonField color="newGreen" onClick={goToPositions}>See Open Positions</ButtonField>
         </SeeOpenButton>
       </HiringDescriptionContainer>
       <SectionTitleContainer>
