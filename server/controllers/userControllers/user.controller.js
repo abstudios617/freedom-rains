@@ -147,9 +147,12 @@ module.exports.contactUs = async (req, res) => {
         phone: req.body.phone,
         industry: req.body.industry,
         website: req.body.website,
-        service: req.body.service
+        service: req.body.service,
+        budget: req.body.budget,
+        wanted_revenue: req.body.wanted_revenue,
+        company: req.body.company
       },
-      ['contact_id', 'first_name', 'last_name', 'email', 'phone', 'industry', 'website', 'service']
+      ['contact_id', 'first_name', 'last_name', 'email', 'phone', 'industry', 'website', 'service', 'budget', 'wanted_revenue', 'company']
     )
     .catch((err) => res.status(500).json(err));
 

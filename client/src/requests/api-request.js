@@ -40,8 +40,7 @@ export const couponScraper = async (val) => {
 };
 
 export const createAccount = async (val) => {
-  //const url = `${api}/users/create`;
-  const url = 'https://api.freedomrains.com/users/create';
+  const url = `${api}/users/create`;
 
   return await client(url, val);
 };
