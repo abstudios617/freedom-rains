@@ -181,7 +181,7 @@ export const HiringImage = styled.img`
   width: 100%;
   height: auto;
   object-fit: cover;
-  opacity: 35%;
+  opacity: 25%;
 `;
 
 export const HiringDescriptionContainer = styled.div`
