@@ -5,7 +5,7 @@ import { getItem, setItem } from '../../utils/index';
 import ModalOneBtn from '../../components/modal-one-btn';
 import ButtonField from '../../components/button-field';
 import { addEvent } from '../../requests/analytics-request';
-import { getUserToken, updateUserTokens } from '../../utils/account-utils';
+import { updateUserTokens } from '../../utils/account-utils';
 import { 
   Content,
   Grid,
@@ -93,7 +93,7 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
       category: JSON.stringify(arr),
     };
 
-    const update = await updateAccountCategory(values, await getUserToken());
+    const update = await updateAccountCategory(values);
 
     if (update.statusCode === 200) {
       setErrMsg(null);

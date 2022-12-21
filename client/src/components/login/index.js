@@ -18,6 +18,7 @@ import {
 } from '../../styles/global.style';
 import google from '../../assets/icons/new_google.png';
 import LogoIcon from '../logo-icons';
+import { setLoginCookie } from '../../utils/account-utils';
 
 const Login = ({ redirect, setIsLoggedIn }) => {
   const { register, handleSubmit, getValues, errors } = useForm();
@@ -25,9 +26,12 @@ const Login = ({ redirect, setIsLoggedIn }) => {
   const sendContactInfo = async () => {
     const values = getValues();
 
+    // Returns a Cookie
     const isSignedIn = await signIn(values);
 
-    if (isSignedIn.statusCode === 200) {
+    if (isSignedIn.statusCode === 201) { // 201 because backend returns 201 for sign-in success with cookies
+      // document.cookie = `token=${isSignedIn.token}; path= '/'; httpOnly; secure;`;
+      setLoginCookie(isSignedIn.token);
       await setUserData(isSignedIn);
       setIsLoggedIn(true);
       targetPage(redirect);

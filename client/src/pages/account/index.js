@@ -5,10 +5,12 @@ import InputField from '../../components/input-field';
 import { useForm } from 'react-hook-form';
 import ModalOneBtn from '../../components/modal-one-btn';
 import Login from '../../components/login';
-import {
-  getUserToken, setUserAccount, updateUserTokens
-} from '../../utils/account-utils';
-import {
+import { setUserAccount, updateUserTokens } from '../../utils/account-utils';
+import { 
+  SubContent, 
+  Tabs, 
+  ContentWidth, 
+  Submit, 
   AccountContain,
   SignIn,
   Content,
@@ -51,7 +53,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   const { register, handleSubmit, getValues, errors, setValue } = useForm({
     defaultValues: {
       email: accountData && accountData.username,
-      password: userData && userData.pwd,
+      password: userData && userData.password,
       first_name: userData && userData.first_name,
       last_name: userData && userData.last_name,
       phone: userData && userData.phone,
@@ -64,7 +66,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
   });
 
   const updateAllfields = (result) => {
-    setValue('password', result.pwd);
+    setValue('password', result.password);
     setValue('first_name', result.first_name);
     setValue('last_name', result.last_name);
     setValue('email', result.email);
@@ -78,7 +80,7 @@ const Account = ({ setUpdateTokens, isLoggedIn, setIsLoggedIn }) => {
 
   const updateAccountInfo = async () => {
     const values = getValues();
-    const update = await updateAccount(values, await getUserToken());
+    const update = await updateAccount(values);
 
     if (update.statusCode === 200) {
       let currentTask = getItem('tasks');

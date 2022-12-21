@@ -10,7 +10,6 @@ import ModalOneBtn from '../../components/modal-one-btn';
 import { addEvent } from '../../requests/analytics-request';
 import Loader from '../../components/loader';
 import ListOfProducts from '../../components/list-of-products';
-import { getUserToken } from '../../utils/account-utils';
 import { 
   ProductRow,
   ProductImg,
@@ -33,6 +32,7 @@ import {
   ImageContainer,
   SecondaryImg,
   SecondaryImgContain,
+  PlatformSearch,
 } from './productClass.style';
 import { BtnField } from '../../components/button-field/buttonField.styles';
 import {Container} from '../../styles/global.style';
@@ -74,8 +74,7 @@ const ProductClass = ({ isLoggedIn }) => {
       await updateFavorites(
         {
           favorites: JSON.stringify(favs),
-        },
-        await getUserToken()
+        }
       );
 
       addEvent({
@@ -90,8 +89,7 @@ const ProductClass = ({ isLoggedIn }) => {
       await updateFavorites(
         {
           favorites: JSON.stringify([prodId]),
-        },
-        await getUserToken()
+        }
       );
 
       addEvent({
@@ -173,6 +171,19 @@ const ProductClass = ({ isLoggedIn }) => {
       setCurrentImage(currentImage + 1);
     }
   };
+
+  // Given a product's list of images, returns a row of all images as a JSX element
+  const secondImageContainer = (images) => {
+    return (
+      <SecondaryImgContain>
+        {images.map((img) => {
+          return (
+            <SecondaryImg key={img}><img src={img} /></SecondaryImg>
+          );
+        })}
+      </SecondaryImgContain>
+    );
+  };
   
   return (
     <Container>
@@ -192,12 +203,7 @@ const ProductClass = ({ isLoggedIn }) => {
                     />
                     <Arrow src={rightArrow} alt="right arrow" onClick={moveImageRight} />
                   </ImageContainer>
-                  <SecondaryImgContain>
-                    <SecondaryImg><img src={prodItem.product.images[currentImage + 1]} /></SecondaryImg>
-                    <SecondaryImg><img src={prodItem.product.images[currentImage + 2]} /></SecondaryImg>
-                    <SecondaryImg><img src={prodItem.product.images[currentImage + 3]} /></SecondaryImg>
-                    <SecondaryImg><img src={prodItem.product.images[currentImage + 4]} /></SecondaryImg>
-                  </SecondaryImgContain>
+                  {secondImageContainer(prodItem.product.images)}
                 </ImageColumn>
               ) : (
                 <ProductImg
@@ -210,7 +216,7 @@ const ProductClass = ({ isLoggedIn }) => {
               {prodItem.metadata.platform === 'local' ? (
                 <Platform>Local</Platform>
               ) : (
-                <Platform className="black">Black</Platform>
+                <PlatformSearch>Black Owned</PlatformSearch>
               )}
               <Store>{prodItem.product.metadata.Store}</Store>
               <Title>{prodItem.product.name}</Title>            
