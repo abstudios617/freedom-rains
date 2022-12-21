@@ -33,11 +33,13 @@ import { formatPrice } from '../../utils';
 const Cart = async () => {
 
   const [totalPrice, settotalPrice] = useState(0); 
-
+  const [quantity, setQuantity] = useState(1);
+  
   const loggedInUser = await getUserInfo(); 
 
   // send endpoint request to retrieve the logged-in user's cart
-  const userCart = await getCart(loggedInUser.cart_id); 
+  const [userCart, setuserCart] = useState(await getCart(loggedInUser.cart_id));
+  
   // if the user is not logged in, cannot use getUserInfo
 
 
@@ -51,14 +53,26 @@ const Cart = async () => {
     };
     const deleteItem = await deleteCartItem(itemObject); 
 
-    if (deleteItem) console.log('deleted succesfully!'); 
+    if (deleteItem) {
+      console.log('deleted succesfully!'); 
+
+      // re-send the getCart request to get updated cart items list after deleting item
+      const newCart = await getCart(loggedInUser.cart_id); 
+      setuserCart(newCart); 
+    }
   }; 
 
   // send endpoint request to delete all items in the cart
   const deleteAllItems = async () => {
     const deleteAll = await deleteAllCartItem(userCart.cart_id); 
 
-    if (deleteAll) console.log('deleted all items in the cart succesfully!'); 
+    if (deleteAll) {
+      console.log('deleted all items in the cart succesfully!');
+
+      // re-send the getCart request to get updated cart items list after deleting item
+      const newCart = await getCart(loggedInUser.cart_id); 
+      setuserCart(newCart); 
+    }
   }; 
 
   // send endpoint request to retrieve item's product detail
@@ -100,7 +114,6 @@ const Cart = async () => {
     });
     settotalPrice(totalPrice); 
   }; 
-  const [quantity, setQuantity] = useState(1);
 
   const createCartCheckout = async () => {
     await createCartCheckoutSession(userCart)
@@ -118,7 +131,7 @@ const Cart = async () => {
         <CartContainer>
           <Header>Your Cart<span>({userCart.items.length} items)</span></Header>
           <CartOptions>
-            <span className="first">Remove all items</span>
+            <span className="first" onClick={deleteAllItems}>Remove all items</span>
             <span>Save all for later</span>
             <span>Go to save for later list &gt;</span>
           </CartOptions>
@@ -127,7 +140,7 @@ const Cart = async () => {
           </ProductList>
           <Header>Save For Later</Header>
           <CartOptions>
-            <span className="blackFirst" onClick={deleteAllItems}>Remove all items</span> 
+            <span className="blackFirst">Remove all items</span> 
             <span className="colorBlack">Move all to cart</span>
             <span className="colorBlack">Go to your cart &gt;</span>
           </CartOptions>
