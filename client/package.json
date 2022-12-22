@@ -13,6 +13,9 @@
     "build-storybook": "build-storybook -s public",
     "unit-test": "jest"
   },
+  "resolutions": {
+    "react-error-overlay": "^6.0.11"
+  },
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -68,6 +71,7 @@
     "postcss-syntax": "^0.36.2",
     "prettier": "^2.6.2",
     "prop-types": "^15.8.1",
+    "react-error-overlay": "^6.0.11",
     "stylelint": "^14.8.5",
     "stylelint-config-recommended": "^7.0.0",
     "stylelint-prettier": "^2.0.0",
