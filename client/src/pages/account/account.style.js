@@ -1,5 +1,17 @@
 import styled from 'styled-components';
 
+export const Content = styled.div`
+  font-weight: bold;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  margin: 1%;
+
+  span {
+    font-size: small;
+  }
+`;
+
 export const SubContent = styled.div`
   line-height: 32px;
   padding: 10px 20px;
@@ -72,22 +84,30 @@ export const Submit = styled.div`
 `;
 
 export const AccountContain = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
+  align-items: right;
+  float: right;
+  margin-top: -40em;
+  background-color: white;
+  z-index: 999;
+  position: relative;
 
   @media only screen and (max-width: 480px) {
     width: 70%;
   }
 `;
 
-
 export const SignIn = styled.div`
   font-family: 'Montserrat', sans-serif;                                              
-  font-style: Bold;
-  font-size: 22.53px;
+  font-weight: bold;
+  font-size: 23px;
   line-height: 27px;
   line-height: 100%;
   vertical-align: top;
-
 `;
+
+export const AccountInfoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const AccountCommContainer = styled.div``;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const DropdownList = styled.select`
-  width: 410px;
+  width: 400px;
   height: 40px;
   padding: 1%;
   line-height: 1.5;

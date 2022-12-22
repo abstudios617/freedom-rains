@@ -2,14 +2,20 @@ import React, { useState } from 'react';
 import { createAccount } from '../../requests/api-request';
 import { setUserData, targetPage } from '../../utils/index';
 import { useForm } from 'react-hook-form';
-import InputField from '../../components/input-field';
+import LoginField from '../../components/login-field';
 import ButtonField from '../../components/button-field';
-import { Submit, Create, ButtonImg, Or } from './createAccount.style';
-import {Container, ContactFields, Alert, Title} from '../../styles/global.style';
+import { Submit, Create, Or } from './createAccount.style';
+import {
+  Container, 
+  ContactFields, 
+  Alert, 
+  Title
+} from '../../styles/global.style';
 import FreedomLogo from '../../assets/icons/FreedomLogo.png';
 import { goToSignIn } from '../../utils/account-utils';
-import google from '../../assets/footer/google.png';
+import google from '../../assets/icons/new_google.png';
 import StepOne from '../../assets/account/step_one.png';
+import LogoIcon from '../../components/logo-icons';
 
 
 const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -42,24 +48,24 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
     <Container>
       <Title>
         <img src={StepOne} width="65%"></img><br/><br/>
-        <img src={FreedomLogo} width="85px" height="75px"></img><br></br>
+        <LogoIcon src={FreedomLogo} alt="freedom" />
         <Create>Create New Account</Create>
       </Title>
       <ContactFields>
         {errorMsg && <Alert>{errorMsg}</Alert>}
-        <InputField
+        <LoginField
           name="First Name"
           placeHolder="First Name"
           type="First Name"
           register={register({ required: true })}
         />
-        <InputField
+        <LoginField
           name="Last Name"
           placeHolder="Last Name"
           type="Last Name"
           register={register({ required: true })}
         />
-        <InputField
+        <LoginField
           name="email"
           placeHolder="Email"
           type="email"
@@ -72,7 +78,7 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
         {errors.email && (
           <Alert>Please enter your email address</Alert>
         )}
-        <InputField
+        <LoginField
           name="password"
           placeHolder="Password"
           type="password"
@@ -83,14 +89,14 @@ const CreateAccount = ({ isLoggedIn, setIsLoggedIn }) => {
         )}
         <Submit>
           <ButtonField color="create" onClick={handleSubmit(createUserAccount)}>
-            Create
+            Create Account
           </ButtonField>
         </Submit><br/><br/>
         <Or>or</Or><br/>
         <Submit>
           <ButtonField color="google" onClick={googleSignIn}>
-            <ButtonImg alt="Google" src={google}/>
-                Sign In With Google
+            Sign In With Google
+            <LogoIcon src={google} alt="google"/>
           </ButtonField>
         </Submit><br/><br/>
       </ContactFields>

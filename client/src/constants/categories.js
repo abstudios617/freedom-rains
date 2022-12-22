@@ -27,7 +27,7 @@ import Home from '../assets/preferences/home.png';
 import Art from '../assets/preferences/art.png';
 import Household from '../assets/preferences/household.png';
 import Cloth from '../assets/preferences/cloth.png';
-import Jewllery from '../assets/preferences/jewellery.png';
+import Jewllery from '../assets/preferences/jewelry.png';
 import Outdoor from '../assets/preferences/outdoor.png';
 import Groceries from '../assets/preferences/groceries.png';
 import Baby_product from '../assets/preferences/baby_product.png';
@@ -247,8 +247,8 @@ export const preferenceCategories = [
   },
   {
     id: 5,
-    name: 'Jewellery',
-    value: 'jewellery',
+    name: 'Jewelry',
+    value: 'jewelry',
     img: Jewllery,
     selected: false,
   },

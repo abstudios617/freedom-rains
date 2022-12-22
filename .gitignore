@@ -16,6 +16,8 @@ server/node_modules/
 server/build/
 server/doc/
 server/server-build/
-server/.env.local
 server/.env.staging
 server/.env.production
+server/.env.local
+
+PROD.txt

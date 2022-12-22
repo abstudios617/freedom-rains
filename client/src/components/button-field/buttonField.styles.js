@@ -8,6 +8,10 @@ export const BtnField = styled.button`
   background: #1988FF;
   border-radius: 7px;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &.large {
     padding: 12px 32px;
   }
@@ -26,6 +30,26 @@ export const BtnField = styled.button`
   &.primary {
     background: #1988ff;
     color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+
+    &:hover {
+      box-shadow: 0 3px 2px #777777;
+    }
+  }
+
+  &.newPrimary {
+    background: #1988ff;
+    color: #fff;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    position: relative;
 
     &:hover {
       box-shadow: 0 3px 2px #777777;
@@ -53,9 +77,15 @@ export const BtnField = styled.button`
   &.grey{
     background: #B8B8B8;
     color: white;
-    border-radius: 30px;
-    width: 85px;
-    height: 45px;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+    position: relative;
 
     &:hover {
       box-shadow: 0 3px 2px #777777;
@@ -63,14 +93,19 @@ export const BtnField = styled.button`
   }
 
   &.preference{
-    background: #66b366;
+    background: #49a429;
     color: #fff;
-    border-radius: 30px;
-    width: 85px;
-    height: 45px;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
 
     &:hover {
-      box-shadow: 0 3px 2px #777777;
+      box-shadow: 0 3px 2px #777;
     }
   }
 
@@ -79,7 +114,24 @@ export const BtnField = styled.button`
     color: #fff;
 
     &:hover {
-      box-shadow: 0 3px 2px #777777;
+      box-shadow: 0 3px 2px #777;
+    }
+  }
+
+  &.newGreen {
+    background: #49a429;
+    color: #fff;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+
+    &:hover {
+      box-shadow: 0 3px 2px #777;
     }
   }
 
@@ -102,17 +154,19 @@ export const BtnField = styled.button`
   }
 
   &.gray {
-    background-color: #BEC4CD;
+    background: #BEC4CD;
     color: #fff;
 
     &:hover {
-      box-shadow: 0 3px 2px #777777;
+      box-shadow: 0 3px 2px #777;
     }
   }
 
   &.allWhite {
     background-color: #fff;
     color: #559eff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
 
     &:hover {
       box-shadow: 0 3px 2px #333333;
@@ -150,6 +204,14 @@ export const BtnField = styled.button`
   &.started {
     background: #008E3C10;
     color: #008E3C;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
       
     &:hover {
       box-shadow: 0 3px 2px #333333;
@@ -159,6 +221,14 @@ export const BtnField = styled.button`
   &.darkStarted {
     background: #008E3C;
     color: #fff;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
       
     &:hover {
       box-shadow: 0 3px 2px #333333;
@@ -174,6 +244,23 @@ export const BtnField = styled.button`
     }
   }
 
+  &.newYellow {
+    background: #ECDA35;
+    color: #000;
+    border-radius: 25px;
+    width: fit-content;
+    height: 50px;
+    padding: 0 1.5em;
+    margin-top: 1em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+
+    &:hover {
+      box-shadow: 0 3px 2px #777777;
+    }
+  }
+
   &.outline {
     width: 40%;
     border: 1px solid black;
@@ -184,29 +271,40 @@ export const BtnField = styled.button`
     }
   }
 
-  &.sign-in{
+  &.sign-in {
     background: #49a429;
     color: #fff;
-    position:relative;
+    border-radius: 24px;
+    font-weight: bold;
+    position: relative;
+    width: 120px;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: large;
+
     &:hover {
-      box-shadow: 0 3px 2px #777777;
+      box-shadow: 0 3px 2px #777;
     }
   }
 
   &.google{
     font-family: 'Montserrat', sans-serif;                                          
-    font-style: Bold;
+    font-weight: bold;
     font-size: 20px;
     line-height: 27px;
     line-height: 100%;
     vertical-align: top;
     background-color: #fff;
-    border-radius: 25px;
-    border: 2px solid #73AD21;
+    border-radius: 30px;
+    border: 3px solid #49a429;
     padding: 15px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
 
     &:hover {
-      box-shadow: 0 3px 2px #333333;
+      box-shadow: 0 3px 2px #777;
     }
 
     @media only screen and (max-width: 480px) {
@@ -216,14 +314,20 @@ export const BtnField = styled.button`
 
   &.createAcc{
     background-color: #fff;
-    color: #73AD21;
-    border-radius: 25px;
-    border: 2px solid #73AD21;
+    color: #49a429;
+    border-radius: 30px;
+    border: 3px solid #49a429;
     font-family: 'Montserrat', sans-serif;                                         
-    font-weight:bold;
+    font-weight: bold;
     font-style: bold;
+    font-size: 20px;
+    padding: 10px 15px;
+    height: fit-content;
+    width: fit-content;
+
     &:hover {
-      box-shadow: 0 3px 2px #333333;
+      background-color: #49a429;
+      color: #fff;
     }
   }
 
@@ -231,30 +335,39 @@ export const BtnField = styled.button`
     background-color: #49A429;
     color: white;
     border-radius: 27px;
-    width: 100.62px;
     font-family: 'Montserrat', sans-serif;                                           
-    font-style: Bold;
-    font-size:21.92px;
+    font-weight: bold;
+    font-size: large;
     line-height: 27px;
     vertical-align: Top;
+    height: 60px;
+    width: 120px;
+    position: relative;
+
+    &:hover {
+      box-shadow: 0 3px 2px #777;
+    }
   }
 
   &.create{
     background-color: #49A429;
-    border-radius: 27px;
     color: white;
-    height: 45px;
-    width: 100px;
-    font-family: 'Montserrat', sans-serif;         
-    font-style: Bold;
-    font-size: 18px;
+    border-radius: 27px;
+    font-family: 'Montserrat', sans-serif;                                           
+    font-weight: bold;
+    font-size: large;
     line-height: 27px;
-    line-height: 100%;
+    vertical-align: top;
+    height: 60px;
+    width: fit-content;
+    padding: 0 1em;
+    position: relative;
     margin: 3px;
     flex-wrap: wrap;
     white-space: pre;
+
     &:hover {
-      box-shadow: 0 3px 2px #333333;
+      box-shadow: 0 3px 2px #777;
     }
   }
 
@@ -262,8 +375,12 @@ export const BtnField = styled.button`
     background: #49a429;
     color: #fff;
     border-radius: 27px;
-    width: 280px;
+    width: fit-content;
     height: 50px;
+    padding: 0 1.5em;
+    font-size: large;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
   
     &:hover {
       box-shadow: 0 3px 2px #777777;

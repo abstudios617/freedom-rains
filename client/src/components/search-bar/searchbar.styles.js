@@ -5,7 +5,7 @@ export const Attribute = styled.input`
   height: 25px;
   font-size: 14px;
   background-color: #fff;
-  border-radius: 20px;
+  padding: 2.5px;
   border: none;
   font-family: "Montserrat", sans-serif;
   
@@ -23,7 +23,8 @@ export const SearchBarContainer = styled.div`
   align-items: center;
   justify-content: center;
   border: 1px solid #ced4da;
-  border-radius: 10px;
+  border-radius: 5px;
+  padding: 5px;
   width: 100%;
   button {
     border-radius: 0 10px 10px 0;
@@ -42,6 +43,7 @@ export const SearchContainer = styled.div`
   align-items: center;
   justify-content: center;
   flex: 2;
+  padding: 1em;
 
   .hideSearch {
     display: none;

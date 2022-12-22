@@ -31,8 +31,8 @@ const MobileNav = ({ isLoggedIn, logout }) => {
             <ul>
               <WelcomeSection>
                 <WelcomeCopy>
-                  {isLoggedIn && userData
-                    ? `Hi, ${userData.first_name}`
+                  {isLoggedIn
+                    ? `Hi, ${(userData) ? userData.first_name : 'First Name'}`
                     : 'Welcome To Shop With Freedom!'}
                 </WelcomeCopy>
                 <WelcomeBtn>

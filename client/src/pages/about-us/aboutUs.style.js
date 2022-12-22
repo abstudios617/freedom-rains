@@ -39,13 +39,16 @@ export const IntroductionDescription = styled.div`
 
 export const SectionTitle = styled.div`
   color: #49A429;
-  width: 380px;
+  width: 400px;
   height: 30px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
   line-height: 30px;
+  margin: 0 auto;
+  margin-left: 6em;
+  padding-bottom: 1em;
 `;
 
 export const SectionTitleContainer = styled.div`
@@ -70,8 +73,8 @@ export const TotalContainer = styled.div`
   height: 180px;
   display: flex;
   flex-direction: row;
+  margin-left: -7em;
 `;
-
 
 export const ServiceTitle = styled.div`
   width: 450px;
@@ -140,7 +143,7 @@ export const ContactIcon = styled.img`
 `;
 
 export const ContactDescriptionTitle = styled.div`
-  width: 450px;
+  width: 280px;
   height: 25px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -148,14 +151,14 @@ export const ContactDescriptionTitle = styled.div`
   font-size: 18px;
   line-height: 22px;
   color: #3C4044;
-  text-align: center;
+  text-align: left;
   margin: auto;
   display: flex;
   flex-direction: row;
 `;
 
 export const ContactDescription = styled.div`
-  width: 130px;
+  width: 125px;
   height: 22px;
   text-align: center;
   display: flex;
@@ -168,13 +171,17 @@ export const ContactDescription = styled.div`
   margin: auto;
 `;
 
-
+export const ContactDescriptionInfo = styled.div`
+  width: 120px;
+  margin: auto;
+`;
 
 
 export const HiringImage = styled.img`
   width: 100%;
   height: auto;
   object-fit: cover;
+  opacity: 25%;
 `;
 
 export const HiringDescriptionContainer = styled.div`
@@ -192,11 +199,12 @@ export const HiringMessage = styled.div`
   height: 200px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
-  font-weight: 700;
-  font-size: 35px;
+  font-weight: 800;
+  font-size: 40px;
   text-align: center;
-  color: #F9F9F9;
+  color: #333;
   position: absolute;
+  margin-bottom: 2em;
 `;
 
 export const SeeOpenButton = styled.div`
@@ -307,6 +315,10 @@ export const PodcastTitle = styled.div`
   padding: 2%;
 `;
 
+export const PodcastContainer = styled.div`
+  margin-left: 1em;
+`;
+
 export const PodcastItemContainer = styled.div`
   display: block;
   justify-content: center;
@@ -318,12 +330,12 @@ export const PodcastItemContainer = styled.div`
 `;
 
 export const LogoTitle = styled.div`
-  width: 330px;
-  height: 22px;
+  width: 360px;
+  height: 20px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 22px;
   color: #000000;
   text-align: center;
@@ -342,31 +354,9 @@ export const LogoContainer = styled.div`
 `;
 
 export const LogoImage = styled.img`
-  width: 170px;
-  height: 180px;
-  margin: auto;
-`;
-
-export const LogoImage2 = styled.img`
-  width: 220px;
-  height: 170px;
-  margin: auto;
-`;
-
-export const AbsLogoContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 20px;
-  width: 240px;
-  height: 210px;
-  margin: auto;
-`;
-
-export const AbsImage = styled.img`
-  width: 240px;
-  height: 210px;
+  height: 180px;  
+  width: auto;
+  max-width: 240px;
   margin: auto;
 `;
 
@@ -374,17 +364,19 @@ export const ColorContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0px;
+  padding: 1px;
   gap: 43px;
   width: 1098px;
   height: 216px;
+  margin: 0 auto;
+  margin-left: -6em;
 `;
 
 export const CherryredColorBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 93px 25px 44px;
+  padding: 30px 25px 44px;
   gap: 10px;
   width: 185px;
   background-color: #F9193D;
@@ -395,7 +387,7 @@ export const MidnightblueColorBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 93px 25px 44px;
+  padding: 30px 25px 44px;
   gap: 10px;
   width: 185px;
   background-color: #14365B;
@@ -406,7 +398,7 @@ export const CapriblueColorBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 93px 25px 44px;
+  padding: 30px 25px 44px;
   gap: 10px;
   width: 185px;
   background-color: #2F7DA1;
@@ -417,7 +409,7 @@ export const LightturquoiseColorBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 93px 25px 44px;
+  padding: 30px 25px 44px;
   gap: 10px;
   width: 185px;
   background-color: #9ADCDB;
@@ -428,7 +420,7 @@ export const HoneydewColorBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 93px 25px 44px;
+  padding: 30px 25px 44px;
   gap: 10px;
   width: 185px;
   background-color: #EEFAEE;

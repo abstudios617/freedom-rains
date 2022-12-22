@@ -12,11 +12,13 @@ import {
   CategoryCircle,
   Submit,
   ImgContainer,
+  PreferenceCheckmarkContainer
 } from './shoppingPreference.style';
 import {Container, Title, Alert} from '../../styles/global.style';
 import FreedomLogo from '../../assets/icons/FreedomLogo.png';
 import StepTwo from '../../assets/account/step_two.png';
 import { IoCheckmarkCircleOutline } from 'react-icons/io5';
+import LogoIcon from '../../components/logo-icons/index';
 
 const ShoppingPreference = ({ setUpdateTokens }) => {
   const [data, setData] = useState(preferenceCategories);
@@ -30,7 +32,7 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
 
   useEffect(() => {
     const alreadySelected = data.filter((elem) => elem.selected);
-    setShowButton(alreadySelected.length !== 0);
+    setShowButton(alreadySelected.length !== 0 && alreadySelected.length <= 4);
   });
  
   const onSelectionChange = (id) => {
@@ -58,8 +60,6 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
 
     if (alreadySelected.length >= 4) {
       if (!canDeselected) {
-        setHasSelected(false);
-        setOpenModalTwo(true);
         return;
       }
     }
@@ -80,8 +80,15 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
       setHasSelected(true);
       setOpenModalTwo(true);
       return;
+    } else if (arr.length > 4) {
+      setHasSelected(false);
+      setOpenModalTwo(true);
+      return;
+    } else {
+      setHasSelected(false);
+      setOpenModalOne(true);
     }
-
+    
     const values = {
       category: JSON.stringify(arr),
     };
@@ -124,7 +131,6 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
 
   const renderItem = data.map((item) => {
     const [showIcon, setShowIcon] = useState(false);
-
     
     return (
       <CategoryCircle
@@ -132,13 +138,16 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
         className={item.selected && 'categoryCircleSelected'}
         key={item.value}
       >
-
         <ImgContainer 
-          onClick={() => showIcon ? setShowIcon(false) : setShowIcon(true)}>
+          onClick={() => setShowIcon((state) => !state)}>
+          {
+            showIcon && 
+            <PreferenceCheckmarkContainer>
+              <IoCheckmarkCircleOutline size={30} top="45px"/>
+            </PreferenceCheckmarkContainer>
+          }
           <img src={item.img} width="150"></img>
-          {showIcon && <IoCheckmarkCircleOutline size={25} top="45px"/>}
         </ImgContainer>
-
       </CategoryCircle>
     );
   });
@@ -178,22 +187,18 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
     <Container>
       <Title>
         <img src={StepTwo} width="65%"></img><br/><br/>
-        <img src={FreedomLogo} width="85px" height="75px"></img>
-        <br/>
+        <LogoIcon src={FreedomLogo} alt="freedom"/><br/>
       </Title>
       <Content>Tell us what you like!</Content>
       <Grid>{renderItem}</Grid>
       {errMsg && <Alert>{errMsg}</Alert>}
 
       <Submit>
-        {showButton ? 
-          <ButtonField color="preference" onClick={submitCategories}>
-            Done
-          </ButtonField> :
-          <ButtonField color="grey" onClick={submitCategories}>
-           Done
-          </ButtonField>
-        }
+        <ButtonField color={
+          showButton ? 'preference' : 'grey'
+        } onClick={submitCategories}>
+          Done
+        </ButtonField>
       </Submit><br/><br/>
 
       {tokenReward ? 
@@ -215,23 +220,17 @@ const ShoppingPreference = ({ setUpdateTokens }) => {
           isSmall={true}
         />)
       }
-      {hasSelected ? 
-        (<ModalOneBtn
-          openModal={openModalTwo}
-          closeModal={closeModal}
-          message1={'You need to choose at least one category.'}
-          hasBtn={false}
-          isSmall={true}
-        />)
-        :
-        (<ModalOneBtn
-          openModal={openModalTwo}
-          closeModal={closeModal}
-          message1={'Choose only your top 4 categories.'}
-          hasBtn={false}
-          isSmall={true}
-        />)
-      }
+      <ModalOneBtn
+        openModal={openModalTwo}
+        closeModal={closeModal}
+        message1={
+          hasSelected 
+            ? 'You need to choose at least one category.' 
+            : 'Choose only your top 4 categories.'
+        }
+        hasBtn={false}
+        isSmall={true}
+      />
     </Container>
   );
 };

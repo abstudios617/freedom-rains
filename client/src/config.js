@@ -1,4 +1,4 @@
-export const api = process.env.REACT_APP_API;
+export const api = 'https://api.freedomrains.com' || process.env.REACT_APP_API;
 
 export const imgServer = process.env.REACT_APP_IMG_URL;
 

@@ -51,12 +51,17 @@ const CouponFilter = ({ data, store }) => {
 
   return (
     <Coupon>
-      <Icon><FavoriteBorderOutlined/></Icon>
+      <Icon>
+        <FavoriteBorderOutlined/>
+      </Icon>
       <Header>
-        {data?.endDate==today&&<Description>
-          Ends Today
-          <TopRight/>
-        </Description>}
+        {
+          data?.endDate == today &&
+          <Description>
+            Ends Today
+            <TopRight/>
+          </Description>
+        }
       </Header>
       <ImgContainer> 
         { store?.small_img && (
@@ -67,14 +72,19 @@ const CouponFilter = ({ data, store }) => {
         )}
       </ImgContainer>
       <Body>
-        {data?.sponsored&&<Sponsored>Sponsored</Sponsored>}
+        {
+          data?.sponsored &&
+          <Sponsored>
+            Sponsored
+          </Sponsored>
+        }
         <div>
-          <span className="title">{data?.title}</span>
-          <span className="price">{data?.newPrice}</span>
+          <span className="title">{'A' + data?.title}</span>
+          <span className="price">{'B' + data?.newPrice}</span>
         </div>
         <div>
-          <span className="subtitle">{data?.description}</span>
-          <span className="oldprice">{data?.oldPrice}</span>
+          <span className="subtitle">{'C' + data?.description}</span>
+          <span className="oldprice">{'D' + data?.oldPrice}</span>
         </div>
       </Body>
       <Code onClick={copyCoupon}>

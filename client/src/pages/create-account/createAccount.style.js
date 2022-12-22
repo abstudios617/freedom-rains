@@ -20,7 +20,7 @@ export const ButtonImg = styled.img`
 
 export const Create = styled.div`
   font-family: 'Montserrat', sans-serif;
-  font-style: Bold;
+  font-weight: bold;
   font-size: 20px;
   line-height: 27px;
   vertical-align: top;

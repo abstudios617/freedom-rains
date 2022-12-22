@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { forgotPassword } from '../../requests/api-request';
 import { useForm } from 'react-hook-form';
 import ModalOneBtn from '../../components/modal-one-btn';
-import InputField from '../../components/input-field';
+import LoginField from '../../components/login-field';
 import ButtonField from '../../components/button-field';
 import { targetPage } from '../../utils/index';
 import { Submit, Subtitle, Resend } from './forgot.style';
@@ -38,14 +38,14 @@ const ForgotPassword = ({ isLoggedIn }) => {
   return (
     <Container>
       <Title>
-        <img src={FreedomLogo} width="85px" height="75px"></img><br/>
-        <Subtitle>Forget your Password? No Worries! 
-          <br/>We will send a new one to your Email<span role="img">😀</span>
+        <img src={FreedomLogo} width="100px" height="95px"></img><br/>
+        <Subtitle>Forgot your password? No Worries! 
+          <br/>We will send a new one to your e-mail &nbsp; <span role="img">😀</span>
         </Subtitle>
       </Title>
       {errMsg && <Alert>{errMsg}</Alert>}
       <ContactFields>
-        <InputField
+        <LoginField
           name="email"
           placeHolder="Email"
           type="email"

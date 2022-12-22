@@ -17,6 +17,7 @@ import {
   SWFImg,
   SWFtext,
   Top,
+  CouponViewAll
 } from './coupon.style';
 import { ListProd } from '../../components/list-of-products/listOfProducts.styles';
 import { Container, RoundImg, Brands } from '../../styles/global.style';
@@ -29,19 +30,27 @@ const Coupon = () => {
   const [hasStores, setHasStores] = useState(false);
   const [allStores, setAllStores] = useState(null);
   const [firstLoad, setFirstLoad] = useState(true);
-  const [isLoading, setIsLoading] = useState(true);
+
+  /* for testing purposes */
+  const [isLoading, setIsLoading] = useState(false);
 
   const Category = ({title, from, to}) => {
     const [viewAll, setViewAll] = useState(false);
+
     return (
       <CouponContainer>
         <Section>
           <Title>{title}</Title>
-          <span onClick={()=>setViewAll(!viewAll)}>{viewAll?'View Less':'View All'}</span>
+          <CouponViewAll onClick={
+            () => setViewAll(!viewAll)
+          }>
+            {viewAll ? 'View Less' : 'View All'}
+          </CouponViewAll>
         </Section>
         <ListProd className="listProdSearch">
-          {isLoading && <Loader />}
-          {!isLoading &&
+          <span>CATEGORY TEST</span>
+          {/*isLoading && <Loader />*/}
+          {/*!isLoading && */
             coupons.slice(from, viewAll?(to+4):to).map((coupon, index) => {
               return (
                 <CouponFilter
@@ -144,12 +153,13 @@ const Coupon = () => {
             page="Coupons"
           />
         </Top>
-        {!isLoading && coupons.length > 0 ? (
+        { /* {!isLoading && coupons.length > 0 ... */ }
+        {isLoading || coupons.length > 0 ? (
           <div>
             <CouponContainer>
               <ListProd className="listProdSearch">
-                {isLoading && <Loader />}
-                {!isLoading &&
+                { /*isLoading && <Loader /> */}
+                {/*!isLoading &&*/
                   featured.map((coupon, index) => {
                     return (
                       <Featured
@@ -220,8 +230,8 @@ const Coupon = () => {
           <SWFImg />
           <SWFtext>
             <h1>Shop with Freedom</h1>
-            <h2>Shop local and find coupons</h2>
-            <ButtonField color="green2">learn more</ButtonField>
+            <h2>Shop local and find coupons!</h2>
+            <ButtonField color="green2">Learn More</ButtonField>
           </SWFtext>
         </ShopWithFreedom>
       </Container>

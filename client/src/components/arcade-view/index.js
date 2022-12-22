@@ -28,15 +28,13 @@ const ArcadeView = ({mostPopularList, recommendedList, newestList, oldestList, g
   const changeGameSorting = (e) => {
     const optionName = e.target.value;
 
-    if (optionName === 'Most Popular') {
-      setCurrentGameList(mostPopularList);
-    } else if (optionName === 'Recommended') {
-      setCurrentGameList(recommendedList);
-    } else if (optionName === 'Newest to oldest') {
-      setCurrentGameList(newestList);
-    } else if (optionName === 'Oldest to newest') {
-      setCurrentGameList(oldestList);
-    }
+    const gameList = {
+      'Most Popular': mostPopularList,
+      'Recommended': recommendedList,
+      'Newest to oldest': newestList,
+      'Oldest to newest': oldestList
+    };
+    setCurrentGameList(gameList[optionName]);
   };
 
   useEffect(() => {
@@ -77,7 +75,7 @@ const ArcadeView = ({mostPopularList, recommendedList, newestList, oldestList, g
             {currentGameList?.slice(0,10)}
           </Videos>
           <BtnContainer>
-            <ButtonField color="primary" onClick={() => setViewAll(true)}>
+            <ButtonField color="newPrimary" onClick={() => setViewAll(true)}>
               View All
             </ButtonField>
           </BtnContainer>

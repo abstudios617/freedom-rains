@@ -76,7 +76,7 @@ export const FeaturedItem = styled.div`
   filter: drop-shadow(0px 20px 80px rgba(0, 0, 0, 0.15));
   background: #ffffff;
   border-radius: 40px;
-  height: 250px;
+  height: 280px;
 
   img {
     width: 70px;

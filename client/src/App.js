@@ -88,7 +88,9 @@ const PageView = () => {
           <ContactUs />
         </Route>
         <Route exact path="/login">
-          <SignIn setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
+          <SignIn 
+            setIsLoggedIn={setIsLoggedIn} 
+            isLoggedIn={isLoggedIn} />
         </Route>
         <Route exact path="/create">
           <CreateAccount

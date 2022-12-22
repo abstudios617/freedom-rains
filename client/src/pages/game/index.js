@@ -9,7 +9,7 @@ import { gameFullscreen, gameNormalScreen } from '../../constants/modal-styles';
 import { useParams } from 'react-router-dom';
 import { gamesConstant } from '../../constants/games';
 import { targetPage } from '../../utils/index';
-import {Container} from '../../styles/global.style';
+import { Container } from '../../styles/global.style';
 import { 
   GamesContainer, 
   GameContainer, 
@@ -47,7 +47,6 @@ const Game = () => {
     const specificGames = gamesConstant.sort((a, b) => {
       return +a.priority < +b.priority ? -1 : +a.priority > +b.priority ? 1 : 0;
     });
-
     setGames(specificGames);
   };
 
@@ -59,16 +58,12 @@ const Game = () => {
 
   useEffect(() => {
     if (!game && games) {
-      games?.map((item) => {
-        if (item.urlName === gameName) {
-          setGameImg(item.image);
-          if (item.rules) {
-            setGameRules(item.rules);
-          } else {
-            setGameRules('Rules coming soon!');
-          }
-          setGame(item.name);
-          setGameSource(`${url}${item.link}`);
+      games?.map(({ image, rules, name, link, urlName }) => {
+        if (urlName === gameName) {
+          setGameImg(image);
+          setGameRules(rules !== null ? rules : 'Rules coming soon!');
+          setGame(name);
+          setGameSource(`${url}${link}`);
         }
       });
     }
@@ -108,12 +103,13 @@ const Game = () => {
                 </GameAd>
               </div>
               <BtnGame>
+                {/* screen for game */}
                 <iframe
                   src={gameSource}
                   allowFullScreen={true}
                   title="Freedom Game"
                   style={fullscreenMode ? gameFullscreen : gameNormalScreen}
-                ></iframe>
+                />
                 <MobileGameBtn 
                   className={fullscreenMode ? 'homeFS' : 'home'} 
                   src={homeBtn} 

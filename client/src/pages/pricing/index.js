@@ -65,7 +65,7 @@ const PricingPage = () => {
         <FeaturedContent>
           {content}
         </FeaturedContent>
-        <ButtonField color="primary" onClick={() => targetPage('contact')}>
+        <ButtonField color="newPrimary" onClick={() => targetPage('contact')}>
           Connect now
         </ButtonField>
       </FeaturedItem>

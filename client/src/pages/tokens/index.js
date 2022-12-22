@@ -14,7 +14,7 @@ import {
   LeftBtn,
   RightBtn
 } from './token.style';
-import {Container,Title } from '../../styles/global.style';
+import { Container, Title } from '../../styles/global.style';
 import ModalTokens from '../../components/modalToken';
 import StepThree from '../../assets/account/step_three.png';
 import temp from '../../assets/tokens/temp.png';
@@ -30,6 +30,8 @@ const Tokens = ({ isLoggedIn, updateTokens }) => {
   const [ showModal1, setShowModal1 ] = useState(true);
   const [ showModal2, setShowModal2 ] = useState(false);
   const [ showModal3, setShowModal3 ] = useState(false);
+
+  const userData = JSON.parse(getItem('accountInfo'));
   
   const handleClose = () =>{
     setShowModal1(false);
@@ -124,8 +126,9 @@ const Tokens = ({ isLoggedIn, updateTokens }) => {
         />
         
         <Title>
-          <img src={StepThree} width="65%"></img><br/><br/>
-          <span>Congrats &quot;First Name&quot;</span>
+          <img src={StepThree} width="65%"></img>
+          <br/><br/>
+          <span>Congrats &quot;{(userData) ? userData.first_name : 'First Name'}&quot;</span>
         </Title>
         <Subtitle>
           <span>Last step, choose your avatar and get started!</span>
@@ -140,9 +143,11 @@ const Tokens = ({ isLoggedIn, updateTokens }) => {
         <ImgContainer src={temp}></ImgContainer><br/><br/>
         <Missions src={FirstMission}></Missions>
         <Footer>
-          <span>Community Tokens Blurb: The<br /> Freedom Community is powered by <br />commonuity tokens!
-            Complete taks & <br />missions to unlick NEW games, <br />EXCLUSIVE creator contentand the <br />BEST deals!
-          </span><br/><br/>
+          <span>
+            <u>Community Tokens Blurb:</u> <br/> The Freedom Community is powered by community tokens!<br/>
+            Complete tasks & missions to unlock <b>NEW</b> games, <br/><b>EXCLUSIVE</b> creator content, and the <b>BEST</b> deals!
+          </span>
+          <br/><br/>
           <ButtonField color="mission">
             Finish Your First Mission!
           </ButtonField>
@@ -174,7 +179,7 @@ const Tokens = ({ isLoggedIn, updateTokens }) => {
               Filling out all Account information - 200 tokens
             </Task>
           </div>
-          <div onClick={() => handleShopPrefTask('shopping-preference')}>
+          <div onClick={() => handleShopPrefTask('preferences')}>
             <Task className={shopComplete && 'complete'}>
               Selecting your Shopping Preference - 200 tokens
             </Task>

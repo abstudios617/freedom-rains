@@ -1,4 +1,4 @@
-﻿const { secret } = require('../../config/index');
+const { secret } = require('../../config/index');
 const knex = require('../../utils/knex').instance();
 const bcrypt = require('bcryptjs');
 const { validateInput, validateLogin } = require('../../utils/validations');

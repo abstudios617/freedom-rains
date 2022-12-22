@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Content = styled.div`
-  font-size: 22px;
+  font-size: 24px;
   font-family: 'Montserrat',sans-serif;
   font-weight: bold;
   line-height: 32px;
@@ -44,15 +44,14 @@ export const Grid = styled.div`
 
 export const CategoryCircle = styled.div`
   width: 150px;
-  margin: 10px 5px;
+  margin: 0 2px;
   padding: 15px;
   text-align: center;
   cursor: pointer;
   background-color: #fff;
   
-
   &.categoryCircleSelected {
-    opacity: 50%;
+    opacity: 60%;
     transition: opacity 0.5s;
   }
 `;
@@ -78,4 +77,18 @@ export const IconContainer = styled.div`
   position: relative;
   top: -138px;
   right: -50px;
+`;
+
+export const PreferenceCheckmarkContainer = styled.div`
+  z-index: 999;
+  margin-top: -2em;
+  position: relative;
+  top: 45px;
+  left: 105px;
+  background-color: #49a429;
+  background-color: rgba(73, 164, 41, 70%);
+  border: 1px solid rgba(0, 0, 0, 70%);
+  width: 30px;
+  height: 30px;
+  border-radius: 1em;
 `;

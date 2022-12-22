@@ -137,13 +137,14 @@ const ContactUs = () => {
               ) : null}
               <InputField
                 name="phone"
-                placeHolder="Enter Phone... EX: 1234560789"
+                placeHolder="Enter Phone Number"
                 type="text"
                 register={register({
                   required: true,
                   pattern: /^[0-9]*$/,
                   maxLength: 10,
                 })}
+                extra="Use format 1234567890"
               />
               {errors.phone ? (
                 <Alert>
@@ -182,8 +183,9 @@ const ContactUs = () => {
                 type="text"
                 register={register({ required: false })}
               />
+              <br/>
               <ButtonField
-                color="primary"
+                color="newPrimary"
                 onClick={handleSubmit(sendContactInfo)}
               >
                 Contact Sales

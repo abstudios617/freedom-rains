@@ -37,7 +37,7 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.img`
-  width: 70px;
+  width: 90px;
 
   @media only screen and (max-width: 480px) {
     width: 35%;

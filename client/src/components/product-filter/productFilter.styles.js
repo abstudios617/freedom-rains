@@ -15,7 +15,12 @@ export const Filter = styled.div`
 `;
 
 export const FilterContainer = styled.div`
-  margin-right: 5px;
+  padding: 0 1em;
+  user-select: none;
+
+  &:hover {
+    background-color: lightgray;
+  }
 `;
 
 export const FilterTitle = styled.div`
@@ -25,7 +30,7 @@ export const FilterTitle = styled.div`
   font-size: 15px;
   line-height: 18px;
   color: #3C4044;
-  margin-top: 18px;
+  margin-top: 6px;
 
   img {
     margin-left: 5px;

@@ -42,7 +42,7 @@ export const CustomerLogin = styled.div`
 export const LoginBox = styled.div`
   width: 80%;
   height: 400px;
-  padding: 3%;
+  padding: 0 3%;
 `;
 
 export const LoginHeader = styled.div`
@@ -80,16 +80,17 @@ export const ForgetButton = styled.div`
   width: 203px;
   height: 27px;
   font-family: 'Montserrat', sans-serif;
-  font-weight: normal;
-  font-size: 21px;
-  line-height: 27px;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 20px;
   color: #3c4044;
   text-decoration: underline;
   vertical-align: top;
-  text-underline-offset: 4px;
+  text-underline-offset: 6px;
 
   &:hover {
     cursor: pointer;
+    color: gray;
   }
 `;
 
@@ -102,7 +103,8 @@ export const Or = styled.div`
 
 export const NoAccount = styled.div`
   font-family: 'Montserrat', sans-serif;
-  font-size: 22.53px;
+  font-size: 21px;
+  font-weight: bold;
   line-height: 27px;
   line-height: 100%;
 `;

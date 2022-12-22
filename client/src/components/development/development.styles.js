@@ -23,6 +23,7 @@ export const DevelopCenter = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+  margin-top: -1em;
 `;
 
 export const DevelopSideImg = styled.div`
@@ -55,7 +56,7 @@ export const DevelopContainer = styled.div`
 export const DevelopTypeHeading = styled.div`
   font-weight: bold;
   font-size: 25px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   text-align: center;
 `;
 
@@ -75,9 +76,13 @@ export const DevelopFeatureHeading = styled.div`
 
 export const DevelopFeature = styled.div`
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 45px;
   flex-direction: row;
   flex-wrap: wrap;
   flex: 1;
   align-items: flex-start;
+
+  &.names {
+    margin-bottom: 42.5px;
+  }
 `;

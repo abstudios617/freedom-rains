@@ -70,7 +70,7 @@ export const ContactFields = styled.div`
 
 export const Title = styled.div`
   line-height: 32px;
-  margin: 10px 0 20px 0;
+  margin: 10px 0;
   text-align: center;
   span {
     font-weight: 700;
