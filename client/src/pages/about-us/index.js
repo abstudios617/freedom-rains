@@ -52,11 +52,9 @@ import linkedInIcon from '../../assets/about-us/LinkerdInIcon.png';
 import phoneIcon from '../../assets/about-us/PhoneIcon.png';
 import emailIcon from '../../assets/about-us/EmailIcon.png';
 import shopIcon from '../../assets/about-us/ShopperIcon.png';
-
 import freedomLogo1 from '../../assets/about-us/Freedom1.png';
 import freedomLogo2 from '../../assets/about-us/freedom2.png';
 import absLogo from '../../assets/about-us/abs.png';
-import path from 'path';
 
 import { members } from '../../constants/members';
 import { podcasts } from '../../constants/podcasts';
@@ -73,12 +71,6 @@ const AboutUs = () => {
   };
 
   const MediaAsset = ({ title, images }) => {
-    const pathToFile = (e) => {
-      return path.join(
-        __dirname, 'client', 'src', 'assets', 'about-us', e.target.title
-      );
-    };
-
     const listImages = (images) => {
       return (
         <div style={{ display: 'flex', flexDirection: 'row' }}>
@@ -92,8 +84,8 @@ const AboutUs = () => {
                     <LogoImage key={index} src={images[item]} alt={item} />
                   </LogoContainer>
                   <ContactButton>
-                    <a href={images[item]} title={item} download={pathToFile}>
-                      <ButtonField color="newGreen">
+                    <a href={images[item]} title={item} download>
+                      <ButtonField color="newGreen" onClick={() => console.log(item)}>
                         Download Logo
                       </ButtonField>
                     </a>
