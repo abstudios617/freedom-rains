@@ -22,12 +22,11 @@ module.exports.macysProduct = ($) => {
     image: image,
   };
 };
-
 module.exports.amazonProduct = ($) => {
-  const p1 = $('#priceblock_saleprice');
-  const p2 = $('#priceblock_ourprice');
-  const p3 = $('#price');
-  const p4 = $('#price_inside_buybox');
+  const p1 = $('.priceToPay > .a-offscreen'); // Old: #priceblock_saleprice
+  const p2 = $('.savingPriceOverride'); // Old: #priceblock_outprice
+  const p3 = $('.basisPrice > .a-price > .a-offscreen'); // Old: #price
+  const p4 = $('.priceToPay > .a-offscreen'); // Old: #price_inside_buybox
 
   const sale = p1 ? p1.text().replace(/\n|\$/gi, '') : null;
   const price = p2
