@@ -8,6 +8,9 @@ const googleRoutes = require('./googleRoutes/google.routes');
 const checkoutRoutes = require('./checkoutRoutes/checkout.routes.js');
 const communityRoutes = require('./communityRoutes/community.route.js');
 
+// External Services...
+const hubspotRoutes = require('./hubspotRoutes/hubspot.routes');
+
 //single file for routes so index isn't cluttered
 module.exports = (app) =>{
   leadsRoutes(app); //leads routes
@@ -19,4 +22,5 @@ module.exports = (app) =>{
   googleRoutes(app); //google routes
   checkoutRoutes(app); //checkout routes
   communityRoutes(app); //community routes
+  hubspotRoutes(app); // hubspot routes
 };

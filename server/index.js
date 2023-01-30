@@ -12,6 +12,7 @@ const errorhandler = require('errorhandler');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const config = require('./config');
+const bodyParser = require('body-parser');
 
 /**
  * App Variables
@@ -36,6 +37,8 @@ app.use((req, res, next) => {
 });
 app.use(cookieParser());
 app.use(middleware());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     resave: false,

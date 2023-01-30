@@ -20,3 +20,8 @@ module.exports.google = {
 module.exports.serverEnv = process.env.SERVER_ENV || process.env.REACT_APP_SERVER_ENV;
 module.exports.emailUsername = process.env.EMAIL_USERNAME || process.env.REACT_APP_EMAIL_USERNAME;
 module.exports.emailSMTPPassword = process.env.EMAIL_PASSWORD || process.env.REACT_APP_EMAIL_PASSWORD;
+
+module.exports.hubspot = {
+  url: process.env.REACT_APP_HS_MEETING_URL,
+  token: process.env.REACT_APP_HS_TOKEN
+};
