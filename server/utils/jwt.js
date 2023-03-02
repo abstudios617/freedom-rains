@@ -25,6 +25,8 @@ module.exports.middleware = () => {
       '/checkout/createSession', // guests can purchase items
       '/checkout/subscribe', // create subscription checkout session
       '/community/users', // For Getting All info for community users
+      '/hubspot/contacts/create', // hubspot stuff
+      '/hubspot/contacts', // hubspot stuff
       '/webhook', // hit webhook for stripe, will verify from stripe route
       '/users/forgotPassword', // sends an email with temporary password
       '/users/contactUs', // sends contact message to SWF team
