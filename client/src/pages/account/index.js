@@ -7,10 +7,10 @@ import ModalOneBtn from '../../components/modal-one-btn';
 import Login from '../../components/login';
 import { setUserAccount, updateUserTokens } from '../../utils/account-utils';
 import { 
-  SubContent, 
+  /*SubContent, 
   Tabs, 
   ContentWidth, 
-  Submit, 
+  Submit,*/ 
   AccountContain,
   SignIn,
   Content,
